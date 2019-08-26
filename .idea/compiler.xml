@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="webcommons-mappers" />
+        <module name="services-core" />
+        <module name="commons-core" />
+        <module name="commons-pdf" />
+        <module name="webcommons-core" />
+        <module name="commons-mappers" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="commons-core" target="8" />
+      <module name="commons-mappers" target="8" />
+      <module name="commons-pdf" target="8" />
+      <module name="services-core" target="1.5" />
+      <module name="utils" target="1.5" />
+      <module name="webcommons-core" target="1.5" />
+      <module name="webcommons-mappers" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

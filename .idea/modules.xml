@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/commons-core/commons-core.iml" filepath="$PROJECT_DIR$/commons-core/commons-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons-mappers/commons-mappers.iml" filepath="$PROJECT_DIR$/commons-mappers/commons-mappers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons-pdf/commons-pdf.iml" filepath="$PROJECT_DIR$/commons-pdf/commons-pdf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services-core/services-core.iml" filepath="$PROJECT_DIR$/services-core/services-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utils.iml" filepath="$PROJECT_DIR$/utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webcommons-core/webcommons-core.iml" filepath="$PROJECT_DIR$/webcommons-core/webcommons-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webcommons-mappers/webcommons-mappers.iml" filepath="$PROJECT_DIR$/webcommons-mappers/webcommons-mappers.iml" />
+    </modules>
+  </component>
+</project>
