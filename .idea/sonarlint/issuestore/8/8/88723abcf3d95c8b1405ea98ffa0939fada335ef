@@ -1,0 +1,17 @@
+
+Asquid:S1148_"#Use a logger to log this exception.(ØÑ¼ô8Îó ˆË-
+Psquid:S1135e"2Complete the task associated to this TODO comment.(…ïœ†8Îó ˆË-
+Qsquid:S1135º"2Complete the task associated to this TODO comment.(…ïœ†8Îó ˆË-
+Vsquid:S1135Â"2Complete the task associated to this TODO comment.(öË…æùÿÿÿÿ8Îó ˆË-
+f$squid:AssignmentInSubExpressionCheck½".Extract the assignment out of this expression.(‹Ù8Îó ˆË-
+msquid:HiddenFieldCheckª">Rename "httpStatus" which hides the field declared at line 33.(¨©ÞÜþÿÿÿÿ8Îó ˆË-
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ú²ª±ýÿÿÿÿ8Îó ˆË-
+¬squid:S4449]"ˆAnnotate the parameter with @javax.annotation.Nullable in constructor declaration, or make sure that null can not be passed as argument.(¯‚Äëûÿÿÿÿ8Îó ˆË-
+Asquid:S1148d"#Use a logger to log this exception.(’÷—ý8Îó ˆË-
+Nsquid:S00108¬")Either remove or fill this block of code.(ÌÈäÕúÿÿÿÿ8Îó ˆË-
+Tsquid:S1854½"5Remove this useless assignment to local variable "o".(‹Ù8Îó ˆË-
+§squid:S4449b"ˆAnnotate the parameter with @javax.annotation.Nullable in constructor declaration, or make sure that null can not be passed as argument.(ÍºÇ×8Îó ˆË-
+Psquid:S1135`"2Complete the task associated to this TODO comment.(…ïœ†8Îó ˆË-
+hsquid:S2583¬"DChange this condition so that it does not always evaluate to "false"(ÌÈäÕúÿÿÿÿ8Îó ˆË-
+Nsquid:S00108Õ")Either remove or fill this block of code.(îÂŸíùÿÿÿÿ8Îó ˆË-
+Nsquid:S00108¦")Either remove or fill this block of code.(®¸Ì™üÿÿÿÿ8Îó ˆË-

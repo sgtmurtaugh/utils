@@ -1,0 +1,10 @@
+
+Wsquid:S1161Û":Add the "@Override" annotation above this method signature(€ØÏ¢ÿÿÿÿÿ
+Rsquid:S1161ç":Add the "@Override" annotation above this method signature(ºÊžÝ
+Gsquid:S1066ö"/Merge this if statement with the enclosing one.(Ô¯á˜
+csquid:CommentedOutCodeLineš"<This block of commented-out lines of code should be removed.(©‰‰Ì
+Fsquid:S1066÷"/Merge this if statement with the enclosing one.(£œúf
+^squid:S3252h"BUse static access with "java.text.NumberFormat" for "getInstance".(±îÛŸÿÿÿÿÿ
+Rsquid:S1161õ":Add the "@Override" annotation above this method signature(¼„´
+Xsquid:S3252f"BUse static access with "java.text.NumberFormat" for "getInstance".(¦ýÿ?
+osquid:S3776ñ"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(—Ñ¥Âøÿÿÿÿ

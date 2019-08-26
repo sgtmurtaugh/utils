@@ -1,0 +1,5 @@
+
+Fsquid:S10664"/Merge this if statement with the enclosing one.(ë·¼Â
+dsquid:S3252 "HUse static access with "java.text.DateFormat" for "getDateTimeInstance".(µÕ§“ýÿÿÿÿ
+?squid:S1148;"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+Usquid:S32528">Use static access with "java.util.Calendar" for "getInstance".(›Í‘è

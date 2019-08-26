@@ -1,0 +1,5 @@
+
+9squid:S1214""Move constants to a class or enum.(ð¨äš
+Fsquid:S1066B"/Merge this if statement with the enclosing one.(ë·¼Â
+?squid:S1148G"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+`squid:S3252!"DUse static access with "java.text.DateFormat" for "getDateInstance".(»Ò¿–ýÿÿÿÿ
