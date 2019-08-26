@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ckraus-commons-mappers:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ckraus_commons_mappers_jar</output-path>
+    <root id="archive" name="ckraus-commons-mappers.jar">
+      <element id="module-output" name="commons-mappers" />
+    </root>
+  </artifact>
+</component>

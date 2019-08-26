@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ckraus-commons-all">
+    <output-path>$PROJECT_DIR$/out/artifacts/ckraus_commons_all</output-path>
+    <root id="archive" name="ckraus-commons-all.jar">
+      <element id="module-output" name="commons-core" />
+      <element id="module-output" name="commons-mappers" />
+      <element id="module-output" name="commons-pdf" />
+    </root>
+  </artifact>
+</component>

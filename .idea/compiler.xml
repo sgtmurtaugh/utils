@@ -15,13 +15,13 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="commons-core" target="8" />
-      <module name="commons-mappers" target="8" />
-      <module name="commons-pdf" target="8" />
-      <module name="services-core" target="1.5" />
-      <module name="utils" target="1.5" />
-      <module name="webcommons-core" target="1.5" />
-      <module name="webcommons-mappers" target="1.5" />
+      <module name="commons-core" target="9" />
+      <module name="commons-mappers" target="9" />
+      <module name="commons-pdf" target="9" />
+      <module name="services-core" target="9" />
+      <module name="utils" target="9" />
+      <module name="webcommons-core" target="9" />
+      <module name="webcommons-mappers" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>

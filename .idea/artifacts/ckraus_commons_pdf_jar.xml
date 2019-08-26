@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ckraus-commons-pdf:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ckraus_commons_pdf_jar</output-path>
+    <root id="archive" name="ckraus-commons-pdf.jar">
+      <element id="module-output" name="commons-pdf" />
+    </root>
+  </artifact>
+</component>

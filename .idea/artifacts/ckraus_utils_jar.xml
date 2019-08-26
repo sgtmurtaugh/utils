@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ckraus-utils:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ckraus_utils_jar</output-path>
+    <root id="archive" name="ckraus-utils.jar">
+      <element id="module-output" name="webcommons-core" />
+      <element id="module-output" name="commons-core" />
+      <element id="module-output" name="services-core" />
+      <element id="module-output" name="commons-mappers" />
+      <element id="module-output" name="webcommons-mappers" />
+      <element id="module-output" name="commons-pdf" />
+    </root>
+  </artifact>
+</component>

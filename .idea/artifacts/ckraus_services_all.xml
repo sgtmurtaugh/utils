@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ckraus-services-all">
+    <output-path>$PROJECT_DIR$/out/artifacts/ckraus_services_all</output-path>
+    <root id="archive" name="ckraus-services-all.jar">
+      <element id="module-output" name="services-core" />
+    </root>
+  </artifact>
+</component>
