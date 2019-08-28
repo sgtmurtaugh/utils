@@ -1,60 +1,116 @@
 package de.ckraus.commons.mapper;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-@Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
-public class CharacterMapper extends AbstractTypeMapper<Character> implements ICharacterMapper {
-
-    private final static String CLASS = CharacterMapper.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(CharacterMapper.class);
-
-    private final boolean evaluateCodePoints;
-
+@SuppressWarnings( { "javadoc" } )
+public interface CharacterMapper extends TypeMapper<Character> {
 
     /**
-     * Constructor
-     */
-    public CharacterMapper() {
-        this( null );
-    }
-
-    /**
-     * Constructor
-     */
-    public CharacterMapper( Character defaultValue ) {
-        super( defaultValue );
-
-        this.evaluateCodePoints = ICharacterMapper.super.isEvaluateCodePoints();
-    }
-
-    /**
-     * Constructor
+     * isTrimStrings
      *
-     * @param bIsEvaluateCodePoints
+     * @return
      */
-    public CharacterMapper( boolean bIsEvaluateCodePoints ) {
-        this( null, bIsEvaluateCodePoints );
-    }
-
-    /**
-     * Constructor
-     *
-     * @param defaultValue
-     * @param bIsEvaluateCodePoints
-     */
-    public CharacterMapper( Character defaultValue, boolean bIsEvaluateCodePoints ) {
-        super( defaultValue );
-
-        this.evaluateCodePoints = bIsEvaluateCodePoints;
+    default boolean isEvaluateCodePoints() {
+        return Boolean.TRUE;
     }
 
     @Override
-    public boolean isEvaluateCodePoints() {
-        return this.evaluateCodePoints;
+    default boolean isMappable( Object o ) {
+        boolean bIsMappable;
+
+        if ( o instanceof Character ) {
+            bIsMappable = true;
+        } else if ( o instanceof Integer ) {
+            bIsMappable = Character.isDefined( ( Integer ) o );
+        } else {
+            bIsMappable = TypeMapper.super.isMappable( o );
+        }
+
+        return bIsMappable;
+    }
+
+    /**
+     * map
+     *
+     * @param s
+     * @param bTrim
+     * @param bEmptyIsNull
+     * @param defaultValue
+     */
+    default Character map( String s, boolean bTrim, boolean bEmptyIsNull, Character defaultValue ) {
+        return this.map( s, bTrim, bEmptyIsNull, this.isEvaluateCodePoints(), defaultValue );
+    }
+
+    /**
+     * map
+     *
+     * @param s
+     * @param bEvaluateCodePoints
+     *
+     * @return <p></p>
+     */
+    default Character map( String s, boolean bEvaluateCodePoints ) {
+        return this.map( s, bEvaluateCodePoints, this.getDefaultValue() );
+    }
+
+    /**
+     * map
+     *
+     * @param s
+     * @param bEvaluateCodePoints
+     * @param defaultValue
+     *
+     * @return <p></p>
+     */
+    default Character map( String s, boolean bEvaluateCodePoints, Character defaultValue ) {
+        return this.map( s, this.isTrimStrings(), this.isEmptyStringNull(), bEvaluateCodePoints, defaultValue );
+    }
+
+    /**
+     * map
+     *
+     * @param s
+     * @param bTrim
+     * @param bEmptyIsNull
+     * @param bEvaluateCodePoints
+     * @param defaultValue
+     *
+     * @return <p></p>
+     */
+    default Character map( String s, boolean bTrim, boolean bEmptyIsNull, boolean bEvaluateCodePoints,
+            Character defaultValue ) {
+        Character cRetVal = defaultValue;
+        String preparedString = this.prepareStringToMap( s, bTrim, bEmptyIsNull );
+
+        if ( StringUtils.isNotEmpty( preparedString ) ) {
+            Integer iVal = null;
+
+            if ( bEvaluateCodePoints ) {
+                // Pruefen, ob der String evtl ein Integerwert ist
+                iVal = this.getIIntegerMapper().map( preparedString, ( String ) null );
+            }
+
+            if ( iVal != null ) {
+                char[] acVals = Character.toChars( iVal );
+
+                if ( !ArrayUtils.isEmpty( acVals ) ) {
+                    cRetVal = acVals[ 0 ];
+                }
+            } else {
+                cRetVal = preparedString.charAt( 0 );
+            }
+        }
+        return cRetVal;
+    }
+
+    /**
+     * getIIntegerMapper
+     *
+     * @return
+     */
+    default IntegerMapper getIIntegerMapper() {
+        return TypeMapperUtils.getDefaults().getIntegerMapper();
     }
 
 }

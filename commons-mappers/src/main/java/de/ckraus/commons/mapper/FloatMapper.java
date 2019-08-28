@@ -1,32 +1,18 @@
 package de.ckraus.commons.mapper;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+@SuppressWarnings( { "javadoc" } )
+public interface FloatMapper extends NumericTypeMapper<Float> {
 
-@Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
-public class FloatMapper extends AbstractNumericTypeMapper<Float> implements IFloatMapper {
+    @Override
+    default Float toType( Number number ) {
+        Float returnValue = null;
 
-    private final static String CLASS = FloatMapper.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(FloatMapper.class);
-
-
-    /**
-     * Constructor
-     */
-    public FloatMapper() {
-        super();
-    }
-
-    /**
-     * Constructor
-     *
-     * @param defaultValue
-     */
-    public FloatMapper( Float defaultValue ) {
-        super( defaultValue );
+        if ( number instanceof Float ) {
+            returnValue = ( Float ) number;
+        } else if ( null != number ) {
+            returnValue = number.floatValue();
+        }
+        return returnValue;
     }
 
 }

@@ -1,32 +1,18 @@
 package de.ckraus.commons.mapper;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+@SuppressWarnings( { "javadoc" } )
+public interface DoubleMapper extends NumericTypeMapper<Double> {
 
-@Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
-public class DoubleMapper extends AbstractNumericTypeMapper<Double> implements IDoubleMapper {
+    @Override
+    default Double toType( Number number ) {
+        Double returnValue = null;
 
-    private final static String CLASS = DoubleMapper.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(DoubleMapper.class);
-
-
-    /**
-     * Constructor
-     */
-    public DoubleMapper() {
-        super();
-    }
-
-    /**
-     * Constructor
-     *
-     * @param defaultValue
-     */
-    public DoubleMapper( Double defaultValue ) {
-        super( defaultValue );
+        if ( number instanceof Double ) {
+            returnValue = ( Double ) number;
+        } else if ( null != number ) {
+            returnValue = number.doubleValue();
+        }
+        return returnValue;
     }
 
 }

@@ -1,4 +1,4 @@
 package de.ckraus.webcommons.http.mapper;
 
-public class PageScopeMapper extends AbstractScopeMapper implements IPageScopeMapper {
+public interface PageScopeMapper extends ScopeMapper {
 }

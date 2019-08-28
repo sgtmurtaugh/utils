@@ -1,32 +1,18 @@
 package de.ckraus.commons.mapper;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+@SuppressWarnings( { "javadoc" } )
+public interface ShortMapper extends NumericTypeMapper<Short> {
 
-@Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
-public class ShortMapper extends AbstractNumericTypeMapper<Short> implements IShortMapper {
+    @Override
+    default Short toType( Number number ) {
+        Short returnValue = null;
 
-    private final static String CLASS = ShortMapper.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(ShortMapper.class);
-
-
-    /**
-     * Constructor
-     */
-    public ShortMapper() {
-        super();
-    }
-
-    /**
-     * Constructor
-     *
-     * @param defaultValue
-     */
-    public ShortMapper( Short defaultValue ) {
-        super( defaultValue );
+        if ( number instanceof Short ) {
+            returnValue = ( Short ) number;
+        } else if ( null != number ) {
+            returnValue = number.shortValue();
+        }
+        return returnValue;
     }
 
 }

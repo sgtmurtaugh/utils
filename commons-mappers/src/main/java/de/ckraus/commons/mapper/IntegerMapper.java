@@ -1,32 +1,18 @@
 package de.ckraus.commons.mapper;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+@SuppressWarnings( { "javadoc" } )
+public interface IntegerMapper extends NumericTypeMapper<Integer> {
 
-@Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
-public class IntegerMapper extends AbstractNumericTypeMapper<Integer> implements IIntegerMapper {
+    @Override
+    default Integer toType( Number number ) {
+        Integer returnValue = null;
 
-    private final static String CLASS = IntegerMapper.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(IntegerMapper.class);
-
-
-    /**
-     * Constructor
-     */
-    public IntegerMapper() {
-        super();
-    }
-
-    /**
-     * Constructor
-     *
-     * @param defaultValue
-     */
-    public IntegerMapper( Integer defaultValue ) {
-        super( defaultValue );
+        if ( number instanceof Integer ) {
+            returnValue = ( Integer ) number;
+        } else if ( null != number ) {
+            returnValue = number.intValue();
+        }
+        return returnValue;
     }
 
 }

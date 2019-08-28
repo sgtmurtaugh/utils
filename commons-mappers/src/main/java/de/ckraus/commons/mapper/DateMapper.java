@@ -1,34 +1,78 @@
 package de.ckraus.commons.mapper;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-@Getter
-@Setter( AccessLevel.PROTECTED )
 @SuppressWarnings( { "javadoc", "unused" } )
-public class DateMapper extends AbstractTypeMapper<Date> implements IDateMapper {
+public interface DateMapper extends TypeMapper<Date> {
 
-    private final static String CLASS = DateMapper.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(IntegerMapper.class);
+    boolean DEFAULT_LENIENT = Boolean.FALSE;
 
 
     /**
-     * Constructor
+     * map
+     *
+     * @param s
+     *         - string to map
+     * @param bTrim
+     *         - default flag for string handling
+     * @param bEmptyIsNull
+     *         - default flag for empty string handling
+     * @param defaultValue
+     *         - The default value
+     *
+     * @return <p>Delegates to {@link #map(String, DateFormat, boolean, Date)} with {@link DateTimeFormatter#ISO_TIME}
      */
-    public DateMapper() {
-        super();
+    @Override
+    default Date map( String s, boolean bTrim, boolean bEmptyIsNull, Date defaultValue ) {
+        return this.map( this.prepareStringToMap( s, bTrim, bEmptyIsNull ), SimpleDateFormat.getDateInstance(),
+                DEFAULT_LENIENT, defaultValue );
     }
 
     /**
-     * Constructor
+     * map
      *
+     * @param s
+     * @param format
      * @param defaultValue
+     *
+     * @return <p>Delegates to {@link #map(String, DateFormat, boolean, Date)} with default lenient value
+     *         {@link #DEFAULT_LENIENT}</p>
      */
-    public DateMapper( Date defaultValue ) {
-        super( defaultValue );
+    default Date map( String s, DateFormat format, Date defaultValue ) {
+        return this.map( s, format, DEFAULT_LENIENT, defaultValue );
+    }
+
+    /**
+     * map
+     *
+     * @param s
+     * @param format
+     * @param lenient
+     * @param defaultValue
+     *
+     * @return
+     */
+    default Date map( String s, DateFormat format, boolean lenient, Date defaultValue ) {
+        Date date = defaultValue;
+        String preparedString = this.prepareStringToMap( s, this.isTrimStrings(), this.isEmptyStringNull() );
+
+        if ( StringUtils.isNotEmpty( preparedString ) ) {
+            if ( null != format ) {
+                try {
+                    format.setLenient( lenient );
+                    date = format.parse( preparedString );
+                } catch ( ParseException e ) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return date;
     }
 
 }

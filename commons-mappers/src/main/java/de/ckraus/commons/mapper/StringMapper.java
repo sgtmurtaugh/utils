@@ -1,32 +1,30 @@
 package de.ckraus.commons.mapper;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
-public class StringMapper extends AbstractTypeMapper<String> implements IStringMapper {
-
-    private final static String CLASS = StringMapper.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(StringMapper.class);
-
+public interface StringMapper extends TypeMapper<String> {
 
     /**
-     * Constructor
-     */
-    public StringMapper() {
-        super();
-    }
-
-    /**
-     * Constructor
+     * map
      *
+     * @param s
+     *         - string to map
+     * @param bTrim
+     *         - default flag for string handling
+     * @param bEmptyIsNull
+     *         - default flag for empty string handling
      * @param defaultValue
+     *         - The default value
+     *
+     * @return <p>TODO
      */
-    public StringMapper( String defaultValue ) {
-        super( defaultValue );
+    @Override
+    default String map( String s, boolean bTrim, boolean bEmptyIsNull, String defaultValue ) {
+        String sRetVal = defaultValue;
+        String sPrepared = this.prepareStringToMap( s, bTrim, bEmptyIsNull );
+
+        if ( sPrepared != null ) {
+            sRetVal = sPrepared;
+        }
+        return sRetVal;
     }
 
 }

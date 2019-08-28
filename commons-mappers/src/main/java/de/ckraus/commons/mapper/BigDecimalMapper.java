@@ -1,34 +1,20 @@
 package de.ckraus.commons.mapper;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.math.BigDecimal;
 
-@Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
-public class BigDecimalMapper extends AbstractNumericTypeMapper<BigDecimal> implements IBigDecimalMapper {
+@SuppressWarnings( { "javadoc" } )
+public interface BigDecimalMapper extends NumericTypeMapper<BigDecimal> {
 
-    private final static String CLASS = BigDecimalMapper.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(BigDecimalMapper.class);
+    @Override
+    default BigDecimal toType( Number number ) {
+        BigDecimal returnValue = null;
 
-
-    /**
-     * Constructor
-     */
-    public BigDecimalMapper() {
-        super();
-    }
-
-    /**
-     * Constructor
-     *
-     * @param defaultValue
-     */
-    public BigDecimalMapper( BigDecimal defaultValue ) {
-        super( defaultValue );
+        if ( number instanceof BigDecimal ) {
+            returnValue = ( BigDecimal ) number;
+        } else if ( null != number ) {
+            returnValue = new BigDecimal( number.toString() );
+        }
+        return returnValue;
     }
 
 }

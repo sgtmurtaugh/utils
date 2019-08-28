@@ -1,13 +1,8 @@
 package de.ckraus.commons.mapper;
 
-import org.junit.jupiter.api.Test;
+public class LocalDateTimeMapperTest {
 
-class LocalDateTimeMapperTest {
-
-    LocalDateTimeMapper mapper = new LocalDateTimeMapper();
-
-    @Test
-    void map() {
-    }
+    private LocalDateTimeMapper mapper = new LocalDateTimeMapper() {
+    };
 
 }

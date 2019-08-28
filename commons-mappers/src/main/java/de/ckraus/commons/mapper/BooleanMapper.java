@@ -1,157 +1,148 @@
 package de.ckraus.commons.mapper;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused", "WeakerAccess" } )
-public class BooleanMapper extends AbstractTypeMapper<Boolean> implements IBooleanMapper {
-
-    private final static String CLASS = BooleanMapper.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(BooleanMapper.class);
-
-    private final static Character FALSE_CHAR_0 = '0';
-    private final static Character FALSE_CHAR_N = 'N';
-    private final static Character FALSE_CHAR_N_LOWERCASE = 'n';
-    private final static Character TRUE_CHAR_1 = '1';
-    private final static Character TRUE_CHAR_Y = 'Y';
-    private final static Character TRUE_CHAR_Y_LOWERCASE = 'y';
-
-    private final static Integer FALSE_INT_0 = 0;
-    private final static Integer TRUE_INT_1 = 1;
-
-    private final static String FALSE_STRING_0 = "0";
-    private final static String FALSE_STRING_FALSE = "false";
-    private final static String FALSE_STRING_N = "n";
-    private final static String FALSE_STRING_NO = "no";
-    private final static String TRUE_STRING_1 = "1";
-    private final static String TRUE_STRING_TRUE = "true";
-    private final static String TRUE_STRING_Y = "y";
-    private final static String TRUE_STRING_YES = "yes";
-
-    private List<Character> falseCharacterValues;
-    private List<Character> trueCharacterValues;
-    private List<Integer> falseIntegerValues;
-    private List<Integer> trueIntegerValues;
-    private List<String> falseStringValues;
-    private List<String> trueStringValues;
+/**
+ * Created by ckraus on 09.08.15.
+ */
+@SuppressWarnings( { "javadoc" } )
+public interface BooleanMapper extends TypeMapper<Boolean> {
 
 
     /**
-     * Constructor
+     * isMappable
+     *
+     * @param o
+     *
+     * @return
      */
-    public BooleanMapper() {
-        super();
+    default boolean isMappable( Object o ) {
+        boolean bIsMappable;
+
+        if ( null == o ) {
+            bIsMappable = false;
+        } else if ( o instanceof Boolean ) {
+            bIsMappable = true;
+        } else if ( o instanceof Character ) {
+            bIsMappable = ( this.isFalse( ( Character ) o ) || this.isTrue( ( Character ) o ) );
+        } else if ( o instanceof Integer ) {
+            bIsMappable = ( this.isFalse( ( Integer ) o ) || this.isTrue( ( Integer ) o ) );
+        } else if ( o instanceof String ) {
+            bIsMappable = ( this.isFalse( ( String ) o ) || this.isTrue( ( String ) o ) );
+        } else {
+            bIsMappable = this.isMappable( o.toString() );
+        }
+        return bIsMappable;
     }
 
     /**
-     * Constructor
+     * map
      *
+     * @param s
+     *         - string to map
+     * @param bTrim
+     *         - default flag for string handling
+     * @param bEmptyIsNull
+     *         - default flag for empty string handling
+     *
+     * @return
+     */
+    default Boolean map( String s, boolean bTrim, boolean bEmptyIsNull ) {
+        return this.map( s, bTrim, bEmptyIsNull, this.getDefaultValue() );
+    }
+
+    /**
+     * map
+     *
+     * @param s
+     *         - string to map
+     * @param bTrim
+     *         - default flag for string handling
+     * @param bEmptyIsNull
+     *         - default flag for empty string handling
      * @param defaultValue
-     */
-    public BooleanMapper( Boolean defaultValue ) {
-        super( defaultValue );
-    }
-
-
-    /**
-     * getFalseCharacterValues
+     *         - The default value
      *
      * @return
      */
-    @SuppressWarnings( "Duplicates" )
-    public List<Character> getFalseCharacterValues() {
-        if ( null == falseCharacterValues ) {
-            falseCharacterValues = new ArrayList<>();
-            falseCharacterValues.add( FALSE_CHAR_0 );
-            falseCharacterValues.add( FALSE_CHAR_N );
-            falseCharacterValues.add( FALSE_CHAR_N_LOWERCASE );
+    default Boolean map( String s, boolean bTrim, boolean bEmptyIsNull, Boolean defaultValue ) {
+        Boolean b = defaultValue;
+        String preparedString = this.prepareStringToMap( s, bTrim, bEmptyIsNull );
+
+        if ( this.isFalse( preparedString ) ) {
+            b = Boolean.FALSE;
+        } else if ( this.isTrue( preparedString ) ) {
+            b = Boolean.TRUE;
         }
-        return falseCharacterValues;
+        return b;
     }
 
     /**
-     * getFalseIntegerValues
+     * map
      *
-     * @return
+     * @param c
+     *         - character to map
      */
-    @SuppressWarnings( "Duplicates" )
-    public List<Integer> getFalseIntegerValues() {
-        if ( null == falseIntegerValues ) {
-            falseIntegerValues = new ArrayList<>();
-            falseIntegerValues.add( FALSE_INT_0 );
-        }
-        return falseIntegerValues;
+    default Boolean map( Character c ) {
+        return this.map( c, this.getDefaultValue() );
     }
 
     /**
-     * getFalseStringValues
+     * map
+     *
+     * @param c
+     *         - character to map
+     * @param defaultValue
+     *         - The default value
      *
      * @return
      */
-    @SuppressWarnings( "Duplicates" )
-    public List<String> getFalseStringValues() {
-        if ( null == falseStringValues ) {
-            falseStringValues = new ArrayList<>();
-            falseStringValues.add( FALSE_STRING_0 );
-            falseStringValues.add( FALSE_STRING_FALSE );
-            falseStringValues.add( FALSE_STRING_N );
-            falseStringValues.add( FALSE_STRING_NO );
+    default Boolean map( Character c, Boolean defaultValue ) {
+        Boolean b = defaultValue;
+
+        if ( null != c ) {
+            if ( this.isFalse( c ) ) {
+                b = Boolean.FALSE;
+            } else if ( this.isTrue( c ) ) {
+                b = Boolean.TRUE;
+            }
         }
-        return falseStringValues;
+        return b;
     }
 
     /**
-     * getTrueCharacterValues
+     * map
+     *
+     * @param i
+     *         - integer to map
      *
      * @return
      */
-    @SuppressWarnings( "Duplicates" )
-    public List<Character> getTrueCharacterValues() {
-        if ( null == trueCharacterValues ) {
-            trueCharacterValues = new ArrayList<>();
-            trueCharacterValues.add( TRUE_CHAR_1 );
-            trueCharacterValues.add( TRUE_CHAR_Y );
-            trueCharacterValues.add( TRUE_CHAR_Y_LOWERCASE );
-        }
-        return trueCharacterValues;
+    default Boolean map( Integer i ) {
+        return this.map( i, this.getDefaultValue() );
     }
 
     /**
-     * getTrueIntegerValues
+     * map
+     *
+     * @param i
+     *         - integer to map
+     * @param defaultValue
+     *         - The default value
      *
      * @return
      */
-    public List<Integer> getTrueIntegerValues() {
-        if ( null == trueIntegerValues ) {
-            trueIntegerValues = new ArrayList<>();
-            trueIntegerValues.add( TRUE_INT_1 );
-        }
-        return trueIntegerValues;
-    }
+    default Boolean map( Integer i, Boolean defaultValue ) {
+        Boolean b = defaultValue;
 
-    /**
-     * getTrueStringValues
-     *
-     * @return
-     */
-    @SuppressWarnings( "Duplicates" )
-    public List<String> getTrueStringValues() {
-        if ( null == trueStringValues ) {
-            trueStringValues = new ArrayList<>();
-            trueStringValues.add( TRUE_STRING_1 );
-            trueStringValues.add( TRUE_STRING_TRUE );
-            trueStringValues.add( TRUE_STRING_Y );
-            trueStringValues.add( TRUE_STRING_YES );
+        if ( null != i ) {
+            if ( this.isFalse( i ) ) {
+                b = Boolean.FALSE;
+            } else if ( this.isTrue( i ) ) {
+                b = Boolean.TRUE;
+            }
         }
-        return trueStringValues;
+        return b;
     }
-
 
     /**
      * isFalse
@@ -160,14 +151,7 @@ public class BooleanMapper extends AbstractTypeMapper<Boolean> implements IBoole
      *
      * @return
      */
-    public boolean isFalse( Character c ) {
-        boolean bIsFalse = false;
-
-        if ( null != c ) {
-            bIsFalse = this.getFalseCharacterValues().stream().anyMatch( character -> character.equals( c ) );
-        }
-        return bIsFalse;
-    }
+    boolean isFalse( Character c );
 
     /**
      * isFalse
@@ -176,11 +160,30 @@ public class BooleanMapper extends AbstractTypeMapper<Boolean> implements IBoole
      *
      * @return
      */
-    public boolean isFalse( Integer i ) {
-        boolean bIsFalse = false;
+    boolean isFalse( Integer i );
 
-        if ( null != i ) {
-            bIsFalse = this.getFalseIntegerValues().stream().anyMatch( integer -> integer.equals( i ) );
+    /**
+     * isFalse
+     *
+     * @param o
+     *
+     * @return
+     */
+    default boolean isFalse( Object o ) {
+        boolean bIsFalse;
+
+        if ( null == o ) {
+            bIsFalse = false;
+        } else if ( o instanceof Boolean ) {
+            bIsFalse = ( o == Boolean.FALSE );
+        } else if ( o instanceof Character ) {
+            bIsFalse = this.isFalse( ( Character ) o );
+        } else if ( o instanceof Integer ) {
+            bIsFalse = this.isFalse( ( Integer ) o );
+        } else if ( o instanceof String ) {
+            bIsFalse = this.isFalse( ( String ) o );
+        } else {
+            bIsFalse = this.isFalse( o.toString() );
         }
         return bIsFalse;
     }
@@ -192,15 +195,7 @@ public class BooleanMapper extends AbstractTypeMapper<Boolean> implements IBoole
      *
      * @return
      */
-    public boolean isFalse( String s ) {
-        boolean bIsFalse = false;
-
-        if ( null != s ) {
-            bIsFalse = this.getFalseStringValues().stream()
-                           .anyMatch( string -> string.trim().equalsIgnoreCase( s.trim() ) );
-        }
-        return bIsFalse;
-    }
+    boolean isFalse( String s );
 
     /**
      * isTrue
@@ -209,14 +204,7 @@ public class BooleanMapper extends AbstractTypeMapper<Boolean> implements IBoole
      *
      * @return
      */
-    public boolean isTrue( Character c ) {
-        boolean bIsTrue = false;
-
-        if ( null != c ) {
-            bIsTrue = this.getTrueCharacterValues().stream().anyMatch( character -> character.equals( c ) );
-        }
-        return bIsTrue;
-    }
+    boolean isTrue( Character c );
 
     /**
      * isTrue
@@ -225,11 +213,30 @@ public class BooleanMapper extends AbstractTypeMapper<Boolean> implements IBoole
      *
      * @return
      */
-    public boolean isTrue( Integer i ) {
-        boolean bIsTrue = false;
+    boolean isTrue( Integer i );
 
-        if ( null != i ) {
-            bIsTrue = this.getTrueIntegerValues().stream().anyMatch( integer -> integer.equals( i ) );
+    /**
+     * isTrue
+     *
+     * @param o
+     *
+     * @return
+     */
+    default boolean isTrue( Object o ) {
+        boolean bIsTrue;
+
+        if ( null == o ) {
+            bIsTrue = false;
+        } else if ( o instanceof Boolean ) {
+            bIsTrue = ( o == Boolean.TRUE );
+        } else if ( o instanceof Character ) {
+            bIsTrue = this.isTrue( ( Character ) o );
+        } else if ( o instanceof Integer ) {
+            bIsTrue = this.isTrue( ( Integer ) o );
+        } else if ( o instanceof String ) {
+            bIsTrue = this.isTrue( ( String ) o );
+        } else {
+            bIsTrue = this.isTrue( o.toString() );
         }
         return bIsTrue;
     }
@@ -241,14 +248,6 @@ public class BooleanMapper extends AbstractTypeMapper<Boolean> implements IBoole
      *
      * @return
      */
-    public boolean isTrue( String s ) {
-        boolean bIsTrue = false;
-
-        if ( null != s ) {
-            bIsTrue = this.getTrueStringValues().stream()
-                          .anyMatch( string -> string.trim().equalsIgnoreCase( s.trim() ) );
-        }
-        return bIsTrue;
-    }
+    boolean isTrue( String s );
 
 }
