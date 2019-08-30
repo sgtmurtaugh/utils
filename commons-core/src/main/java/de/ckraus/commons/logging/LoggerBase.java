@@ -2,6 +2,7 @@ package de.ckraus.commons.logging;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 /**
@@ -12,40 +13,31 @@ import lombok.Setter;
  */
 @Getter( AccessLevel.PROTECTED )
 @Setter( AccessLevel.PROTECTED )
-public abstract class LoggerBase implements Logger {
+public abstract class LoggerBase<T> implements Logger<T> {
 
     protected static final String METHOD_ENTER = " > ";
     protected static final String METHOD_INSIDE = " : ";
     protected static final String METHOD_RETURN = " < ";
 
-    protected static final String LOGLEVEL_DEBUG = "DEBUG";
-    protected static final String LOGLEVEL_ERROR = "ERROR";
-    protected static final String LOGLEVEL_FATAL = "FATAL";
-    protected static final String LOGLEVEL_INFO = "INFO";
-    protected static final String LOGLEVEL_TRACE = "TRACE";
-    protected static final String LOGLEVEL_VERBOSE = "VERBOSE";
-    protected static final String LOGLEVEL_WARN = "ERROR";
-
-    protected static final String STATE_ABORT = "abort";
-    protected static final String STATE_FAILURE = "failure";
-    protected static final String STATE_MANDATORY = "mandatory";
-    protected static final String STATE_START = "start";
-    protected static final String STATE_STOP = "stop";
-    protected static final String STATE_SUCCESS = "success";
-    protected static final String STATE_TRYING = "trying";
-    protected static final String STATE_UNKNOWN = "unknown";
-
     private int indent = 0;
 
+    @Setter( AccessLevel.NONE )
+    private T logger;
 
     /**
      *
      * @param clazz
      */
-    public LoggerBase( Class<?> clazz ) {
+    public LoggerBase( @NonNull Class<?> clazz ) {
         super();
-// TODO
+        this.logger = this.initLogger( clazz );
     }
+
+    /**
+     *
+     */
+    protected abstract T initLogger( @NonNull Class<?> clazz );
+
 
     /**
      *
@@ -63,15 +55,22 @@ public abstract class LoggerBase implements Logger {
         this.setIndent( this.getIndent() + 1 );
     }
 
-    protected String getOutput() {
-        this.getOutputLogLevel();
-        this.getOutputPackage();
-        this.getOutputClassname();
+    protected String buildMessaged() {
         this.getOutputIndent();
         this.getOutputMethodSeparator();
         this.getOutputMessage();
         // TODO State, Params, Exception etc....
         return null;
+    }
+
+    @Override
+    public void logEnter( String sMethod ) {
+        this.doLog()
+        this.incrementIndent();
+    }
+
+    private String prepareLogEnter( String sMethod ) {
+
     }
 
 }
