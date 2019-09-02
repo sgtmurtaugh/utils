@@ -4,6 +4,10 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Collection;
+import java.util.stream.Stream;
 
 /**
  * [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} > ${PARAM}
@@ -24,12 +28,16 @@ public abstract class LoggerBase<T> implements Logger<T> {
     @Setter( AccessLevel.NONE )
     private T logger;
 
+    @Setter( AccessLevel.NONE )
+    private Class<?> loggerClass;
+
     /**
      *
      * @param clazz
      */
     public LoggerBase( @NonNull Class<?> clazz ) {
         super();
+        this.loggerClass = clazz;
         this.logger = this.initLogger( clazz );
     }
 
@@ -55,18 +63,92 @@ public abstract class LoggerBase<T> implements Logger<T> {
         this.setIndent( this.getIndent() + 1 );
     }
 
-    protected String buildMessaged() {
-        this.getOutputIndent();
-        this.getOutputMethodSeparator();
-        this.getOutputMessage();
-        // TODO State, Params, Exception etc....
-        return null;
+    protected String buildLogMessage(String sMethod, String sSeparator, String sMessage) {
+        StringBuilder sb = new StringBuilder();
+
+/*
+        // package
+        sb.append( this.getLoggerClass().getPackage() );
+
+        // classname
+        if (sb.length() > 0
+                && '.' >= sb.charAt( sb.length()-1 ) ) {
+
+            sb.append( '.' );
+        }
+        sb.append( this.getLoggerClass().getSimpleName() );
+*/
+        // Class
+        sb.append( this.getLoggerClass() );
+
+        // Method
+        if ( StringUtils.isNotEmpty( sMethod ) ) {
+            sb.append( sMethod );
+        }
+
+        // Separator with indent
+        if ( null == sSeparator ) {
+            sSeparator = "";
+        }
+        if ( StringUtils.isNotEmpty( sSeparator ) ) {
+            sb.append( sSeparator.indent( this.getIndent()*2 ) );
+        }
+
+        // Method
+        if ( StringUtils.isNotEmpty( sMessage ) ) {
+            sb.append( sMessage );
+        }
+
+        return sb.toString();
+    }
+
+    protected void doEnter() {
+        this.incrementIndent();
+    }
+
+    protected void doReturn() {
+        this.decrementIndent();
     }
 
     @Override
     public void logEnter( String sMethod ) {
-        this.doLog()
-        this.incrementIndent();
+        this.logDebug( sMethod );
+        this.doEnter();
+    }
+
+    @Override
+    public void logEnter( String sMethod, Object oMethodArg ) {
+        this.logDebug( sMethod, null, oMethodArg );
+        this.doEnter();
+    }
+
+    @Override
+    public void logEnter( String sMethod, Object oMethodArg1, Object oMethodArg2 ) {
+        this.logDebug( sMethod, null, oMethodArg1, oMethodArg2 );
+        this.doEnter();
+    }
+
+    @Override
+    public void logEnter( String sMethod, Object... aoMethodArg ) {
+        this.logDebug( sMethod, null, aoMethodArg );
+        this.doEnter();
+    }
+
+    @Override
+    public void logReturn( String sMethod ) {
+        this.doEnter();
+    }
+
+    @Override
+    public void logReturn( String sMethod, Collection<?> colMethodReturn ) {
+        this.doReturn();
+        this.logDebug( sMethod, null, colMethodReturn );
+    }
+
+    @Override
+    public void logReturn( String sMethod, Object oMethodReturn ) {
+        this.doReturn();
+        this.logDebug( sMethod, null, oMethodReturn );
     }
 
     private String prepareLogEnter( String sMethod ) {

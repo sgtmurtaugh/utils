@@ -4,6 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>12</source>
+                    <target>12</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <groupId>de.ckraus</groupId>
     <artifactId>utils</artifactId>
@@ -12,6 +24,8 @@
 
     <modules>
         <module>commons-core</module>
+        <module>commons-logging-log4j</module>
+        <module>commons-logging-slf4j</module>
         <module>commons-mappers</module>
         <module>commons-pdf</module>
         <module>services-core</module>
@@ -32,6 +46,7 @@
             <version>RELEASE</version>
         </dependency>
 
+<!--
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-ext</artifactId>
@@ -43,6 +58,7 @@
             <artifactId>logback-core</artifactId>
             <version>RELEASE</version>
         </dependency>
+-->
 
         <dependency>
             <groupId>org.apache.commons</groupId>

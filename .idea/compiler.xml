@@ -8,20 +8,24 @@
         <outputRelativeToContentRoot value="true" />
         <module name="webcommons-mappers" />
         <module name="services-core" />
+        <module name="commons-logging-slf4j" />
         <module name="commons-core" />
+        <module name="commons-logging-log4j" />
         <module name="commons-pdf" />
         <module name="webcommons-core" />
         <module name="commons-mappers" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="commons-core" target="8" />
-      <module name="commons-mappers" target="8" />
-      <module name="commons-pdf" target="8" />
-      <module name="services-core" target="1.5" />
-      <module name="utils" target="1.5" />
-      <module name="webcommons-core" target="1.5" />
-      <module name="webcommons-mappers" target="1.5" />
+      <module name="commons-core" target="12" />
+      <module name="commons-logging-log4j" target="12" />
+      <module name="commons-logging-slf4j" target="12" />
+      <module name="commons-mappers" target="12" />
+      <module name="commons-pdf" target="12" />
+      <module name="services-core" target="12" />
+      <module name="utils" target="12" />
+      <module name="webcommons-core" target="12" />
+      <module name="webcommons-mappers" target="12" />
     </bytecodeTargetLevel>
   </component>
 </project>

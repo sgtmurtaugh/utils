@@ -147,7 +147,7 @@ public interface RequestScopeMapper extends ScopeMapper {
             asParameterValues = this.getRequest().getParameterValues( sParameterName );
 
             asParameterValues = TypeMapperUtils.getDefaults().getStringMapper().map(
-                    asParameterValues, bTrim, bEmptyIsNull, defaultValue );
+                    asParameterValues, bTrim, bEmptyIsNull, defaultValues );
         }
         return asParameterValues;
     }

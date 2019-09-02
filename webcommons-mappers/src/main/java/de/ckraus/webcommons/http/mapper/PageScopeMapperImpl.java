@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.http.mapper;
 
-public class PageScopeImplMapper extends ScopeMapperBase implements PageScopeMapper {
+public class PageScopeMapperImpl extends ScopeMapperBase implements PageScopeMapper {
 
     @Override
     public boolean hasAttribute( String key ) {
