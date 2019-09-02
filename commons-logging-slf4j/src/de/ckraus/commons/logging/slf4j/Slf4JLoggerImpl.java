@@ -1,5 +1,6 @@
-package de.ckraus.commons.logging;
+package de.ckraus.commons.logging.slf4j;
 
+import de.ckraus.commons.logging.LoggerBase;
 import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
