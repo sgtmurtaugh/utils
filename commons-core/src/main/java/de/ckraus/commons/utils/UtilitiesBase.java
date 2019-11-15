@@ -1,10 +1,9 @@
 package de.ckraus.commons.utils;
 
+import de.ckraus.commons.logging.Logger;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Getter
 @Setter( AccessLevel.PROTECTED )

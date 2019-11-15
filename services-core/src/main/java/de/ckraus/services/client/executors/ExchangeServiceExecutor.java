@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
  * @param <I> Request Entity Bean
  * @param <O> Response Entity Bean
  */
-public interface ExchangeServiceExecutor<I, O> extends RequestedServiceExecutor<I, O> {
+public interface ExchangeServiceExecutor<I, O> extends ServiceExecutor<I, O> {
 
     /**
      *

@@ -22,10 +22,10 @@ public class Slf4JLoggerImpl extends LoggerBase<Logger> {
     protected Logger initLogger( Class<?> clazz ) {
         return LoggerFactory.getLogger(clazz);
     }
-
+// TODO
     @Override
     public void logEnter( @NonNull String sMethod ) {
-        this.getLogger().debug(  );
+        // this.getLogger().debug(  );
     }
 
     @Override

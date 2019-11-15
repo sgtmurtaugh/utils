@@ -8,7 +8,7 @@ import org.springframework.web.client.ResponseExtractor;
  * Extends {@link ServiceExecutor}
  * @param <O> Response Entity Bean
  */
-public interface ExecuteServiceExecutor<O> extends ServiceExecutor<O> {
+public interface ExecuteServiceExecutor<O> extends ServiceExecutor<Void, O> {
 
     /**
      *

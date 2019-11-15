@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
  */
 @Getter
 @Setter( AccessLevel.PROTECTED)
-public abstract class PostForEntityServiceExecutorBase<O> extends RequestedServiceExecutorBase<Object,
+public abstract class PostForEntityServiceExecutorBase<O> extends ServiceExecutorBase<Object,
         ResponseEntity<O>> implements PostForEntityServiceExecutor<O> {
 
 }

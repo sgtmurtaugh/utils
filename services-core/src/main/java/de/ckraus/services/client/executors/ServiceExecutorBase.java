@@ -1,6 +1,7 @@
 package de.ckraus.services.client.executors;
 
 import de.ckraus.services.ServiceUtils;
+import de.ckraus.services.client.service.ServiceClient;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,16 +15,21 @@ import java.util.Map;
 
 @Getter
 @Setter( AccessLevel.PROTECTED)
-public abstract class ServiceExecutorBase<O> implements ServiceExecutor<O> {
+public abstract class ServiceExecutorBase<T extends ServiceClient<I, O>, I, O> implements ServiceExecutor<T, I, O> {
 
     private Map<String, Object> params;
     private boolean executed;
     private boolean failed;
     private HttpStatus httpStatus;
+    private I requestObject;
     private O responseEntity;
-    private Class<O> responseType;
-    private Object[] serviceArgs;
+//    private Class<O> responseType;
+    private Map<Object, String> namedServiceArgs;
+    private Object[] orderedServiceArgs;
     private Throwable throwable;
+    private T serviceClient;
+
+    protected abstract I initRequestObject();
 
     @Tolerate
     protected void setFailed( HttpStatus httpStatus ) {
@@ -52,21 +58,36 @@ public abstract class ServiceExecutorBase<O> implements ServiceExecutor<O> {
 
     /**
      *
-     * @param <T>
-     * @return
+     * @param mapContainerParams
      */
-    @Override
-    public <T> T execute() {
-        return this.execute(null);
+    protected void init( Map<String, Object> mapContainerParams ) {
+        this.reset();
+
+        this.setParams( mapContainerParams );
+        this.setRequestObject( this.initRequestObject() );
+    }
+
+    /**
+     *
+     */
+    protected void reset() {
+        this.setParams(null);
+        this.setExecuted(false);
+        this.setFailed(false);
+        this.setHttpStatus((HttpStatus ) null);
+        this.setRequestObject(null);
+        this.setResponseEntity(null);
+        this.setNamedServiceArgs(null);
+        this.setOrderedServiceArgs(null);
+        this.setThrowable(null);
     }
 
     /**
      *
      * @param mapContainerParams
-     * @param <T>
      * @return
      */
-    public <T> T execute( Map<String, Object> mapContainerParams ) {
+    public T execute( Map<String, Object> mapContainerParams ) {
         this.init(mapContainerParams);
 
         T t = null;
@@ -74,7 +95,7 @@ public abstract class ServiceExecutorBase<O> implements ServiceExecutor<O> {
         if ( this.isReallyPerformService() ) {
 
             // handle Execution individually
-            this.handleExecution();
+            this.performService();
 
             // handle Service Response
             t = handleServiceResponse();
@@ -88,7 +109,7 @@ public abstract class ServiceExecutorBase<O> implements ServiceExecutor<O> {
     /**
      *
      */
-    protected void handleExecution() {
+    protected void performService() {
         O oResponseEntity = null;
 
         try {
@@ -128,38 +149,9 @@ public abstract class ServiceExecutorBase<O> implements ServiceExecutor<O> {
 
     /**
      * TODO
-     * @param <T>
      * @return
      */
-    protected abstract <T> T handleServiceResponse();
-
-    /**
-     *
-     * @param mapContainerParams
-     */
-    protected void init( Map<String, Object> mapContainerParams ) {
-        this.reset();
-
-        this.setParams( mapContainerParams );
-    }
-
-    @Override
-    public boolean isReallyPerformService() {
-        return (!this.isExecuted());
-    }
-
-    /**
-     *
-     */
-    protected void reset() {
-        this.setParams(null);
-        this.setExecuted(false);
-        this.setFailed(false);
-        this.setHttpStatus((HttpStatus ) null);
-        this.setResponseEntity(null);
-        this.setServiceArgs(null);
-        this.setThrowable(null);
-    }
+    protected abstract T handleServiceResponse();
 
     /**
      *

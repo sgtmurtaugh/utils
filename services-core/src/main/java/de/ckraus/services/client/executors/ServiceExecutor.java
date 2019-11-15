@@ -1,14 +1,17 @@
 package de.ckraus.services.client.executors;
 
+import de.ckraus.services.client.service.ServiceClient;
 import org.springframework.http.HttpStatus;
 
 import java.util.Map;
 
 /**
  *
+ * @param <T> ServiceClient
+ * @param <I> Request Bean
  * @param <O> Response Bean
  */
-public interface ServiceExecutor<O> {
+public interface ServiceExecutor<T extends ServiceClient<I, O>, I, O> {
 
 
     /**
@@ -21,14 +24,17 @@ public interface ServiceExecutor<O> {
      *
      * @return
      */
-    <T> T execute();
+    default T execute() {
+        return this.execute( null );
+    }
 
     /**
      *
      * @param mapContainerParams
      * @return
      */
-    <T> T execute( Map<String, Object> mapContainerParams );
+    T execute( Map<String, Object> mapContainerParams );
+
 
     /**
      *
@@ -46,19 +52,31 @@ public interface ServiceExecutor<O> {
      *
      * @return
      */
+    I getRequestObject();
+
+    /**
+     *
+     * @return
+     */
     O getResponseEntity();
 
     /**
      *
      * @return
      */
-    Class<O> getResponseType();
+//    Class<O> getResponseType();
 
     /**
      *
      * @return
      */
-    Object[] getServiceArgs();
+    Map<Object, String> getNamedServiceArgs();
+
+    /**
+     *
+     * @return
+     */
+    Object[] getOrderedServiceArgs();
 
     /**
      *
@@ -82,6 +100,8 @@ public interface ServiceExecutor<O> {
      *
      * @return
      */
-    boolean isReallyPerformService();
+    default boolean isReallyPerformService() {
+        return (!this.isExecuted());
+    }
 
 }

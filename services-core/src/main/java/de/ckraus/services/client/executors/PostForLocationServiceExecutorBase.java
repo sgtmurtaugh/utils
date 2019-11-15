@@ -5,7 +5,7 @@ import java.net.URI;
 /**
  *
  */
-public abstract class PostForLocationServiceExecutorBase extends ServiceExecutorBase<URI> implements
+public abstract class PostForLocationServiceExecutorBase extends ServiceExecutorBase<Object, URI> implements
         PostForLocationServiceExecutor {
 
 }

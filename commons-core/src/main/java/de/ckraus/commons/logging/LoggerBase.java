@@ -152,7 +152,7 @@ public abstract class LoggerBase<T> implements Logger<T> {
     }
 
     private String prepareLogEnter( String sMethod ) {
-
+//TODO
     }
 
 }

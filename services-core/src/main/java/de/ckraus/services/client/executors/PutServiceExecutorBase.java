@@ -10,7 +10,6 @@ import lombok.Setter;
  */
 @Getter
 @Setter( AccessLevel.PROTECTED)
-public abstract class PutServiceExecutorBase<I> extends RequestedResponselessServiceExecutorBase<I> implements
-        RequestedResponselessServiceExecutor<I> {
+public abstract class PutServiceExecutorBase<I> extends VoidServiceExecutorBase<I> implements VoidServiceExecutor<I> {
 
 }

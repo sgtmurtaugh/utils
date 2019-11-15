@@ -3,6 +3,6 @@ package de.ckraus.services.client.executors;
 /**
  *
  */
-public interface DeleteServiceExecutor extends ResponselessServiceExecutor {
+public interface DeleteServiceExecutor extends VoidServiceExecutor<Void> {
 
 }

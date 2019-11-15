@@ -13,7 +13,7 @@ import org.springframework.web.client.ResponseExtractor;
  */
 @Getter
 @Setter( AccessLevel.PROTECTED)
-public abstract class ExecuteServiceExecutorBase<O> extends ServiceExecutorBase<O> implements
+public abstract class ExecuteServiceExecutorBase<O> extends ServiceExecutorBase<Void, O> implements
         ExecuteServiceExecutor<O> {
 
     @Setter(AccessLevel.NONE)

@@ -23,7 +23,7 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>commons-logging-log4j</artifactId>
+    <artifactId>commons-logging-slf4j</artifactId>
     <version>0.0.1</version>
 
     <dependencies>
