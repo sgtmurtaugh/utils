@@ -4,16 +4,24 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * TODO
+ * @param <O> - return type of this executor
+ */
 @Getter
 @Setter( AccessLevel.PROTECTED )
-public abstract class ExecutorBase extends BeanBase implements Executor {
+public abstract class ExecutorBase<O> extends BeanBase implements Executor<O> {
 
     private boolean executed;
     private boolean executedSuccessful;
+
     private Exception exception;
 
+    private O outputBean;
+    private Class<O> outputClass;
+
     @Override
-    public ExecutorBase execute() {
+    public ExecutorBase<O> execute() {
         if ( !this.isExecuted() ) {
             // do prepare
             this.prepare();
@@ -21,20 +29,21 @@ public abstract class ExecutorBase extends BeanBase implements Executor {
             // is executable
             if ( this.isExecutable() ) {
                 try {
-                    // set executed flag
-                    this.setExecuted( true );
-
                     // perform executor
-                    this.perform();
+                    this.setOutputBean( this.perform() );
                 }
                 catch ( Exception e ) {
                     //  handle exception
                     this.handleException( e );
                 }
-            }
+                finally {
+                    // set executed flag
+                    this.setExecuted( true );
 
-            // evaluate result
-            this.verify();
+                    // evaluate result
+                    this.verify();
+                }
+            }
         }
         return this;
     }
@@ -42,7 +51,7 @@ public abstract class ExecutorBase extends BeanBase implements Executor {
     /**
      * Executor specific perfom method.
      */
-    protected abstract ExecutorBase perform();
+    protected abstract O perform();
 
     @Override
     public void reset() {
@@ -56,7 +65,7 @@ public abstract class ExecutorBase extends BeanBase implements Executor {
     /**
      * Can be used to check all prerequirements for execution. Only if {@code true} is returned, the execution is
      * triggered.
-     * @return
+     * @return boolean flag which indicates whether all pre requirements are fulfilled or not
      */
     protected boolean isExecutable() {
         return ( this.isInitialized() && !this.isExecuted() );
@@ -64,7 +73,7 @@ public abstract class ExecutorBase extends BeanBase implements Executor {
 
     /**
      * This method can be used to react on an error during the execution process.
-     * @param e
+     * @param e - occured exception
      */
     protected void handleException( Exception e ) {
         if ( null != e ) {
@@ -84,7 +93,25 @@ public abstract class ExecutorBase extends BeanBase implements Executor {
      * Hook method to evaluate the execution result.
      */
     protected void verify() {
-        // nothing to do
+        if ( this.isExecuted() ) {
+            boolean bSuccess = false;
+
+            // void output
+            if ( null == this.getOutputBean()
+                    && Void.class.isAssignableFrom( this.getOutputClass() ) ) {
+
+                bSuccess = true;
+            }
+            else
+            // available output
+            if ( null != this.getOutputBean()
+                    && ! ( Void.class.isAssignableFrom( this.getOutputClass() ) ) ) {
+
+                bSuccess = true;
+            }
+
+            this.setExecutedSuccessful( bSuccess );
+        }
     }
 
 }
