@@ -1,5 +1,6 @@
 package de.ckraus.services.client.executors;
 
+import de.ckraus.commons.beans.Executor;
 import de.ckraus.services.client.service.ServiceClient;
 import org.springframework.http.HttpStatus;
 
@@ -11,7 +12,7 @@ import java.util.Map;
  * @param <I> Request Bean
  * @param <O> Response Bean
  */
-public interface ServiceExecutor<T extends ServiceClient<I, O>, I, O> {
+public interface ServiceExecutor<T extends ServiceClient<I, O>, I, O> extends Executor<O> {
 
 
     /**

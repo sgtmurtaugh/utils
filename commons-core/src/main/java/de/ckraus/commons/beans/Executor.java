@@ -1,9 +1,9 @@
 package de.ckraus.commons.beans;
 
-public interface Executor extends Bean {
+public interface Executor<O> extends Bean {
 
     /**
-     * Initiates the execution of this bean.
+     * Initiates the execution of this bean with preparation.
      * @return
      */
     Executor execute();
@@ -40,5 +40,17 @@ public interface Executor extends Bean {
      * @return
      */
     Exception getException();
+
+    /**
+     * Getter for the output bean.
+     * @return
+     */
+    O getOutputBean();
+
+    /**
+     * Getter for the output bean class.
+     * @return
+     */
+    Class<O> getOutputClass();
 
 }
