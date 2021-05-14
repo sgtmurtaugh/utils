@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/commons-core/commons-core.iml" filepath="$PROJECT_DIR$/commons-core/commons-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-logging-log4j/commons-logging-log4j.iml" filepath="$PROJECT_DIR$/commons-logging-log4j/commons-logging-log4j.iml" />
-      <module fileurl="file://$PROJECT_DIR$/commons-logging-slf4j/commons-logging-slf4j.iml" filepath="$PROJECT_DIR$/commons-logging-slf4j/commons-logging-slf4j.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-mappers/commons-mappers.iml" filepath="$PROJECT_DIR$/commons-mappers/commons-mappers.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-pdf/commons-pdf.iml" filepath="$PROJECT_DIR$/commons-pdf/commons-pdf.iml" />
       <module fileurl="file://$PROJECT_DIR$/services-core/services-core.iml" filepath="$PROJECT_DIR$/services-core/services-core.iml" />

@@ -10,8 +10,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>12</source>
-                    <target>12</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -25,7 +25,6 @@
     <modules>
         <module>commons-core</module>
         <module>commons-logging-log4j</module>
-        <module>commons-logging-slf4j</module>
         <module>commons-mappers</module>
         <module>commons-pdf</module>
         <module>services-core</module>
@@ -47,7 +46,6 @@
             <version>RELEASE</version>
         </dependency>
 
-<!--
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-ext</artifactId>
@@ -59,7 +57,6 @@
             <artifactId>logback-core</artifactId>
             <version>RELEASE</version>
         </dependency>
--->
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -70,7 +67,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.4</version>
+            <version>RELEASE</version>
         </dependency>
 
         <dependency>
@@ -82,7 +79,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-commons</artifactId>
-            <version>1.5.1</version>
+            <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
 

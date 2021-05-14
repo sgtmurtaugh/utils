@@ -10,10 +10,12 @@ import java.util.Collection;
 import java.util.stream.Stream;
 
 /**
- * [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} > ${PARAM}
- * [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} > [${PARAM}, ${PARAM}, ${PARAM}]
- * [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} < ${METHOD_PARAMS} ${EXCEPTION}
- * [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} : ${METHOD_PARAMS} ${EXCEPTION}
+ * <ul>
+ *   <li>{@code [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} > ${PARAM}}</li>
+ *   <li>{@code [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} > [${PARAM}, ${PARAM}, ${PARAM}]}</li>
+ *   <li>{@code [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} < ${METHOD_PARAMS} ${EXCEPTION}}</li>
+ *   <li>{@code [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} : ${METHOD_PARAMS} ${EXCEPTION}}</li>
+ * </ul>
  */
 @Getter( AccessLevel.PROTECTED )
 @Setter( AccessLevel.PROTECTED )
@@ -22,6 +24,7 @@ public abstract class LoggerBase<T> implements Logger<T> {
     protected static final String METHOD_ENTER = " > ";
     protected static final String METHOD_INSIDE = " : ";
     protected static final String METHOD_RETURN = " < ";
+    protected static final String METHOD_INDENT = " ";
 
     private int indent = 0;
 
@@ -32,41 +35,24 @@ public abstract class LoggerBase<T> implements Logger<T> {
     private Class<?> loggerClass;
 
     /**
-     *
+     * Constructor
      * @param clazz
      */
-    public LoggerBase( @NonNull Class<?> clazz ) {
+    protected LoggerBase( @NonNull Class<?> clazz ) {
         super();
         this.loggerClass = clazz;
         this.logger = this.initLogger( clazz );
     }
 
     /**
-     *
+     * Individual Logger initialization Method
      */
     protected abstract T initLogger( @NonNull Class<?> clazz );
-
-
-    /**
-     *
-     */
-    void decrementIndent() {
-        if (this.getIndent() > 0) {
-            this.setIndent( this.getIndent() - 1 );
-        }
-    }
-
-    /**
-     *
-     */
-    void incrementIndent() {
-        this.setIndent( this.getIndent() + 1 );
-    }
 
     protected String buildLogMessage(String sMethod, String sSeparator, String sMessage) {
         StringBuilder sb = new StringBuilder();
 
-/*
+/* TODO
         // package
         sb.append( this.getLoggerClass().getPackage() );
 
@@ -86,12 +72,14 @@ public abstract class LoggerBase<T> implements Logger<T> {
             sb.append( sMethod );
         }
 
-        // Separator with indent
-        if ( null == sSeparator ) {
-            sSeparator = "";
+        // Separator
+        if ( StringUtils.isNotEmpty(  sSeparator ) ) {
+            sb.append( sSeparator );
         }
-        if ( StringUtils.isNotEmpty( sSeparator ) ) {
-            sb.append( sSeparator.indent( this.getIndent()*2 ) );
+
+        // Indent
+        if ( this.getIndent() > 0 ) {
+            sb.append( METHOD_INDENT.repeat( this.getIndent() ) );
         }
 
         // Method
@@ -100,59 +88,6 @@ public abstract class LoggerBase<T> implements Logger<T> {
         }
 
         return sb.toString();
-    }
-
-    protected void doEnter() {
-        this.incrementIndent();
-    }
-
-    protected void doReturn() {
-        this.decrementIndent();
-    }
-
-    @Override
-    public void logEnter( String sMethod ) {
-        this.logDebug( sMethod );
-        this.doEnter();
-    }
-
-    @Override
-    public void logEnter( String sMethod, Object oMethodArg ) {
-        this.logDebug( sMethod, null, oMethodArg );
-        this.doEnter();
-    }
-
-    @Override
-    public void logEnter( String sMethod, Object oMethodArg1, Object oMethodArg2 ) {
-        this.logDebug( sMethod, null, oMethodArg1, oMethodArg2 );
-        this.doEnter();
-    }
-
-    @Override
-    public void logEnter( String sMethod, Object... aoMethodArg ) {
-        this.logDebug( sMethod, null, aoMethodArg );
-        this.doEnter();
-    }
-
-    @Override
-    public void logReturn( String sMethod ) {
-        this.doEnter();
-    }
-
-    @Override
-    public void logReturn( String sMethod, Collection<?> colMethodReturn ) {
-        this.doReturn();
-        this.logDebug( sMethod, null, colMethodReturn );
-    }
-
-    @Override
-    public void logReturn( String sMethod, Object oMethodReturn ) {
-        this.doReturn();
-        this.logDebug( sMethod, null, oMethodReturn );
-    }
-
-    private String prepareLogEnter( String sMethod ) {
-//TODO
     }
 
 }

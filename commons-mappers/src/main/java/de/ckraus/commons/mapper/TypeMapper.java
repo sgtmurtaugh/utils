@@ -34,7 +34,7 @@ public interface TypeMapper<E> {
     }
 
     /**
-     * prepareStringToMap
+     * prepare
      *
      * @param s
      *         the string to prepare if necessary
@@ -47,7 +47,7 @@ public interface TypeMapper<E> {
      *         trim param is true, trim is performed on the string. When the string is empty and the emptyIsNull param
      *         is true, null will be returned.
      */
-    default String prepareStringToMap( String s, boolean bTrim, boolean bEmptyIsNull ) {
+    default String prepare(String s, boolean bTrim, boolean bEmptyIsNull ) {
         String sRetVal = s;
 
         if ( null != sRetVal ) {

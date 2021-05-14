@@ -30,7 +30,7 @@ public interface DateMapper extends TypeMapper<Date> {
      */
     @Override
     default Date map( String s, boolean bTrim, boolean bEmptyIsNull, Date defaultValue ) {
-        return this.map( this.prepareStringToMap( s, bTrim, bEmptyIsNull ), SimpleDateFormat.getDateInstance(),
+        return this.map( this.prepare( s, bTrim, bEmptyIsNull ), SimpleDateFormat.getDateInstance(),
                 DEFAULT_LENIENT, defaultValue );
     }
 
@@ -60,7 +60,7 @@ public interface DateMapper extends TypeMapper<Date> {
      */
     default Date map( String s, DateFormat format, boolean lenient, Date defaultValue ) {
         Date date = defaultValue;
-        String preparedString = this.prepareStringToMap( s, this.isTrimStrings(), this.isEmptyStringNull() );
+        String preparedString = this.prepare( s, this.isTrimStrings(), this.isEmptyStringNull() );
 
         if ( StringUtils.isNotEmpty( preparedString ) ) {
             if ( null != format ) {

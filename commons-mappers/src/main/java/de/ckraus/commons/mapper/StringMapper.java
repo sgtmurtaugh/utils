@@ -19,7 +19,7 @@ public interface StringMapper extends TypeMapper<String> {
     @Override
     default String map( String s, boolean bTrim, boolean bEmptyIsNull, String defaultValue ) {
         String sRetVal = defaultValue;
-        String sPrepared = this.prepareStringToMap( s, bTrim, bEmptyIsNull );
+        String sPrepared = this.prepare( s, bTrim, bEmptyIsNull );
 
         if ( sPrepared != null ) {
             sRetVal = sPrepared;

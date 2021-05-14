@@ -66,7 +66,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      */
     default Boolean map( String s, boolean bTrim, boolean bEmptyIsNull, Boolean defaultValue ) {
         Boolean b = defaultValue;
-        String preparedString = this.prepareStringToMap( s, bTrim, bEmptyIsNull );
+        String preparedString = this.prepare( s, bTrim, bEmptyIsNull );
 
         if ( this.isFalse( preparedString ) ) {
             b = Boolean.FALSE;

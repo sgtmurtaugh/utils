@@ -29,7 +29,7 @@ public interface GregorianCalendarMapper extends CalendarMapper<GregorianCalenda
      */
     @Override
     default GregorianCalendar map( String s, boolean bTrim, boolean bEmptyIsNull, GregorianCalendar defaultValue ) {
-        return this.map( this.prepareStringToMap( s, bTrim, bEmptyIsNull ), SimpleDateFormat.getDateTimeInstance(),
+        return this.map( this.prepare( s, bTrim, bEmptyIsNull ), SimpleDateFormat.getDateTimeInstance(),
                 defaultValue );
     }
 
@@ -46,7 +46,7 @@ public interface GregorianCalendarMapper extends CalendarMapper<GregorianCalenda
     @Override
     default GregorianCalendar map( String s, DateFormat format, boolean lenient, GregorianCalendar defaultValue ) {
         GregorianCalendar gregorianCalendar = defaultValue;
-        String preparedString = this.prepareStringToMap( s, this.isTrimStrings(), this.isEmptyStringNull() );
+        String preparedString = this.prepare( s, this.isTrimStrings(), this.isEmptyStringNull() );
 
         if ( StringUtils.isNotEmpty( preparedString ) ) {
             if ( null != format ) {

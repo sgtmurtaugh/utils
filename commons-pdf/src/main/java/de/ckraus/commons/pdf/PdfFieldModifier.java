@@ -12,7 +12,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
  * </ul>
  */
 @SuppressWarnings( { "javadoc", "unused" } )
-public interface IPdfFieldModifier extends IPdfModifer {
+public interface PdfFieldModifier extends PdfModifer {
 
     Boolean DEFAULT_CREATE_PDF_ACRO_FORM_IF_NOT_EXISTS = Boolean.FALSE;
 

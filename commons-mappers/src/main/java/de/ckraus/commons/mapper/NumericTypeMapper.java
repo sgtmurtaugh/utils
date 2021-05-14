@@ -778,7 +778,7 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
     default E unformat( String sNumber, Locale locale, String sPattern, DecimalFormatSymbols decimalFormatSymbols,
             E defaultValue ) {
         E returnValue = defaultValue;
-        String preparedString = this.prepareStringToMap( sNumber, this.isTrimStrings(), this.isEmptyStringNull() );
+        String preparedString = this.prepare( sNumber, this.isTrimStrings(), this.isEmptyStringNull() );
 
         if ( StringUtils.isNotEmpty( preparedString ) ) {
             DecimalFormat decimalFormat = this.getDecimalFormat( locale, sPattern, decimalFormatSymbols );

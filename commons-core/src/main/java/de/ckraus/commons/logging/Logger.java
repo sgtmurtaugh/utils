@@ -4,126 +4,169 @@ import java.util.Collection;
 
 public interface Logger<T> {
 
+    Class<?> getLoggerClass();
 
     T getLogger();
+
+    int getIndent();
+    void setIndent( int indent );
+
+    default void decrementIndent() {
+        if (this.getIndent() > 0) {
+            this.setIndent( this.getIndent() - 1 );
+        }
+    }
+
+    default void incrementIndent() {
+        this.setIndent( this.getIndent() + 1 );
+    }
+
+    default void doEnter() {
+        this.incrementIndent();
+    }
+
+    default void doReturn() {
+        this.decrementIndent();
+    }
 
 
     /* ### method logging ### */
 
-    void logEnter( String sMethod );
+    default void enter( String sMethod ) {
+        this.debug( sMethod );
+        this.doEnter();
+    }
 
-    void logEnter( String sMethod, Object oMethodArg );
+    default void enter( String sMethod, Object oMethodArg ) {
+        this.debug( sMethod, null, oMethodArg );
+        this.doEnter();
+    }
 
-    void logEnter( String sMethod, Object oMethodArg1, Object oMethodArg2 );
+    default void enter( String sMethod, Object oMethodArg1, Object oMethodArg2 ) {
+        this.debug( sMethod, null, oMethodArg1, oMethodArg2 );
+        this.doEnter();
+    }
 
-    void logEnter( String sMethod, Object... aoMethodArgs );
+    default void enter( String sMethod, Object... aoMethodArg ) {
+        this.debug( sMethod, null, aoMethodArg );
+        this.doEnter();
+    }
 
-    void logParam( String sMethod, Object oParam );
+    void param( String sMethod, Object oParam );
 
-    void logReturn( String sMethod );
+    default void returnal( String sMethod ) {
+        this.doEnter();
+    }
 
-    void logReturn( String sMethod, Object oReturn );
+    default void returnal( String sMethod, Collection<?> colMethodReturn ) {
+        this.doReturn();
+        this.debug( sMethod, null, colMethodReturn );
+    }
 
-    void logReturn( String sMethod, Collection<?> collReturn );
+    default void returnal( String sMethod, Object oMethodReturn ) {
+        this.doReturn();
+        this.debug( sMethod, null, oMethodReturn );
+    }
+
 
     /* ### loglevel logging ### */
 
-    void logFatal( String sMethod );
+    void debug( String sMethod );
 
-    void logFatal( String sMethod, String sMessage );
+    void debug( String sMethod, String sMessage );
 
-    void logFatal( String sMethod, String sMessage, Object oMethodArg );
+    void debug( String sMethod, String sMessage, Object oMethodArg );
 
-    void logFatal( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
+    void debug( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
 
-    void logFatal( String sMethod, String sMessage, Object... oaParams );
+    void debug( String sMethod, String sMessage, Object... oaParams );
 
-    void logFatal( String sMethod, String sMessage, Throwable throwable );
+    void debug( String sMethod, String sMessage, Throwable throwable );
 
-    void logFatal( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
+    void debug( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
 
-    void logError( String sMethod );
+    void error( String sMethod );
 
-    void logError( String sMethod, String sMessage );
+    void error( String sMethod, String sMessage );
 
-    void logError( String sMethod, String sMessage, Object oMethodArg );
+    void error( String sMethod, String sMessage, Object oMethodArg );
 
-    void logError( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
+    void error( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
 
-    void logError( String sMethod, String sMessage, Object... oaParams );
+    void error( String sMethod, String sMessage, Object... oaParams );
 
-    void logError( String sMethod, String sMessage, Throwable throwable );
+    void error( String sMethod, String sMessage, Throwable throwable );
 
-    void logError( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
+    void error( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
 
-    void logWarn( String sMethod );
+    void fatal( String sMethod );
 
-    void logWarn( String sMethod, String sMessage );
+    void fatal( String sMethod, String sMessage );
 
-    void logWarn( String sMethod, String sMessage, Object oMethodArg );
+    void fatal( String sMethod, String sMessage, Object oMethodArg );
 
-    void logWarn( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
+    void fatal( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
 
-    void logWarn( String sMethod, String sMessage, Object... oaParams );
+    void fatal( String sMethod, String sMessage, Object... oaParams );
 
-    void logWarn( String sMethod, String sMessage, Throwable throwable );
+    void fatal( String sMethod, String sMessage, Throwable throwable );
 
-    void logWarn( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
+    void fatal( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
 
-    void logInfo( String sMethod );
+    void info( String sMethod );
 
-    void logInfo( String sMethod, String sMessage );
+    void info( String sMethod, String sMessage );
 
-    void logInfo( String sMethod, String sMessage, Object oMethodArg );
+    void info( String sMethod, String sMessage, Object oMethodArg );
 
-    void logInfo( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
+    void info( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
 
-    void logInfo( String sMethod, String sMessage, Object... oaParams );
+    void info( String sMethod, String sMessage, Object... oaParams );
 
-    void logInfo( String sMethod, String sMessage, Throwable throwable );
+    void info( String sMethod, String sMessage, Throwable throwable );
 
-    void logInfo( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
+    void info( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
 
-    void logDebug( String sMethod );
+    void trace( String sMethod );
 
-    void logDebug( String sMethod, String sMessage );
+    void trace( String sMethod, String sMessage );
 
-    void logDebug( String sMethod, String sMessage, Object oMethodArg );
+    void trace( String sMethod, String sMessage, Object oMethodArg );
 
-    void logDebug( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
+    void trace( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
 
-    void logDebug( String sMethod, String sMessage, Object... oaParams );
+    void trace( String sMethod, String sMessage, Object... oaParams );
 
-    void logDebug( String sMethod, String sMessage, Throwable throwable );
+    void trace( String sMethod, String sMessage, Throwable throwable );
 
-    void logDebug( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
+    void trace( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
 
-    void logTrace( String sMethod );
+    void verbose( String sMethod );
 
-    void logTrace( String sMethod, String sMessage );
+    void verbose( String sMethod, String sMessage );
 
-    void logTrace( String sMethod, String sMessage, Object oMethodArg );
+    void verbose( String sMethod, String sMessage, Object oMethodArg );
 
-    void logTrace( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
+    void verbose( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
 
-    void logTrace( String sMethod, String sMessage, Object... oaParams );
+    void verbose( String sMethod, String sMessage, Object... oaParams );
 
-    void logTrace( String sMethod, String sMessage, Throwable throwable );
+    void verbose( String sMethod, String sMessage, Throwable throwable );
 
-    void logTrace( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
+    void verbose( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
 
-    void logVerbose( String sMethod );
+    void warn( String sMethod );
 
-    void logVerbose( String sMethod, String sMessage );
+    void warn( String sMethod, String sMessage );
 
-    void logVerbose( String sMethod, String sMessage, Object oMethodArg );
+    void warn( String sMethod, String sMessage, Object oMethodArg );
 
-    void logVerbose( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
+    void warn( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
 
-    void logVerbose( String sMethod, String sMessage, Object... oaParams );
+    void warn( String sMethod, String sMessage, Object... oaParams );
 
-    void logVerbose( String sMethod, String sMessage, Throwable throwable );
+    void warn( String sMethod, String sMessage, Throwable throwable );
 
-    void logVerbose( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
+    void warn( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
 
 }

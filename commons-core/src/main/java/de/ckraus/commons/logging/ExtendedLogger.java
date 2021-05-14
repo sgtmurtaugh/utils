@@ -4,17 +4,15 @@ public interface ExtendedLogger<T> extends Logger<T> {
 
     void logEnterSecret( String sMethod, Object oSecret );
 
-    void logFatal( String sMethod, String sMessage, Object oMethodArg );
-
-    void logFatal( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
-
     void logEnterSecret( String sMethod, Object oSecret, Object... aoMethodArgs );
 
     void logParamSecret( String sMethod, Object oParam );
 
     void logReturnSecret( String sMethod, Object oSecret );
 
+
     /* ### logging states ### */
+
 
     void logTrying( String sMethod, String sMessage );
 

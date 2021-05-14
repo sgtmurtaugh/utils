@@ -27,7 +27,7 @@ public interface LocalDateTimeMapper extends TemporalTypeMapper<LocalDateTime> {
      */
     @Override
     default LocalDateTime map( String s, boolean bTrim, boolean bEmptyIsNull, LocalDateTime defaultValue ) {
-        return this.map( this.prepareStringToMap( s, bTrim, bEmptyIsNull ), DateTimeFormatter.ISO_DATE_TIME,
+        return this.map( this.prepare( s, bTrim, bEmptyIsNull ), DateTimeFormatter.ISO_DATE_TIME,
                 defaultValue );
     }
 
@@ -43,7 +43,7 @@ public interface LocalDateTimeMapper extends TemporalTypeMapper<LocalDateTime> {
     @Override
     default LocalDateTime map( String s, DateTimeFormatter formatter, LocalDateTime defaultValue ) {
         LocalDateTime localDateTime = defaultValue;
-        String preparedString = this.prepareStringToMap( s, this.isTrimStrings(), this.isEmptyStringNull() );
+        String preparedString = this.prepare( s, this.isTrimStrings(), this.isEmptyStringNull() );
 
         if ( StringUtils.isNotEmpty( preparedString ) ) {
             if ( null != formatter ) {

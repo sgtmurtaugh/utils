@@ -81,7 +81,7 @@ public interface CharacterMapper extends TypeMapper<Character> {
     default Character map( String s, boolean bTrim, boolean bEmptyIsNull, boolean bEvaluateCodePoints,
             Character defaultValue ) {
         Character cRetVal = defaultValue;
-        String preparedString = this.prepareStringToMap( s, bTrim, bEmptyIsNull );
+        String preparedString = this.prepare( s, bTrim, bEmptyIsNull );
 
         if ( StringUtils.isNotEmpty( preparedString ) ) {
             Integer iVal = null;

@@ -16,7 +16,7 @@ import java.io.IOException;
  * </ul>
  */
 @SuppressWarnings( { "javadoc", "unused" } )
-public interface IPdfModifer extends IPdfReader, IPdfWriter {
+public interface PdfModifer extends IPdfReader, IPdfWriter {
 
     /**
      * getPdfDocument
