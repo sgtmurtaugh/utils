@@ -1,8 +1,5 @@
 package de.ckraus.commons.pdf;
 
-import com.itextpdf.io.source.IRandomAccessSource;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.ReaderProperties;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;

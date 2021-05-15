@@ -1,19 +1,12 @@
 package de.ckraus.commons.beans;
 
-public interface Performer extends Bean {
+public interface Performer extends ResetableBean {
 
     /**
      * Initiates the execution of this bean with preparation.
      * @return
      */
     Performer perform();
-
-    /**
-     * Can be used to reset all bean values. Initiates a reinitialization.
-     */
-    default void reset() {
-        initialize( true );
-    }
 
     /**
      * Getter for perform flag

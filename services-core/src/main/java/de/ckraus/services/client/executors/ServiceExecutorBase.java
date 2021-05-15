@@ -70,7 +70,7 @@ public abstract class ServiceExecutorBase<T extends ServiceClient<I, O>, I, O> i
     /**
      *
      */
-    protected void reset() {
+    public void reset() {
         this.setParams(null);
         this.setExecuted(false);
         this.setFailed(false);

@@ -1,10 +1,45 @@
 package de.ckraus.commons.beans;
 
+import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.InitializingBean;
+
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public interface Bean {
+public interface Bean extends InitializingBean {
+
+    /**
+     * Getter for configuration properties
+     * @return
+     */
+    Properties getProperties();
+
+    /**
+     * Getter for parameters
+     * @return
+     */
+    ConcurrentMap<String, Map.Entry<Class<? extends Object>, Object>> getParameters();
+
+    /**
+     * Setter for parameters
+     * @param mParams
+     */
+    void setParameters(ConcurrentMap<String, Map.Entry<Class<? extends Object>, Object>> mParams);
+
+    /**
+     * Getter for initialization flag
+     * @return
+     */
+    boolean isInitialized();
+
+    /**
+     * Setter for initialization flag
+     * @param bInitialized - boolean flag
+     */
+    void setInitialized(boolean bInitialized);
 
     /**
      * Delegates to {@link #initialize(boolean)} with {@code null} value.
@@ -20,31 +55,70 @@ public interface Bean {
      * @param bReinitialization
      * @return
      */
-    boolean initialize(boolean bReinitialization);
+    default boolean initialize( boolean bReinitialization ) {
+        if ( !this.isInitialized() ) {
+            this.setInitialized( true );
+        }
+        return bReinitialization;
+    }
+
+    @Override
+    default void afterPropertiesSet() throws Exception {
+        this.initialize();
+    }
 
     /**
-     * Causes a reset of this bean. All properties can be set to a null/initial value. The default implementation
-     * ignores the configuration properties and the params map.
-     * Initialized flag is set to false.
-     */
-    void reset();
-
-    /**
-     * Getter for initialization flag
+     *
+     * @param sKey
+     * @param oValue
      * @return
      */
-    boolean isInitialized();
+    default Bean addParameter(String sKey, Object oValue ) {
+        if ( StringUtils.isNotEmpty( sKey ) ) {
+            if ( null == oValue ) {
+                if ( MapUtils.isNotEmpty( this.getParameters() ) ) {
+                    this.getParameters().remove( sKey );
+                }
+            }
+            else {
+                if ( MapUtils.isEmpty( this.getParameters() ) ) {
+                    this.setParameters( new ConcurrentHashMap<>() );
+                }
+                this.getParameters().put(
+                        sKey,
+                        Map.entry( oValue.getClass(), oValue )
+                );
+            }
+        }
+        return this;
+    }
 
     /**
-     * Getter for the configuration properties
+     * TODO
+     * @param sKey
+     * @param <T>
      * @return
      */
-    Properties getConfigurationProperties();
+    default <T> T getParameter(String sKey ) {
+        T param = null;
+
+        if ( MapUtils.isNotEmpty( this.getParameters() ) ) {
+            param = this.getParameter( sKey );
+        }
+
+        return param;
+    }
 
     /**
-     * Getter for the configuration properties
+     *
+     * @param mapParams
      * @return
      */
-    <T> ConcurrentMap<String, Map.Entry<Class<T>, T>> getParams();
+    default Bean addParameters(Map<String, Map.Entry<Class<? extends Object>, Object>> mapParams ) {
+        if ( MapUtils.isNotEmpty( this.getParameters() ) ) {
+            this.getParameters().putAll( mapParams );
+        }
+        return this;
+    }
 
 }

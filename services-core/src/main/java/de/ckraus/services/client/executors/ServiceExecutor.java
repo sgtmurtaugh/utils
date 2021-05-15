@@ -25,7 +25,7 @@ public interface ServiceExecutor<T extends ServiceClient<I, O>, I, O> extends Ex
      *
      * @return
      */
-    default T execute() {
+    default Executor<O> execute() {
         return this.execute( null );
     }
 
@@ -47,7 +47,7 @@ public interface ServiceExecutor<T extends ServiceClient<I, O>, I, O> extends Ex
      *
      * @return
      */
-    Map<String, Object> getParams();
+    Map<String, Object> getParameters();
 
     /**
      *

@@ -62,7 +62,7 @@ public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractResp
     /**
      * reset
      */
-    protected void reset() {
+    public void reset() {
         this.setContainerParams(null);
         this.setThrowable(null);
         this.setExecuted(false);
