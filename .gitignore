@@ -6,3 +6,5 @@
 /webcommons-core/target/
 /webcommons-mappers/target/
 /.idea/sonarlint/issuestore/
+/commons-pdf-itext/target/
+/commons-pdf-pdfbox/target/
