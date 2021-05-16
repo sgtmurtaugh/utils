@@ -11,10 +11,6 @@ import java.math.BigInteger;
 @SuppressWarnings( { "javadoc", "unused" } )
 public class BigIntegerMapperImpl extends NumericTypeMapperBase<BigInteger> implements BigIntegerMapper {
 
-    private final static String CLASS = BigIntegerMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(BigIntegerMapper.class);
-
-
     /**
      * Constructor
      */

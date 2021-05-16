@@ -9,10 +9,6 @@ import lombok.Setter;
 @SuppressWarnings( { "javadoc", "unused" } )
 public class IntegerMapperImpl extends NumericTypeMapperBase<Integer> implements IntegerMapper {
 
-    private final static String CLASS = IntegerMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(IntegerMapper.class);
-
-
     /**
      * Constructor
      */

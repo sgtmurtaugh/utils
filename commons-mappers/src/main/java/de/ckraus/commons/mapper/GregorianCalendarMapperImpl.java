@@ -12,10 +12,6 @@ import java.util.GregorianCalendar;
 public class GregorianCalendarMapperImpl extends CalendarMapperBase<GregorianCalendar>
         implements GregorianCalendarMapper {
 
-    private final static String CLASS = GregorianCalendarMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(IntegerMapper.class);
-
-
     /**
      * Constructor
      */

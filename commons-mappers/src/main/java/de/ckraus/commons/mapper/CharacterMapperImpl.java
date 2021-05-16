@@ -9,9 +9,6 @@ import lombok.Setter;
 @SuppressWarnings( { "javadoc", "unused" } )
 public class CharacterMapperImpl extends TypeMapperBase<Character> implements CharacterMapper {
 
-    private final static String CLASS = CharacterMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(CharacterMapper.class);
-
     private final boolean evaluateCodePoints;
 
 

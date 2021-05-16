@@ -12,14 +12,10 @@ import java.time.temporal.Temporal;
 public abstract class TemporalTypeMapperBase<E extends Temporal> extends TypeMapperBase<E>
         implements TemporalTypeMapper<E> {
 
-    private final static String CLASS = TemporalTypeMapperBase.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(AbstractNumericTypeMapper.class);
-
-
     /**
      * Constructor
      */
-    public TemporalTypeMapperBase() {
+    protected TemporalTypeMapperBase() {
         super();
     }
 
@@ -28,7 +24,7 @@ public abstract class TemporalTypeMapperBase<E extends Temporal> extends TypeMap
      *
      * @param defaultValue
      */
-    public TemporalTypeMapperBase( E defaultValue ) {
+    protected TemporalTypeMapperBase( E defaultValue ) {
         super( defaultValue );
     }
 
@@ -39,7 +35,7 @@ public abstract class TemporalTypeMapperBase<E extends Temporal> extends TypeMap
      * @param bTrimStrings
      * @param bEmptyStringNull
      */
-    public TemporalTypeMapperBase( E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull ) {
+    protected TemporalTypeMapperBase( E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull ) {
         super( defaultValue, bTrimStrings, bEmptyStringNull );
     }
 

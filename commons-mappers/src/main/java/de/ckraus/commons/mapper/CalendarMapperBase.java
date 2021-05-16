@@ -1,18 +1,20 @@
 package de.ckraus.commons.mapper;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Calendar;
 
-@SuppressWarnings( { "javadoc", "unused" } )
+@Getter
+@Setter( AccessLevel.PROTECTED )@SuppressWarnings( { "javadoc", "unused" } )
 public abstract class CalendarMapperBase<E extends Calendar> extends TypeMapperBase<E>
         implements CalendarMapper<E> {
-
-    private final static String CLASS = CalendarMapperBase.class.getSimpleName();
-
 
     /**
      * Constructor
      */
-    public CalendarMapperBase() {
+    protected CalendarMapperBase() {
         super();
     }
 
@@ -21,7 +23,7 @@ public abstract class CalendarMapperBase<E extends Calendar> extends TypeMapperB
      *
      * @param defaultValue
      */
-    public CalendarMapperBase( E defaultValue ) {
+    protected CalendarMapperBase( E defaultValue ) {
         super( defaultValue );
     }
 
@@ -32,7 +34,7 @@ public abstract class CalendarMapperBase<E extends Calendar> extends TypeMapperB
      * @param bTrimStrings
      * @param bEmptyStringNull
      */
-    public CalendarMapperBase( E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull ) {
+    protected CalendarMapperBase( E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull ) {
         super( defaultValue, bTrimStrings, bEmptyStringNull );
     }
 

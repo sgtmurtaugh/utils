@@ -9,10 +9,6 @@ import lombok.Setter;
 @SuppressWarnings( { "javadoc", "unused" } )
 public class ShortMapperImpl extends NumericTypeMapperBase<Short> implements ShortMapper {
 
-    private final static String CLASS = ShortMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(ShortMapper.class);
-
-
     /**
      * Constructor
      */

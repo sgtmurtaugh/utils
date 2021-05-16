@@ -11,10 +11,6 @@ import java.util.Date;
 @SuppressWarnings( { "javadoc", "unused" } )
 public class DateMapperImpl extends TypeMapperBase<Date> implements DateMapper {
 
-    private final static String CLASS = DateMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(IntegerMapper.class);
-
-
     /**
      * Constructor
      */

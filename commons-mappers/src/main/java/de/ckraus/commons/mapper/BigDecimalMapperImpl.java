@@ -11,10 +11,6 @@ import java.math.BigDecimal;
 @SuppressWarnings( { "javadoc", "unused" } )
 public class BigDecimalMapperImpl extends NumericTypeMapperBase<BigDecimal> implements BigDecimalMapper {
 
-    private final static String CLASS = BigDecimalMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(BigDecimalMapper.class);
-
-
     /**
      * Constructor
      */

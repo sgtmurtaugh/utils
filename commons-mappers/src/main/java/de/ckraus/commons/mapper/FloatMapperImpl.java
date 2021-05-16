@@ -9,10 +9,6 @@ import lombok.Setter;
 @SuppressWarnings( { "javadoc", "unused" } )
 public class FloatMapperImpl extends NumericTypeMapperBase<Float> implements FloatMapper {
 
-    private final static String CLASS = FloatMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(FloatMapper.class);
-
-
     /**
      * Constructor
      */

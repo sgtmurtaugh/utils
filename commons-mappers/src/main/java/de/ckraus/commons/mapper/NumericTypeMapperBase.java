@@ -10,13 +10,10 @@ import lombok.Setter;
 public abstract class NumericTypeMapperBase<E extends Number> extends TypeMapperBase<E>
         implements NumericTypeMapper<E> {
 
-    private final static String CLASS = NumericTypeMapperBase.class.getSimpleName();
-
-
     /**
      * Constructor
      */
-    public NumericTypeMapperBase() {
+    protected NumericTypeMapperBase() {
         super();
     }
 
@@ -25,7 +22,7 @@ public abstract class NumericTypeMapperBase<E extends Number> extends TypeMapper
      *
      * @param defaultValue
      */
-    public NumericTypeMapperBase( E defaultValue ) {
+    protected NumericTypeMapperBase( E defaultValue ) {
         super( defaultValue );
     }
 
@@ -36,7 +33,7 @@ public abstract class NumericTypeMapperBase<E extends Number> extends TypeMapper
      * @param bTrimStrings
      * @param bEmptyStringNull
      */
-    public NumericTypeMapperBase( E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull ) {
+    protected NumericTypeMapperBase( E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull ) {
         super( defaultValue, bTrimStrings, bEmptyStringNull );
     }
 

@@ -9,10 +9,6 @@ import lombok.Setter;
 @SuppressWarnings( { "javadoc", "unused" } )
 public class StringMapperImpl extends TypeMapperBase<String> implements StringMapper {
 
-    private final static String CLASS = StringMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(StringMapper.class);
-
-
     /**
      * Constructor
      */

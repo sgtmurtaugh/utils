@@ -1,9 +1,8 @@
 package de.ckraus.commons.mapper.utils;
 
+import de.ckraus.commons.logging.slf4j.Slf4JLogger;
 import de.ckraus.commons.mapper.*;
 import de.ckraus.commons.utils.CommonsUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 
@@ -17,12 +16,12 @@ import java.util.concurrent.ConcurrentMap;
 @SuppressWarnings( { "WeakerAccess", "javadoc", "unused" } )
 public class TypeMapperUtils {
 
-    private final static String CLASS = TypeMapperUtils.class.getSimpleName();
-    protected static Logger log = LoggerFactory.getLogger( TypeMapperUtils.class );
+    private static final String CLASS = TypeMapperUtils.class.getSimpleName();
+    protected static Slf4JLogger log = new Slf4JLogger( TypeMapperUtils.class );
 
     private static TypeMapperUtils instance = null;
 
-    private ConcurrentMap<Class<? extends TypeMapper>, TypeMapper> mapRegistredTypeMappers = null;
+    private ConcurrentMap<Class<? extends TypeMapper<?>>, TypeMapper<?>> mapRegistredTypeMappers = null;
 
     private DefaultTypeMappers defaultTypeMappers = null;
 
@@ -91,7 +90,7 @@ public class TypeMapperUtils {
      *
      * @return
      */
-    public ConcurrentMap<Class<? extends TypeMapper>, TypeMapper> getRegisteredTypeMappers() {
+    public ConcurrentMap<Class<? extends TypeMapper<?>>, TypeMapper<?>> getRegisteredTypeMappers() {
         if ( null == mapRegistredTypeMappers ) {
             //            this.setRegisteredTypeMappers(
             //                    new ConcurrentHashMap<>()
@@ -109,7 +108,7 @@ public class TypeMapperUtils {
      *
      * @param mapMappers
      */
-    private void setRegisteredTypeMappers( ConcurrentMap<Class<? extends TypeMapper>, TypeMapper> mapMappers ) {
+    private void setRegisteredTypeMappers( ConcurrentMap<Class<? extends TypeMapper<?>>, TypeMapper<?>> mapMappers ) {
         this.mapRegistredTypeMappers = mapMappers;
     }
 
@@ -118,7 +117,7 @@ public class TypeMapperUtils {
      *
      * @param typeMapper
      */
-    protected TypeMapper addRegisteredTypeMapper( TypeMapper typeMapper ) {
+    protected TypeMapper<?> addRegisteredTypeMapper( TypeMapper<?> typeMapper ) {
         if ( null != typeMapper ) {
             this.getRegisteredTypeMappers().put( typeMapper.getClass(), typeMapper );
         }

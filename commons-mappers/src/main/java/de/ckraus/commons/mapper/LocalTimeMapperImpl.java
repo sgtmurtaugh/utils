@@ -11,10 +11,6 @@ import java.time.LocalTime;
 @SuppressWarnings( { "javadoc", "unused" } )
 public class LocalTimeMapperImpl extends TemporalTypeMapperBase<LocalTime> implements LocalTimeMapper {
 
-    private final static String CLASS = LocalTimeMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(StringMapper.class);
-
-
     /**
      * Constructor
      */

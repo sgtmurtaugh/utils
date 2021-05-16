@@ -9,10 +9,6 @@ import lombok.Setter;
 @SuppressWarnings( { "javadoc", "unused" } )
 public class ByteMapperImpl extends NumericTypeMapperBase<Byte> implements ByteMapper {
 
-    private final static String CLASS = ByteMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(ByteMapper.class);
-
-
     /**
      * Constructor
      */

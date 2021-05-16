@@ -9,10 +9,6 @@ import lombok.Setter;
 @SuppressWarnings( { "javadoc", "unused" } )
 public class LongMapperImpl extends NumericTypeMapperBase<Long> implements LongMapper {
 
-    private final static String CLASS = LongMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(LongMapper.class);
-
-
     /**
      * Constructor
      */

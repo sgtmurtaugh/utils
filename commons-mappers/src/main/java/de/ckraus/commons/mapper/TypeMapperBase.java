@@ -1,6 +1,5 @@
 package de.ckraus.commons.mapper;
 
-import de.ckraus.commons.logging.Logger;
 import de.ckraus.commons.logging.slf4j.Slf4JLogger;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -12,7 +11,7 @@ import lombok.Setter;
 public abstract class TypeMapperBase<E> implements TypeMapper<E> {
 
     private static final String CLASS = TypeMapperBase.class.getSimpleName();
-    protected static Logger log = new Slf4JLogger( TypeMapperBase.class );
+    protected static Slf4JLogger log = new Slf4JLogger(TypeMapperBase.class);
 
     private final E defaultValue;
 

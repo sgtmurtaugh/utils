@@ -12,27 +12,24 @@ import java.util.List;
 @SuppressWarnings( { "javadoc", "unused", "WeakerAccess" } )
 public class BooleanMapperImpl extends TypeMapperBase<Boolean> implements BooleanMapper {
 
-    private final static String CLASS = BooleanMapperImpl.class.getSimpleName();
-    //    protected static Logger log = LoggerFactory.getLogger(BooleanMapper.class);
+    private static final Character FALSE_CHAR_0 = '0';
+    private static final Character FALSE_CHAR_N = 'N';
+    private static final Character FALSE_CHAR_N_LOWERCASE = 'n';
+    private static final Character TRUE_CHAR_1 = '1';
+    private static final Character TRUE_CHAR_Y = 'Y';
+    private static final Character TRUE_CHAR_Y_LOWERCASE = 'y';
 
-    private final static Character FALSE_CHAR_0 = '0';
-    private final static Character FALSE_CHAR_N = 'N';
-    private final static Character FALSE_CHAR_N_LOWERCASE = 'n';
-    private final static Character TRUE_CHAR_1 = '1';
-    private final static Character TRUE_CHAR_Y = 'Y';
-    private final static Character TRUE_CHAR_Y_LOWERCASE = 'y';
+    private static final Integer FALSE_INT_0 = 0;
+    private static final Integer TRUE_INT_1 = 1;
 
-    private final static Integer FALSE_INT_0 = 0;
-    private final static Integer TRUE_INT_1 = 1;
-
-    private final static String FALSE_STRING_0 = "0";
-    private final static String FALSE_STRING_FALSE = "false";
-    private final static String FALSE_STRING_N = "n";
-    private final static String FALSE_STRING_NO = "no";
-    private final static String TRUE_STRING_1 = "1";
-    private final static String TRUE_STRING_TRUE = "true";
-    private final static String TRUE_STRING_Y = "y";
-    private final static String TRUE_STRING_YES = "yes";
+    private static final String FALSE_STRING_0 = "0";
+    private static final String FALSE_STRING_FALSE = "false";
+    private static final String FALSE_STRING_N = "n";
+    private static final String FALSE_STRING_NO = "no";
+    private static final String TRUE_STRING_1 = "1";
+    private static final String TRUE_STRING_TRUE = "true";
+    private static final String TRUE_STRING_Y = "y";
+    private static final String TRUE_STRING_YES = "yes";
 
     private List<Character> falseCharacterValues;
     private List<Character> trueCharacterValues;
