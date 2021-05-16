@@ -1,23 +1,22 @@
-package de.ckraus.commons.pdf.itext.modifier;
+package de.ckraus.commons.pdf.pdfbox.modifier;
 
-import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.pdf.PdfWriter;
 import de.ckraus.commons.pdf.AbstractPdfModifierBase;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.apache.pdfbox.io.MemoryUsageSetting;
+import org.apache.pdfbox.pdmodel.PDDocument;
 
 import java.io.*;
 
 @Getter
 @Setter
-public abstract class AbstractPdfModifier extends AbstractPdfModifierBase<PdfDocument> implements PdfModifer {
+public abstract class AbstractPdfModifier extends AbstractPdfModifierBase<PDDocument> implements PdfModifer {
 
-    private PdfReader pdfReader;
-    private PdfWriter pdfWriter;
-
-    private ReaderProperties readerProperties;
-    private WriterProperties writerProperties;
+    private char[] password;
+    private InputStream keyStore;
+    private MemoryUsageSetting memoryUsageSetting;
+    private String alias;
 
     /**
      * Constructor
@@ -44,11 +43,6 @@ public abstract class AbstractPdfModifier extends AbstractPdfModifierBase<PdfDoc
      */
     protected AbstractPdfModifier(String src, String dest) throws FileNotFoundException {
         super(src, dest);
-    }
-
-    @Override
-    public Boolean modify(PdfDocument document) {
-        return null;
     }
 
 }

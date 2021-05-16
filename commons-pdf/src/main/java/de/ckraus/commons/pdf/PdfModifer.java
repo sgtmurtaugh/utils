@@ -22,7 +22,7 @@ public interface PdfModifer<D> extends Bean {
      * Initializes the PdfDocument
      * @return
      */
-    boolean initializePdfDocument() throws IOException;
+    void initializePdfDocument() throws IOException;
 
     @Override
     default boolean initialize( boolean bReinitialization ) throws BeanInitializationException {

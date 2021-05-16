@@ -28,9 +28,9 @@ public interface PdfFieldModifier extends PdfModifer {
     default PDAcroForm getPdfAcroForm( PDDocument pdfDocument ) {
         PDAcroForm pdfAcroForm = null;
 
-        if ( pdfDocument != null ) {
+        if ( null != pdfDocument ) {
             PDDocumentCatalog docCatalog = pdfDocument.getDocumentCatalog();
-            if ( docCatalog != null ) {
+            if ( null != docCatalog ) {
                 pdfAcroForm = docCatalog.getAcroForm();
             }
         }

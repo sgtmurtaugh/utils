@@ -53,7 +53,7 @@ public interface PdfModifer extends de.ckraus.commons.pdf.PdfModifer<PdfDocument
     void setPdfWriter( PdfWriter pdfWriter );
 
     @Override
-    default boolean initializePdfDocument() throws IOException {
+    default void initializePdfDocument() throws IOException {
         try (
                 var pdfReader = new PdfReader( this.getInputStream(), ( null != this.getReaderProperties()
                         ? this.getReaderProperties()
@@ -66,7 +66,6 @@ public interface PdfModifer extends de.ckraus.commons.pdf.PdfModifer<PdfDocument
             this.setPdfWriter( pdfWriter );
             this.setPdfDocument( new PdfDocument(pdfReader, pdfWriter) );
         }
-        return false;
     }
 
     /**
