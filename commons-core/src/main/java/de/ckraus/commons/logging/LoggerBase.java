@@ -6,9 +6,6 @@ import lombok.NonNull;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.Collection;
-import java.util.stream.Stream;
-
 /**
  * <ul>
  *   <li>{@code [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} > ${PARAM}}</li>
@@ -25,6 +22,7 @@ public abstract class LoggerBase<T> implements Logger<T> {
     protected static final String METHOD_INSIDE = " : ";
     protected static final String METHOD_RETURN = " < ";
     protected static final String METHOD_INDENT = " ";
+    protected static final String METHOD_PARAM = " ";
 
     private int indent = 0;
 

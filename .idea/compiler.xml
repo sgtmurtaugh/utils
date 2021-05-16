@@ -7,8 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="commons-pdf-pdfbox3" />
         <module name="commons-mappers" />
         <module name="commons-logging-log4j" />
+        <module name="commons-pdf-itext" />
+        <module name="commons-pdf-pdfbox3 (1)" />
         <module name="webcommons-core" />
         <module name="services-core" />
         <module name="webcommons-mappers" />
@@ -22,6 +25,9 @@
       <module name="commons-logging-slf4j" target="11" />
       <module name="commons-mappers" target="11" />
       <module name="commons-pdf" target="11" />
+      <module name="commons-pdf-itext" target="11" />
+      <module name="commons-pdf-pdfbox3" target="11" />
+      <module name="commons-pdf-pdfbox3 (1)" target="11" />
       <module name="services-core" target="11" />
       <module name="utils" target="11" />
       <module name="webcommons-core" target="11" />

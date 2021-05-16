@@ -5,6 +5,8 @@ import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Objects;
+
 public class Slf4JLogger extends LoggerBase<Logger> {
 
     /**
@@ -51,11 +53,6 @@ public class Slf4JLogger extends LoggerBase<Logger> {
     }
 
     @Override
-    public void debug(String sMethod, String sMessage, Throwable throwable, Object... oaParams) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable, oaParams ); ??
-    }
-
-    @Override
     public void error(String sMethod) {
         this.getLogger().error( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
     }
@@ -83,11 +80,6 @@ public class Slf4JLogger extends LoggerBase<Logger> {
     @Override
     public void error(String sMethod, String sMessage, Throwable throwable) {
         this.getLogger().error( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
-    }
-
-    @Override
-    public void error(String sMethod, String sMessage, Throwable throwable, Object... oaParams) {
-        this.getLogger().error( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable, oaParams ); ??
     }
 
     @Override
@@ -121,11 +113,6 @@ public class Slf4JLogger extends LoggerBase<Logger> {
     }
 
     @Override
-    public void fatal(String sMethod, String sMessage, Throwable throwable, Object... oaParams) {
-        this.error( sMethod, sMessage, throwable, oaParams );
-    }
-
-    @Override
     public void info(String sMethod) {
         this.getLogger().info( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
     }
@@ -156,13 +143,8 @@ public class Slf4JLogger extends LoggerBase<Logger> {
     }
 
     @Override
-    public void info(String sMethod, String sMessage, Throwable throwable, Object... oaParams) {
-        this.getLogger().info( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable, oaParams );
-    }
-
-    @Override
-    public void logParam(String sMethod, Object oParam) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, METHOD_PARAM ) );
+    public void param(String sMethod, @NonNull String sParamName, Object oParamValue) {
+        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sParamName + METHOD_PARAM + Objects.toString( oParamValue ) ) );
     }
 
     @Override
@@ -196,11 +178,6 @@ public class Slf4JLogger extends LoggerBase<Logger> {
     }
 
     @Override
-    public void trace(String sMethod, String sMessage, Throwable throwable, Object... oaParams) {
-        this.getLogger().trace( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
-    }
-
-    @Override
     public void verbose(String sMethod) {
         this.debug( sMethod );
     }
@@ -231,11 +208,6 @@ public class Slf4JLogger extends LoggerBase<Logger> {
     }
 
     @Override
-    public void verbose(String sMethod, String sMessage, Throwable throwable, Object... oaParams) {
-        this.debug( sMethod, sMessage, throwable, oaParams );
-    }
-
-    @Override
     public void warn(String sMethod) {
         this.getLogger().warn( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
     }
@@ -263,11 +235,6 @@ public class Slf4JLogger extends LoggerBase<Logger> {
     @Override
     public void warn(String sMethod, String sMessage, Throwable throwable) {
         this.getLogger().warn( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
-    }
-
-    @Override
-    public void warn(String sMethod, String sMessage, Throwable throwable, Object... oaParams) {
-        this.getLogger().warn( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable, oaParams ); ??
     }
 
 }

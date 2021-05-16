@@ -8,6 +8,6 @@ package de.ckraus.commons.pdf;
  *     <li>null - omitted</li>
  * </ul>
  */
-public interface PdfDocumentModifier extends PdfModifer {
+public interface PdfDocumentModifier<P, R, W> extends PdfModifer<P, R, W> {
 
 }

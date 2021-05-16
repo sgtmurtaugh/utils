@@ -1,6 +1,5 @@
 package de.ckraus.commons.utils;
 
-import de.ckraus.commons.CommonsUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;

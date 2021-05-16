@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-       <bean id="typeMapperUtils" class="de.ckraus.commons.mapper.TypeMapperUtils" scope="singleton" >
+       <bean id="typeMapperUtils" class="de.ckraus.commons.mapper.utils.TypeMapperUtils" scope="singleton" >
               <property name="registeredTypeMappers">
                      <util:map map-class="java.util.concurrent.ConcurrentHashMap" key-type="java.lang.Class" value-type="de.ckraus.commons.mapper.TypeMapper">
                             <entry key="de.ckraus.commons.mapper.BigDecimalMapperImpl" value-ref="defaultBigDecimalMapper" />

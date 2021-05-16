@@ -7,7 +7,8 @@
       <module fileurl="file://$PROJECT_DIR$/commons-mappers/commons-mappers.iml" filepath="$PROJECT_DIR$/commons-mappers/commons-mappers.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-pdf/commons-pdf.iml" filepath="$PROJECT_DIR$/commons-pdf/commons-pdf.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-pdf-itext/commons-pdf-itext.iml" filepath="$PROJECT_DIR$/commons-pdf-itext/commons-pdf-itext.iml" />
-      <module fileurl="file://$PROJECT_DIR$/commons-pdf-pdfbox/commons-pdf-pdfbox.iml" filepath="$PROJECT_DIR$/commons-pdf-pdfbox/commons-pdf-pdfbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons-pdf-pdfbox/commons-pdf-pdfbox3.iml" filepath="$PROJECT_DIR$/commons-pdf-pdfbox/commons-pdf-pdfbox3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons-pdf-pdfbox3/commons-pdf-pdfbox3 (1).iml" filepath="$PROJECT_DIR$/commons-pdf-pdfbox3/commons-pdf-pdfbox3 (1).iml" />
       <module fileurl="file://$PROJECT_DIR$/services-core/services-core.iml" filepath="$PROJECT_DIR$/services-core/services-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils.iml" filepath="$PROJECT_DIR$/utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/webcommons-core/webcommons-core.iml" filepath="$PROJECT_DIR$/webcommons-core/webcommons-core.iml" />

@@ -1,11 +1,10 @@
 package de.ckraus.commons.pdf;
 
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import org.apache.commons.lang3.StringUtils;
+import de.ckraus.commons.beans.Bean;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * <p>All modify Methods <strong>must</strong> return three different modification states for consistent handling:
@@ -16,60 +15,47 @@ import java.io.IOException;
  * </ul>
  */
 @SuppressWarnings( { "javadoc", "unused" } )
-public interface PdfModifer extends IPdfReader, IPdfWriter {
+public interface PdfModifer<D> extends Bean {
 
     /**
-     * getPdfDocument
-     *
-     * @param pdfWriter
-     *
+     * Initializes the PdfDocument
      * @return
      */
-    default PdfDocument getPdfDocument( PdfWriter pdfWriter ) {
-        PdfDocument pdfDocument = null;
-        if ( null != pdfWriter ) {
-            pdfDocument = new PdfDocument( pdfWriter );
+    boolean initializePdfDocument() throws IOException;
+
+    @Override
+    default boolean initialize( boolean bReinitialization ) {
+        if ( Bean.super.initialize( bReinitialization ) ) {
+            this.initializePdfDocument();
         }
-        return pdfDocument;
+        return bReinitialization;
     }
 
     /**
-     * getPdfDocument
-     *
-     * @param pdfReader
-     * @param pdfWriter
-     *
+     * Getter for the PdfDocument InputStream
      * @return
      */
-    default PdfDocument getPdfDocument( PdfReader pdfReader, PdfWriter pdfWriter ) {
-        PdfDocument pdfDocument = null;
-        if ( null != pdfReader && null != pdfWriter ) {
-
-            pdfDocument = new PdfDocument( pdfReader, pdfWriter );
-        }
-        return pdfDocument;
-    }
+    InputStream getInputStream();
 
     /**
-     * modify
-     *
-     * @param src
-     * @param dest
+     * Getter for the PdfDocument OutputStream
+     * @return
+     */
+    OutputStream getOutputStream();
+
+    /**
+     * Getter for the PdfDocument
      *
      * @return
      */
-    default PdfDocument getPdfDocument( String src, String dest ) {
-        PdfDocument pdfDocument = null;
-        if ( StringUtils.isNotEmpty( src ) && StringUtils.isNotEmpty( dest ) ) {
+    D getPdfDocument() throws IOException;
 
-            try {
-                pdfDocument = this.getPdfDocument( new PdfReader( src ), new PdfWriter( dest ) );
-            } catch ( IOException ioe ) {
-                ioe.printStackTrace();
-            }
-        }
-        return pdfDocument;
-    }
+    /**
+     * Setter for the PdfDocument
+     *
+     * @return
+     */
+    void setPdfDocument( D pdfDocument );
 
     /**
      * modify
@@ -83,6 +69,6 @@ public interface PdfModifer extends IPdfReader, IPdfWriter {
      *             <li>null - omitted</li>
      *         </ul>
      */
-    Boolean modify( PdfDocument pdfDocument );
+    Boolean modify( D document );
 
 }

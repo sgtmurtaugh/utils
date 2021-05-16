@@ -1,5 +1,6 @@
 package de.ckraus.commons.beans;
 
+import de.ckraus.commons.logging.Logger;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
@@ -11,6 +12,8 @@ import java.util.concurrent.ConcurrentMap;
 
 public interface Bean extends InitializingBean {
 
+    <T> Logger<T> getLogger();
+
     /**
      * Getter for configuration properties
      * @return
@@ -21,13 +24,13 @@ public interface Bean extends InitializingBean {
      * Getter for parameters
      * @return
      */
-    ConcurrentMap<String, Map.Entry<Class<? extends Object>, Object>> getParameters();
+    ConcurrentMap<String, Map.Entry<Class<?>, Object>> getParameters();
 
     /**
      * Setter for parameters
      * @param mParams
      */
-    void setParameters(ConcurrentMap<String, Map.Entry<Class<? extends Object>, Object>> mParams);
+    void setParameters(ConcurrentMap<String, Map.Entry<Class<?>, Object>> mParams);
 
     /**
      * Getter for initialization flag
@@ -114,7 +117,7 @@ public interface Bean extends InitializingBean {
      * @param mapParams
      * @return
      */
-    default Bean addParameters(Map<String, Map.Entry<Class<? extends Object>, Object>> mapParams ) {
+    default Bean addParameters(Map<String, Map.Entry<Class<?>, Object>> mapParams ) {
         if ( MapUtils.isNotEmpty( this.getParameters() ) ) {
             this.getParameters().putAll( mapParams );
         }

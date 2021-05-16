@@ -27,6 +27,9 @@
         <module>commons-logging-log4j</module>
         <module>commons-mappers</module>
         <module>commons-pdf</module>
+        <module>commons-pdf-itext</module>
+        <module>commons-pdf-pdfbox2</module>
+        <module>commons-pdf-pdfbox3</module>
         <module>services-core</module>
         <module>webcommons-core</module>
         <module>webcommons-mappers</module>

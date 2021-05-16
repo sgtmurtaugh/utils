@@ -52,7 +52,7 @@ public interface Logger<T> {
         this.doEnter();
     }
 
-    void param( String sMethod, Object oParam );
+    void param( String sMethod, String sParamName, Object oParamValue );
 
     default void returnal( String sMethod ) {
         this.doEnter();
@@ -83,8 +83,6 @@ public interface Logger<T> {
 
     void debug( String sMethod, String sMessage, Throwable throwable );
 
-    void debug( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
-
     void error( String sMethod );
 
     void error( String sMethod, String sMessage );
@@ -96,8 +94,6 @@ public interface Logger<T> {
     void error( String sMethod, String sMessage, Object... oaParams );
 
     void error( String sMethod, String sMessage, Throwable throwable );
-
-    void error( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
 
     void fatal( String sMethod );
 
@@ -111,8 +107,6 @@ public interface Logger<T> {
 
     void fatal( String sMethod, String sMessage, Throwable throwable );
 
-    void fatal( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
-
     void info( String sMethod );
 
     void info( String sMethod, String sMessage );
@@ -124,8 +118,6 @@ public interface Logger<T> {
     void info( String sMethod, String sMessage, Object... oaParams );
 
     void info( String sMethod, String sMessage, Throwable throwable );
-
-    void info( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
 
     void trace( String sMethod );
 
@@ -139,8 +131,6 @@ public interface Logger<T> {
 
     void trace( String sMethod, String sMessage, Throwable throwable );
 
-    void trace( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
-
     void verbose( String sMethod );
 
     void verbose( String sMethod, String sMessage );
@@ -153,8 +143,6 @@ public interface Logger<T> {
 
     void verbose( String sMethod, String sMessage, Throwable throwable );
 
-    void verbose( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
-
     void warn( String sMethod );
 
     void warn( String sMethod, String sMessage );
@@ -166,7 +154,5 @@ public interface Logger<T> {
     void warn( String sMethod, String sMessage, Object... oaParams );
 
     void warn( String sMethod, String sMessage, Throwable throwable );
-
-    void warn( String sMethod, String sMessage, Throwable throwable, Object... oaParams );
 
 }

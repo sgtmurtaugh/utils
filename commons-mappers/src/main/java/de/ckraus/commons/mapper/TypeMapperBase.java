@@ -11,7 +11,7 @@ import lombok.Setter;
 @SuppressWarnings( { "WeakerAccess", "javadoc" } )
 public abstract class TypeMapperBase<E> implements TypeMapper<E> {
 
-    private final static String CLASS = TypeMapperBase.class.getSimpleName();
+    private static final String CLASS = TypeMapperBase.class.getSimpleName();
     protected static Logger log = new Slf4JLogger( TypeMapperBase.class );
 
     private final E defaultValue;
@@ -23,7 +23,7 @@ public abstract class TypeMapperBase<E> implements TypeMapper<E> {
     /**
      * Constructor
      */
-    public TypeMapperBase() {
+    protected TypeMapperBase() {
         this( null );
     }
 
@@ -32,7 +32,7 @@ public abstract class TypeMapperBase<E> implements TypeMapper<E> {
      *
      * @param defaultValue
      */
-    public TypeMapperBase( E defaultValue ) {
+    protected TypeMapperBase( E defaultValue ) {
         super();
 
         this.defaultValue = defaultValue;
@@ -47,7 +47,7 @@ public abstract class TypeMapperBase<E> implements TypeMapper<E> {
      * @param bTrimStrings
      * @param bEmptyStringNull
      */
-    public TypeMapperBase( E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull ) {
+    protected TypeMapperBase( E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull ) {
         super();
 
         this.defaultValue = defaultValue;

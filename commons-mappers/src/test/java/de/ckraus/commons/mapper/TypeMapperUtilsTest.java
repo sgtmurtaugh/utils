@@ -1,5 +1,6 @@
 package de.ckraus.commons.mapper;
 
+import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

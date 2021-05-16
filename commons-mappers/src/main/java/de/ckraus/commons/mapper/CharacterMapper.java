@@ -1,5 +1,6 @@
 package de.ckraus.commons.mapper;
 
+import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
