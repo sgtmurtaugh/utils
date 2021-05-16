@@ -3,9 +3,17 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/commons/pom.xml" />
-        <option value="$PROJECT_DIR$/services/pom.xml" />
-        <option value="$PROJECT_DIR$/webcommons/pom.xml" />
+        <option value="$PROJECT_DIR$/commons-core/pom.xml" />
+        <option value="$PROJECT_DIR$/commons-logging-log4j/pom.xml" />
+        <option value="$PROJECT_DIR$/commons-mappers/pom.xml" />
+        <option value="$PROJECT_DIR$/commons-pdf/pom.xml" />
+        <option value="$PROJECT_DIR$/commons-pdf-itext5/pom.xml" />
+        <option value="$PROJECT_DIR$/commons-pdf-itext7/pom.xml" />
+        <option value="$PROJECT_DIR$/commons-pdf-pdfbox2/pom.xml" />
+        <option value="$PROJECT_DIR$/commons-pdf-pdfbox3/pom.xml" />
+        <option value="$PROJECT_DIR$/service-core/pom.xml" />
+        <option value="$PROJECT_DIR$/webcommons-core/pom.xml" />
+        <option value="$PROJECT_DIR$/webcommons-mappers/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>

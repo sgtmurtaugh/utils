@@ -2,7 +2,12 @@
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <dependency>fileset2==commons-pdf</dependency>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/commons-pdf-spring-beans.xml</file>
+        </fileset>
+      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
@@ -13,12 +18,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/prototype/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/prototype/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/prototype/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/groovy" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <content url="file://$MODULE_DIR$/src/main/java" />
-    <content url="file://$MODULE_DIR$/src/main/resources" />
-    <content url="file://$MODULE_DIR$/src/test/java" />
-    <content url="file://$MODULE_DIR$/src/test/resources" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="commons-core" />
