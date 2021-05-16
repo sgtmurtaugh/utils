@@ -4,7 +4,7 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.kernel.pdf.PdfDocument;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * <p>All modify Methods <strong>must</strong> return three different modification states for consistent handling:
@@ -68,11 +68,7 @@ public interface PdfFieldModifier extends de.ckraus.commons.pdf.PdfFieldModifier
      *         {@link #modify(PdfAcroForm)}</p>
      */
     default Boolean modify( PdfDocument pdfDocument ) {
-        Boolean bModify = null;
-        if ( null != pdfDocument ) {
-            bModify = this.modify( this.getPdfAcroForm( pdfDocument ) );
-        }
-        return bModify;
+        return this.modify( pdfDocument, this.isCreatePdfAcroFormIfNotExists() );
     }
 
     /**
@@ -85,30 +81,37 @@ public interface PdfFieldModifier extends de.ckraus.commons.pdf.PdfFieldModifier
      *         {@link PdfDocument} but delegates to {@link #modify(PdfDocument, boolean)}</p>
      */
     default Boolean modify( PdfDocument pdfDocument, boolean bCreateIfNotExists ) {
-
-        Boolean bModify = null;
+        Boolean bSuccess = null;
         if ( null != pdfDocument ) {
-            bModify = this.modify( this.getPdfAcroForm( pdfDocument, bCreateIfNotExists ) );
+            PdfAcroForm pdfAcroForm = PdfAcroForm.getAcroForm( pdfDocument, bCreateIfNotExists );
+            bSuccess = this.modify( pdfAcroForm );
         }
-        return bModify;
+        return bSuccess;
     }
-
-    /**
-     * modify
-     *
-     * @param pdfAcroForm
-     *
-     * @return <p>This method must be implemented individually.</p>
-     */
-    Boolean modify( PdfAcroForm pdfAcroForm );
 
     /**
      * <p>This method must be implemented individually.</p>
      *
-     * @param lstPDFields
+     * @param pdfAcroForm
      *
      * @return
      */
-    Boolean modifyFields( List<PdfFormField> lstPDFields );
+    default Boolean modify( PdfAcroForm pdfAcroForm ) {
+        Boolean bSuccess = null;
+        if ( null != pdfAcroForm ) {
+            Map<String, PdfFormField> lstPdfFormFields = pdfAcroForm.getFormFields();
+            bSuccess = this.modifyFields( lstPdfFormFields );;
+        }
+        return bSuccess;
+    }
+
+    /**
+     * <p>TODO:This method must be implemented individually.</p>
+     *
+     * @param lstPdfFormFields
+     *
+     * @return
+     */
+    Boolean modifyFields( Map<String, PdfFormField> lstPdfFormFields );
 
 }

@@ -1,6 +1,7 @@
 package de.ckraus.commons.pdf.itext.modifier;
 
-import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import de.ckraus.commons.pdf.PdfModifierBase;
 import lombok.Getter;
 import lombok.NonNull;
@@ -11,6 +12,12 @@ import java.io.*;
 @Getter
 @Setter
 public class PdfModifierImpl extends PdfModifierBase<PdfDocument> implements PdfModifer {
+
+    private PdfReader pdfReader;
+    private PdfWriter pdfWriter;
+
+    private ReaderProperties readerProperties;
+    private WriterProperties writerProperties;
 
     /**
      * Constructor
@@ -41,7 +48,6 @@ public class PdfModifierImpl extends PdfModifierBase<PdfDocument> implements Pdf
 
     @Override
     public Boolean modify(PdfDocument document) {
-        //TODO
         return null;
     }
 }

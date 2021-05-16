@@ -3,6 +3,7 @@ package de.ckraus.commons.beans;
 import de.ckraus.commons.logging.Logger;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.beans.factory.InitializingBean;
 
 import java.util.Map;
@@ -47,8 +48,9 @@ public interface Bean extends InitializingBean {
     /**
      * Delegates to {@link #initialize(boolean)} with {@code null} value.
      * @return
+     * @throws BeanInitializationException
      */
-    default boolean initialize() {
+    default boolean initialize() throws BeanInitializationException {
         return initialize(false);
     }
 
@@ -57,8 +59,9 @@ public interface Bean extends InitializingBean {
      * wether the initialization was successful or not.
      * @param bReinitialization
      * @return
+     * @throws BeanInitializationException
      */
-    default boolean initialize( boolean bReinitialization ) {
+    default boolean initialize( boolean bReinitialization ) throws BeanInitializationException {
         if ( !this.isInitialized() ) {
             this.setInitialized( true );
         }

@@ -1,6 +1,7 @@
 package de.ckraus.commons.pdf;
 
 import de.ckraus.commons.beans.Bean;
+import org.springframework.beans.factory.BeanInitializationException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,9 +25,14 @@ public interface PdfModifer<D> extends Bean {
     boolean initializePdfDocument() throws IOException;
 
     @Override
-    default boolean initialize( boolean bReinitialization ) {
+    default boolean initialize( boolean bReinitialization ) throws BeanInitializationException {
         if ( Bean.super.initialize( bReinitialization ) ) {
-            this.initializePdfDocument();
+            try {
+                this.initializePdfDocument();
+            }
+            catch (IOException ioe) {
+                throw new BeanInitializationException("The initialization of the PdfDocument failed.", ioe);
+            }
         }
         return bReinitialization;
     }
@@ -58,17 +64,17 @@ public interface PdfModifer<D> extends Bean {
     void setPdfDocument( D pdfDocument );
 
     /**
-     * modify
+     * <p>Returns three different modification states:
+     * <ul>
+     *   <li>true - succeeded</li>
+     *   <li>false - failed</li>
+     *   <li>null - omitted</li>
+     * </ul>
      *
      * @param pdfDocument
      *
-     * @return <p>Returns three different modification states:
-     *         <ul>
-     *             <li>true - succeeded</li>
-     *             <li>false - failed</li>
-     *             <li>null - omitted</li>
-     *         </ul>
+     * @return
      */
-    Boolean modify( D document );
+    Boolean modify( D pdfDocument );
 
 }

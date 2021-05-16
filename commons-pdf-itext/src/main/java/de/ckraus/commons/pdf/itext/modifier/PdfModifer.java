@@ -81,6 +81,8 @@ public interface PdfModifer extends de.ckraus.commons.pdf.PdfModifer<PdfDocument
      *             <li>null - omitted</li>
      *         </ul>
      */
-    Boolean modify( PdfDocument pdfDocument );
+    default Boolean modify( PdfDocument pdfDocument ) {
+        return null;
+    }
 
 }

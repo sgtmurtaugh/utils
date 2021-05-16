@@ -1,5 +1,7 @@
 package de.ckraus.commons.beans;
 
+import org.springframework.beans.factory.BeanInitializationException;
+
 public interface ResetableBean extends Bean {
 
     /**
@@ -7,8 +9,9 @@ public interface ResetableBean extends Bean {
      * wether the initialization was successful or not.
      * @param bReinitialization
      * @return
+     * @throws BeanInitializationException
      */
-    default boolean initialize( boolean bReinitialization ) {
+    default boolean initialize( boolean bReinitialization ) throws BeanInitializationException {
         if ( bReinitialization ) {
             this.reset();
         }
