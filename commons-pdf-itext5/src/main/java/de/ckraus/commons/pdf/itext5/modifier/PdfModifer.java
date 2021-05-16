@@ -1,7 +1,10 @@
 package de.ckraus.commons.pdf.itext5.modifier;
 
-import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.pdf.PdfWriter;
+
+import com.itextpdf.text.pdf.PdfDocument;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.ReaderProperties;
 
 import java.io.IOException;
 

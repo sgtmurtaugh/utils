@@ -15,18 +15,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <content url="file://$MODULE_DIR$/../commons-pdf-itext7/src/main/java">
-      <sourceFolder url="file://$MODULE_DIR$/../commons-pdf-itext7/src/main/java" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../commons-pdf-itext7/src/main/resources">
-      <sourceFolder url="file://$MODULE_DIR$/../commons-pdf-itext7/src/main/resources" type="java-resource" />
-    </content>
-    <content url="file://$MODULE_DIR$/../commons-pdf-itext7/src/test/java">
-      <sourceFolder url="file://$MODULE_DIR$/../commons-pdf-itext7/src/test/java" isTestSource="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../commons-pdf-itext7/src/test/resources">
-      <sourceFolder url="file://$MODULE_DIR$/../commons-pdf-itext7/src/test/resources" type="java-test-resource" />
-    </content>
+    <content url="file://$MODULE_DIR$/src/main/java" />
+    <content url="file://$MODULE_DIR$/src/main/resources" />
+    <content url="file://$MODULE_DIR$/src/test/java" />
+    <content url="file://$MODULE_DIR$/src/test/resources" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="commons-core" />
