@@ -21,7 +21,7 @@ public class TypeMapperUtils {
 
     private static TypeMapperUtils instance = null;
 
-    private ConcurrentMap<Class<? extends TypeMapper<?>>, TypeMapper<?>> mapRegistredTypeMappers = null;
+    private ConcurrentMap<Class<? extends TypeMapper>, TypeMapper<?>> mapRegistredTypeMappers = null;
 
     private DefaultTypeMappers defaultTypeMappers = null;
 
@@ -90,7 +90,7 @@ public class TypeMapperUtils {
      *
      * @return
      */
-    public ConcurrentMap<Class<? extends TypeMapper<?>>, TypeMapper<?>> getRegisteredTypeMappers() {
+    public ConcurrentMap<Class<? extends TypeMapper>, TypeMapper<?>> getRegisteredTypeMappers() {
         if ( null == mapRegistredTypeMappers ) {
             //            this.setRegisteredTypeMappers(
             //                    new ConcurrentHashMap<>()
@@ -108,7 +108,7 @@ public class TypeMapperUtils {
      *
      * @param mapMappers
      */
-    private void setRegisteredTypeMappers( ConcurrentMap<Class<? extends TypeMapper<?>>, TypeMapper<?>> mapMappers ) {
+    private void setRegisteredTypeMappers( ConcurrentMap<Class<? extends TypeMapper>, TypeMapper<?>> mapMappers ) {
         this.mapRegistredTypeMappers = mapMappers;
     }
 

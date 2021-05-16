@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/commons-logging-log4j/commons-logging-log4j.iml" filepath="$PROJECT_DIR$/commons-logging-log4j/commons-logging-log4j.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-mappers/commons-mappers.iml" filepath="$PROJECT_DIR$/commons-mappers/commons-mappers.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-pdf/commons-pdf.iml" filepath="$PROJECT_DIR$/commons-pdf/commons-pdf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons-pdf-itext5/commons-pdf-itext5.iml" filepath="$PROJECT_DIR$/commons-pdf-itext5/commons-pdf-itext5.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-pdf-itext/commons-pdf-itext7.iml" filepath="$PROJECT_DIR$/commons-pdf-itext/commons-pdf-itext7.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-pdf-pdfbox2/commons-pdf-pdfbox2.iml" filepath="$PROJECT_DIR$/commons-pdf-pdfbox2/commons-pdf-pdfbox2.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-pdf-pdfbox3/commons-pdf-pdfbox3.iml" filepath="$PROJECT_DIR$/commons-pdf-pdfbox3/commons-pdf-pdfbox3.iml" />

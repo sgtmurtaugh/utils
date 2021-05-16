@@ -23,7 +23,7 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>commons-pdf-itext</artifactId>
+    <artifactId>commons-pdf-itext7</artifactId>
     <version>0.0.1</version>
 
     <dependencies>
@@ -41,50 +41,90 @@
 
         <dependency>
             <groupId>com.itextpdf</groupId>
-            <artifactId>kernel</artifactId>
-            <version>7.1.2</version>
+            <artifactId>barcodes</artifactId>
+            <version>7.1.15</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext7-core -->
         <dependency>
             <groupId>com.itextpdf</groupId>
-            <artifactId>layout</artifactId>
-            <version>7.1.2</version>
+            <artifactId>itext7-core</artifactId>
+            <version>7.1.15</version>
+            <type>pom</type>
         </dependency>
 
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>forms</artifactId>
-            <version>7.1.2</version>
+            <version>7.1.15</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/html2pdf -->
         <dependency>
             <groupId>com.itextpdf</groupId>
-            <artifactId>barcodes</artifactId>
-            <version>7.1.2</version>
+            <artifactId>html2pdf</artifactId>
+            <version>3.0.4</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/hyph -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>hyph</artifactId>
+            <version>7.1.15</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>io</artifactId>
-            <version>7.1.2</version>
+            <version>7.1.15</version>
         </dependency>
 
         <dependency>
             <groupId>com.itextpdf</groupId>
-            <artifactId>sign</artifactId>
-            <version>7.1.2</version>
+            <artifactId>kernel</artifactId>
+            <version>7.1.15</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>layout</artifactId>
+            <version>7.1.15</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/pdfxfa -->
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>pdfa</artifactId>
-            <version>7.1.2</version>
+            <version>7.1.15</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/pdftest -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>pdftest</artifactId>
+            <version>7.1.15</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>sign</artifactId>
-            <version>7.1.2</version>
+            <version>7.1.15</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/styled-xml-parser -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>styled-xml-parser</artifactId>
+            <version>7.1.15</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/svg -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>svg</artifactId>
+            <version>7.1.15</version>
         </dependency>
     </dependencies>
 </project>
