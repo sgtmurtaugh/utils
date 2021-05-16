@@ -13,9 +13,9 @@ import java.util.concurrent.ConcurrentMap;
  */
 @Getter
 @Setter
-public abstract class BeanBase implements Bean {
+public abstract class AbstractBeanBase implements Bean {
 
-    private Slf4JLogger logger = new Slf4JLogger(BeanBase.class);
+    private Slf4JLogger logger = new Slf4JLogger(AbstractBeanBase.class);
     private boolean initialized;
     private Properties properties;
     private ConcurrentMap<String, Map.Entry<Class<?>, Object>> parameters;
@@ -23,7 +23,7 @@ public abstract class BeanBase implements Bean {
     /**
      * Constructor
      */
-    protected BeanBase() {
+    protected AbstractBeanBase() {
         super();
     }
 

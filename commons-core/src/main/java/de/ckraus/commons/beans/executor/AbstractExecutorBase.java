@@ -1,6 +1,6 @@
 package de.ckraus.commons.beans.executor;
 
-import de.ckraus.commons.beans.BeanBase;
+import de.ckraus.commons.beans.AbstractBeanBase;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter( AccessLevel.PROTECTED )
-public abstract class ExecutorBase<O> extends BeanBase implements Executor<O> {
+public abstract class AbstractExecutorBase<O> extends AbstractBeanBase implements Executor<O> {
 
     private boolean executed;
     private boolean executedSuccessful;

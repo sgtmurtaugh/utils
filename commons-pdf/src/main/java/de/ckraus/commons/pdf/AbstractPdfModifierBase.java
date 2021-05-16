@@ -1,6 +1,6 @@
 package de.ckraus.commons.pdf;
 
-import de.ckraus.commons.beans.BeanBase;
+import de.ckraus.commons.beans.AbstractBeanBase;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import java.io.*;
 
 @Getter
 @Setter
-public abstract class PdfModifierBase<D> extends BeanBase implements PdfModifer<D> {
+public abstract class AbstractPdfModifierBase<D> extends AbstractBeanBase implements PdfModifer<D> {
 
     private InputStream inputStream;
     private OutputStream outputStream;
@@ -21,7 +21,7 @@ public abstract class PdfModifierBase<D> extends BeanBase implements PdfModifer<
      * @param is
      * @param os
      */
-    protected PdfModifierBase(InputStream is, OutputStream os) {
+    protected AbstractPdfModifierBase(InputStream is, OutputStream os) {
         super();
         this.setInputStream( is );
         this.setOutputStream( os );
@@ -32,7 +32,7 @@ public abstract class PdfModifierBase<D> extends BeanBase implements PdfModifer<
      * @param in
      * @param out
      */
-    protected PdfModifierBase(@NonNull File in, @NonNull File out) throws FileNotFoundException {
+    protected AbstractPdfModifierBase(@NonNull File in, @NonNull File out) throws FileNotFoundException {
         super();
         this.setInputStream( new FileInputStream( in ) );
         this.setOutputStream( new FileOutputStream( out ) );
@@ -43,7 +43,7 @@ public abstract class PdfModifierBase<D> extends BeanBase implements PdfModifer<
      * @param src
      * @param dest
      */
-    protected PdfModifierBase(String src, String dest) throws FileNotFoundException {
+    protected AbstractPdfModifierBase(String src, String dest) throws FileNotFoundException {
         super();
         this.setInputStream( new FileInputStream( src ) );
         this.setOutputStream( new FileOutputStream( dest ) );

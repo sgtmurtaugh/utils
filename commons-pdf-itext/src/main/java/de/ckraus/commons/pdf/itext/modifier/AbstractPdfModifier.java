@@ -2,7 +2,7 @@ package de.ckraus.commons.pdf.itext.modifier;
 
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import de.ckraus.commons.pdf.PdfModifierBase;
+import de.ckraus.commons.pdf.AbstractPdfModifierBase;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import java.io.*;
 
 @Getter
 @Setter
-public class PdfModifierImpl extends PdfModifierBase<PdfDocument> implements PdfModifer {
+public abstract class AbstractPdfModifier extends AbstractPdfModifierBase<PdfDocument> implements PdfModifer {
 
     private PdfReader pdfReader;
     private PdfWriter pdfWriter;
@@ -24,7 +24,7 @@ public class PdfModifierImpl extends PdfModifierBase<PdfDocument> implements Pdf
      * @param is
      * @param os
      */
-    protected PdfModifierImpl(InputStream is, OutputStream os) {
+    protected AbstractPdfModifier(InputStream is, OutputStream os) {
         super(is, os);
     }
 
@@ -33,7 +33,7 @@ public class PdfModifierImpl extends PdfModifierBase<PdfDocument> implements Pdf
      * @param in
      * @param out
      */
-    protected PdfModifierImpl(@NonNull File in, @NonNull File out) throws FileNotFoundException {
+    protected AbstractPdfModifier(@NonNull File in, @NonNull File out) throws FileNotFoundException {
         super(in, out);
     }
 
@@ -42,7 +42,7 @@ public class PdfModifierImpl extends PdfModifierBase<PdfDocument> implements Pdf
      * @param src
      * @param dest
      */
-    protected PdfModifierImpl(String src, String dest) throws FileNotFoundException {
+    protected AbstractPdfModifier(String src, String dest) throws FileNotFoundException {
         super(src, dest);
     }
 
