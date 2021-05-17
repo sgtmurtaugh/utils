@@ -1,9 +1,10 @@
 package de.ckraus.commons.pdf.itext2.modifier;
 
+import com.lowagie.text.pdf.PdfAcroForm;
+import com.lowagie.text.pdf.PdfDocument;
+import com.lowagie.text.pdf.PdfFormField;
 
-import com.itextpdf.text.pdf.PdfAcroForm;
-import com.itextpdf.text.pdf.PdfDocument;
-import com.itextpdf.text.pdf.PdfFormField;
+import java.util.Map;
 
 /**
  * <p>All modify Methods <strong>must</strong> return three different modification states for consistent handling:

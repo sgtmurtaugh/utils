@@ -23,7 +23,7 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>commons-pdf-itext3</artifactId>
+    <artifactId>commons-pdf-itext4</artifactId>
     <version>0.0.1</version>
 
     <dependencies>
@@ -39,32 +39,12 @@
             <version>0.0.1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+        <!-- https://mvnrepository.com/artifact/com.lowagie/itext -->
         <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itextpdf</artifactId>
-            <version>5.5.13.2</version>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>4.2.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-pdfa -->
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itext-pdfa</artifactId>
-            <version>5.5.13.2</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-hyph-xml -->
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itext-hyph-xml</artifactId>
-            <version>5.1.1</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-xtra -->
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itext-xtra</artifactId>
-            <version>5.5.13.2</version>
-        </dependency>
     </dependencies>
 </project>

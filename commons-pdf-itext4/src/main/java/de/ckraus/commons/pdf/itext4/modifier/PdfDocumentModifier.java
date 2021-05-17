@@ -1,4 +1,4 @@
-package de.ckraus.commons.pdf.itext2.modifier;
+package de.ckraus.commons.pdf.itext4.modifier;
 
 /**
  * <p>All modify Methods <strong>must</strong> return three different modification states for consistent handling:

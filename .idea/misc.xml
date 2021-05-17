@@ -14,6 +14,7 @@
         <option value="$PROJECT_DIR$/webcommons-core/pom.xml" />
         <option value="$PROJECT_DIR$/webcommons-mappers/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/commons-pdf-itext4/pom.xml" />
       </list>
     </option>
   </component>

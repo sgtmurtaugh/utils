@@ -1,7 +1,8 @@
-package de.ckraus.commons.pdf.itext2.modifier;
+package de.ckraus.commons.pdf.itext4.modifier;
 
-import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.text.pdf.PdfDocument;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfWriter;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -14,9 +15,6 @@ public abstract class PdfModifierBase extends de.ckraus.commons.pdf.PdfModifierB
 
     private PdfReader pdfReader;
     private PdfWriter pdfWriter;
-
-    private ReaderProperties readerProperties;
-    private WriterProperties writerProperties;
 
     /**
      * Constructor
