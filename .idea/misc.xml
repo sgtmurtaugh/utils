@@ -7,7 +7,6 @@
         <option value="$PROJECT_DIR$/commons-logging-log4j/pom.xml" />
         <option value="$PROJECT_DIR$/commons-mappers/pom.xml" />
         <option value="$PROJECT_DIR$/commons-pdf/pom.xml" />
-        <option value="$PROJECT_DIR$/commons-pdf-itext5/pom.xml" />
         <option value="$PROJECT_DIR$/commons-pdf-itext7/pom.xml" />
         <option value="$PROJECT_DIR$/commons-pdf-pdfbox2/pom.xml" />
         <option value="$PROJECT_DIR$/commons-pdf-pdfbox3/pom.xml" />
