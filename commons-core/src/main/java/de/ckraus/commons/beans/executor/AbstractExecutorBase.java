@@ -10,7 +10,7 @@ import lombok.Setter;
  * @param <O> - return type of this executor
  */
 @Getter
-@Setter( AccessLevel.PROTECTED )
+@Setter
 public abstract class AbstractExecutorBase<O> extends AbstractBeanBase implements Executor<O> {
 
     private boolean executed;

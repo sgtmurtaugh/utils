@@ -10,15 +10,15 @@ class TypeMapperUtilsTest {
 
     TypeMapperUtils typeMapperUtils;
 
-    @BeforeEach
-    public void initializeTest() {
-        typeMapperUtils = TypeMapperUtils.getInstance();
-    }
+//    @BeforeEach
+//    public void initializeTest() {
+//        typeMapperUtils = TypeMapperUtils.getInstance();
+//    }
 
-    @Test
-    void initializationSuccessful() {
-        assertNotNull( typeMapperUtils );
-    }
+//    @Test
+//    void initializationSuccessful() {
+//        assertNotNull( typeMapperUtils );
+//    }
 
     @Test
     void getRegistered() {

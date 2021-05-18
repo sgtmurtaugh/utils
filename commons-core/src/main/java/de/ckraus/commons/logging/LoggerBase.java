@@ -14,7 +14,7 @@ import org.apache.commons.lang3.StringUtils;
  *   <li>{@code [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} : ${METHOD_PARAMS} ${EXCEPTION}}</li>
  * </ul>
  */
-@Getter( AccessLevel.PROTECTED )
+@Getter( AccessLevel.PUBLIC )
 @Setter( AccessLevel.PROTECTED )
 public abstract class LoggerBase<T> implements Logger<T> {
 
@@ -24,6 +24,7 @@ public abstract class LoggerBase<T> implements Logger<T> {
     protected static final String METHOD_INDENT = " ";
     protected static final String METHOD_PARAM = " ";
 
+    @Setter( AccessLevel.PUBLIC )
     private int indent = 0;
 
     @Setter( AccessLevel.NONE )
