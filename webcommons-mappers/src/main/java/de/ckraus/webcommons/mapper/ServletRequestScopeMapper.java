@@ -1,5 +1,6 @@
-package de.ckraus.webcommons.http.mapper;
+package de.ckraus.webcommons.mapper;
 
+import de.ckraus.commons.mapper.StringMapper;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -7,9 +8,11 @@ import org.apache.commons.lang3.StringUtils;
 import javax.servlet.ServletRequest;
 
 @SuppressWarnings({ "javadoc", "unused", "WeakerAccess" })
-public interface RequestScopeMapper extends ScopeMapper {
+public interface ServletRequestScopeMapper extends ScopeMapper<ServletRequest> {
 
-    ServletRequest getRequest();
+    default ServletRequest getRequest() {
+        this.getScope();
+    }
 
     /**
      * hasParameter
@@ -17,6 +20,11 @@ public interface RequestScopeMapper extends ScopeMapper {
      * @return
      */
     default boolean hasParameter(String key) {
+        StringMapper stringMapper = TypeMapperUtils.getDefaults().getStringMapper();
+
+        if ( null != stringMapper ) {
+
+        }
         return this.hasParameter(key, TypeMapperUtils.getDefaults().getStringMapper().isTrimStrings(),
                 TypeMapperUtils.getDefaults().getStringMapper().isEmptyStringNull());
     }

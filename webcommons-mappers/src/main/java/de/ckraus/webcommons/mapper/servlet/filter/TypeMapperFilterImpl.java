@@ -1,4 +1,7 @@
-package de.ckraus.webcommons.http.mapper;
+package de.ckraus.webcommons.mapper.servlet.filter;
+
+import de.ckraus.webcommons.mapper.servlet.http.TypeMapperHttpServletRequestFacade;
+import de.ckraus.webcommons.mapper.servlet.TypeMapperServletRequestFacade;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -29,13 +32,13 @@ public class TypeMapperFilterImpl implements Filter {
 
         if ( servletRequest instanceof HttpServletRequest) {
             filterChain.doFilter(
-                    new TypeMapperHttpServletRequestImpl( (HttpServletRequest) servletRequest ),
+                    new TypeMapperHttpServletRequestFacade( (HttpServletRequest) servletRequest ),
                     servletResponse
             );
         }
         else {
             filterChain.doFilter(
-                    new TypeMapperServletRequestImpl( servletRequest ),
+                    new TypeMapperServletRequestFacade( servletRequest ),
                     servletResponse
             );
         }

@@ -1,4 +1,4 @@
-package de.ckraus.webcommons.http.mapper;
+package de.ckraus.webcommons.mapper.servlet.http;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -6,19 +6,19 @@ import javax.servlet.http.HttpSessionContext;
 import java.util.Enumeration;
 
 @SuppressWarnings({ "unused", "javadoc", "WeakerAccess" })
-public class TypeMapperHttpSessionImpl implements HttpSession {
+public class TypeMapperHttpSessionFacade extends HttpSession implements TypeMapperHttpSession {
 
-    private HttpSession httpSession;
+    private TypeMapperHttpSession typeMapperHttpSession;
 
     /**
      * Constructor
      * @param httpSession
      */
-    public TypeMapperHttpSessionImpl( HttpSession httpSession ) {
+    public TypeMapperHttpSessionFacade( TypeMapperHttpSession typeMapperHttpSession ) {
         super();
 
-        if ( null != httpSession ) {
-            this.httpSession = httpSession;
+        if ( null != typeMapperHttpSession ) {
+            this.typeMapperHttpSession = typeMapperHttpSession;
         }
         else {
             throw new IllegalArgumentException( "session parameter must not be null!" );
@@ -29,8 +29,8 @@ public class TypeMapperHttpSessionImpl implements HttpSession {
      * getHttpSession
      * @return
      */
-    public HttpSession getHttpSession() {
-        return this.httpSession;
+    public TypeMapperHttpSession getHttpSession() {
+        return this.typeMapperHttpSession;
     }
 
     public long getCreationTime() {
