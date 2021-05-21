@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSessionContext;
 import java.util.Enumeration;
 
 @SuppressWarnings({ "unused", "javadoc", "WeakerAccess" })
-public class TypeMapperHttpSessionFacade extends HttpSession implements TypeMapperHttpSession {
+public class TypeMapperHttpSessionFacade implements TypeMapperHttpSession {
 
     private TypeMapperHttpSession typeMapperHttpSession;
 
