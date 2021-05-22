@@ -1,6 +1,5 @@
 package de.ckraus.commons.mapper;
 
-@SuppressWarnings( { "javadoc" } )
 public interface FloatMapper extends NumericTypeMapper<Float> {
 
     @Override

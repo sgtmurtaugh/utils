@@ -1,6 +1,5 @@
 package de.ckraus.commons.mapper;
 
-@SuppressWarnings( { "javadoc" } )
 public interface ByteMapper extends NumericTypeMapper<Byte> {
 
     @Override

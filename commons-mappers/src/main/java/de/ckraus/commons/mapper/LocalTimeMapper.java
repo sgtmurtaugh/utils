@@ -11,6 +11,29 @@ import java.time.format.FormatStyle;
 public interface LocalTimeMapper extends TemporalTypeMapper<LocalTime> {
 
     /**
+     * mapObject
+     *
+     * @param obj
+     * @param defaultValue
+     * @return
+     */
+    @Override
+    default LocalTime mapObject(Object obj, LocalTime defaultValue) {
+        LocalTime e;
+
+        if (null == obj) {
+            e = defaultValue;
+        } else if (obj instanceof LocalTime) {
+            e = this.map((LocalTime) obj, defaultValue);
+        } else if (obj instanceof String) {
+            e = this.map((String) obj, defaultValue);
+        } else {
+            e = this.map(obj.toString(), defaultValue);
+        }
+        return e;
+    }
+
+    /**
      * map
      *
      * @param s
@@ -41,16 +64,14 @@ public interface LocalTimeMapper extends TemporalTypeMapper<LocalTime> {
      */
     @Override
     default LocalTime map( String s, DateTimeFormatter formatter, LocalTime defaultValue ) {
-        LocalTime localTime = defaultValue;
-        String preparedString = this.prepare( s, this.isTrimStrings(), this.isEmptyStringNull() );
+        var localTime = defaultValue;
+        var preparedString = this.prepare( s, this.isTrimStrings(), this.isEmptyStringNull() );
 
-        if ( StringUtils.isNotEmpty( preparedString ) ) {
-            if ( null != formatter ) {
-                try {
-                    localTime = LocalTime.parse( preparedString, formatter );
-                } catch ( DateTimeParseException e ) {
-                    e.printStackTrace();
-                }
+        if ( StringUtils.isNotEmpty( preparedString ) && null != formatter ) {
+            try {
+                localTime = LocalTime.parse( preparedString, formatter );
+            } catch ( DateTimeParseException e ) {
+                e.printStackTrace();
             }
         }
         return localTime;

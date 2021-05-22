@@ -8,19 +8,19 @@ import java.util.GregorianCalendar;
 public interface GregorianCalendarMapperServletRequest extends ServletRequest {
 
     default GregorianCalendar getGregorianCalendarParameter(String name) {
-        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().map((String) this.getAttribute( name ));
+        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().map(this.getParameter( name ));
     }
 
     default GregorianCalendar getGregorianCalendarParameter(String name, GregorianCalendar defaultValue) {
-        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().map((String) this.getAttribute( name ), defaultValue);
+        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().map(this.getParameter( name ), defaultValue);
     }
 
     default GregorianCalendar getGregorianCalendarParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().map((String) this.getAttribute( name ), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().map(this.getParameter( name ), bTrim, bEmptyIsNull);
     }
 
     default GregorianCalendar getGregorianCalendarParameter(String name, boolean bTrim, boolean bEmptyIsNull, GregorianCalendar defaultValue) {
-        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().map((String) this.getAttribute( name ), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().map(this.getParameter( name ), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

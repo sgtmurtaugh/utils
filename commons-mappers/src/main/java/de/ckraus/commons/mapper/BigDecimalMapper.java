@@ -2,7 +2,6 @@ package de.ckraus.commons.mapper;
 
 import java.math.BigDecimal;
 
-@SuppressWarnings( { "javadoc" } )
 public interface BigDecimalMapper extends NumericTypeMapper<BigDecimal> {
 
     @Override

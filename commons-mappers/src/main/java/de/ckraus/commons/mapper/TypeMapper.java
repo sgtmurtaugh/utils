@@ -1,5 +1,8 @@
 package de.ckraus.commons.mapper;
 
+import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Map;
 import java.util.function.Predicate;
 
@@ -54,10 +57,8 @@ public interface TypeMapper<E> {
             if ( bTrim ) {
                 sRetVal = sRetVal.trim();
             }
-            if ( bEmptyIsNull ) {
-                if ( sRetVal.isEmpty() ) {
-                    sRetVal = null;
-                }
+            if ( bEmptyIsNull && sRetVal.isEmpty() ) {
+                sRetVal = null;
             }
 
         }
@@ -72,7 +73,7 @@ public interface TypeMapper<E> {
      * @param <T>
      */
     default <T> boolean evalPredicate( Predicate<T> predicate, T t ) {
-        boolean bSuccess = false;
+        var bSuccess = false;
 
         if ( null != predicate ) {
             bSuccess = predicate.test( t );
@@ -98,6 +99,38 @@ public interface TypeMapper<E> {
             bIsMappable = this.isMappable( o.toString() );
         }
         return bIsMappable;
+    }
+
+    /**
+     * mapObject
+     *
+     * @param obj
+     *
+     * @return
+     */
+    default E mapObject( Object obj ) {
+        return this.mapObject( obj, this.getDefaultValue() );
+    }
+
+    /**
+     * mapObject
+     *
+     * @param obj
+     * @param defaultValue
+     *
+     * @return
+     */
+    default E mapObject( Object obj, E defaultValue ) {
+        E e;
+
+        if ( null == obj ) {
+            e = defaultValue;
+        } else if ( obj instanceof String ) {
+            e = this.map( ( String ) obj, defaultValue );
+        } else {
+            e = this.map( obj.toString(), defaultValue );
+        }
+        return e;
     }
 
     /**
@@ -128,14 +161,10 @@ public interface TypeMapper<E> {
      * @return
      */
     default E map( Map<String, ?> map, String key, E defaultValue ) {
-        E retVal = defaultValue;
+        var retVal = defaultValue;
 
-        if ( null != map ) {
-            if ( null != key ) {
-                if ( map.containsKey( key ) ) {
-                    retVal = this.map( map.get( key ), defaultValue );
-                }
-            }
+        if (MapUtils.isNotEmpty(map) && StringUtils.isNotEmpty(key) && map.containsKey(key)) {
+            retVal = this.mapObject( map.get( key ), defaultValue );
         }
         return retVal;
     }
@@ -143,33 +172,26 @@ public interface TypeMapper<E> {
     /**
      * map
      *
-     * @param obj
+     * @param e
      *
      * @return
      */
-    default E map( Object obj ) {
-        return this.map( obj, this.getDefaultValue() );
+    default E map( E e ) {
+        return this.map( e, this.getDefaultValue() );
     }
 
     /**
      * map
      *
-     * @param obj
+     * @param e
      * @param defaultValue
      *
      * @return
      */
-    default E map( Object obj, E defaultValue ) {
-        E e;
-
-        if ( null == obj ) {
-            e = defaultValue;
-        } else if ( obj instanceof String ) {
-            e = this.map( ( String ) obj, defaultValue );
-        } else {
-            e = this.map( obj.toString(), defaultValue );
-        }
-        return e;
+    default E map( E e, E defaultValue ) {
+        return ( null != e
+                ? e
+                : defaultValue );
     }
 
     /**

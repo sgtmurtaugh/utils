@@ -1,10 +1,12 @@
 package de.ckraus.commons.mapper;
 
+import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
 import java.util.Map;
@@ -99,9 +101,9 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
         DecimalFormat decimalFormat;
 
         if ( null == locale ) {
-            decimalFormat = ( DecimalFormat ) DecimalFormat.getInstance();
+            decimalFormat = ( DecimalFormat ) NumberFormat.getInstance();
         } else {
-            decimalFormat = ( DecimalFormat ) DecimalFormat.getInstance( locale );
+            decimalFormat = ( DecimalFormat ) NumberFormat.getInstance( locale );
         }
 
         if ( StringUtils.isNotEmpty( sPattern ) ) {
@@ -112,6 +114,29 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
             decimalFormat.setDecimalFormatSymbols( decimalFormatSymbols );
         }
         return decimalFormat;
+    }
+
+    /**
+     * mapObject
+     *
+     * @param obj
+     * @param defaultValue
+     * @return
+     */
+    @Override
+    default E mapObject(Object obj, E defaultValue) {
+        E e;
+
+        if (null == obj) {
+            e = defaultValue;
+        } else if (obj instanceof Number) {
+            e = this.map((Number) obj, defaultValue);
+        } else if (obj instanceof String) {
+            e = this.map((String) obj, defaultValue);
+        } else {
+            e = this.map(obj.toString(), defaultValue);
+        }
+        return e;
     }
 
     /**
@@ -216,6 +241,7 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
      *
      * @return
      */
+    @Override
     default E map( Map<String, ?> map, String key, E defaultValue ) {
         return this.map( map, key, ( Locale ) null, defaultValue );
     }
@@ -228,6 +254,7 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
      *
      * @return the unformatted Number-String as Number otherwise the default value
      */
+    @Override
     default E map( String sNumber ) {
         return this.map( sNumber, ( Locale ) null );
     }
@@ -242,6 +269,7 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
      *
      * @return the unformatted Number-String as Number otherwise the default value
      */
+    @Override
     default E map( String sNumber, E defaultValue ) {
         return this.map( sNumber, ( Locale ) null, defaultValue );
     }
@@ -368,24 +396,20 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
      */
     default E map( Map<String, ?> map, String key, Locale locale, String sPattern,
             DecimalFormatSymbols decimalFormatSymbols, E defaultValue ) {
-        E retVal = defaultValue;
+        var retVal = defaultValue;
 
-        if ( null != map ) {
-            if ( null != key ) {
-                if ( map.containsKey( key ) ) {
-                    Object o = map.get( key );
-                    String s = null;
+        if (MapUtils.isNotEmpty(map) && StringUtils.isNotEmpty(key) && map.containsKey(key)) {
+            Object o = map.get( key );
+            String s = null;
 
-                    if ( o instanceof Number ) {
-                        retVal = this.map( ( Number ) o, defaultValue );
-                    } else {
-                        if ( o != null ) {
-                            s = o.toString();
-                        }
-
-                        retVal = this.map( s, locale, sPattern, decimalFormatSymbols, defaultValue );
-                    }
+            if ( o instanceof Number ) {
+                retVal = this.map( ( Number ) o, defaultValue );
+            } else {
+                if ( o != null ) {
+                    s = o.toString();
                 }
+
+                retVal = this.map( s, locale, sPattern, decimalFormatSymbols, defaultValue );
             }
         }
         return retVal;
@@ -412,7 +436,7 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
      * @return returns the typed Number otherwise the default value
      */
     default E map( Number number, E defaultValue ) {
-        E returnValue = defaultValue;
+        var returnValue = defaultValue;
 
         if ( null != number ) {
             returnValue = this.toType( number );
@@ -777,21 +801,21 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
      */
     default E unformat( String sNumber, Locale locale, String sPattern, DecimalFormatSymbols decimalFormatSymbols,
             E defaultValue ) {
-        E returnValue = defaultValue;
-        String preparedString = this.prepare( sNumber, this.isTrimStrings(), this.isEmptyStringNull() );
+        var returnValue = defaultValue;
+        var preparedString = this.prepare( sNumber, this.isTrimStrings(), this.isEmptyStringNull() );
 
         if ( StringUtils.isNotEmpty( preparedString ) ) {
-            DecimalFormat decimalFormat = this.getDecimalFormat( locale, sPattern, decimalFormatSymbols );
+            var decimalFormat = this.getDecimalFormat( locale, sPattern, decimalFormatSymbols );
 
             try {
                 decimalFormat.setParseBigDecimal( true );
-                BigDecimal bigDecimal = ( BigDecimal ) decimalFormat.parse( preparedString );
+                var bigDecimal = ( BigDecimal ) decimalFormat.parse( preparedString );
 
                 if ( null != bigDecimal ) {
                     returnValue = this.toType( bigDecimal );
                 }
             } catch ( ParseException pe ) {
-                // pe.printStackTrace();
+                pe.printStackTrace();
             }
         }
         return returnValue;

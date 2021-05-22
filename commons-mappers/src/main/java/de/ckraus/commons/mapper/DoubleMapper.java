@@ -1,6 +1,5 @@
 package de.ckraus.commons.mapper;
 
-@SuppressWarnings( { "javadoc" } )
 public interface DoubleMapper extends NumericTypeMapper<Double> {
 
     @Override

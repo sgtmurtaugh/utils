@@ -1,6 +1,5 @@
 package de.ckraus.commons.mapper;
 
-@SuppressWarnings( { "javadoc" } )
 public interface LongMapper extends NumericTypeMapper<Long> {
 
     @Override

@@ -3,7 +3,6 @@ package de.ckraus.commons.mapper;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-@SuppressWarnings( { "javadoc" } )
 public interface BigIntegerMapper extends NumericTypeMapper<BigInteger> {
 
     @Override

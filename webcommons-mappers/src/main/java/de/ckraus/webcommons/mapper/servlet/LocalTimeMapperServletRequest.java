@@ -8,19 +8,19 @@ import java.time.LocalTime;
 public interface LocalTimeMapperServletRequest extends ServletRequest {
 
     default LocalTime getLocalTimeParameter(String name) {
-        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map((String) this.getAttribute( name ));
+        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(this.getParameter( name ));
     }
 
     default LocalTime getLocalTimeParameter(String name, LocalTime defaultValue) {
-        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map((String) this.getAttribute( name ), defaultValue);
+        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(this.getParameter( name ), defaultValue);
     }
 
     default LocalTime getLocalTimeParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map((String) this.getAttribute( name ), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(this.getParameter( name ), bTrim, bEmptyIsNull);
     }
 
     default LocalTime getLocalTimeParameter(String name, boolean bTrim, boolean bEmptyIsNull, LocalTime defaultValue) {
-        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map((String) this.getAttribute( name ), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(this.getParameter( name ), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

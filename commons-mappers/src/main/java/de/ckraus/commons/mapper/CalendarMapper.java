@@ -8,7 +8,6 @@ public interface CalendarMapper<E extends Calendar> extends TypeMapper<E> {
 
     boolean DEFAULT_LENIENT = Boolean.FALSE;
 
-
     /**
      * map
      *

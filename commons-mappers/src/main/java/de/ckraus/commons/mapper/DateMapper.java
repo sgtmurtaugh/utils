@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -13,6 +12,28 @@ public interface DateMapper extends TypeMapper<Date> {
 
     boolean DEFAULT_LENIENT = Boolean.FALSE;
 
+    /**
+     * mapObject
+     *
+     * @param obj
+     * @param defaultValue
+     * @return
+     */
+    @Override
+    default Date mapObject(Object obj, Date defaultValue) {
+        Date e;
+
+        if (null == obj) {
+            e = defaultValue;
+        } else if (obj instanceof Date) {
+            e = this.map((Date) obj, defaultValue);
+        } else if (obj instanceof String) {
+            e = this.map((String) obj, defaultValue);
+        } else {
+            e = this.map(obj.toString(), defaultValue);
+        }
+        return e;
+    }
 
     /**
      * map
@@ -30,7 +51,7 @@ public interface DateMapper extends TypeMapper<Date> {
      */
     @Override
     default Date map( String s, boolean bTrim, boolean bEmptyIsNull, Date defaultValue ) {
-        return this.map( this.prepare( s, bTrim, bEmptyIsNull ), SimpleDateFormat.getDateInstance(),
+        return this.map( this.prepare( s, bTrim, bEmptyIsNull ), DateFormat.getDateInstance(),
                 DEFAULT_LENIENT, defaultValue );
     }
 
@@ -59,17 +80,16 @@ public interface DateMapper extends TypeMapper<Date> {
      * @return
      */
     default Date map( String s, DateFormat format, boolean lenient, Date defaultValue ) {
-        Date date = defaultValue;
-        String preparedString = this.prepare( s, this.isTrimStrings(), this.isEmptyStringNull() );
+        var date = defaultValue;
+        var preparedString = this.prepare( s, this.isTrimStrings(), this.isEmptyStringNull() );
 
-        if ( StringUtils.isNotEmpty( preparedString ) ) {
-            if ( null != format ) {
-                try {
-                    format.setLenient( lenient );
-                    date = format.parse( preparedString );
-                } catch ( ParseException e ) {
-                    e.printStackTrace();
-                }
+        if ( StringUtils.isNotEmpty( preparedString ) && null != format ) {
+            try {
+                format.setLenient( lenient );
+                date = format.parse( preparedString );
+            }
+            catch ( ParseException e ) {
+                e.printStackTrace();
             }
         }
         return date;
