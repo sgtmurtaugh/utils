@@ -423,6 +423,7 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
      *
      * @return returns the typed Number otherwise the default value
      */
+    @Override
     default E map( Number number ) {
         return this.map( number, this.getDefaultValue() );
     }
@@ -815,7 +816,7 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
                     returnValue = this.toType( bigDecimal );
                 }
             } catch ( ParseException pe ) {
-                pe.printStackTrace();
+                // ignore Exception!
             }
         }
         return returnValue;

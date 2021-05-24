@@ -24,6 +24,7 @@
 
     <modules>
         <module>commons-core</module>
+        <module>commons-logging-javalogger</module>
         <module>commons-logging-log4j</module>
         <module>commons-mappers</module>
         <module>commons-pdf</module>

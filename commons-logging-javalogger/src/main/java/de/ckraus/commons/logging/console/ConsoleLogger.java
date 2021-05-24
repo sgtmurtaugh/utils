@@ -1,145 +1,125 @@
-package de.ckraus.commons.logging.slf4j;
+package de.ckraus.commons.logging.console;
 
 import de.ckraus.commons.logging.LoggerBase;
 import lombok.NonNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
+import java.util.logging.Logger;
 
-public class Slf4JLogger extends LoggerBase<Logger> {
+/**
+ * fatal    logger.severe("Schwerwiegender Fehler");
+ * error    logger.severe("Schwerwiegender Fehler");
+ * warn     logger.warning("Warnung");
+ * info     logger.info("Information");
+ * config   logger.config("Konfigurationshinweis");
+ * debug    logger.fine("Fein");
+ * verbose  logger.finer("Feiner");
+ * trace    logger.finest("Am feinsten");
+ */
+public class ConsoleLogger extends LoggerBase<Logger> {
 
     /**
      * Constructor
      */
-    public Slf4JLogger( @NonNull Class<?> clazz ) {
+    public ConsoleLogger(@NonNull Class<?> clazz ) {
         super( clazz );
     }
 
     @Override
     protected Logger initLogger(@NonNull Class<?> clazz) {
-        return LoggerFactory.getLogger( clazz );
+        return Logger.getLogger( clazz );
     }
 
-
-    @Override
-    public void config( String sMethod ) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
-    }
-
-    @Override
-    public void config( String sMethod, String sMessage ) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ) );
-    }
-
-    @Override
-    public void config( String sMethod, String sMessage, Object oMethodArg ) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg );
-    }
-
-    @Override
-    public void config( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 ) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg1, oMethodArg2 );
-    }
-
-    @Override
-    public void config( String sMethod, String sMessage, Object... oaParams ) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
-    }
-
-    @Override
-    public void config( String sMethod, String sMessage, Throwable throwable ) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
-    }
 
     @Override
     public void debug(String sMethod) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
+        this.getLogger().fine( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
     }
 
     @Override
     public void debug(String sMethod, String sMessage) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ) );
+        this.getLogger().fine( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ) );
     }
 
     @Override
     public void debug(String sMethod, String sMessage, Object oMethodArg) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg );
+        this.getLogger().fine( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg );
     }
 
     @Override
     public void debug(String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg1, oMethodArg2 );
+        this.getLogger().fine( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg1, oMethodArg2 );
     }
 
     @Override
     public void debug(String sMethod, String sMessage, Object... oaParams) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
+        this.getLogger().fine( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
     }
 
     @Override
     public void debug(String sMethod, String sMessage, Throwable throwable) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
+        this.getLogger().fine( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
     }
 
     @Override
     public void error(String sMethod) {
-        this.getLogger().error( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
     }
 
     @Override
     public void error(String sMethod, String sMessage) {
-        this.getLogger().error( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ) );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ) );
     }
 
     @Override
     public void error(String sMethod, String sMessage, Object oMethodArg) {
-        this.getLogger().error( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg );
     }
 
     @Override
     public void error(String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2) {
-        this.getLogger().error( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg1, oMethodArg2 );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg1, oMethodArg2 );
     }
 
     @Override
     public void error(String sMethod, String sMessage, Object... oaParams) {
-        this.getLogger().error( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
     }
 
     @Override
     public void error(String sMethod, String sMessage, Throwable throwable) {
-        this.getLogger().error( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
     }
 
     @Override
     public void fatal(String sMethod) {
-        this.error( sMethod );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
     }
 
     @Override
     public void fatal(String sMethod, String sMessage) {
-        this.error( sMethod, sMessage );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ) );
     }
 
     @Override
     public void fatal(String sMethod, String sMessage, Object oMethodArg) {
-        this.error( sMethod, sMessage, oMethodArg );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg );
     }
 
     @Override
     public void fatal(String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2) {
-        this.error( sMethod, sMessage, oMethodArg1, oMethodArg2 );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg1, oMethodArg2 );
     }
 
     @Override
     public void fatal(String sMethod, String sMessage, Object... oaParams) {
-        this.error( sMethod, sMessage, oaParams );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
     }
 
     @Override
     public void fatal(String sMethod, String sMessage, Throwable throwable) {
-        this.error( sMethod, sMessage, throwable );
+        this.getLogger().severe( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
     }
 
     @Override
@@ -173,98 +153,99 @@ public class Slf4JLogger extends LoggerBase<Logger> {
     }
 
     @Override
-    public void param(String sMethod, @NonNull String sParamName, Object oParamValue) {
-        this.getLogger().debug( this.buildLogMessage(sMethod, METHOD_INSIDE, sParamName + METHOD_PARAM + Objects.toString( oParamValue ) ) );
+    public void param(String sMethod, @NonNull String sParamName , Object oParamValue) {
+        this.getLogger().config( this.buildLogMessage(sMethod, METHOD_INSIDE, METHOD_PARAM ), sParamName + METHOD_PARAM + Objects.toString( oParamValue ) );
     }
 
     @Override
     public void trace(String sMethod) {
-        this.getLogger().trace( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
+        this.getLogger().finest( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
     }
 
     @Override
     public void trace(String sMethod, String sMessage) {
-        this.getLogger().trace( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ) );
+        this.getLogger().finest( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ) );
     }
 
     @Override
     public void trace(String sMethod, String sMessage, Object oMethodArg) {
-        this.getLogger().trace( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg );
+        this.getLogger().finest( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg );
     }
 
     @Override
     public void trace(String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2) {
-        this.getLogger().trace( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg1, oMethodArg2 );
+        this.getLogger().finest( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg1, oMethodArg2 );
     }
 
     @Override
     public void trace(String sMethod, String sMessage, Object... oaParams) {
-        this.getLogger().trace( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
+        this.getLogger().finest( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
     }
 
     @Override
     public void trace(String sMethod, String sMessage, Throwable throwable) {
-        this.getLogger().trace( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
+        this.getLogger().finest( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
     }
 
     @Override
     public void verbose(String sMethod) {
-        this.debug( sMethod );
+        this.trace( sMethod );
     }
 
     @Override
     public void verbose(String sMethod, String sMessage) {
-        this.debug( sMethod, sMessage );
+        this.trace( sMethod, sMessage );
     }
 
     @Override
     public void verbose(String sMethod, String sMessage, Object oMethodArg) {
-        this.debug( sMethod, sMessage, oMethodArg );
+        this.trace( sMethod, sMessage, oMethodArg );
     }
 
     @Override
     public void verbose(String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2) {
-        this.debug( sMethod, sMessage, oMethodArg1, oMethodArg2 );
+        this.trace( sMethod, sMessage, oMethodArg1, oMethodArg2 );
     }
 
     @Override
     public void verbose(String sMethod, String sMessage, Object... oaParams) {
-        this.debug( sMethod, sMessage, oaParams );
+        this.trace( sMethod, sMessage, oaParams );
     }
 
     @Override
     public void verbose(String sMethod, String sMessage, Throwable throwable) {
-        this.debug( sMethod, sMessage, throwable );
+        this.trace( sMethod, sMessage, throwable );
     }
 
     @Override
     public void warn(String sMethod) {
-        this.getLogger().warn( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
+        this.getLogger().warning( this.buildLogMessage(sMethod, METHOD_INSIDE, null ) );
     }
 
     @Override
     public void warn(String sMethod, String sMessage) {
-        this.getLogger().warn( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ) );
+        this.getLogger().warning( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ) );
     }
 
     @Override
     public void warn(String sMethod, String sMessage, Object oMethodArg) {
-        this.getLogger().warn( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg );
+        this.getLogger().warning( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg );
     }
 
     @Override
     public void warn(String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2) {
-        this.getLogger().warn( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg1, oMethodArg2 );
+        this.getLogger().warning( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oMethodArg1, oMethodArg2 );
     }
 
     @Override
     public void warn(String sMethod, String sMessage, Object... oaParams) {
-        this.getLogger().warn( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
+        StringUtils.join()
+        this.getLogger().warning( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
     }
 
     @Override
     public void warn(String sMethod, String sMessage, Throwable throwable) {
-        this.getLogger().warn( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
+        this.getLogger().warning( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), throwable );
     }
 
 }

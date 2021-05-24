@@ -2,7 +2,6 @@ package de.ckraus.commons.mapper;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
 import java.util.Objects;
 import java.util.function.Predicate;
 
@@ -75,165 +74,294 @@ class TypeMapperTest {
         assertFalse( mapper.isMappable( getParameters().get( PARAMS_KEY_LIST ) ) );
     }
 
-    /**
-     * test for {@link TypeMapper#map(Map, String)}
-     */
-    @Test
-    void map() {
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_NO_KEY ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_NO_VALUE ) );
+// TODO Cleanup
+//    /**
+//     * test for {@link TypeMapper#mapObject(Object)}
+//     */
+//    @Test
+//    void mapObject() {
+//        assertEquals( mapper.getDefaultValue(), mapper.mapObject( getParameters().get( PARAMS_KEY_NO_KEY ) ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.mapObject( getParameters().get( PARAMS_KEY_NO_VALUE ) ) );
+//
+//        assertEquals( getParameters().get(PARAMS_KEY_BIG_DECIMAL), mapper.mapObject( getParameters().get( PARAMS_KEY_BIG_DECIMAL ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BIG_DECIMAL_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_BIG_DECIMAL_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BIG_INTEGER), mapper.mapObject( getParameters().get( PARAMS_KEY_BIG_INTEGER ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BIG_INTEGER_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_BIG_INTEGER_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BOOLEAN), mapper.mapObject( getParameters().get( PARAMS_KEY_BOOLEAN ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BOOLEAN_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_BOOLEAN_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BYTE), mapper.mapObject( getParameters().get( PARAMS_KEY_BYTE ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BYTE_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_BYTE_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_CALENDAR), mapper.mapObject( getParameters().get( PARAMS_KEY_CALENDAR ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_CALENDAR_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_CALENDAR_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_CHARACTER), mapper.mapObject( getParameters().get( PARAMS_KEY_CHARACTER ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_DOUBLE), mapper.mapObject( getParameters().get( PARAMS_KEY_DOUBLE ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_DOUBLE_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_DOUBLE_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_FLOAT), mapper.mapObject( getParameters().get( PARAMS_KEY_FLOAT ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_FLOAT_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_FLOAT_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_INTEGER), mapper.mapObject( getParameters().get( PARAMS_KEY_INTEGER ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_INTEGER_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_INTEGER_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LIST), mapper.mapObject( getParameters().get( PARAMS_KEY_LIST ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALDATE), mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALDATE ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALDATE_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALDATE_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALDATETIME), mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALDATETIME ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALDATETIME_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALDATETIME_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALTIME), mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALTIME ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALTIME_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALTIME_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LONG), mapper.mapObject( getParameters().get( PARAMS_KEY_LONG ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LONG_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_LONG_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_OBJECT), mapper.mapObject( getParameters().get( PARAMS_KEY_OBJECT ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_SHORT), mapper.mapObject( getParameters().get( PARAMS_KEY_SHORT ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_SHORT_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_SHORT_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_STRING), mapper.mapObject( getParameters().get( PARAMS_KEY_STRING ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_STRING__EMPTY), mapper.mapObject( getParameters().get( PARAMS_KEY_STRING__EMPTY ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_STRING__UNTRIMMED), mapper.mapObject( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_STRING__UNTRIMMED_EMPTY), mapper.mapObject( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED_EMPTY ) ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_STRING_BUILDER), mapper.mapObject( getParameters().get( PARAMS_KEY_STRING_BUILDER ) ) );
+//    }
 
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BIG_DECIMAL ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BIG_DECIMAL_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BIG_INTEGER ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BIG_INTEGER_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BOOLEAN ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BOOLEAN_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BYTE ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BYTE_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_CALENDAR ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_CALENDAR_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_CHARACTER ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_DOUBLE ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_DOUBLE_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_FLOAT ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_FLOAT_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_INTEGER ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_INTEGER_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LIST ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALDATE ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALDATE_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALDATETIME ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALDATETIME_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALTIME ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALTIME_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LONG ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LONG_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_OBJECT ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_SHORT ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_SHORT_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_STRING ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_STRING__EMPTY ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_STRING__UNTRIMMED ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_STRING__UNTRIMMED_EMPTY ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_STRING_BUILDER ) );
-    }
+// TODO Cleanup
+//    /**
+//     * test for {@link TypeMapper#mapObject(Object, Object)}
+//     */
+//    @Test
+//    void mapObject2() {
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_NO_KEY ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_NO_VALUE ), ANOTHER_DEFAULT_VALUE ) );
+//
+//        assertEquals( getParameters().get(PARAMS_KEY_BIG_DECIMAL),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_BIG_DECIMAL ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BIG_DECIMAL_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_BIG_DECIMAL_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BIG_INTEGER),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_BIG_INTEGER ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BIG_INTEGER_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_BIG_INTEGER_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BOOLEAN),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_BOOLEAN ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BOOLEAN_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_BOOLEAN_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BYTE),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_BYTE ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_BYTE_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_BYTE_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_CALENDAR),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_CALENDAR ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_CALENDAR_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_CALENDAR_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_CHARACTER),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_CHARACTER ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_DOUBLE),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_DOUBLE ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_DOUBLE_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_DOUBLE_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_FLOAT),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_FLOAT ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_FLOAT_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_FLOAT_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_INTEGER),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_INTEGER ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_INTEGER_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_INTEGER_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LIST),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_LIST ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALDATE),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALDATE ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALDATE_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALDATE_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALDATETIME),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALDATETIME ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALDATETIME_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALDATETIME_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALTIME),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALTIME ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LOCALTIME_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_LOCALTIME_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LONG),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_LONG ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_LONG_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_LONG_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_OBJECT),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_OBJECT ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_SHORT),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_SHORT ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_SHORT_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_SHORT_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_STRING),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_STRING ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_STRING__EMPTY),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_STRING__EMPTY ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_STRING__UNTRIMMED),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_STRING__UNTRIMMED_EMPTY),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED_EMPTY ), ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( getParameters().get(PARAMS_KEY_STRING_BUILDER),
+//                mapper.mapObject( getParameters().get( PARAMS_KEY_STRING_BUILDER ), ANOTHER_DEFAULT_VALUE ) );
+//    }
 
-    /**
-     * test for {@link TypeMapper#map(Map, String, Object)}
-     */
-    @Test
-    void map1() {
-        // check default value
-        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_NO_KEY, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_NO_VALUE, ANOTHER_DEFAULT_VALUE ) );
+// TODO Cleanup
+//    /**
+//     * test for {@link TypeMapper#map(Map, String)}
+//     */
+//    @Test
+//    void map() {
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_NO_KEY ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_NO_VALUE ) );
+//
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BIG_DECIMAL ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BIG_DECIMAL_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BIG_INTEGER ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BIG_INTEGER_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BOOLEAN ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BOOLEAN_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BYTE ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_BYTE_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_CALENDAR ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_CALENDAR_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_CHARACTER ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_DOUBLE ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_DOUBLE_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_FLOAT ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_FLOAT_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_INTEGER ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_INTEGER_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LIST ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALDATE ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALDATE_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALDATETIME ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALDATETIME_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALTIME ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LOCALTIME_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LONG ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_LONG_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_OBJECT ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_SHORT ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_SHORT_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_STRING ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_STRING__EMPTY ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_STRING__UNTRIMMED ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_STRING__UNTRIMMED_EMPTY ) );
+//        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters(), PARAMS_KEY_STRING_BUILDER ) );
+//    }
 
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_BIG_DECIMAL, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_BIG_DECIMAL_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_BIG_INTEGER, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_BIG_INTEGER_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_BOOLEAN, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_BOOLEAN_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_BYTE, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_BYTE_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_CALENDAR, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_CALENDAR_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_CHARACTER, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_DOUBLE, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_DOUBLE_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_FLOAT, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_FLOAT_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_INTEGER, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_INTEGER_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_LIST, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_LOCALDATE, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_LOCALDATE_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_LOCALDATETIME, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_LOCALDATETIME_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_LOCALTIME, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_LOCALTIME_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_LONG, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_LONG_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_OBJECT, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_SHORT, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_SHORT_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_STRING, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_STRING__EMPTY, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_STRING__UNTRIMMED, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_STRING__UNTRIMMED_EMPTY, ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
-                mapper.map( getParameters(), PARAMS_KEY_STRING_BUILDER, ANOTHER_DEFAULT_VALUE ) );
-    }
+// TODO Cleanup
+//    /**
+//     * test for {@link TypeMapper#map(Map, String, Object)}
+//     */
+//    @Test
+//    void map1() {
+//        // check default value
+//        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_NO_KEY, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_NO_VALUE, ANOTHER_DEFAULT_VALUE ) );
+//
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_BIG_DECIMAL, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_BIG_DECIMAL_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_BIG_INTEGER, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_BIG_INTEGER_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_BOOLEAN, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_BOOLEAN_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_BYTE, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_BYTE_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_CALENDAR, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_CALENDAR_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_CHARACTER, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_DOUBLE, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_DOUBLE_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_FLOAT, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_FLOAT_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_INTEGER, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_INTEGER_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_LIST, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_LOCALDATE, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_LOCALDATE_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_LOCALDATETIME, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_LOCALDATETIME_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_LOCALTIME, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_LOCALTIME_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_LONG, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_LONG_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_OBJECT, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_SHORT, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_SHORT_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE, mapper.map( getParameters(), PARAMS_KEY_STRING, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_STRING__EMPTY, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_STRING__UNTRIMMED, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_STRING__UNTRIMMED_EMPTY, ANOTHER_DEFAULT_VALUE ) );
+//        assertEquals( ANOTHER_DEFAULT_VALUE,
+//                mapper.map( getParameters(), PARAMS_KEY_STRING_BUILDER, ANOTHER_DEFAULT_VALUE ) );
+//    }
 
     /**
      * test for {@link TypeMapper#map(Object)}
      */
     @Test
     void map2() {
+
         assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_NO_KEY ) ) );
         assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_NO_VALUE ) ) );
 
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_BIG_DECIMAL ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_BIG_DECIMAL_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_BIG_INTEGER ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_BIG_INTEGER_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_BOOLEAN ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_BOOLEAN_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_BYTE ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_BYTE_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_CALENDAR ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_CALENDAR_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_CHARACTER ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_DOUBLE ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_DOUBLE_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_FLOAT ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_FLOAT_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_INTEGER ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_INTEGER_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_LIST ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_LOCALDATE ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_LOCALDATE_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_LOCALDATETIME ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_LOCALDATETIME_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_LOCALTIME ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_LOCALTIME_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_LONG ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_LONG_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_OBJECT ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_SHORT ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_SHORT_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_STRING__EMPTY ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ) ) );
-        assertEquals( mapper.getDefaultValue(),
+        assertEquals( getParameters().get( PARAMS_KEY_BIG_DECIMAL ), mapper.map( getParameters().get( PARAMS_KEY_BIG_DECIMAL ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_BIG_DECIMAL_STRING ), mapper.map( getParameters().get( PARAMS_KEY_BIG_DECIMAL_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_BIG_INTEGER ), mapper.map( getParameters().get( PARAMS_KEY_BIG_INTEGER ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_BIG_INTEGER_STRING ), mapper.map( getParameters().get( PARAMS_KEY_BIG_INTEGER_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_BOOLEAN ), mapper.map( getParameters().get( PARAMS_KEY_BOOLEAN ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_BOOLEAN_STRING ), mapper.map( getParameters().get( PARAMS_KEY_BOOLEAN_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_BYTE ), mapper.map( getParameters().get( PARAMS_KEY_BYTE ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_BYTE_STRING ), mapper.map( getParameters().get( PARAMS_KEY_BYTE_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_CALENDAR ), mapper.map( getParameters().get( PARAMS_KEY_CALENDAR ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_CALENDAR_STRING ), mapper.map( getParameters().get( PARAMS_KEY_CALENDAR_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_CHARACTER ), mapper.map( getParameters().get( PARAMS_KEY_CHARACTER ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_DOUBLE ), mapper.map( getParameters().get( PARAMS_KEY_DOUBLE ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_DOUBLE_STRING ), mapper.map( getParameters().get( PARAMS_KEY_DOUBLE_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_FLOAT ), mapper.map( getParameters().get( PARAMS_KEY_FLOAT ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_FLOAT_STRING ), mapper.map( getParameters().get( PARAMS_KEY_FLOAT_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_INTEGER ), mapper.map( getParameters().get( PARAMS_KEY_INTEGER ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_INTEGER_STRING ), mapper.map( getParameters().get( PARAMS_KEY_INTEGER_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_LIST ), mapper.map( getParameters().get( PARAMS_KEY_LIST ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALDATE ), mapper.map( getParameters().get( PARAMS_KEY_LOCALDATE ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALDATE_STRING ), mapper.map( getParameters().get( PARAMS_KEY_LOCALDATE_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALDATETIME ), mapper.map( getParameters().get( PARAMS_KEY_LOCALDATETIME ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALDATETIME_STRING ), mapper.map( getParameters().get( PARAMS_KEY_LOCALDATETIME_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALTIME ), mapper.map( getParameters().get( PARAMS_KEY_LOCALTIME ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALTIME_STRING ), mapper.map( getParameters().get( PARAMS_KEY_LOCALTIME_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_LONG ), mapper.map( getParameters().get( PARAMS_KEY_LONG ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_LONG_STRING ), mapper.map( getParameters().get( PARAMS_KEY_LONG_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_OBJECT ), mapper.map( getParameters().get( PARAMS_KEY_OBJECT ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_SHORT ), mapper.map( getParameters().get( PARAMS_KEY_SHORT ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_SHORT_STRING ), mapper.map( getParameters().get( PARAMS_KEY_SHORT_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_STRING ), mapper.map( getParameters().get( PARAMS_KEY_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__EMPTY ), mapper.map( getParameters().get( PARAMS_KEY_STRING__EMPTY ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ), mapper.map( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED_EMPTY ),
                 mapper.map( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED_EMPTY ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_STRING_BUILDER ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_STRING_BUILDER ), mapper.map( getParameters().get( PARAMS_KEY_STRING_BUILDER ) ) );
     }
 
     /**
@@ -246,73 +374,73 @@ class TypeMapperTest {
         assertEquals( ANOTHER_DEFAULT_VALUE,
                 mapper.map( getParameters().get( PARAMS_KEY_NO_VALUE ), ANOTHER_DEFAULT_VALUE ) );
 
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_BIG_DECIMAL ),
                 mapper.map( getParameters().get( PARAMS_KEY_BIG_DECIMAL ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_BIG_DECIMAL_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_BIG_DECIMAL_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_BIG_INTEGER ),
                 mapper.map( getParameters().get( PARAMS_KEY_BIG_INTEGER ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_BIG_INTEGER_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_BIG_INTEGER_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_BOOLEAN ),
                 mapper.map( getParameters().get( PARAMS_KEY_BOOLEAN ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_BOOLEAN_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_BOOLEAN_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_BYTE ),
                 mapper.map( getParameters().get( PARAMS_KEY_BYTE ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_BYTE_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_BYTE_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_CALENDAR ),
                 mapper.map( getParameters().get( PARAMS_KEY_CALENDAR ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_CALENDAR_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_CALENDAR_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_CHARACTER ),
                 mapper.map( getParameters().get( PARAMS_KEY_CHARACTER ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_DOUBLE ),
                 mapper.map( getParameters().get( PARAMS_KEY_DOUBLE ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_DOUBLE_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_DOUBLE_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_FLOAT ),
                 mapper.map( getParameters().get( PARAMS_KEY_FLOAT ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_FLOAT_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_FLOAT_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_INTEGER ),
                 mapper.map( getParameters().get( PARAMS_KEY_INTEGER ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_INTEGER_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_INTEGER_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_LIST ),
                 mapper.map( getParameters().get( PARAMS_KEY_LIST ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALDATE ),
                 mapper.map( getParameters().get( PARAMS_KEY_LOCALDATE ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALDATE_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_LOCALDATE_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALDATETIME ),
                 mapper.map( getParameters().get( PARAMS_KEY_LOCALDATETIME ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALDATETIME_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_LOCALDATETIME_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALTIME ),
                 mapper.map( getParameters().get( PARAMS_KEY_LOCALTIME ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_LOCALTIME_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_LOCALTIME_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_LONG ),
                 mapper.map( getParameters().get( PARAMS_KEY_LONG ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_LONG_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_LONG_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_OBJECT ),
                 mapper.map( getParameters().get( PARAMS_KEY_OBJECT ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_SHORT ),
                 mapper.map( getParameters().get( PARAMS_KEY_SHORT ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_SHORT_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_SHORT_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__EMPTY ),
                 mapper.map( getParameters().get( PARAMS_KEY_STRING__EMPTY ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ),
                 mapper.map( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED_EMPTY ),
                 mapper.map( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED_EMPTY ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_STRING_BUILDER ),
                 mapper.map( getParameters().get( PARAMS_KEY_STRING_BUILDER ), ANOTHER_DEFAULT_VALUE ) );
     }
 
@@ -321,10 +449,10 @@ class TypeMapperTest {
      */
     @Test
     void map4() {
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_STRING ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_STRING__EMPTY ) ) );
-        assertEquals( mapper.getDefaultValue(), mapper.map( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ) ) );
-        assertEquals( mapper.getDefaultValue(),
+        assertEquals( getParameters().get( PARAMS_KEY_STRING ), mapper.map( getParameters().get( PARAMS_KEY_STRING ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__EMPTY ), mapper.map( getParameters().get( PARAMS_KEY_STRING__EMPTY ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ), mapper.map( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ) ) );
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED_EMPTY ),
                 mapper.map( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED_EMPTY ) ) );
     }
 
@@ -333,13 +461,13 @@ class TypeMapperTest {
      */
     @Test
     void map5() {
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_STRING ),
                 mapper.map( getParameters().get( PARAMS_KEY_STRING ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__EMPTY ),
                 mapper.map( getParameters().get( PARAMS_KEY_STRING__EMPTY ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ),
                 mapper.map( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED ), ANOTHER_DEFAULT_VALUE ) );
-        assertEquals( ANOTHER_DEFAULT_VALUE,
+        assertEquals( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED_EMPTY ),
                 mapper.map( getParameters().get( PARAMS_KEY_STRING__UNTRIMMED_EMPTY ), ANOTHER_DEFAULT_VALUE ) );
     }
 

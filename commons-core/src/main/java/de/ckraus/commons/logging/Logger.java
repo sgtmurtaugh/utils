@@ -2,6 +2,7 @@ package de.ckraus.commons.logging;
 
 import java.util.Collection;
 
+@SuppressWarnings("unused")
 public interface Logger<T> {
 
     Class<?> getLoggerClass();
@@ -11,21 +12,21 @@ public interface Logger<T> {
     int getIndent();
     void setIndent( int indent );
 
-    default void decrementIndent() {
+    private void decrementIndent() {
         if (this.getIndent() > 0) {
             this.setIndent( this.getIndent() - 1 );
         }
     }
 
-    default void incrementIndent() {
+    private void incrementIndent() {
         this.setIndent( this.getIndent() + 1 );
     }
 
-    default void doEnter() {
+    private void doEnter() {
         this.incrementIndent();
     }
 
-    default void doReturn() {
+    private void doReturn() {
         this.decrementIndent();
     }
 
@@ -68,8 +69,19 @@ public interface Logger<T> {
         this.debug( sMethod, null, oMethodReturn );
     }
 
-
     /* ### loglevel logging ### */
+
+    void config( String sMethod );
+
+    void config( String sMethod, String sMessage );
+
+    void config( String sMethod, String sMessage, Object oMethodArg );
+
+    void config( String sMethod, String sMessage, Object oMethodArg1, Object oMethodArg2 );
+
+    void config( String sMethod, String sMessage, Object... oaParams );
+
+    void config( String sMethod, String sMessage, Throwable throwable );
 
     void debug( String sMethod );
 
