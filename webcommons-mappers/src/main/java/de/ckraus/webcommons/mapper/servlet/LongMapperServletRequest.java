@@ -7,11 +7,11 @@ import javax.servlet.ServletRequest;
 public interface LongMapperServletRequest extends ServletRequest {
 
     default Long getLongAttribute(String name) {
-        return TypeMapperUtils.getDefaults().getLongMapper().map(this.getAttribute(name));
+        return TypeMapperUtils.getDefaults().getLongMapper().mapObject(this.getAttribute(name));
     }
 
     default Long getLongAttribute(String name, Long defaultValue) {
-        return TypeMapperUtils.getDefaults().getLongMapper().map(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getDefaults().getLongMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     default Long getLongParameter(String name) {

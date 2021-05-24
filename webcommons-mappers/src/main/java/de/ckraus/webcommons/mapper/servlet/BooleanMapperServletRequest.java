@@ -7,11 +7,11 @@ import javax.servlet.ServletRequest;
 public interface BooleanMapperServletRequest extends ServletRequest {
 
     default Boolean getBooleanAttribute(String name) {
-        return TypeMapperUtils.getDefaults().getBooleanMapper().map(this.getAttribute(name));
+        return TypeMapperUtils.getDefaults().getBooleanMapper().mapObject(this.getAttribute(name));
     }
 
     default Boolean getBooleanAttribute(String name, Boolean defaultValue) {
-        return TypeMapperUtils.getDefaults().getBooleanMapper().map(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getDefaults().getBooleanMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     default Boolean getBooleanParameter(String name) {

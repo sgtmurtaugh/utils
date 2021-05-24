@@ -7,11 +7,11 @@ import javax.servlet.ServletRequest;
 public interface IntegerMapperServletRequest extends ServletRequest {
 
     default Integer getIntegerAttribute(String name) {
-        return TypeMapperUtils.getDefaults().getIntegerMapper().map(this.getAttribute(name));
+        return TypeMapperUtils.getDefaults().getIntegerMapper().mapObject(this.getAttribute(name));
     }
 
     default Integer getIntegerAttribute(String name, Integer defaultValue) {
-        return TypeMapperUtils.getDefaults().getIntegerMapper().map(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getDefaults().getIntegerMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     default Integer getIntegerParameter(String name) {

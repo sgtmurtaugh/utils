@@ -3,7 +3,7 @@ package de.ckraus.webcommons.mapper.servlet;
 import javax.servlet.ServletRequestWrapper;
 
 @SuppressWarnings({ "unused", "javadoc", "WeakerAccess" })
-public class TypeMapperServletRequestFacade extends ServletRequestWrapper implements T {
+public class TypeMapperServletRequestFacade extends ServletRequestWrapper implements TypeMapperServletRequest {
 
     /**
      * Constructor

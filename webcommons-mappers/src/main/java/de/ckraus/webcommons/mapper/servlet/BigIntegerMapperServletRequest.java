@@ -7,6 +7,14 @@ import java.math.BigInteger;
 
 public interface BigIntegerMapperServletRequest extends ServletRequest {
 
+    default BigInteger getBigIntegerAttribute(String name) {
+        return TypeMapperUtils.getDefaults().getBigIntegerMapper().mapObject(this.getAttribute(name));
+    }
+
+    default BigInteger getBigIntegerAttribute(String name, BigInteger defaultValue) {
+        return TypeMapperUtils.getDefaults().getBigIntegerMapper().mapObject(this.getAttribute(name), defaultValue);
+    }
+
     default BigInteger getBigIntegerParameter(String name) {
         return TypeMapperUtils.getDefaults().getBigIntegerMapper().map(this.getParameter( name ));
     }

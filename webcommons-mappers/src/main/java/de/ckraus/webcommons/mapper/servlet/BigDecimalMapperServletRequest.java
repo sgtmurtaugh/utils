@@ -7,6 +7,14 @@ import java.math.BigDecimal;
 
 public interface BigDecimalMapperServletRequest extends ServletRequest {
 
+    default BigDecimal getBigDecimalAttribute(String name) {
+        return TypeMapperUtils.getDefaults().getBigDecimalMapper().mapObject(this.getAttribute(name));
+    }
+
+    default BigDecimal getBigDecimalAttribute(String name, BigDecimal defaultValue) {
+        return TypeMapperUtils.getDefaults().getBigDecimalMapper().mapObject(this.getAttribute(name), defaultValue);
+    }
+
     default BigDecimal getBigDecimalParameter(String name) {
         return TypeMapperUtils.getDefaults().getBigDecimalMapper().map(this.getParameter( name ));
     }

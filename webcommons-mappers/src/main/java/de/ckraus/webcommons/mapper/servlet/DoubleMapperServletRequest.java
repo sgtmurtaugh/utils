@@ -7,11 +7,11 @@ import javax.servlet.ServletRequest;
 public interface DoubleMapperServletRequest extends ServletRequest {
 
     default Double getDoubleAttribute(String name) {
-        return TypeMapperUtils.getDefaults().getDoubleMapper().map(this.getAttribute(name));
+        return TypeMapperUtils.getDefaults().getDoubleMapper().mapObject(this.getAttribute(name));
     }
 
     default Double getDoubleAttribute(String name, Double defaultValue) {
-        return TypeMapperUtils.getDefaults().getDoubleMapper().map(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getDefaults().getDoubleMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     default Double getDoubleParameter(String name) {

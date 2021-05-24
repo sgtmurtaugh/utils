@@ -7,11 +7,11 @@ import javax.servlet.ServletRequest;
 public interface ShortMapperServletRequest extends ServletRequest {
 
     default Short getShortAttribute(String name) {
-        return TypeMapperUtils.getDefaults().getShortMapper().map(this.getAttribute(name));
+        return TypeMapperUtils.getDefaults().getShortMapper().mapObject(this.getAttribute(name));
     }
 
     default Short getShortAttribute(String name, Short defaultValue) {
-        return TypeMapperUtils.getDefaults().getShortMapper().map(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getDefaults().getShortMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     default Short getShortParameter(String name) {

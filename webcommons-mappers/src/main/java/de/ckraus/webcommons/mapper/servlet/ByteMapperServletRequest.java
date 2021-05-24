@@ -7,11 +7,11 @@ import javax.servlet.ServletRequest;
 public interface ByteMapperServletRequest extends ServletRequest {
 
     default Byte getByteAttribute(String name) {
-        return TypeMapperUtils.getDefaults().getByteMapper().map(this.getAttribute(name));
+        return TypeMapperUtils.getDefaults().getByteMapper().mapObject(this.getAttribute(name));
     }
 
     default Byte getByteAttribute(String name, Byte defaultValue) {
-        return TypeMapperUtils.getDefaults().getByteMapper().map(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getDefaults().getByteMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     default Byte getByteParameter(String name) {

@@ -7,11 +7,11 @@ import javax.servlet.ServletRequest;
 public interface FloatMapperServletRequest extends ServletRequest {
 
     default Float getFloatAttribute(String name) {
-        return TypeMapperUtils.getDefaults().getFloatMapper().map(this.getAttribute(name));
+        return TypeMapperUtils.getDefaults().getFloatMapper().mapObject(this.getAttribute(name));
     }
 
     default Float getFloatAttribute(String name, Float defaultValue) {
-        return TypeMapperUtils.getDefaults().getFloatMapper().map(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getDefaults().getFloatMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     default Float getFloatParameter(String name) {

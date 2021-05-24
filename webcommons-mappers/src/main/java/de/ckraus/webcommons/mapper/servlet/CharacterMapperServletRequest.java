@@ -6,6 +6,14 @@ import javax.servlet.ServletRequest;
 
 public interface CharacterMapperServletRequest extends ServletRequest {
 
+    default Character getCharacterAttribute(String name) {
+        return TypeMapperUtils.getDefaults().getCharacterMapper().mapObject(this.getAttribute(name));
+    }
+
+    default Character getCharacterAttribute(String name, Character defaultValue) {
+        return TypeMapperUtils.getDefaults().getCharacterMapper().mapObject(this.getAttribute(name), defaultValue);
+    }
+
     default Character getCharacterParameter(String name) {
         return TypeMapperUtils.getDefaults().getCharacterMapper().map(this.getParameter( name ));
     }

@@ -7,11 +7,11 @@ import javax.servlet.ServletRequest;
 public interface StringMapperServletRequest extends ServletRequest {
 
     default String getStringAttribute(String name) {
-        return TypeMapperUtils.getDefaults().getStringMapper().map(this.getAttribute(name));
+        return TypeMapperUtils.getDefaults().getStringMapper().mapObject(this.getAttribute(name));
     }
 
     default String getStringAttribute(String name, String defaultValue) {
-        return TypeMapperUtils.getDefaults().getStringMapper().map(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getDefaults().getStringMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     default String getStringAttribute(String name, boolean bTrim, boolean bEmptyIsNull) {

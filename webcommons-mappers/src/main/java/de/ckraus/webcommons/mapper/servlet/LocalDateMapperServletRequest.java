@@ -7,6 +7,14 @@ import java.time.LocalDate;
 
 public interface LocalDateMapperServletRequest extends ServletRequest {
 
+    default LocalDate getLocalDateAttribute(String name) {
+        return TypeMapperUtils.getDefaults().getLocalDateMapper().mapObject(this.getAttribute(name));
+    }
+
+    default LocalDate getLocalDateAttribute(String name, LocalDate defaultValue) {
+        return TypeMapperUtils.getDefaults().getLocalDateMapper().mapObject(this.getAttribute(name), defaultValue);
+    }
+
     default LocalDate getLocalDateParameter(String name) {
         return TypeMapperUtils.getDefaults().getLocalDateMapper().map(this.getParameter( name ));
     }

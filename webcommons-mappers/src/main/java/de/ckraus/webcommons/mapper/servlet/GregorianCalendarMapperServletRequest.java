@@ -7,6 +7,14 @@ import java.util.GregorianCalendar;
 
 public interface GregorianCalendarMapperServletRequest extends ServletRequest {
 
+    default GregorianCalendar getGregorianCalendarAttribute(String name) {
+        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().mapObject(this.getAttribute(name));
+    }
+
+    default GregorianCalendar getGregorianCalendarAttribute(String name, GregorianCalendar defaultValue) {
+        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().mapObject(this.getAttribute(name), defaultValue);
+    }
+
     default GregorianCalendar getGregorianCalendarParameter(String name) {
         return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().map(this.getParameter( name ));
     }

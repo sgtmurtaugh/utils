@@ -7,6 +7,14 @@ import java.util.Date;
 
 public interface DateMapperServletRequest extends ServletRequest {
 
+    default Date getDateAttribute(String name) {
+        return TypeMapperUtils.getDefaults().getDateMapper().mapObject(this.getAttribute(name));
+    }
+
+    default Date getDateAttribute(String name, Date defaultValue) {
+        return TypeMapperUtils.getDefaults().getDateMapper().mapObject(this.getAttribute(name), defaultValue);
+    }
+
     default Date getDateParameter(String name) {
         return TypeMapperUtils.getDefaults().getDateMapper().map(this.getParameter( name ));
     }
