@@ -1,17 +1,17 @@
-package de.ckraus.commons.logging.console;
+package de.ckraus.commons.logging.javalog;
 
 import de.ckraus.commons.logging.ExtendedLogger;
 import lombok.NonNull;
 
 import java.util.logging.Logger;
 
-public class ConsoleExtendedLogger extends ConsoleLogger implements ExtendedLogger<Logger> {
+public class JavaLogExtendedLogger extends JavaLogLogger implements ExtendedLogger<Logger> {
 
     /**
      * Constructor
      * @param clazz
      */
-    public ConsoleExtendedLogger(@NonNull Class<?> clazz ) {
+    public JavaLogExtendedLogger(@NonNull Class<?> clazz ) {
         super( clazz );
     }
 

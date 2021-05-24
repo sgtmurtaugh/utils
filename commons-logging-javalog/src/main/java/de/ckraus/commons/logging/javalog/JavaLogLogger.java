@@ -1,4 +1,4 @@
-package de.ckraus.commons.logging.console;
+package de.ckraus.commons.logging.javalog;
 
 import de.ckraus.commons.logging.LoggerBase;
 import lombok.NonNull;
@@ -17,12 +17,12 @@ import java.util.logging.Logger;
  * verbose  logger.finer("Feiner");
  * trace    logger.finest("Am feinsten");
  */
-public class ConsoleLogger extends LoggerBase<Logger> {
+public class JavaLogLogger extends LoggerBase<Logger> {
 
     /**
      * Constructor
      */
-    public ConsoleLogger(@NonNull Class<?> clazz ) {
+    public JavaLogLogger(@NonNull Class<?> clazz ) {
         super( clazz );
     }
 

@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/commons-core/commons-core.iml" filepath="$PROJECT_DIR$/commons-core/commons-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/commons-logging-console/commons-logging-javalogger.iml" filepath="$PROJECT_DIR$/commons-logging-console/commons-logging-javalogger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons-logging-console/commons-logging-javalog.iml" filepath="$PROJECT_DIR$/commons-logging-console/commons-logging-javalog.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-logging-log4j/commons-logging-log4j.iml" filepath="$PROJECT_DIR$/commons-logging-log4j/commons-logging-log4j.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-mappers/commons-mappers.iml" filepath="$PROJECT_DIR$/commons-mappers/commons-mappers.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-pdf/commons-pdf.iml" filepath="$PROJECT_DIR$/commons-pdf/commons-pdf.iml" />

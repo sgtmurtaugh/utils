@@ -17,7 +17,7 @@
         <module name="services-core" />
         <module name="webcommons-mappers" />
         <module name="commons-pdf" />
-        <module name="commons-logging-javalogger" />
+        <module name="commons-logging-javalog" />
         <module name="webcommons-core" />
         <module name="commons-pdf-itext7" />
         <module name="commons-core" />
@@ -25,7 +25,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="commons-core" target="11" />
-      <module name="commons-logging-javalogger" target="11" />
+      <module name="commons-logging-javalog" target="11" />
       <module name="commons-logging-log4j" target="11" />
       <module name="commons-logging-slf4j" target="11" />
       <module name="commons-mappers" target="11" />
