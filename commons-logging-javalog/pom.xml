@@ -23,7 +23,7 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>commons-logging-javalogger</artifactId>
+    <artifactId>commons-logging-javalog</artifactId>
     <version>0.0.1</version>
 
     <dependencies>

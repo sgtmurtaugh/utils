@@ -5,20 +5,24 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
 import java.util.Enumeration;
 
-@SuppressWarnings({ "unused", "javadoc", "WeakerAccess" })
-public class TypeMapperHttpSessionFacade implements TypeMapperHttpSession {
+@SuppressWarnings({ "unused", "javadoc" })
+public class DefaultTypeMapperHttpSessionFacade implements BigDecimalMapperHttpSession, BigIntegerMapperHttpSession,
+        BooleanMapperHttpSession, ByteMapperHttpSession, CharacterMapperHttpSession, DateMapperHttpSession,
+        DoubleMapperHttpSession, FloatMapperHttpSession, GregorianCalendarMapperHttpSession, IntegerMapperHttpSession,
+        LocalDateMapperHttpSession, LocalDateTimeMapperHttpSession, LocalTimeMapperHttpSession, LongMapperHttpSession,
+        ShortMapperHttpSession, StringMapperHttpSession {
 
-    private TypeMapperHttpSession typeMapperHttpSession;
+    private final HttpSession httpSession;
 
     /**
      * Constructor
      * @param httpSession
      */
-    public TypeMapperHttpSessionFacade( TypeMapperHttpSession typeMapperHttpSession ) {
+    public DefaultTypeMapperHttpSessionFacade( HttpSession httpSession ) {
         super();
 
-        if ( null != typeMapperHttpSession ) {
-            this.typeMapperHttpSession = typeMapperHttpSession;
+        if ( null != httpSession ) {
+            this.httpSession = httpSession;
         }
         else {
             throw new IllegalArgumentException( "session parameter must not be null!" );
@@ -29,8 +33,8 @@ public class TypeMapperHttpSessionFacade implements TypeMapperHttpSession {
      * getHttpSession
      * @return
      */
-    public TypeMapperHttpSession getHttpSession() {
-        return this.typeMapperHttpSession;
+    public HttpSession getHttpSession() {
+        return this;
     }
 
     public long getCreationTime() {
@@ -71,7 +75,7 @@ public class TypeMapperHttpSessionFacade implements TypeMapperHttpSession {
         return this.getHttpSession().getValue( key );
     }
 
-    public Enumeration getAttributeNames() {
+    public Enumeration<?> getAttributeNames() {
         return this.getHttpSession().getAttributeNames();
     }
 

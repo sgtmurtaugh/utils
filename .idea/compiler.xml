@@ -26,6 +26,7 @@
     <bytecodeTargetLevel>
       <module name="commons-core" target="11" />
       <module name="commons-logging-javalog" target="11" />
+      <module name="commons-logging-javalogger" target="11" />
       <module name="commons-logging-log4j" target="11" />
       <module name="commons-logging-slf4j" target="11" />
       <module name="commons-mappers" target="11" />
