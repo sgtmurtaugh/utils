@@ -10,35 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  */
 @SuppressWarnings({ "unused", "javadoc" })
-public interface FloatMapperRequestUtils {
-
-    /**
-     * 
-     * @param request
-     * @param name
-     * @return
-     */
-    default Float getFloatAttribute( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getFloatMapper().mapObject( request.getAttribute( name ) );
-        }
-        return TypeMapperUtils.getDefaults().getFloatMapper().getDefaultValue();
-    }
-
-    /**
-     * 
-     * @param request
-     * @param name
-     * @param defaultValue
-     * @return
-     */
-    default Float getFloatAttribute( HttpServletRequest request, String name, Float defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getFloatMapper()
-                                  .mapObject( request.getAttribute( name ), defaultValue );
-        }
-        return defaultValue;
-    }
+public interface FloatMapperRequestUtils extends RequestUtils, FloatMapperScopeUtils<HttpServletRequest> {
 
     /**
      * 
@@ -103,13 +75,14 @@ public interface FloatMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @return
      */
-    default boolean hasFloatAttribute( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+    default boolean hasFloatParameter( HttpServletRequest request, String name ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             var value = TypeMapperUtils.getDefaults().getFloatMapper()
-                                       .mapObject( request.getAttribute( key ), null );
+                                       .map( request.getParameter( name ), ( Float ) null );
             return ( null != value );
         }
         return false;
@@ -117,45 +90,15 @@ public interface FloatMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @param value
      * @return
      */
-    default boolean hasFloatAttributeWithValue( HttpServletRequest request, String key, Float value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+    default boolean hasFloatParameterWithValue( HttpServletRequest request, String name, Float value ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getFloatMapper()
-                                                                     .mapObject( request.getAttribute( key ), null ) )
-                                      .isEquals();
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @return
-     */
-    default boolean hasFloatParameter( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            var value = TypeMapperUtils.getDefaults().getFloatMapper()
-                                       .map( request.getParameter( key ), ( Float ) null );
-            return ( null != value );
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @param value
-     * @return
-     */
-    default boolean hasFloatParameterWithValue( HttpServletRequest request, String key, Float value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getFloatMapper()
-                                                                     .map( request.getParameter( key ),
+                                                                     .map( request.getParameter( name ),
                                                                            ( Float ) null ) ).isEquals();
         }
         return false;

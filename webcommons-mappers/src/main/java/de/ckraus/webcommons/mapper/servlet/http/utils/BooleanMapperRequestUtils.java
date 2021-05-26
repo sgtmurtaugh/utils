@@ -10,33 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  */
 @SuppressWarnings( { "unused", "javadoc" } )
-public interface BooleanMapperRequestUtils {
-
-    /**
-     * @param request
-     * @param name
-     * @return
-     */
-    default Boolean getBooleanAttribute( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getBooleanMapper().mapObject( request.getAttribute( name ) );
-        }
-        return TypeMapperUtils.getDefaults().getBooleanMapper().getDefaultValue();
-    }
-
-    /**
-     * @param request
-     * @param name
-     * @param defaultValue
-     * @return
-     */
-    default Boolean getBooleanAttribute( HttpServletRequest request, String name, Boolean defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getBooleanMapper()
-                                  .mapObject( request.getAttribute( name ), defaultValue );
-        }
-        return defaultValue;
-    }
+public interface BooleanMapperRequestUtils extends RequestUtils, BooleanMapperScopeUtils<HttpServletRequest> {
 
     /**
      * @param request
@@ -98,12 +72,13 @@ public interface BooleanMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @return
      */
-    default boolean hasBooleanAttribute( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
-            var value = TypeMapperUtils.getDefaults().getBooleanMapper().mapObject( request.getAttribute( key ), null );
+    default boolean hasBooleanParameter( HttpServletRequest request, String name ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
+            var value = TypeMapperUtils.getDefaults().getBooleanMapper().map( request.getParameter( name ), null );
             return ( null != value );
         }
         return false;
@@ -111,44 +86,15 @@ public interface BooleanMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @param value
      * @return
      */
-    default boolean hasBooleanAttributeWithValue( HttpServletRequest request, String key, Boolean value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+    default boolean hasBooleanParameterWithValue( HttpServletRequest request, String name, Boolean value ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getBooleanMapper()
-                                                                     .mapObject( request.getAttribute( key ), null ) )
-                                      .isEquals();
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @return
-     */
-    default boolean hasBooleanParameter( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            var value = TypeMapperUtils.getDefaults().getBooleanMapper().map( request.getParameter( key ), null );
-            return ( null != value );
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @param value
-     * @return
-     */
-    default boolean hasBooleanParameterWithValue( HttpServletRequest request, String key, Boolean value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getBooleanMapper()
-                                                                     .map( request.getParameter( key ), null ) )
+                                                                     .map( request.getParameter( name ), null ) )
                                       .isEquals();
         }
         return false;

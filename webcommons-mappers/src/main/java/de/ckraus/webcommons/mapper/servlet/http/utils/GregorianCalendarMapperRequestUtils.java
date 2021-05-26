@@ -11,34 +11,7 @@ import java.util.GregorianCalendar;
  *
  */
 @SuppressWarnings( { "unused", "javadoc" } )
-public interface GregorianCalendarMapperRequestUtils {
-
-    /**
-     * @param request
-     * @param name
-     * @return
-     */
-    default GregorianCalendar getGregorianCalendarAttribute( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().mapObject( request.getAttribute( name ) );
-        }
-        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().getDefaultValue();
-    }
-
-    /**
-     * @param request
-     * @param name
-     * @param defaultValue
-     * @return
-     */
-    default GregorianCalendar getGregorianCalendarAttribute( HttpServletRequest request, String name,
-            GregorianCalendar defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
-                                  .mapObject( request.getAttribute( name ), defaultValue );
-        }
-        return defaultValue;
-    }
+public interface GregorianCalendarMapperRequestUtils extends RequestUtils, GregorianCalendarMapperScopeUtils<HttpServletRequest> {
 
     /**
      * @param request
@@ -102,13 +75,14 @@ public interface GregorianCalendarMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @return
      */
-    default boolean hasGregorianCalendarAttribute( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+    default boolean hasGregorianCalendarParameter( HttpServletRequest request, String name ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             var value = TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
-                                       .mapObject( request.getAttribute( key ), null );
+                                       .map( request.getParameter( name ), null );
             return ( null != value );
         }
         return false;
@@ -116,47 +90,16 @@ public interface GregorianCalendarMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @param value
      * @return
      */
-    default boolean hasGregorianCalendarAttributeWithValue( HttpServletRequest request, String key,
+    default boolean hasGregorianCalendarParameterWithValue( HttpServletRequest request, String name,
             GregorianCalendar value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
-                                                                     .mapObject( request.getAttribute( key ), null ) )
-                                      .isEquals();
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @return
-     */
-    default boolean hasGregorianCalendarParameter( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            var value = TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
-                                       .map( request.getParameter( key ), null );
-            return ( null != value );
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @param value
-     * @return
-     */
-    default boolean hasGregorianCalendarParameterWithValue( HttpServletRequest request, String key,
-            GregorianCalendar value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
-                                                                     .map( request.getParameter( key ), null ) )
+                                                                     .map( request.getParameter( name ), null ) )
                                       .isEquals();
         }
         return false;

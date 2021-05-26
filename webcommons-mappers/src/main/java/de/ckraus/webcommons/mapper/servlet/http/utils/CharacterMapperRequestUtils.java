@@ -10,33 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  */
 @SuppressWarnings( { "unused", "javadoc" } )
-public interface CharacterMapperRequestUtils {
-
-    /**
-     * @param request
-     * @param name
-     * @return
-     */
-    default Character getCharacterAttribute( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getCharacterMapper().mapObject( request.getAttribute( name ) );
-        }
-        return TypeMapperUtils.getDefaults().getCharacterMapper().getDefaultValue();
-    }
-
-    /**
-     * @param request
-     * @param name
-     * @param defaultValue
-     * @return
-     */
-    default Character getCharacterAttribute( HttpServletRequest request, String name, Character defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getCharacterMapper()
-                                  .mapObject( request.getAttribute( name ), defaultValue );
-        }
-        return defaultValue;
-    }
+public interface CharacterMapperRequestUtils extends RequestUtils, CharacterMapperScopeUtils<HttpServletRequest> {
 
     /**
      * @param request
@@ -98,13 +72,13 @@ public interface CharacterMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @return
      */
-    default boolean hasCharacterAttribute( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
-            var value = TypeMapperUtils.getDefaults().getCharacterMapper()
-                                       .mapObject( request.getAttribute( key ), null );
+    default boolean hasCharacterParameter( HttpServletRequest request, String name ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
+            var value = TypeMapperUtils.getDefaults().getCharacterMapper().map( request.getParameter( name ), null );
             return ( null != value );
         }
         return false;
@@ -112,44 +86,15 @@ public interface CharacterMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @param value
      * @return
      */
-    default boolean hasCharacterAttributeWithValue( HttpServletRequest request, String key, Character value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+    default boolean hasCharacterParameterWithValue( HttpServletRequest request, String name, Character value ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getCharacterMapper()
-                                                                     .mapObject( request.getAttribute( key ), null ) )
-                                      .isEquals();
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @return
-     */
-    default boolean hasCharacterParameter( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            var value = TypeMapperUtils.getDefaults().getCharacterMapper().map( request.getParameter( key ), null );
-            return ( null != value );
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @param value
-     * @return
-     */
-    default boolean hasCharacterParameterWithValue( HttpServletRequest request, String key, Character value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getCharacterMapper()
-                                                                     .map( request.getParameter( key ), null ) )
+                                                                     .map( request.getParameter( name ), null ) )
                                       .isEquals();
         }
         return false;

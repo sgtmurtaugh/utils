@@ -9,39 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 /**
  *
  */
-@SuppressWarnings({ "unused", "javadoc" })
-public interface IntegerMapperRequestUtils {
+@SuppressWarnings( { "unused", "javadoc" } )
+public interface IntegerMapperRequestUtils extends RequestUtils, IntegerMapperScopeUtils<HttpServletRequest> {
 
     /**
-     * 
-     * @param request
-     * @param name
-     * @return
-     */
-    default Integer getIntegerAttribute( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getIntegerMapper().mapObject( request.getAttribute( name ) );
-        }
-        return TypeMapperUtils.getDefaults().getIntegerMapper().getDefaultValue();
-    }
-
-    /**
-     * 
-     * @param request
-     * @param name
-     * @param defaultValue
-     * @return
-     */
-    default Integer getIntegerAttribute( HttpServletRequest request, String name, Integer defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getIntegerMapper()
-                                  .mapObject( request.getAttribute( name ), defaultValue );
-        }
-        return defaultValue;
-    }
-
-    /**
-     * 
      * @param request
      * @param name
      * @return
@@ -54,7 +25,6 @@ public interface IntegerMapperRequestUtils {
     }
 
     /**
-     * 
      * @param request
      * @param name
      * @param defaultValue
@@ -68,7 +38,6 @@ public interface IntegerMapperRequestUtils {
     }
 
     /**
-     * 
      * @param request
      * @param name
      * @param bTrim
@@ -85,7 +54,6 @@ public interface IntegerMapperRequestUtils {
     }
 
     /**
-     * 
      * @param request
      * @param name
      * @param bTrim
@@ -104,13 +72,14 @@ public interface IntegerMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @return
      */
-    default boolean hasIntegerAttribute( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+    default boolean hasIntegerParameter( HttpServletRequest request, String name ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             var value = TypeMapperUtils.getDefaults().getIntegerMapper()
-                                       .mapObject( request.getAttribute( key ), null );
+                                       .map( request.getParameter( name ), ( Integer ) null );
             return ( null != value );
         }
         return false;
@@ -118,45 +87,15 @@ public interface IntegerMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @param value
      * @return
      */
-    default boolean hasIntegerAttributeWithValue( HttpServletRequest request, String key, Integer value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+    default boolean hasIntegerParameterWithValue( HttpServletRequest request, String name, Integer value ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getIntegerMapper()
-                                                                     .mapObject( request.getAttribute( key ), null ) )
-                                      .isEquals();
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @return
-     */
-    default boolean hasIntegerParameter( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            var value = TypeMapperUtils.getDefaults().getIntegerMapper()
-                                       .map( request.getParameter( key ), ( Integer ) null );
-            return ( null != value );
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @param value
-     * @return
-     */
-    default boolean hasIntegerParameterWithValue( HttpServletRequest request, String key, Integer value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getIntegerMapper()
-                                                                     .map( request.getParameter( key ),
+                                                                     .map( request.getParameter( name ),
                                                                            ( Integer ) null ) ).isEquals();
         }
         return false;

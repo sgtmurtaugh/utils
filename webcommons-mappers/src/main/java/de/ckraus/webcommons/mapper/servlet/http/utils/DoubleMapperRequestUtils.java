@@ -10,33 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  */
 @SuppressWarnings( { "unused", "javadoc" } )
-public interface DoubleMapperRequestUtils {
-
-    /**
-     * @param request
-     * @param name
-     * @return
-     */
-    default Double getDoubleAttribute( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getDoubleMapper().mapObject( request.getAttribute( name ) );
-        }
-        return TypeMapperUtils.getDefaults().getDoubleMapper().getDefaultValue();
-    }
-
-    /**
-     * @param request
-     * @param name
-     * @param defaultValue
-     * @return
-     */
-    default Double getDoubleAttribute( HttpServletRequest request, String name, Double defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getDoubleMapper()
-                                  .mapObject( request.getAttribute( name ), defaultValue );
-        }
-        return defaultValue;
-    }
+public interface DoubleMapperRequestUtils extends RequestUtils, DoubleMapperScopeUtils<HttpServletRequest> {
 
     /**
      * @param request
@@ -97,42 +71,14 @@ public interface DoubleMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @return
      */
-    default boolean hasDoubleAttribute( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
-            var value = TypeMapperUtils.getDefaults().getDoubleMapper().mapObject( request.getAttribute( key ), null );
-            return ( null != value );
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @param value
-     * @return
-     */
-    default boolean hasDoubleAttributeWithValue( HttpServletRequest request, String key, Double value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getDoubleMapper()
-                                                                     .mapObject( request.getAttribute( key ), null ) )
-                                      .isEquals();
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @return
-     */
-    default boolean hasDoubleParameter( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
+    default boolean hasDoubleParameter( HttpServletRequest request, String name ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             var value = TypeMapperUtils.getDefaults().getDoubleMapper()
-                                       .map( request.getParameter( key ), ( Double ) null );
+                                       .map( request.getParameter( name ), ( Double ) null );
             return ( null != value );
         }
         return false;
@@ -140,15 +86,15 @@ public interface DoubleMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @param value
      * @return
      */
-    default boolean hasDoubleParameterWithValue( HttpServletRequest request, String key, Double value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
+    default boolean hasDoubleParameterWithValue( HttpServletRequest request, String name, Double value ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getDoubleMapper()
-                                                                     .map( request.getParameter( key ),
+                                                                     .map( request.getParameter( name ),
                                                                            ( Double ) null ) ).isEquals();
         }
         return false;

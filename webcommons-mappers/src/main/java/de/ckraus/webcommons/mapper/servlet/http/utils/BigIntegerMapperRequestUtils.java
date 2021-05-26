@@ -10,39 +10,10 @@ import java.math.BigInteger;
 /**
  *
  */
-@SuppressWarnings({ "unused", "javadoc" })
-public interface BigIntegerMapperRequestUtils {
+@SuppressWarnings( { "unused", "javadoc" } )
+public interface BigIntegerMapperRequestUtils extends RequestUtils, BigIntegerMapperScopeUtils<HttpServletRequest> {
 
     /**
-     * 
-     * @param request
-     * @param name
-     * @return
-     */
-    default BigInteger getBigIntegerAttribute( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getBigIntegerMapper().mapObject( request.getAttribute( name ) );
-        }
-        return TypeMapperUtils.getDefaults().getBigIntegerMapper().getDefaultValue();
-    }
-
-    /**
-     * 
-     * @param request
-     * @param name
-     * @param defaultValue
-     * @return
-     */
-    default BigInteger getBigIntegerAttribute( HttpServletRequest request, String name, BigInteger defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getBigIntegerMapper()
-                                  .mapObject( request.getAttribute( name ), defaultValue );
-        }
-        return defaultValue;
-    }
-
-    /**
-     * 
      * @param request
      * @param name
      * @return
@@ -55,7 +26,6 @@ public interface BigIntegerMapperRequestUtils {
     }
 
     /**
-     * 
      * @param request
      * @param name
      * @param defaultValue
@@ -70,7 +40,6 @@ public interface BigIntegerMapperRequestUtils {
     }
 
     /**
-     * 
      * @param request
      * @param name
      * @param bTrim
@@ -87,7 +56,6 @@ public interface BigIntegerMapperRequestUtils {
     }
 
     /**
-     * 
      * @param request
      * @param name
      * @param bTrim
@@ -106,13 +74,14 @@ public interface BigIntegerMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @return
      */
-    default boolean hasBigIntegerAttribute( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+    default boolean hasBigIntegerParameter( HttpServletRequest request, String name ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             var value = TypeMapperUtils.getDefaults().getBigIntegerMapper()
-                                       .mapObject( request.getAttribute( key ), null );
+                                       .map( request.getParameter( name ), ( BigInteger ) null );
             return ( null != value );
         }
         return false;
@@ -120,45 +89,15 @@ public interface BigIntegerMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @param value
      * @return
      */
-    default boolean hasBigIntegerAttributeWithValue( HttpServletRequest request, String key, BigInteger value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+    default boolean hasBigIntegerParameterWithValue( HttpServletRequest request, String name, BigInteger value ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getBigIntegerMapper()
-                                                                     .mapObject( request.getAttribute( key ), null ) )
-                                      .isEquals();
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @return
-     */
-    default boolean hasBigIntegerParameter( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            var value = TypeMapperUtils.getDefaults().getBigIntegerMapper()
-                                       .map( request.getParameter( key ), ( BigInteger ) null );
-            return ( null != value );
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @param value
-     * @return
-     */
-    default boolean hasBigIntegerParameterWithValue( HttpServletRequest request, String key, BigInteger value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getBigIntegerMapper()
-                                                                     .map( request.getParameter( key ),
+                                                                     .map( request.getParameter( name ),
                                                                            ( BigInteger ) null ) ).isEquals();
         }
         return false;

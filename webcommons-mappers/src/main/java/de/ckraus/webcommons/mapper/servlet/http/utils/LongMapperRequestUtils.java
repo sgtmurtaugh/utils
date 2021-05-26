@@ -9,39 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 /**
  *
  */
-@SuppressWarnings({ "unused", "javadoc" })
-public interface LongMapperRequestUtils {
+@SuppressWarnings( { "unused", "javadoc" } )
+public interface LongMapperRequestUtils extends RequestUtils, LongMapperScopeUtils<HttpServletRequest> {
 
     /**
-     * 
-     * @param request
-     * @param name
-     * @return
-     */
-    default Long getLongAttribute( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getLongMapper().mapObject( request.getAttribute( name ) );
-        }
-        return TypeMapperUtils.getDefaults().getLongMapper().getDefaultValue();
-    }
-
-    /**
-     * 
-     * @param request
-     * @param name
-     * @param defaultValue
-     * @return
-     */
-    default Long getLongAttribute( HttpServletRequest request, String name, Long defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getLongMapper()
-                                  .mapObject( request.getAttribute( name ), defaultValue );
-        }
-        return defaultValue;
-    }
-
-    /**
-     * 
      * @param request
      * @param name
      * @return
@@ -54,7 +25,6 @@ public interface LongMapperRequestUtils {
     }
 
     /**
-     * 
      * @param request
      * @param name
      * @param defaultValue
@@ -68,7 +38,6 @@ public interface LongMapperRequestUtils {
     }
 
     /**
-     * 
      * @param request
      * @param name
      * @param bTrim
@@ -84,7 +53,6 @@ public interface LongMapperRequestUtils {
     }
 
     /**
-     * 
      * @param request
      * @param name
      * @param bTrim
@@ -103,13 +71,14 @@ public interface LongMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @return
      */
-    default boolean hasLongAttribute( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+    default boolean hasLongParameter( HttpServletRequest request, String name ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             var value = TypeMapperUtils.getDefaults().getLongMapper()
-                                       .mapObject( request.getAttribute( key ), null );
+                                       .map( request.getParameter( name ), ( Long ) null );
             return ( null != value );
         }
         return false;
@@ -117,45 +86,15 @@ public interface LongMapperRequestUtils {
 
     /**
      * @param request
-     * @param key
+     * @param name
      * @param value
      * @return
      */
-    default boolean hasLongAttributeWithValue( HttpServletRequest request, String key, Long value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) && null != request.getAttribute( key ) ) {
+    default boolean hasLongParameterWithValue( HttpServletRequest request, String name, Long value ) {
+        if ( null != request && StringUtils.isNotEmpty( name ) &&
+             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
             return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getLongMapper()
-                                                                     .mapObject( request.getAttribute( key ), null ) )
-                                      .isEquals();
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @return
-     */
-    default boolean hasLongParameter( HttpServletRequest request, String key ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            var value = TypeMapperUtils.getDefaults().getLongMapper()
-                                       .map( request.getParameter( key ), ( Long ) null );
-            return ( null != value );
-        }
-        return false;
-    }
-
-    /**
-     * @param request
-     * @param key
-     * @param value
-     * @return
-     */
-    default boolean hasLongParameterWithValue( HttpServletRequest request, String key, Long value ) {
-        if ( null != request && StringUtils.isNotEmpty( key ) &&
-             StringUtils.isNotEmpty( request.getParameter( key ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getLongMapper()
-                                                                     .map( request.getParameter( key ),
+                                                                     .map( request.getParameter( name ),
                                                                            ( Long ) null ) ).isEquals();
         }
         return false;
