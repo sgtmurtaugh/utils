@@ -158,7 +158,7 @@ public class BooleanMapperImpl extends TypeMapperBase<Boolean> implements Boolea
      * @return
      */
     public boolean isFalse( Character c ) {
-        boolean bIsFalse = false;
+        var bIsFalse = false;
 
         if ( null != c ) {
             bIsFalse = this.getFalseCharacterValues().stream().anyMatch( character -> character.equals( c ) );
@@ -174,7 +174,7 @@ public class BooleanMapperImpl extends TypeMapperBase<Boolean> implements Boolea
      * @return
      */
     public boolean isFalse( Integer i ) {
-        boolean bIsFalse = false;
+        var bIsFalse = false;
 
         if ( null != i ) {
             bIsFalse = this.getFalseIntegerValues().stream().anyMatch( integer -> integer.equals( i ) );
@@ -190,7 +190,7 @@ public class BooleanMapperImpl extends TypeMapperBase<Boolean> implements Boolea
      * @return
      */
     public boolean isFalse( String s ) {
-        boolean bIsFalse = false;
+        var bIsFalse = false;
 
         if ( null != s ) {
             bIsFalse = this.getFalseStringValues().stream()
@@ -207,7 +207,7 @@ public class BooleanMapperImpl extends TypeMapperBase<Boolean> implements Boolea
      * @return
      */
     public boolean isTrue( Character c ) {
-        boolean bIsTrue = false;
+        var bIsTrue = false;
 
         if ( null != c ) {
             bIsTrue = this.getTrueCharacterValues().stream().anyMatch( character -> character.equals( c ) );
@@ -223,7 +223,7 @@ public class BooleanMapperImpl extends TypeMapperBase<Boolean> implements Boolea
      * @return
      */
     public boolean isTrue( Integer i ) {
-        boolean bIsTrue = false;
+        var bIsTrue = false;
 
         if ( null != i ) {
             bIsTrue = this.getTrueIntegerValues().stream().anyMatch( integer -> integer.equals( i ) );
@@ -239,7 +239,7 @@ public class BooleanMapperImpl extends TypeMapperBase<Boolean> implements Boolea
      * @return
      */
     public boolean isTrue( String s ) {
-        boolean bIsTrue = false;
+        var bIsTrue = false;
 
         if ( null != s ) {
             bIsTrue = this.getTrueStringValues().stream()
