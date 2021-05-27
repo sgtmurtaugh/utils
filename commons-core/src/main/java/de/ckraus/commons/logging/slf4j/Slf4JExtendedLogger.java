@@ -18,7 +18,7 @@ public class Slf4JExtendedLogger extends Slf4JLogger implements ExtendedLogger<L
     @Override
     public void logEnterSecret(String sMethod, Object oSecret) {
         if ( getLogger().isWarnEnabled() ) {
-            this.getLogger().warn( this.buildLogMessage(sMethod, METHOD_INSIDE, sMessage ), oaParams );
+            this.getLogger().warn( this.buildLogMessage(sMethod, METHOD_INSIDE, null ), oSecret );
         }
     }
 
