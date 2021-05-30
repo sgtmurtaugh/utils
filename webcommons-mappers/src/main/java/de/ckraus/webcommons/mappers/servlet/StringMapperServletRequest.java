@@ -3,13 +3,14 @@ package de.ckraus.webcommons.mappers.servlet;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.StringScopeMapper;
+import lombok.NonNull;
 
 import javax.servlet.ServletRequest;
 
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface StringMapperServletRequest extends ServletRequest, ServletRequestScopeMapper, StringScopeMapper {
 
     @Override
@@ -19,18 +20,20 @@ public interface StringMapperServletRequest extends ServletRequest, ServletReque
 
     /**
      * @param name
+     *
      * @return
      */
-    default String getStringParameter(String name) {
+    default String getStringParameter(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getStringMapper().map(this.getParameter(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default String getStringParameter(String name, String defaultValue) {
+    default String getStringParameter(@NonNull String name, String defaultValue) {
         return TypeMapperUtils.getDefaults().getStringMapper().map(this.getParameter(name), defaultValue);
     }
 
@@ -38,9 +41,10 @@ public interface StringMapperServletRequest extends ServletRequest, ServletReque
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default String getStringParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
+    default String getStringParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
         return TypeMapperUtils.getDefaults().getStringMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
@@ -49,10 +53,12 @@ public interface StringMapperServletRequest extends ServletRequest, ServletReque
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default String getStringParameter(String name, boolean bTrim, boolean bEmptyIsNull, String defaultValue) {
-        return TypeMapperUtils.getDefaults().getStringMapper().map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+    default String getStringParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, String defaultValue) {
+        return TypeMapperUtils.getDefaults().getStringMapper()
+                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

@@ -10,17 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 /**
  *
  */
-@SuppressWarnings( { "unused", "javadoc" } )
+@SuppressWarnings({ "unused", "javadoc" })
 public interface HttpServletRequestUtils extends ScopeUtils<HttpServletRequest> {
 
     /**
      * @param request
      * @param name
+     *
      * @return
      */
-    default Object getAttribute( @NonNull HttpServletRequest request, @NonNull String name ) {
-        if ( StringUtils.isNotEmpty( name ) ) {
-            return request.getAttribute( name );
+    default Object getAttribute(@NonNull HttpServletRequest request, @NonNull String name) {
+        if (StringUtils.isNotEmpty(name)) {
+            return request.getAttribute(name);
         }
         return null;
     }
@@ -29,11 +30,12 @@ public interface HttpServletRequestUtils extends ScopeUtils<HttpServletRequest> 
     /**
      * @param request
      * @param name
+     *
      * @return
      */
-    default String getParameter( @NonNull HttpServletRequest request, @NonNull String name ) {
-        if ( StringUtils.isNotEmpty( name ) ) {
-            return request.getParameter( name );
+    default String getParameter(@NonNull HttpServletRequest request, @NonNull String name) {
+        if (StringUtils.isNotEmpty(name)) {
+            return request.getParameter(name);
         }
         return null;
     }
@@ -41,10 +43,11 @@ public interface HttpServletRequestUtils extends ScopeUtils<HttpServletRequest> 
     /**
      * @param request
      * @param name
+     *
      * @return
      */
-    default boolean hasParameter( @NonNull HttpServletRequest request, @NonNull String name ) {
-        return ( null != this.getParameter( request, name ) );
+    default boolean hasParameter(@NonNull HttpServletRequest request, @NonNull String name) {
+        return (null != this.getParameter(request, name));
     }
 
 
@@ -52,11 +55,12 @@ public interface HttpServletRequestUtils extends ScopeUtils<HttpServletRequest> 
      * @param request
      * @param name
      * @param value
+     *
      * @return
      */
-    default boolean hasParameterWithValue( @NonNull HttpServletRequest request, @NonNull String name, Object value ) {
-        if ( this.hasParameter( request, name ) ) {
-            return new EqualsBuilder().append( this.getAttribute( request, name ), value ).isEquals();
+    default boolean hasParameterWithValue(@NonNull HttpServletRequest request, @NonNull String name, Object value) {
+        if (this.hasParameter(request, name)) {
+            return new EqualsBuilder().append(this.getAttribute(request, name), value).isEquals();
         }
         return false;
     }

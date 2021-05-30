@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface StringMapperHttpSession extends HttpSession, StringScopeMapper {
 
 }

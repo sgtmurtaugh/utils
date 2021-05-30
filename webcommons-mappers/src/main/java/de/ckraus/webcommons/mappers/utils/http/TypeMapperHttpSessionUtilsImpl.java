@@ -1,11 +1,9 @@
 package de.ckraus.webcommons.mappers.utils.http;
 
-import de.ckraus.webcommons.mappers.utils.http.*;
-
 /**
  *
  */
-@SuppressWarnings( { "unused" } )
+@SuppressWarnings({ "unused" })
 public class TypeMapperHttpSessionUtilsImpl
         implements BigDecimalMapperHttpSessionUtils, BigIntegerMapperHttpSessionUtils, BooleanMapperHttpSessionUtils,
         ByteMapperHttpSessionUtils, CharacterMapperHttpSessionUtils, DateMapperHttpSessionUtils,

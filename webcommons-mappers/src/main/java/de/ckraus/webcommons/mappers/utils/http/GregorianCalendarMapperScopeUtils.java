@@ -9,17 +9,18 @@ import java.util.GregorianCalendar;
 /**
  *
  */
-@SuppressWarnings( { "unused", "javadoc" } )
+@SuppressWarnings({ "unused", "javadoc" })
 public interface GregorianCalendarMapperScopeUtils<E> extends ScopeUtils<E> {
 
     /**
      * @param e
      * @param name
+     *
      * @return
      */
-    default GregorianCalendar getGregorianCalendarAttribute( E e, String name ) {
-        if ( null != e ) {
-            return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().mapObject( this.getAttribute( e, name ) );
+    default GregorianCalendar getGregorianCalendarAttribute(E e, String name) {
+        if (null != e) {
+            return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().mapObject(this.getAttribute(e, name));
         }
         return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().getDefaultValue();
     }
@@ -28,12 +29,13 @@ public interface GregorianCalendarMapperScopeUtils<E> extends ScopeUtils<E> {
      * @param e
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default GregorianCalendar getGregorianCalendarAttribute( E e, String name, GregorianCalendar defaultValue ) {
-        if ( null != e ) {
+    default GregorianCalendar getGregorianCalendarAttribute(E e, String name, GregorianCalendar defaultValue) {
+        if (null != e) {
             return TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
-                                  .mapObject( this.getAttribute( e, name ), defaultValue );
+                                  .mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -41,13 +43,14 @@ public interface GregorianCalendarMapperScopeUtils<E> extends ScopeUtils<E> {
     /**
      * @param e
      * @param name
+     *
      * @return
      */
-    default boolean hasGregorianCalendarAttribute( E e, String name ) {
-        if ( this.hasAttribute( e, name ) ) {
+    default boolean hasGregorianCalendarAttribute(E e, String name) {
+        if (this.hasAttribute(e, name)) {
             var value = TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
-                                       .mapObject( this.getAttribute( e, name ), null );
-            return ( null != value );
+                                       .mapObject(this.getAttribute(e, name), null);
+            return (null != value);
         }
         return false;
     }
@@ -56,12 +59,13 @@ public interface GregorianCalendarMapperScopeUtils<E> extends ScopeUtils<E> {
      * @param e
      * @param name
      * @param value
+     *
      * @return
      */
-    default boolean hasGregorianCalendarAttributeWithValue( E e, String name, GregorianCalendar value ) {
-        if ( this.hasAttribute( e, name ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
-                                                                     .mapObject( this.getAttribute( e, name ), null ) )
+    default boolean hasGregorianCalendarAttributeWithValue(E e, String name, GregorianCalendar value) {
+        if (this.hasAttribute(e, name)) {
+            return new EqualsBuilder().append(value, TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
+                                                                    .mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

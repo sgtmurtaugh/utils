@@ -10,65 +10,32 @@ import javax.servlet.http.HttpServletRequest;
  *
  */
 @SuppressWarnings({ "unused", "javadoc" })
-public interface FloatMapperHttpServletRequestUtils extends HttpServletRequestUtils, FloatMapperScopeUtils<HttpServletRequest> {
+public interface FloatMapperHttpServletRequestUtils
+        extends HttpServletRequestUtils, FloatMapperScopeUtils<HttpServletRequest> {
 
     /**
-     * 
      * @param request
      * @param name
+     *
      * @return
      */
-    default Float getFloatParameter( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getFloatMapper().map( request.getParameter( name ) );
+    default Float getFloatParameter(HttpServletRequest request, String name) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getFloatMapper().map(request.getParameter(name));
         }
         return TypeMapperUtils.getDefaults().getFloatMapper().getDefaultValue();
     }
 
     /**
-     * 
      * @param request
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default Float getFloatParameter( HttpServletRequest request, String name, Float defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getFloatMapper().map( request.getParameter( name ), defaultValue );
-        }
-        return defaultValue;
-    }
-
-    /**
-     * 
-     * @param request
-     * @param name
-     * @param bTrim
-     * @param bEmptyIsNull
-     * @return
-     */
-    default Float getFloatParameter( HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getFloatMapper()
-                                  .map( request.getParameter( name ), bTrim, bEmptyIsNull );
-        }
-        return TypeMapperUtils.getDefaults().getFloatMapper().getDefaultValue();
-    }
-
-    /**
-     * 
-     * @param request
-     * @param name
-     * @param bTrim
-     * @param bEmptyIsNull
-     * @param defaultValue
-     * @return
-     */
-    default Float getFloatParameter( HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
-            Float defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getFloatMapper()
-                                  .map( request.getParameter( name ), bTrim, bEmptyIsNull, defaultValue );
+    default Float getFloatParameter(HttpServletRequest request, String name, Float defaultValue) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getFloatMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -76,14 +43,46 @@ public interface FloatMapperHttpServletRequestUtils extends HttpServletRequestUt
     /**
      * @param request
      * @param name
+     * @param bTrim
+     * @param bEmptyIsNull
+     *
      * @return
      */
-    default boolean hasFloatParameter( HttpServletRequest request, String name ) {
-        if ( null != request && StringUtils.isNotEmpty( name ) &&
-             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
-            var value = TypeMapperUtils.getDefaults().getFloatMapper()
-                                       .map( request.getParameter( name ), ( Float ) null );
-            return ( null != value );
+    default Float getFloatParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getFloatMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
+        }
+        return TypeMapperUtils.getDefaults().getFloatMapper().getDefaultValue();
+    }
+
+    /**
+     * @param request
+     * @param name
+     * @param bTrim
+     * @param bEmptyIsNull
+     * @param defaultValue
+     *
+     * @return
+     */
+    default Float getFloatParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
+                                    Float defaultValue) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getFloatMapper()
+                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        }
+        return defaultValue;
+    }
+
+    /**
+     * @param request
+     * @param name
+     *
+     * @return
+     */
+    default boolean hasFloatParameter(HttpServletRequest request, String name) {
+        if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
+            var value = TypeMapperUtils.getDefaults().getFloatMapper().map(request.getParameter(name), (Float) null);
+            return (null != value);
         }
         return false;
     }
@@ -92,14 +91,14 @@ public interface FloatMapperHttpServletRequestUtils extends HttpServletRequestUt
      * @param request
      * @param name
      * @param value
+     *
      * @return
      */
-    default boolean hasFloatParameterWithValue( HttpServletRequest request, String name, Float value ) {
-        if ( null != request && StringUtils.isNotEmpty( name ) &&
-             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getFloatMapper()
-                                                                     .map( request.getParameter( name ),
-                                                                           ( Float ) null ) ).isEquals();
+    default boolean hasFloatParameterWithValue(HttpServletRequest request, String name, Float value) {
+        if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
+            return new EqualsBuilder().append(value,
+                    TypeMapperUtils.getDefaults().getFloatMapper().map(request.getParameter(name), (Float) null))
+                                      .isEquals();
         }
         return false;
     }

@@ -3,6 +3,7 @@ package de.ckraus.webcommons.mappers.servlet;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.LocalTimeScopeMapper;
+import lombok.NonNull;
 
 import javax.servlet.ServletRequest;
 import java.time.LocalTime;
@@ -10,7 +11,7 @@ import java.time.LocalTime;
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRequestScopeMapper, LocalTimeScopeMapper {
 
     @Override
@@ -20,18 +21,20 @@ public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRe
 
     /**
      * @param name
+     *
      * @return
      */
-    default LocalTime getLocalTimeParameter(String name) {
+    default LocalTime getLocalTimeParameter(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(this.getParameter(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default LocalTime getLocalTimeParameter(String name, LocalTime defaultValue) {
+    default LocalTime getLocalTimeParameter(@NonNull String name, LocalTime defaultValue) {
         return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(this.getParameter(name), defaultValue);
     }
 
@@ -39,9 +42,10 @@ public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRe
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default LocalTime getLocalTimeParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
+    default LocalTime getLocalTimeParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
         return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
@@ -50,10 +54,13 @@ public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRe
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default LocalTime getLocalTimeParameter(String name, boolean bTrim, boolean bEmptyIsNull, LocalTime defaultValue) {
-        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+    default LocalTime getLocalTimeParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
+                                            LocalTime defaultValue) {
+        return TypeMapperUtils.getDefaults().getLocalTimeMapper()
+                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

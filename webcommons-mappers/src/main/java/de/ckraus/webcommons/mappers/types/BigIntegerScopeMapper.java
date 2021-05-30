@@ -2,6 +2,7 @@ package de.ckraus.webcommons.mappers.types;
 
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ScopeMapper;
+import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
@@ -10,31 +11,34 @@ import java.math.BigInteger;
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface BigIntegerScopeMapper extends ScopeMapper {
 
     /**
      * @param name
+     *
      * @return
      */
-    default BigInteger getBigIntegerAttribute(String name) {
+    default BigInteger getBigIntegerAttribute(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getBigIntegerMapper().mapObject(this.getAttribute(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default BigInteger getBigIntegerAttribute(String name, BigInteger defaultValue) {
+    default BigInteger getBigIntegerAttribute(@NonNull String name, BigInteger defaultValue) {
         return TypeMapperUtils.getDefaults().getBigIntegerMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
      * @param name
+     *
      * @return
      */
-    default boolean hasBigIntegerAttribute(String name) {
+    default boolean hasBigIntegerAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             var value = TypeMapperUtils.getDefaults().getBigIntegerMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
@@ -45,13 +49,14 @@ public interface BigIntegerScopeMapper extends ScopeMapper {
     /**
      * @param name
      * @param value
+     *
      * @return
      */
-    default boolean hasBigIntegerAttributeWithValue(String name, BigInteger value) {
+    default boolean hasBigIntegerAttributeWithValue(@NonNull String name, BigInteger value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            return new EqualsBuilder().append(value, TypeMapperUtils.getDefaults().getBigIntegerMapper()
-                    .mapObject(this.getAttribute(name), null))
-                    .isEquals();
+            return new EqualsBuilder().append(value,
+                    TypeMapperUtils.getDefaults().getBigIntegerMapper().mapObject(this.getAttribute(name), null))
+                                      .isEquals();
         }
         return false;
     }

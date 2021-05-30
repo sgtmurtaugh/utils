@@ -3,13 +3,14 @@ package de.ckraus.webcommons.mappers.servlet;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.FloatScopeMapper;
+import lombok.NonNull;
 
 import javax.servlet.ServletRequest;
 
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface FloatMapperServletRequest extends ServletRequest, ServletRequestScopeMapper, FloatScopeMapper {
 
     @Override
@@ -19,18 +20,20 @@ public interface FloatMapperServletRequest extends ServletRequest, ServletReques
 
     /**
      * @param name
+     *
      * @return
      */
-    default Float getFloatParameter(String name) {
+    default Float getFloatParameter(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getFloatMapper().map(this.getParameter(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default Float getFloatParameter(String name, Float defaultValue) {
+    default Float getFloatParameter(@NonNull String name, Float defaultValue) {
         return TypeMapperUtils.getDefaults().getFloatMapper().map(this.getParameter(name), defaultValue);
     }
 
@@ -38,9 +41,10 @@ public interface FloatMapperServletRequest extends ServletRequest, ServletReques
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default Float getFloatParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
+    default Float getFloatParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
         return TypeMapperUtils.getDefaults().getFloatMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
@@ -49,10 +53,12 @@ public interface FloatMapperServletRequest extends ServletRequest, ServletReques
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default Float getFloatParameter(String name, boolean bTrim, boolean bEmptyIsNull, Float defaultValue) {
-        return TypeMapperUtils.getDefaults().getFloatMapper().map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+    default Float getFloatParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Float defaultValue) {
+        return TypeMapperUtils.getDefaults().getFloatMapper()
+                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

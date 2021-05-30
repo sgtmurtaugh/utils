@@ -10,17 +10,19 @@ import java.math.BigInteger;
 /**
  *
  */
-@SuppressWarnings( { "unused", "javadoc" } )
-public interface BigIntegerMapperHttpServletRequestUtils extends HttpServletRequestUtils, BigIntegerMapperScopeUtils<HttpServletRequest> {
+@SuppressWarnings({ "unused", "javadoc" })
+public interface BigIntegerMapperHttpServletRequestUtils
+        extends HttpServletRequestUtils, BigIntegerMapperScopeUtils<HttpServletRequest> {
 
     /**
      * @param request
      * @param name
+     *
      * @return
      */
-    default BigInteger getBigIntegerParameter( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getBigIntegerMapper().map( request.getParameter( name ) );
+    default BigInteger getBigIntegerParameter(HttpServletRequest request, String name) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getBigIntegerMapper().map(request.getParameter(name));
         }
         return TypeMapperUtils.getDefaults().getBigIntegerMapper().getDefaultValue();
     }
@@ -29,12 +31,12 @@ public interface BigIntegerMapperHttpServletRequestUtils extends HttpServletRequ
      * @param request
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default BigInteger getBigIntegerParameter( HttpServletRequest request, String name, BigInteger defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getBigIntegerMapper()
-                                  .map( request.getParameter( name ), defaultValue );
+    default BigInteger getBigIntegerParameter(HttpServletRequest request, String name, BigInteger defaultValue) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getBigIntegerMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -44,13 +46,14 @@ public interface BigIntegerMapperHttpServletRequestUtils extends HttpServletRequ
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default BigInteger getBigIntegerParameter( HttpServletRequest request, String name, boolean bTrim,
-            boolean bEmptyIsNull ) {
-        if ( null != request ) {
+    default BigInteger getBigIntegerParameter(HttpServletRequest request, String name, boolean bTrim,
+                                              boolean bEmptyIsNull) {
+        if (null != request) {
             return TypeMapperUtils.getDefaults().getBigIntegerMapper()
-                                  .map( request.getParameter( name ), bTrim, bEmptyIsNull );
+                                  .map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
         return TypeMapperUtils.getDefaults().getBigIntegerMapper().getDefaultValue();
     }
@@ -61,13 +64,14 @@ public interface BigIntegerMapperHttpServletRequestUtils extends HttpServletRequ
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default BigInteger getBigIntegerParameter( HttpServletRequest request, String name, boolean bTrim,
-            boolean bEmptyIsNull, BigInteger defaultValue ) {
-        if ( null != request ) {
+    default BigInteger getBigIntegerParameter(HttpServletRequest request, String name, boolean bTrim,
+                                              boolean bEmptyIsNull, BigInteger defaultValue) {
+        if (null != request) {
             return TypeMapperUtils.getDefaults().getBigIntegerMapper()
-                                  .map( request.getParameter( name ), bTrim, bEmptyIsNull, defaultValue );
+                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
     }
@@ -75,14 +79,14 @@ public interface BigIntegerMapperHttpServletRequestUtils extends HttpServletRequ
     /**
      * @param request
      * @param name
+     *
      * @return
      */
-    default boolean hasBigIntegerParameter( HttpServletRequest request, String name ) {
-        if ( null != request && StringUtils.isNotEmpty( name ) &&
-             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
+    default boolean hasBigIntegerParameter(HttpServletRequest request, String name) {
+        if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
             var value = TypeMapperUtils.getDefaults().getBigIntegerMapper()
-                                       .map( request.getParameter( name ), ( BigInteger ) null );
-            return ( null != value );
+                                       .map(request.getParameter(name), (BigInteger) null);
+            return (null != value);
         }
         return false;
     }
@@ -91,14 +95,14 @@ public interface BigIntegerMapperHttpServletRequestUtils extends HttpServletRequ
      * @param request
      * @param name
      * @param value
+     *
      * @return
      */
-    default boolean hasBigIntegerParameterWithValue( HttpServletRequest request, String name, BigInteger value ) {
-        if ( null != request && StringUtils.isNotEmpty( name ) &&
-             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getBigIntegerMapper()
-                                                                     .map( request.getParameter( name ),
-                                                                           ( BigInteger ) null ) ).isEquals();
+    default boolean hasBigIntegerParameterWithValue(HttpServletRequest request, String name, BigInteger value) {
+        if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
+            return new EqualsBuilder().append(value, TypeMapperUtils.getDefaults().getBigIntegerMapper()
+                                                                    .map(request.getParameter(name), (BigInteger) null))
+                                      .isEquals();
         }
         return false;
     }

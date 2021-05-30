@@ -9,17 +9,18 @@ import java.time.LocalTime;
 /**
  *
  */
-@SuppressWarnings( { "unused", "javadoc" } )
+@SuppressWarnings({ "unused", "javadoc" })
 public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
 
     /**
      * @param e
      * @param name
+     *
      * @return
      */
-    default LocalTime getLocalTimeAttribute( E e, String name ) {
-        if ( null != e ) {
-            return TypeMapperUtils.getDefaults().getLocalTimeMapper().mapObject( this.getAttribute( e, name ) );
+    default LocalTime getLocalTimeAttribute(E e, String name) {
+        if (null != e) {
+            return TypeMapperUtils.getDefaults().getLocalTimeMapper().mapObject(this.getAttribute(e, name));
         }
         return TypeMapperUtils.getDefaults().getLocalTimeMapper().getDefaultValue();
     }
@@ -28,12 +29,13 @@ public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
      * @param e
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default LocalTime getLocalTimeAttribute( E e, String name, LocalTime defaultValue ) {
-        if ( null != e ) {
+    default LocalTime getLocalTimeAttribute(E e, String name, LocalTime defaultValue) {
+        if (null != e) {
             return TypeMapperUtils.getDefaults().getLocalTimeMapper()
-                                  .mapObject( this.getAttribute( e, name ), defaultValue );
+                                  .mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -41,13 +43,13 @@ public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
     /**
      * @param e
      * @param name
+     *
      * @return
      */
-    default boolean hasLocalTimeAttribute( E e, String name ) {
-        if ( this.hasAttribute( e, name ) ) {
-            var value = TypeMapperUtils.getDefaults().getLocalTimeMapper()
-                                       .mapObject( this.getAttribute( e, name ), null );
-            return ( null != value );
+    default boolean hasLocalTimeAttribute(E e, String name) {
+        if (this.hasAttribute(e, name)) {
+            var value = TypeMapperUtils.getDefaults().getLocalTimeMapper().mapObject(this.getAttribute(e, name), null);
+            return (null != value);
         }
         return false;
     }
@@ -56,12 +58,13 @@ public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
      * @param e
      * @param name
      * @param value
+     *
      * @return
      */
-    default boolean hasLocalTimeAttributeWithValue( E e, String name, LocalTime value ) {
-        if ( this.hasAttribute( e, name ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getLocalTimeMapper()
-                                                                     .mapObject( this.getAttribute( e, name ), null ) )
+    default boolean hasLocalTimeAttributeWithValue(E e, String name, LocalTime value) {
+        if (this.hasAttribute(e, name)) {
+            return new EqualsBuilder().append(value,
+                    TypeMapperUtils.getDefaults().getLocalTimeMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

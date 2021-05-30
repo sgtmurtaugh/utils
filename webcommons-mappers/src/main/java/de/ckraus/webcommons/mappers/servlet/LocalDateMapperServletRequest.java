@@ -3,6 +3,7 @@ package de.ckraus.webcommons.mappers.servlet;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.LocalDateScopeMapper;
+import lombok.NonNull;
 
 import javax.servlet.ServletRequest;
 import java.time.LocalDate;
@@ -10,7 +11,7 @@ import java.time.LocalDate;
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface LocalDateMapperServletRequest extends ServletRequest, ServletRequestScopeMapper, LocalDateScopeMapper {
 
     @Override
@@ -20,18 +21,20 @@ public interface LocalDateMapperServletRequest extends ServletRequest, ServletRe
 
     /**
      * @param name
+     *
      * @return
      */
-    default LocalDate getLocalDateParameter(String name) {
+    default LocalDate getLocalDateParameter(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getLocalDateMapper().map(this.getParameter(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default LocalDate getLocalDateParameter(String name, LocalDate defaultValue) {
+    default LocalDate getLocalDateParameter(@NonNull String name, LocalDate defaultValue) {
         return TypeMapperUtils.getDefaults().getLocalDateMapper().map(this.getParameter(name), defaultValue);
     }
 
@@ -39,9 +42,10 @@ public interface LocalDateMapperServletRequest extends ServletRequest, ServletRe
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default LocalDate getLocalDateParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
+    default LocalDate getLocalDateParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
         return TypeMapperUtils.getDefaults().getLocalDateMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
@@ -50,10 +54,13 @@ public interface LocalDateMapperServletRequest extends ServletRequest, ServletRe
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default LocalDate getLocalDateParameter(String name, boolean bTrim, boolean bEmptyIsNull, LocalDate defaultValue) {
-        return TypeMapperUtils.getDefaults().getLocalDateMapper().map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+    default LocalDate getLocalDateParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
+                                            LocalDate defaultValue) {
+        return TypeMapperUtils.getDefaults().getLocalDateMapper()
+                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

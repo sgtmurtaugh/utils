@@ -3,13 +3,14 @@ package de.ckraus.webcommons.mappers.servlet;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.DoubleScopeMapper;
+import lombok.NonNull;
 
 import javax.servlet.ServletRequest;
 
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface DoubleMapperServletRequest extends ServletRequest, ServletRequestScopeMapper, DoubleScopeMapper {
 
     @Override
@@ -19,18 +20,20 @@ public interface DoubleMapperServletRequest extends ServletRequest, ServletReque
 
     /**
      * @param name
+     *
      * @return
      */
-    default Double getDoubleParameter(String name) {
+    default Double getDoubleParameter(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getDoubleMapper().map(this.getParameter(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default Double getDoubleParameter(String name, Double defaultValue) {
+    default Double getDoubleParameter(@NonNull String name, Double defaultValue) {
         return TypeMapperUtils.getDefaults().getDoubleMapper().map(this.getParameter(name), defaultValue);
     }
 
@@ -38,9 +41,10 @@ public interface DoubleMapperServletRequest extends ServletRequest, ServletReque
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default Double getDoubleParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
+    default Double getDoubleParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
         return TypeMapperUtils.getDefaults().getDoubleMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
@@ -49,10 +53,12 @@ public interface DoubleMapperServletRequest extends ServletRequest, ServletReque
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default Double getDoubleParameter(String name, boolean bTrim, boolean bEmptyIsNull, Double defaultValue) {
-        return TypeMapperUtils.getDefaults().getDoubleMapper().map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+    default Double getDoubleParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Double defaultValue) {
+        return TypeMapperUtils.getDefaults().getDoubleMapper()
+                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

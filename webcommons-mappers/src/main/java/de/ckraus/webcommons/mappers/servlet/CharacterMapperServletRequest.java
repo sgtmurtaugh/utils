@@ -3,13 +3,14 @@ package de.ckraus.webcommons.mappers.servlet;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.CharacterScopeMapper;
+import lombok.NonNull;
 
 import javax.servlet.ServletRequest;
 
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface CharacterMapperServletRequest extends ServletRequest, ServletRequestScopeMapper, CharacterScopeMapper {
 
     @Override
@@ -19,18 +20,20 @@ public interface CharacterMapperServletRequest extends ServletRequest, ServletRe
 
     /**
      * @param name
+     *
      * @return
      */
-    default Character getCharacterParameter(String name) {
+    default Character getCharacterParameter(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getCharacterMapper().map(this.getParameter(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default Character getCharacterParameter(String name, Character defaultValue) {
+    default Character getCharacterParameter(@NonNull String name, Character defaultValue) {
         return TypeMapperUtils.getDefaults().getCharacterMapper().map(this.getParameter(name), defaultValue);
     }
 
@@ -38,9 +41,10 @@ public interface CharacterMapperServletRequest extends ServletRequest, ServletRe
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default Character getCharacterParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
+    default Character getCharacterParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
         return TypeMapperUtils.getDefaults().getCharacterMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
@@ -49,10 +53,13 @@ public interface CharacterMapperServletRequest extends ServletRequest, ServletRe
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default Character getCharacterParameter(String name, boolean bTrim, boolean bEmptyIsNull, Character defaultValue) {
-        return TypeMapperUtils.getDefaults().getCharacterMapper().map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+    default Character getCharacterParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
+                                            Character defaultValue) {
+        return TypeMapperUtils.getDefaults().getCharacterMapper()
+                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

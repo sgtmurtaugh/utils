@@ -9,17 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 /**
  *
  */
-@SuppressWarnings( { "unused", "javadoc" } )
-public interface DoubleMapperHttpServletRequestUtils extends HttpServletRequestUtils, DoubleMapperScopeUtils<HttpServletRequest> {
+@SuppressWarnings({ "unused", "javadoc" })
+public interface DoubleMapperHttpServletRequestUtils
+        extends HttpServletRequestUtils, DoubleMapperScopeUtils<HttpServletRequest> {
 
     /**
      * @param request
      * @param name
+     *
      * @return
      */
-    default Double getDoubleParameter( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getDoubleMapper().map( request.getParameter( name ) );
+    default Double getDoubleParameter(HttpServletRequest request, String name) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getDoubleMapper().map(request.getParameter(name));
         }
         return TypeMapperUtils.getDefaults().getDoubleMapper().getDefaultValue();
     }
@@ -28,11 +30,12 @@ public interface DoubleMapperHttpServletRequestUtils extends HttpServletRequestU
      * @param request
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default Double getDoubleParameter( HttpServletRequest request, String name, Double defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getDoubleMapper().map( request.getParameter( name ), defaultValue );
+    default Double getDoubleParameter(HttpServletRequest request, String name, Double defaultValue) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getDoubleMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -42,12 +45,12 @@ public interface DoubleMapperHttpServletRequestUtils extends HttpServletRequestU
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default Double getDoubleParameter( HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getDoubleMapper()
-                                  .map( request.getParameter( name ), bTrim, bEmptyIsNull );
+    default Double getDoubleParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getDoubleMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
         return TypeMapperUtils.getDefaults().getDoubleMapper().getDefaultValue();
     }
@@ -58,13 +61,14 @@ public interface DoubleMapperHttpServletRequestUtils extends HttpServletRequestU
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default Double getDoubleParameter( HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
-            Double defaultValue ) {
-        if ( null != request ) {
+    default Double getDoubleParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
+                                      Double defaultValue) {
+        if (null != request) {
             return TypeMapperUtils.getDefaults().getDoubleMapper()
-                                  .map( request.getParameter( name ), bTrim, bEmptyIsNull, defaultValue );
+                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
     }
@@ -72,14 +76,13 @@ public interface DoubleMapperHttpServletRequestUtils extends HttpServletRequestU
     /**
      * @param request
      * @param name
+     *
      * @return
      */
-    default boolean hasDoubleParameter( HttpServletRequest request, String name ) {
-        if ( null != request && StringUtils.isNotEmpty( name ) &&
-             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
-            var value = TypeMapperUtils.getDefaults().getDoubleMapper()
-                                       .map( request.getParameter( name ), ( Double ) null );
-            return ( null != value );
+    default boolean hasDoubleParameter(HttpServletRequest request, String name) {
+        if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
+            var value = TypeMapperUtils.getDefaults().getDoubleMapper().map(request.getParameter(name), (Double) null);
+            return (null != value);
         }
         return false;
     }
@@ -88,14 +91,14 @@ public interface DoubleMapperHttpServletRequestUtils extends HttpServletRequestU
      * @param request
      * @param name
      * @param value
+     *
      * @return
      */
-    default boolean hasDoubleParameterWithValue( HttpServletRequest request, String name, Double value ) {
-        if ( null != request && StringUtils.isNotEmpty( name ) &&
-             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getDoubleMapper()
-                                                                     .map( request.getParameter( name ),
-                                                                           ( Double ) null ) ).isEquals();
+    default boolean hasDoubleParameterWithValue(HttpServletRequest request, String name, Double value) {
+        if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
+            return new EqualsBuilder().append(value,
+                    TypeMapperUtils.getDefaults().getDoubleMapper().map(request.getParameter(name), (Double) null))
+                                      .isEquals();
         }
         return false;
     }

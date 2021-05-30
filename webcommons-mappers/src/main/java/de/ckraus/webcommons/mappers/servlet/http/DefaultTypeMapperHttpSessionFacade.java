@@ -1,5 +1,7 @@
 package de.ckraus.webcommons.mappers.servlet.http;
 
+import lombok.NonNull;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
@@ -18,15 +20,9 @@ public class DefaultTypeMapperHttpSessionFacade implements BigDecimalMapperHttpS
      * Constructor
      * @param httpSession
      */
-    public DefaultTypeMapperHttpSessionFacade( HttpSession httpSession ) {
+    public DefaultTypeMapperHttpSessionFacade( @NonNull HttpSession httpSession ) {
         super();
-
-        if ( null != httpSession ) {
-            this.httpSession = httpSession;
-        }
-        else {
-            throw new IllegalArgumentException( "session parameter must not be null!" );
-        }
+        this.httpSession = httpSession;
     }
 
     /**

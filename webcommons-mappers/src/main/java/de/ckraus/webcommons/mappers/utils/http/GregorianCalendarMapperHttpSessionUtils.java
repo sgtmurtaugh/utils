@@ -5,7 +5,8 @@ import javax.servlet.http.HttpSession;
 /**
  *
  */
-@SuppressWarnings( { "unused" } )
-public interface GregorianCalendarMapperHttpSessionUtils extends HttpSessionUtils, GregorianCalendarMapperScopeUtils<HttpSession> {
+@SuppressWarnings({ "unused" })
+public interface GregorianCalendarMapperHttpSessionUtils
+        extends HttpSessionUtils, GregorianCalendarMapperScopeUtils<HttpSession> {
 
 }

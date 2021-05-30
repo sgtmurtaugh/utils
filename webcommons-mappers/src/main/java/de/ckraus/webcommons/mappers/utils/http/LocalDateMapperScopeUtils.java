@@ -9,17 +9,18 @@ import java.time.LocalDate;
 /**
  *
  */
-@SuppressWarnings( { "unused", "javadoc" } )
+@SuppressWarnings({ "unused", "javadoc" })
 public interface LocalDateMapperScopeUtils<E> extends ScopeUtils<E> {
 
     /**
      * @param e
      * @param name
+     *
      * @return
      */
-    default LocalDate getLocalDateAttribute( E e, String name ) {
-        if ( null != e ) {
-            return TypeMapperUtils.getDefaults().getLocalDateMapper().mapObject( this.getAttribute( e, name ) );
+    default LocalDate getLocalDateAttribute(E e, String name) {
+        if (null != e) {
+            return TypeMapperUtils.getDefaults().getLocalDateMapper().mapObject(this.getAttribute(e, name));
         }
         return TypeMapperUtils.getDefaults().getLocalDateMapper().getDefaultValue();
     }
@@ -28,12 +29,13 @@ public interface LocalDateMapperScopeUtils<E> extends ScopeUtils<E> {
      * @param e
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default LocalDate getLocalDateAttribute( E e, String name, LocalDate defaultValue ) {
-        if ( null != e ) {
+    default LocalDate getLocalDateAttribute(E e, String name, LocalDate defaultValue) {
+        if (null != e) {
             return TypeMapperUtils.getDefaults().getLocalDateMapper()
-                                  .mapObject( this.getAttribute( e, name ), defaultValue );
+                                  .mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -41,13 +43,13 @@ public interface LocalDateMapperScopeUtils<E> extends ScopeUtils<E> {
     /**
      * @param e
      * @param name
+     *
      * @return
      */
-    default boolean hasLocalDateAttribute( E e, String name ) {
-        if ( this.hasAttribute( e, name ) ) {
-            var value = TypeMapperUtils.getDefaults().getLocalDateMapper()
-                                       .mapObject( this.getAttribute( e, name ), null );
-            return ( null != value );
+    default boolean hasLocalDateAttribute(E e, String name) {
+        if (this.hasAttribute(e, name)) {
+            var value = TypeMapperUtils.getDefaults().getLocalDateMapper().mapObject(this.getAttribute(e, name), null);
+            return (null != value);
         }
         return false;
     }
@@ -56,12 +58,13 @@ public interface LocalDateMapperScopeUtils<E> extends ScopeUtils<E> {
      * @param e
      * @param name
      * @param value
+     *
      * @return
      */
-    default boolean hasLocalDateAttributeWithValue( E e, String name, LocalDate value ) {
-        if ( this.hasAttribute( e, name ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getLocalDateMapper()
-                                                                     .mapObject( this.getAttribute( e, name ), null ) )
+    default boolean hasLocalDateAttributeWithValue(E e, String name, LocalDate value) {
+        if (this.hasAttribute(e, name)) {
+            return new EqualsBuilder().append(value,
+                    TypeMapperUtils.getDefaults().getLocalDateMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

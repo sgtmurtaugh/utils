@@ -9,17 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 /**
  *
  */
-@SuppressWarnings( { "unused", "javadoc" } )
-public interface LongMapperHttpServletRequestUtils extends HttpServletRequestUtils, LongMapperScopeUtils<HttpServletRequest> {
+@SuppressWarnings({ "unused", "javadoc" })
+public interface LongMapperHttpServletRequestUtils
+        extends HttpServletRequestUtils, LongMapperScopeUtils<HttpServletRequest> {
 
     /**
      * @param request
      * @param name
+     *
      * @return
      */
-    default Long getLongParameter( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getLongMapper().map( request.getParameter( name ) );
+    default Long getLongParameter(HttpServletRequest request, String name) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getLongMapper().map(request.getParameter(name));
         }
         return TypeMapperUtils.getDefaults().getLongMapper().getDefaultValue();
     }
@@ -28,11 +30,12 @@ public interface LongMapperHttpServletRequestUtils extends HttpServletRequestUti
      * @param request
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default Long getLongParameter( HttpServletRequest request, String name, Long defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getLongMapper().map( request.getParameter( name ), defaultValue );
+    default Long getLongParameter(HttpServletRequest request, String name, Long defaultValue) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getLongMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -42,12 +45,12 @@ public interface LongMapperHttpServletRequestUtils extends HttpServletRequestUti
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default Long getLongParameter( HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getLongMapper()
-                                  .map( request.getParameter( name ), bTrim, bEmptyIsNull );
+    default Long getLongParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getLongMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
         return TypeMapperUtils.getDefaults().getLongMapper().getDefaultValue();
     }
@@ -58,13 +61,14 @@ public interface LongMapperHttpServletRequestUtils extends HttpServletRequestUti
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default Long getLongParameter( HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
-            Long defaultValue ) {
-        if ( null != request ) {
+    default Long getLongParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
+                                  Long defaultValue) {
+        if (null != request) {
             return TypeMapperUtils.getDefaults().getLongMapper()
-                                  .map( request.getParameter( name ), bTrim, bEmptyIsNull, defaultValue );
+                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
     }
@@ -72,14 +76,13 @@ public interface LongMapperHttpServletRequestUtils extends HttpServletRequestUti
     /**
      * @param request
      * @param name
+     *
      * @return
      */
-    default boolean hasLongParameter( HttpServletRequest request, String name ) {
-        if ( null != request && StringUtils.isNotEmpty( name ) &&
-             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
-            var value = TypeMapperUtils.getDefaults().getLongMapper()
-                                       .map( request.getParameter( name ), ( Long ) null );
-            return ( null != value );
+    default boolean hasLongParameter(HttpServletRequest request, String name) {
+        if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
+            var value = TypeMapperUtils.getDefaults().getLongMapper().map(request.getParameter(name), (Long) null);
+            return (null != value);
         }
         return false;
     }
@@ -88,14 +91,14 @@ public interface LongMapperHttpServletRequestUtils extends HttpServletRequestUti
      * @param request
      * @param name
      * @param value
+     *
      * @return
      */
-    default boolean hasLongParameterWithValue( HttpServletRequest request, String name, Long value ) {
-        if ( null != request && StringUtils.isNotEmpty( name ) &&
-             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getLongMapper()
-                                                                     .map( request.getParameter( name ),
-                                                                           ( Long ) null ) ).isEquals();
+    default boolean hasLongParameterWithValue(HttpServletRequest request, String name, Long value) {
+        if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
+            return new EqualsBuilder().append(value,
+                    TypeMapperUtils.getDefaults().getLongMapper().map(request.getParameter(name), (Long) null))
+                                      .isEquals();
         }
         return false;
     }

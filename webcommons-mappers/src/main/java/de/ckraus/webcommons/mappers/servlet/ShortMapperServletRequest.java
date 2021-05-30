@@ -3,13 +3,14 @@ package de.ckraus.webcommons.mappers.servlet;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.ShortScopeMapper;
+import lombok.NonNull;
 
 import javax.servlet.ServletRequest;
 
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface ShortMapperServletRequest extends ServletRequest, ServletRequestScopeMapper, ShortScopeMapper {
 
     @Override
@@ -19,18 +20,20 @@ public interface ShortMapperServletRequest extends ServletRequest, ServletReques
 
     /**
      * @param name
+     *
      * @return
      */
-    default Short getShortParameter(String name) {
+    default Short getShortParameter(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getShortMapper().map(this.getParameter(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default Short getShortParameter(String name, Short defaultValue) {
+    default Short getShortParameter(@NonNull String name, Short defaultValue) {
         return TypeMapperUtils.getDefaults().getShortMapper().map(this.getParameter(name), defaultValue);
     }
 
@@ -38,9 +41,10 @@ public interface ShortMapperServletRequest extends ServletRequest, ServletReques
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default Short getShortParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
+    default Short getShortParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
         return TypeMapperUtils.getDefaults().getShortMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
@@ -49,10 +53,12 @@ public interface ShortMapperServletRequest extends ServletRequest, ServletReques
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default Short getShortParameter(String name, boolean bTrim, boolean bEmptyIsNull, Short defaultValue) {
-        return TypeMapperUtils.getDefaults().getShortMapper().map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+    default Short getShortParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Short defaultValue) {
+        return TypeMapperUtils.getDefaults().getShortMapper()
+                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

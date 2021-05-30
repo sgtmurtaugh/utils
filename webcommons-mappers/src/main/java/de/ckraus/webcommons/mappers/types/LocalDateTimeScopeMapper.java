@@ -2,6 +2,7 @@ package de.ckraus.webcommons.mappers.types;
 
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ScopeMapper;
+import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
@@ -10,31 +11,34 @@ import java.time.LocalDateTime;
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface LocalDateTimeScopeMapper extends ScopeMapper {
 
     /**
      * @param name
+     *
      * @return
      */
-    default LocalDateTime getLocalDateTimeAttribute(String name) {
+    default LocalDateTime getLocalDateTimeAttribute(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getLocalDateTimeMapper().mapObject(this.getAttribute(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default LocalDateTime getLocalDateTimeAttribute(String name, LocalDateTime defaultValue) {
+    default LocalDateTime getLocalDateTimeAttribute(@NonNull String name, LocalDateTime defaultValue) {
         return TypeMapperUtils.getDefaults().getLocalDateTimeMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
      * @param name
+     *
      * @return
      */
-    default boolean hasLocalDateTimeAttribute(String name) {
+    default boolean hasLocalDateTimeAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             var value = TypeMapperUtils.getDefaults().getLocalDateTimeMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
@@ -45,13 +49,14 @@ public interface LocalDateTimeScopeMapper extends ScopeMapper {
     /**
      * @param name
      * @param value
+     *
      * @return
      */
-    default boolean hasLocalDateTimeAttributeWithValue(String name, LocalDateTime value) {
+    default boolean hasLocalDateTimeAttributeWithValue(@NonNull String name, LocalDateTime value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            return new EqualsBuilder().append(value, TypeMapperUtils.getDefaults().getLocalDateTimeMapper()
-                    .mapObject(this.getAttribute(name), null))
-                    .isEquals();
+            return new EqualsBuilder().append(value,
+                    TypeMapperUtils.getDefaults().getLocalDateTimeMapper().mapObject(this.getAttribute(name), null))
+                                      .isEquals();
         }
         return false;
     }

@@ -3,13 +3,14 @@ package de.ckraus.webcommons.mappers.servlet;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.BooleanScopeMapper;
+import lombok.NonNull;
 
 import javax.servlet.ServletRequest;
 
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface BooleanMapperServletRequest extends ServletRequest, ServletRequestScopeMapper, BooleanScopeMapper {
 
     @Override
@@ -19,18 +20,20 @@ public interface BooleanMapperServletRequest extends ServletRequest, ServletRequ
 
     /**
      * @param name
+     *
      * @return
      */
-    default Boolean getBooleanParameter(String name) {
+    default Boolean getBooleanParameter(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getBooleanMapper().map(this.getParameter(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default Boolean getBooleanParameter(String name, Boolean defaultValue) {
+    default Boolean getBooleanParameter(@NonNull String name, Boolean defaultValue) {
         return TypeMapperUtils.getDefaults().getBooleanMapper().map(this.getParameter(name), defaultValue);
     }
 
@@ -38,9 +41,10 @@ public interface BooleanMapperServletRequest extends ServletRequest, ServletRequ
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default Boolean getBooleanParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
+    default Boolean getBooleanParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
         return TypeMapperUtils.getDefaults().getBooleanMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
@@ -49,10 +53,13 @@ public interface BooleanMapperServletRequest extends ServletRequest, ServletRequ
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default Boolean getBooleanParameter(String name, boolean bTrim, boolean bEmptyIsNull, Boolean defaultValue) {
-        return TypeMapperUtils.getDefaults().getBooleanMapper().map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+    default Boolean getBooleanParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
+                                        Boolean defaultValue) {
+        return TypeMapperUtils.getDefaults().getBooleanMapper()
+                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

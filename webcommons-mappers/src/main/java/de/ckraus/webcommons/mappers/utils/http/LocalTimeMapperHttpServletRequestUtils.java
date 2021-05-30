@@ -10,17 +10,19 @@ import java.time.LocalTime;
 /**
  *
  */
-@SuppressWarnings( { "unused", "javadoc" } )
-public interface LocalTimeMapperHttpServletRequestUtils extends HttpServletRequestUtils, LocalTimeMapperScopeUtils<HttpServletRequest> {
+@SuppressWarnings({ "unused", "javadoc" })
+public interface LocalTimeMapperHttpServletRequestUtils
+        extends HttpServletRequestUtils, LocalTimeMapperScopeUtils<HttpServletRequest> {
 
     /**
      * @param request
      * @param name
+     *
      * @return
      */
-    default LocalTime getLocalTimeParameter( HttpServletRequest request, String name ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getLocalTimeMapper().map( request.getParameter( name ) );
+    default LocalTime getLocalTimeParameter(HttpServletRequest request, String name) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(request.getParameter(name));
         }
         return TypeMapperUtils.getDefaults().getLocalTimeMapper().getDefaultValue();
     }
@@ -29,11 +31,12 @@ public interface LocalTimeMapperHttpServletRequestUtils extends HttpServletReque
      * @param request
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default LocalTime getLocalTimeParameter( HttpServletRequest request, String name, LocalTime defaultValue ) {
-        if ( null != request ) {
-            return TypeMapperUtils.getDefaults().getLocalTimeMapper().map( request.getParameter( name ), defaultValue );
+    default LocalTime getLocalTimeParameter(HttpServletRequest request, String name, LocalTime defaultValue) {
+        if (null != request) {
+            return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -43,13 +46,14 @@ public interface LocalTimeMapperHttpServletRequestUtils extends HttpServletReque
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default LocalTime getLocalTimeParameter( HttpServletRequest request, String name, boolean bTrim,
-            boolean bEmptyIsNull ) {
-        if ( null != request ) {
+    default LocalTime getLocalTimeParameter(HttpServletRequest request, String name, boolean bTrim,
+                                            boolean bEmptyIsNull) {
+        if (null != request) {
             return TypeMapperUtils.getDefaults().getLocalTimeMapper()
-                                  .map( request.getParameter( name ), bTrim, bEmptyIsNull );
+                                  .map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
         return TypeMapperUtils.getDefaults().getLocalTimeMapper().getDefaultValue();
     }
@@ -60,13 +64,14 @@ public interface LocalTimeMapperHttpServletRequestUtils extends HttpServletReque
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default LocalTime getLocalTimeParameter( HttpServletRequest request, String name, boolean bTrim,
-            boolean bEmptyIsNull, LocalTime defaultValue ) {
-        if ( null != request ) {
+    default LocalTime getLocalTimeParameter(HttpServletRequest request, String name, boolean bTrim,
+                                            boolean bEmptyIsNull, LocalTime defaultValue) {
+        if (null != request) {
             return TypeMapperUtils.getDefaults().getLocalTimeMapper()
-                                  .map( request.getParameter( name ), bTrim, bEmptyIsNull, defaultValue );
+                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
     }
@@ -74,14 +79,14 @@ public interface LocalTimeMapperHttpServletRequestUtils extends HttpServletReque
     /**
      * @param request
      * @param name
+     *
      * @return
      */
-    default boolean hasLocalTimeParameter( HttpServletRequest request, String name ) {
-        if ( null != request && StringUtils.isNotEmpty( name ) &&
-             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
+    default boolean hasLocalTimeParameter(HttpServletRequest request, String name) {
+        if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
             var value = TypeMapperUtils.getDefaults().getLocalTimeMapper()
-                                       .map( request.getParameter( name ), ( LocalTime ) null );
-            return ( null != value );
+                                       .map(request.getParameter(name), (LocalTime) null);
+            return (null != value);
         }
         return false;
     }
@@ -90,14 +95,14 @@ public interface LocalTimeMapperHttpServletRequestUtils extends HttpServletReque
      * @param request
      * @param name
      * @param value
+     *
      * @return
      */
-    default boolean hasLocalTimeParameterWithValue( HttpServletRequest request, String name, LocalTime value ) {
-        if ( null != request && StringUtils.isNotEmpty( name ) &&
-             StringUtils.isNotEmpty( request.getParameter( name ) ) ) {
-            return new EqualsBuilder().append( value, TypeMapperUtils.getDefaults().getLocalTimeMapper()
-                                                                     .map( request.getParameter( name ),
-                                                                           ( LocalTime ) null ) ).isEquals();
+    default boolean hasLocalTimeParameterWithValue(HttpServletRequest request, String name, LocalTime value) {
+        if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
+            return new EqualsBuilder().append(value, TypeMapperUtils.getDefaults().getLocalTimeMapper()
+                                                                    .map(request.getParameter(name), (LocalTime) null))
+                                      .isEquals();
         }
         return false;
     }

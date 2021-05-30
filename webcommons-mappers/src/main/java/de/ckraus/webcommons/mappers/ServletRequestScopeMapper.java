@@ -3,9 +3,12 @@ package de.ckraus.webcommons.mappers;
 import de.ckraus.commons.mapper.StringMapper;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import lombok.NonNull;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
-@SuppressWarnings({"javadoc", "unused", "WeakerAccess"})
+import java.util.StringJoiner;
+
+@SuppressWarnings({ "javadoc", "unused", "WeakerAccess" })
 public interface ServletRequestScopeMapper extends ScopeMapper {
 
     /**
@@ -17,9 +20,10 @@ public interface ServletRequestScopeMapper extends ScopeMapper {
 
     /**
      * @param name
+     *
      * @return
      */
-    default boolean hasParameter(String name) {
+    default boolean hasParameter(@NonNull String name) {
         return (null != this.getParameter(name));
     }
 
@@ -27,67 +31,106 @@ public interface ServletRequestScopeMapper extends ScopeMapper {
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default boolean hasParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
+    default boolean hasParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
         return (null != this.getParameter(name, bTrim, bEmptyIsNull, null));
     }
 
     /**
      * @param name
      * @param value
+     *
      * @return
      */
     default boolean hasParameterWithValue(@NonNull String name, String value) {
         return new EqualsBuilder().append(this.getParameter(name), value).isEquals();
     }
 
+    /**
+     * @return
+     */
     String getParameterPrefix();
 
+    /**
+     * @return
+     */
     String getParameterSuffix();
 
-    String getParameterName(String parameterName);
-
-    boolean isUseParameterPrefix();
-
-    boolean isUseParameterSuffix();
+    /**
+     * <p>TODO</p>
+     *
+     * @param parameterName
+     *
+     * @return
+     */
+    default String getParameterName(@NonNull String parameterName) {
+        if (StringUtils.isNotEmpty(parameterName)) {
+            if (StringUtils.isEmpty(this.getParameterPrefix()) && StringUtils.isEmpty(this.getParameterSuffix())) {
+                return parameterName;
+            }
+            else {
+                var joiner = new StringJoiner("", (null != this.getParameterPrefix()
+                                                           ? this.getParameterPrefix()
+                                                           : ""), (null != this.getParameterSuffix()
+                                                                           ? this.getParameterSuffix()
+                                                                           : ""));
+                joiner.add(parameterName);
+                return joiner.toString();
+            }
+        }
+        return null;
+    }
 
     /**
+     * TODO
+     *
      * @param name
+     *
      * @return
      */
     default String getParameter(String name) {
-        return this.getStringMapper().map(name);
+        return this.getStringMapper().map(this.getParameterName(name));
     }
 
     /**
+     * TODO
+     *
      * @param name
      * @param defaultValue
+     *
      * @return
      */
     default String getParameter(String name, String defaultValue) {
-        return this.getStringMapper().map(name, defaultValue);
+        return this.getStringMapper().map(this.getParameterName(name), defaultValue);
     }
 
     /**
+     * TODO
+     *
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
     default String getParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
-        return this.getStringMapper().map(name, bTrim, bEmptyIsNull);
+        return this.getStringMapper().map(this.getParameterName(name), bTrim, bEmptyIsNull);
     }
 
     /**
+     * TODO
+     *
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
     default String getParameter(String name, boolean bTrim, boolean bEmptyIsNull, String defaultValue) {
-        return this.getStringMapper().map(name, bTrim, bEmptyIsNull, defaultValue);
+        return this.getStringMapper().map(this.getParameterName(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

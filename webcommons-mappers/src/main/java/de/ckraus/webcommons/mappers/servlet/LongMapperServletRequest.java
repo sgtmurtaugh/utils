@@ -3,13 +3,14 @@ package de.ckraus.webcommons.mappers.servlet;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.LongScopeMapper;
+import lombok.NonNull;
 
 import javax.servlet.ServletRequest;
 
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface LongMapperServletRequest extends ServletRequest, ServletRequestScopeMapper, LongScopeMapper {
 
     @Override
@@ -19,18 +20,20 @@ public interface LongMapperServletRequest extends ServletRequest, ServletRequest
 
     /**
      * @param name
+     *
      * @return
      */
-    default Long getLongParameter(String name) {
+    default Long getLongParameter(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getLongMapper().map(this.getParameter(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default Long getLongParameter(String name, Long defaultValue) {
+    default Long getLongParameter(@NonNull String name, Long defaultValue) {
         return TypeMapperUtils.getDefaults().getLongMapper().map(this.getParameter(name), defaultValue);
     }
 
@@ -38,9 +41,10 @@ public interface LongMapperServletRequest extends ServletRequest, ServletRequest
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default Long getLongParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
+    default Long getLongParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
         return TypeMapperUtils.getDefaults().getLongMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
@@ -49,10 +53,12 @@ public interface LongMapperServletRequest extends ServletRequest, ServletRequest
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default Long getLongParameter(String name, boolean bTrim, boolean bEmptyIsNull, Long defaultValue) {
-        return TypeMapperUtils.getDefaults().getLongMapper().map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+    default Long getLongParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Long defaultValue) {
+        return TypeMapperUtils.getDefaults().getLongMapper()
+                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

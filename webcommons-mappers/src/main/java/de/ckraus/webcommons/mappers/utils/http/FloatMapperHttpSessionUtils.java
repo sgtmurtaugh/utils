@@ -5,7 +5,7 @@ import javax.servlet.http.HttpSession;
 /**
  *
  */
-@SuppressWarnings( { "unused" } )
+@SuppressWarnings({ "unused" })
 public interface FloatMapperHttpSessionUtils extends HttpSessionUtils, FloatMapperScopeUtils<HttpSession> {
 
 }

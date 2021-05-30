@@ -3,13 +3,14 @@ package de.ckraus.webcommons.mappers.servlet;
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.IntegerScopeMapper;
+import lombok.NonNull;
 
 import javax.servlet.ServletRequest;
 
 /**
  *
  */
-@SuppressWarnings({"unused", "javadoc"})
+@SuppressWarnings({ "unused", "javadoc" })
 public interface IntegerMapperServletRequest extends ServletRequest, ServletRequestScopeMapper, IntegerScopeMapper {
 
     @Override
@@ -19,18 +20,20 @@ public interface IntegerMapperServletRequest extends ServletRequest, ServletRequ
 
     /**
      * @param name
+     *
      * @return
      */
-    default Integer getIntegerParameter(String name) {
+    default Integer getIntegerParameter(@NonNull String name) {
         return TypeMapperUtils.getDefaults().getIntegerMapper().map(this.getParameter(name));
     }
 
     /**
      * @param name
      * @param defaultValue
+     *
      * @return
      */
-    default Integer getIntegerParameter(String name, Integer defaultValue) {
+    default Integer getIntegerParameter(@NonNull String name, Integer defaultValue) {
         return TypeMapperUtils.getDefaults().getIntegerMapper().map(this.getParameter(name), defaultValue);
     }
 
@@ -38,9 +41,10 @@ public interface IntegerMapperServletRequest extends ServletRequest, ServletRequ
      * @param name
      * @param bTrim
      * @param bEmptyIsNull
+     *
      * @return
      */
-    default Integer getIntegerParameter(String name, boolean bTrim, boolean bEmptyIsNull) {
+    default Integer getIntegerParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
         return TypeMapperUtils.getDefaults().getIntegerMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
@@ -49,10 +53,13 @@ public interface IntegerMapperServletRequest extends ServletRequest, ServletRequ
      * @param bTrim
      * @param bEmptyIsNull
      * @param defaultValue
+     *
      * @return
      */
-    default Integer getIntegerParameter(String name, boolean bTrim, boolean bEmptyIsNull, Integer defaultValue) {
-        return TypeMapperUtils.getDefaults().getIntegerMapper().map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+    default Integer getIntegerParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
+                                        Integer defaultValue) {
+        return TypeMapperUtils.getDefaults().getIntegerMapper()
+                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }
