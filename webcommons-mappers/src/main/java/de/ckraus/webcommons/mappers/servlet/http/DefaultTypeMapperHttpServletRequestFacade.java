@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequestWrapper;
 
 @Getter
 @SuppressWarnings({ "unused", "javadoc" })
-public class DefaultTypeMapperHttpServletRequestFacade extends HttpServletRequestWrapper implements
-        BigDecimalMapperServletRequest, BigIntegerMapperServletRequest, BooleanMapperServletRequest,
+public class DefaultTypeMapperHttpServletRequestFacade extends HttpServletRequestWrapper
+        implements BigDecimalMapperServletRequest, BigIntegerMapperServletRequest, BooleanMapperServletRequest,
         ByteMapperServletRequest, CharacterMapperServletRequest, DateMapperServletRequest, DoubleMapperServletRequest,
         FloatMapperServletRequest, GregorianCalendarMapperServletRequest, IntegerMapperServletRequest,
         LocalDateMapperServletRequest, LocalDateTimeMapperServletRequest, LocalTimeMapperServletRequest,
@@ -21,10 +21,11 @@ public class DefaultTypeMapperHttpServletRequestFacade extends HttpServletReques
 
     /**
      * Constructor
+     *
      * @param httpServletRequest
      */
-    public DefaultTypeMapperHttpServletRequestFacade( @NonNull HttpServletRequest httpServletRequest ) {
-       super( httpServletRequest );
+    public DefaultTypeMapperHttpServletRequestFacade(@NonNull HttpServletRequest httpServletRequest) {
+        super(httpServletRequest);
     }
 
 }

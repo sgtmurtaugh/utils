@@ -1,6 +1,6 @@
 package de.ckraus.commons.utils;
 
-@SuppressWarnings( { "javadoc", "unused", "WeakerAccess" } )
+@SuppressWarnings({ "javadoc", "unused", "WeakerAccess" })
 public interface CharacterUtilities extends Utilities<Character> {
 
     /**
@@ -28,14 +28,16 @@ public interface CharacterUtilities extends Utilities<Character> {
      *
      * @return TODO
      */
-    default int positionInAlphabet( char c ) {
+    default int positionInAlphabet(char c) {
         int positionInAlphabet = -1;
 
-        if ( c >= ASCII_CODE_A_LOWER_CASE && c <= ASCII_CODE_Z_LOWER_CASE ) {
-            positionInAlphabet = ( ( int ) c ) - ( ASCII_CODE_A_LOWER_CASE - 1 );
-        } else if ( c >= ASCII_CODE_A_UPPER_CASE && c <= ASCII_CODE_Z_UPPER_CASE ) {
-            positionInAlphabet = ( ( int ) c ) - ( ASCII_CODE_A_UPPER_CASE - 1 );
-        } else {
+        if (c >= ASCII_CODE_A_LOWER_CASE && c <= ASCII_CODE_Z_LOWER_CASE) {
+            positionInAlphabet = ((int) c) - (ASCII_CODE_A_LOWER_CASE - 1);
+        }
+        else if (c >= ASCII_CODE_A_UPPER_CASE && c <= ASCII_CODE_Z_UPPER_CASE) {
+            positionInAlphabet = ((int) c) - (ASCII_CODE_A_UPPER_CASE - 1);
+        }
+        else {
             // NOOP
         }
         return positionInAlphabet;
@@ -48,12 +50,13 @@ public interface CharacterUtilities extends Utilities<Character> {
      *
      * @return TODO
      */
-    default int positionInAlphabet( Character c ) {
+    default int positionInAlphabet(Character c) {
         int positionInAlphabet = -1;
 
-        if ( null != c ) {
-            positionInAlphabet = this.positionInAlphabet( c.charValue() );
-        } else {
+        if (null != c) {
+            positionInAlphabet = this.positionInAlphabet(c.charValue());
+        }
+        else {
             // NOOP
         }
         return positionInAlphabet;

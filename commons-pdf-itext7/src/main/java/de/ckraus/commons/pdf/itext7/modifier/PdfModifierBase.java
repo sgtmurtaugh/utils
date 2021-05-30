@@ -1,12 +1,14 @@
 package de.ckraus.commons.pdf.itext7.modifier;
 
 import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.pdf.PdfWriter;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 @Getter
 @Setter
@@ -20,6 +22,7 @@ public abstract class PdfModifierBase extends de.ckraus.commons.pdf.PdfModifierB
 
     /**
      * Constructor
+     *
      * @param is
      * @param os
      */
@@ -29,6 +32,7 @@ public abstract class PdfModifierBase extends de.ckraus.commons.pdf.PdfModifierB
 
     /**
      * Constructor
+     *
      * @param in
      * @param out
      */
@@ -38,6 +42,7 @@ public abstract class PdfModifierBase extends de.ckraus.commons.pdf.PdfModifierB
 
     /**
      * Constructor
+     *
      * @param src
      * @param dest
      */

@@ -15,18 +15,19 @@ import java.io.OutputStream;
  *     <li>null - omitted</li>
  * </ul>
  */
-@SuppressWarnings( { "javadoc", "unused" } )
+@SuppressWarnings({ "javadoc", "unused" })
 public interface PdfModifer<D> extends Bean {
 
     /**
      * Initializes the PdfDocument
+     *
      * @return
      */
     void initializePdfDocument() throws IOException;
 
     @Override
-    default boolean initialize( boolean bReinitialization ) throws BeanInitializationException {
-        if ( Bean.super.initialize( bReinitialization ) ) {
+    default boolean initialize(boolean bReinitialization) throws BeanInitializationException {
+        if (Bean.super.initialize(bReinitialization)) {
             try {
                 this.initializePdfDocument();
             }
@@ -39,12 +40,14 @@ public interface PdfModifer<D> extends Bean {
 
     /**
      * Getter for the PdfDocument InputStream
+     *
      * @return
      */
     InputStream getInputStream();
 
     /**
      * Getter for the PdfDocument OutputStream
+     *
      * @return
      */
     OutputStream getOutputStream();
@@ -61,7 +64,7 @@ public interface PdfModifer<D> extends Bean {
      *
      * @return
      */
-    void setPdfDocument( D pdfDocument );
+    void setPdfDocument(D pdfDocument);
 
     /**
      * <p>Returns three different modification states:
@@ -75,6 +78,6 @@ public interface PdfModifer<D> extends Bean {
      *
      * @return
      */
-    Boolean modify( D pdfDocument );
+    Boolean modify(D pdfDocument);
 
 }

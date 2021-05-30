@@ -14,8 +14,9 @@ import java.util.Map;
  *     <li>null - omitted</li>
  * </ul>
  */
-@SuppressWarnings( { "javadoc", "unused" } )
-public interface PdfFieldModifier extends de.ckraus.commons.pdf.PdfFieldModifier<PdfDocument, PdfAcroForm, PdfFormField> {
+@SuppressWarnings({ "javadoc", "unused" })
+public interface PdfFieldModifier
+        extends de.ckraus.commons.pdf.PdfFieldModifier<PdfDocument, PdfAcroForm, PdfFormField> {
 
     Boolean DEFAULT_CREATE_PDF_ACRO_FORM_IF_NOT_EXISTS = Boolean.TRUE;
 
@@ -35,11 +36,10 @@ public interface PdfFieldModifier extends de.ckraus.commons.pdf.PdfFieldModifier
      * @param pdfDocument
      *
      * @return <p>Delegates to {@link #getPdfAcroForm(PdfDocument, boolean)} and uses {@link
-     *         #isCreatePdfAcroFormIfNotExists()}
-     *         for the boolean param.</p>
+     *         #isCreatePdfAcroFormIfNotExists()} for the boolean param.</p>
      */
-    default PdfAcroForm getPdfAcroForm( PdfDocument pdfDocument ) {
-        return this.getPdfAcroForm( pdfDocument, this.isCreatePdfAcroFormIfNotExists() );
+    default PdfAcroForm getPdfAcroForm(PdfDocument pdfDocument) {
+        return this.getPdfAcroForm(pdfDocument, this.isCreatePdfAcroFormIfNotExists());
     }
 
     /**
@@ -50,11 +50,11 @@ public interface PdfFieldModifier extends de.ckraus.commons.pdf.PdfFieldModifier
      *
      * @return <p>Delegates to {@link PdfAcroForm#getAcroForm(PdfDocument, boolean)} to get PdfAcroForm instance.</p>
      */
-    default PdfAcroForm getPdfAcroForm( PdfDocument pdfDocument, boolean bCreateIfNotExists ) {
+    default PdfAcroForm getPdfAcroForm(PdfDocument pdfDocument, boolean bCreateIfNotExists) {
         PdfAcroForm pdfAcroForm = null;
 
-        if ( pdfDocument != null ) {
-            pdfAcroForm = PdfAcroForm.getAcroForm( pdfDocument, bCreateIfNotExists );
+        if (pdfDocument != null) {
+            pdfAcroForm = PdfAcroForm.getAcroForm(pdfDocument, bCreateIfNotExists);
         }
         return pdfAcroForm;
     }
@@ -67,8 +67,8 @@ public interface PdfFieldModifier extends de.ckraus.commons.pdf.PdfFieldModifier
      * @return <p>Determines the {@link PdfAcroForm} with the given {@link PdfDocument} and delegates to
      *         {@link #modify(PdfAcroForm)}</p>
      */
-    default Boolean modify( PdfDocument pdfDocument ) {
-        return this.modify( pdfDocument, this.isCreatePdfAcroFormIfNotExists() );
+    default Boolean modify(PdfDocument pdfDocument) {
+        return this.modify(pdfDocument, this.isCreatePdfAcroFormIfNotExists());
     }
 
     /**
@@ -80,11 +80,11 @@ public interface PdfFieldModifier extends de.ckraus.commons.pdf.PdfFieldModifier
      * @return <p>Similar to {@link #modify(PdfAcroForm)} it determines the {@link PdfAcroForm} with the given
      *         {@link PdfDocument} but delegates to {@link #modify(PdfDocument, boolean)}</p>
      */
-    default Boolean modify( PdfDocument pdfDocument, boolean bCreateIfNotExists ) {
+    default Boolean modify(PdfDocument pdfDocument, boolean bCreateIfNotExists) {
         Boolean bSuccess = null;
-        if ( null != pdfDocument ) {
-            PdfAcroForm pdfAcroForm = PdfAcroForm.getAcroForm( pdfDocument, bCreateIfNotExists );
-            bSuccess = this.modify( pdfAcroForm );
+        if (null != pdfDocument) {
+            PdfAcroForm pdfAcroForm = PdfAcroForm.getAcroForm(pdfDocument, bCreateIfNotExists);
+            bSuccess = this.modify(pdfAcroForm);
         }
         return bSuccess;
     }
@@ -96,11 +96,12 @@ public interface PdfFieldModifier extends de.ckraus.commons.pdf.PdfFieldModifier
      *
      * @return
      */
-    default Boolean modify( PdfAcroForm pdfAcroForm ) {
+    default Boolean modify(PdfAcroForm pdfAcroForm) {
         Boolean bSuccess = null;
-        if ( null != pdfAcroForm ) {
+        if (null != pdfAcroForm) {
             Map<String, PdfFormField> lstPdfFormFields = pdfAcroForm.getFormFields();
-            bSuccess = this.modifyFields( lstPdfFormFields );;
+            bSuccess = this.modifyFields(lstPdfFormFields);
+            ;
         }
         return bSuccess;
     }
@@ -112,6 +113,6 @@ public interface PdfFieldModifier extends de.ckraus.commons.pdf.PdfFieldModifier
      *
      * @return
      */
-    Boolean modifyFields( Map<String, PdfFormField> lstPdfFormFields );
+    Boolean modifyFields(Map<String, PdfFormField> lstPdfFormFields);
 
 }

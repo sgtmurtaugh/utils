@@ -9,8 +9,9 @@ import org.springframework.http.ResponseEntity;
 import java.util.Map;
 
 @Getter
-@Setter( AccessLevel.PROTECTED)
-public abstract class AbstractRespondServiceExecutor<O> extends AbstractServiceExecutor implements RespondServiceExecutor<O> {
+@Setter(AccessLevel.PROTECTED)
+public abstract class AbstractRespondServiceExecutor<O> extends AbstractServiceExecutor
+        implements RespondServiceExecutor<O> {
 
     private O responseEntityBean;
 
@@ -18,8 +19,8 @@ public abstract class AbstractRespondServiceExecutor<O> extends AbstractServiceE
     /**
      * init
      */
-    protected void init( Map<String, Object> mapContainerParams ) {
-        super.init( mapContainerParams );
+    protected void init(Map<String, Object> mapContainerParams) {
+        super.init(mapContainerParams);
     }
 
     /**
@@ -31,58 +32,58 @@ public abstract class AbstractRespondServiceExecutor<O> extends AbstractServiceE
         this.setResponseEntityBean((O) null);
     }
 
-//    /**
-//     * execute
-//     * @param mapContainerParams
-//     * @return
-//     */
-//    public <T> T execute( Map<String, Object> mapContainerParams ) {
-//        this.init(mapContainerParams);
-//
-//        T t = null;
-//
-//        ResponseEntity<O> responseEntity;
-//
-//        if ( this.isReallyPerformService() ) {
-//            try {
-//                responseEntity = this.callService();
-//            } catch ( HttpServerErrorException hsee ) {
-//                responseEntity = new ResponseEntity<>( null, hsee.getStatusCode() );
-//                this.setThrowable(hsee);
-//                hsee.printStackTrace();
-//                // TODO
-//            } catch ( RestClientException rce ) {
-//                responseEntity = new ResponseEntity<>( null, HttpStatus.NOT_ACCEPTABLE );
-//                this.setThrowable(rce);
-//                rce.printStackTrace();
-//                // TODO
-//            }
-//
-//            // set Execution Flag
-//            this.setExecuted( true );
-//
-//            // set HttpStatus
-//            this.setHttpStatus(responseEntity);
-//
-//            // set ResponseEntity Bean
-//            this.setResponseEntityBean(responseEntity);
-//
-//            // set Execution status by occured exception or returned HttpStatus
-//            if ( null != this.getThrowable() ) {
-//                this.setExecutedSuccessfully( Boolean.FALSE );
-//            }
-//            else {
-//                this.setExecutedSuccessfully( this.getHttpStatus() );
-//            }
-//
-//            // handle Service Response
-//            t = handleServiceResponse();
-//
-//            // at least (after handleServiceResponse) store ResponseEntity Bean to scope
-//            this.storeResponseEntityBean();
-//        }
-//        return t;
-//    }
+    //    /**
+    //     * execute
+    //     * @param mapContainerParams
+    //     * @return
+    //     */
+    //    public <T> T execute( Map<String, Object> mapContainerParams ) {
+    //        this.init(mapContainerParams);
+    //
+    //        T t = null;
+    //
+    //        ResponseEntity<O> responseEntity;
+    //
+    //        if ( this.isReallyPerformService() ) {
+    //            try {
+    //                responseEntity = this.callService();
+    //            } catch ( HttpServerErrorException hsee ) {
+    //                responseEntity = new ResponseEntity<>( null, hsee.getStatusCode() );
+    //                this.setThrowable(hsee);
+    //                hsee.printStackTrace();
+    //                // TODO
+    //            } catch ( RestClientException rce ) {
+    //                responseEntity = new ResponseEntity<>( null, HttpStatus.NOT_ACCEPTABLE );
+    //                this.setThrowable(rce);
+    //                rce.printStackTrace();
+    //                // TODO
+    //            }
+    //
+    //            // set Execution Flag
+    //            this.setExecuted( true );
+    //
+    //            // set HttpStatus
+    //            this.setHttpStatus(responseEntity);
+    //
+    //            // set ResponseEntity Bean
+    //            this.setResponseEntityBean(responseEntity);
+    //
+    //            // set Execution status by occured exception or returned HttpStatus
+    //            if ( null != this.getThrowable() ) {
+    //                this.setExecutedSuccessfully( Boolean.FALSE );
+    //            }
+    //            else {
+    //                this.setExecutedSuccessfully( this.getHttpStatus() );
+    //            }
+    //
+    //            // handle Service Response
+    //            t = handleServiceResponse();
+    //
+    //            // at least (after handleServiceResponse) store ResponseEntity Bean to scope
+    //            this.storeResponseEntityBean();
+    //        }
+    //        return t;
+    //    }
 
     @Tolerate
     protected void setResponseEntityBean(ResponseEntity<O> responseEntity) {
@@ -90,13 +91,15 @@ public abstract class AbstractRespondServiceExecutor<O> extends AbstractServiceE
             // TODO
         }
         else {
-            this.setResponseEntityBean( responseEntity.getBody() );
+            this.setResponseEntityBean(responseEntity.getBody());
         }
     }
 
     /**
      * TODO
+     *
      * @param <T>
+     *
      * @return
      */
     protected abstract <T> T handleServiceResponse();
@@ -106,8 +109,7 @@ public abstract class AbstractRespondServiceExecutor<O> extends AbstractServiceE
      * <p>Hook method</p>
      */
     public void storeResponseEntityBean() {
-        if ( this.isExecuted()
-                && this.isExecutedSuccessfully() ) {
+        if (this.isExecuted() && this.isExecutedSuccessfully()) {
 
 
         }

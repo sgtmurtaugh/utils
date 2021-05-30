@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.Map;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
+@Setter(AccessLevel.PROTECTED)
 public abstract class AbstractServiceExecutor implements ServiceExecutorBase {
 
     private Map<String, Object> containerParams;
@@ -20,10 +20,10 @@ public abstract class AbstractServiceExecutor implements ServiceExecutorBase {
     /**
      * init
      */
-    protected void init( Map<String, Object> mapContainerParams ) {
+    protected void init(Map<String, Object> mapContainerParams) {
         this.reset();
 
-        this.setContainerParams( mapContainerParams );
+        this.setContainerParams(mapContainerParams);
     }
 
     /**
@@ -39,10 +39,11 @@ public abstract class AbstractServiceExecutor implements ServiceExecutorBase {
 
     /**
      * isReallyPerformService
+     *
      * @return
      */
     public boolean isReallyPerformService() {
-        return ( !this.isExecuted() );
+        return (!this.isExecuted());
     }
 
 }

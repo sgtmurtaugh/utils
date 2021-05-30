@@ -9,6 +9,7 @@ public interface RespondForLocationServiceExecutor extends RespondServiceExecuto
 
     /**
      * getRequestEntityBean
+     *
      * @return
      */
     Object getRequest();

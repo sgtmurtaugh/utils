@@ -7,8 +7,8 @@ import lombok.Setter;
 import java.math.BigInteger;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
 public class BigIntegerMapperImpl extends NumericTypeMapperBase<BigInteger> implements BigIntegerMapper {
 
     /**
@@ -23,8 +23,8 @@ public class BigIntegerMapperImpl extends NumericTypeMapperBase<BigInteger> impl
      *
      * @param defaultValue
      */
-    public BigIntegerMapperImpl( BigInteger defaultValue ) {
-        super( defaultValue );
+    public BigIntegerMapperImpl(BigInteger defaultValue) {
+        super(defaultValue);
     }
 
 }

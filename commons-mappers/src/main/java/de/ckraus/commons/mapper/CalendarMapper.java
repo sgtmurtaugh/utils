@@ -3,7 +3,7 @@ package de.ckraus.commons.mapper;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-@SuppressWarnings( { "javadoc", "unused" } )
+@SuppressWarnings({ "javadoc", "unused" })
 public interface CalendarMapper<E extends Calendar> extends TypeMapper<E> {
 
     boolean DEFAULT_LENIENT = Boolean.FALSE;
@@ -18,8 +18,8 @@ public interface CalendarMapper<E extends Calendar> extends TypeMapper<E> {
      * @return <p>Delegates to {@link #map(String, DateFormat, boolean, Calendar)} with default lenient value
      *         {@link #DEFAULT_LENIENT}</p>
      */
-    default E map( String s, DateFormat format, E defaultValue ) {
-        return this.map( s, format, DEFAULT_LENIENT, defaultValue );
+    default E map(String s, DateFormat format, E defaultValue) {
+        return this.map(s, format, DEFAULT_LENIENT, defaultValue);
     }
 
     /**
@@ -32,6 +32,6 @@ public interface CalendarMapper<E extends Calendar> extends TypeMapper<E> {
      *
      * @return
      */
-    E map( String s, DateFormat format, boolean lenient, E defaultValue );
+    E map(String s, DateFormat format, boolean lenient, E defaultValue);
 
 }

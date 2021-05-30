@@ -7,11 +7,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- *
  * @param <I>
  */
 @Getter
-@Setter( AccessLevel.PROTECTED)
+@Setter(AccessLevel.PROTECTED)
 public abstract class PutServiceClientBase<I> extends VoidServiceClientBase<I> implements VoidServiceClient<I> {
 
 }

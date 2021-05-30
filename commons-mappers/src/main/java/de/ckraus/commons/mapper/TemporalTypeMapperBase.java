@@ -7,8 +7,8 @@ import lombok.Setter;
 import java.time.temporal.Temporal;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "WeakerAccess", "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "WeakerAccess", "javadoc", "unused" })
 public abstract class TemporalTypeMapperBase<E extends Temporal> extends TypeMapperBase<E>
         implements TemporalTypeMapper<E> {
 
@@ -24,8 +24,8 @@ public abstract class TemporalTypeMapperBase<E extends Temporal> extends TypeMap
      *
      * @param defaultValue
      */
-    protected TemporalTypeMapperBase( E defaultValue ) {
-        super( defaultValue );
+    protected TemporalTypeMapperBase(E defaultValue) {
+        super(defaultValue);
     }
 
     /**
@@ -35,8 +35,8 @@ public abstract class TemporalTypeMapperBase<E extends Temporal> extends TypeMap
      * @param bTrimStrings
      * @param bEmptyStringNull
      */
-    protected TemporalTypeMapperBase( E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull ) {
-        super( defaultValue, bTrimStrings, bEmptyStringNull );
+    protected TemporalTypeMapperBase(E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull) {
+        super(defaultValue, bTrimStrings, bEmptyStringNull);
     }
 
 }

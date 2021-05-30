@@ -4,7 +4,7 @@ package de.ckraus.commons.mapper;
 /**
  * Created by ckraus on 09.08.15.
  */
-@SuppressWarnings({"javadoc"})
+@SuppressWarnings({ "javadoc" })
 public interface BooleanMapper extends TypeMapper<Boolean> {
 
 
@@ -12,6 +12,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      * isMappable
      *
      * @param o
+     *
      * @return
      */
     @Override
@@ -20,15 +21,20 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
 
         if (null == o) {
             bIsMappable = false;
-        } else if (o instanceof Boolean) {
+        }
+        else if (o instanceof Boolean) {
             bIsMappable = true;
-        } else if (o instanceof Character) {
+        }
+        else if (o instanceof Character) {
             bIsMappable = (this.isFalse((Character) o) || this.isTrue((Character) o));
-        } else if (o instanceof Integer) {
+        }
+        else if (o instanceof Integer) {
             bIsMappable = (this.isFalse((Integer) o) || this.isTrue((Integer) o));
-        } else if (o instanceof String) {
+        }
+        else if (o instanceof String) {
             bIsMappable = (this.isFalse((String) o) || this.isTrue((String) o));
-        } else {
+        }
+        else {
             bIsMappable = this.isMappable(o.toString());
         }
         return bIsMappable;
@@ -39,6 +45,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      *
      * @param obj
      * @param defaultValue
+     *
      * @return
      */
     @Override
@@ -47,15 +54,20 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
 
         if (null == obj) {
             e = defaultValue;
-        } else if (obj instanceof Boolean) {
+        }
+        else if (obj instanceof Boolean) {
             e = this.map((Boolean) obj, defaultValue);
-        } else if (obj instanceof Character) {
+        }
+        else if (obj instanceof Character) {
             e = this.map((Character) obj, defaultValue);
-        } else if (obj instanceof Integer) {
+        }
+        else if (obj instanceof Integer) {
             e = this.map((Integer) obj, defaultValue);
-        } else if (obj instanceof String) {
+        }
+        else if (obj instanceof String) {
             e = this.map((String) obj, defaultValue);
-        } else {
+        }
+        else {
             e = this.map(obj.toString(), defaultValue);
         }
         return e;
@@ -64,9 +76,10 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
     /**
      * map
      *
-     * @param s            - string to map
-     * @param bTrim        - default flag for string handling
+     * @param s - string to map
+     * @param bTrim - default flag for string handling
      * @param bEmptyIsNull - default flag for empty string handling
+     *
      * @return
      */
     @Override
@@ -77,10 +90,11 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
     /**
      * map
      *
-     * @param s            - string to map
-     * @param bTrim        - default flag for string handling
+     * @param s - string to map
+     * @param bTrim - default flag for string handling
      * @param bEmptyIsNull - default flag for empty string handling
      * @param defaultValue - The default value
+     *
      * @return
      */
     default Boolean map(String s, boolean bTrim, boolean bEmptyIsNull, Boolean defaultValue) {
@@ -89,7 +103,8 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
 
         if (this.isFalse(preparedString)) {
             b = Boolean.FALSE;
-        } else if (this.isTrue(preparedString)) {
+        }
+        else if (this.isTrue(preparedString)) {
             b = Boolean.TRUE;
         }
         return b;
@@ -107,14 +122,15 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
     /**
      * map
      *
-     * @param b            - boolean to map
+     * @param b - boolean to map
      * @param defaultValue - The default value
+     *
      * @return
      */
     default Boolean map(Boolean b, Boolean defaultValue) {
         return (null != b
-                ? b
-                : defaultValue);
+                        ? b
+                        : defaultValue);
     }
 
     /**
@@ -129,8 +145,9 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
     /**
      * map
      *
-     * @param c            - character to map
+     * @param c - character to map
      * @param defaultValue - The default value
+     *
      * @return
      */
     default Boolean map(Character c, Boolean defaultValue) {
@@ -139,7 +156,8 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
         if (null != c) {
             if (this.isFalse(c)) {
                 b = Boolean.FALSE;
-            } else if (this.isTrue(c)) {
+            }
+            else if (this.isTrue(c)) {
                 b = Boolean.TRUE;
             }
         }
@@ -150,6 +168,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      * map
      *
      * @param i - integer to map
+     *
      * @return
      */
     default Boolean map(Integer i) {
@@ -159,8 +178,9 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
     /**
      * map
      *
-     * @param i            - integer to map
+     * @param i - integer to map
      * @param defaultValue - The default value
+     *
      * @return
      */
     default Boolean map(Integer i, Boolean defaultValue) {
@@ -169,7 +189,8 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
         if (null != i) {
             if (this.isFalse(i)) {
                 b = Boolean.FALSE;
-            } else if (this.isTrue(i)) {
+            }
+            else if (this.isTrue(i)) {
                 b = Boolean.TRUE;
             }
         }
@@ -180,6 +201,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      * isFalse
      *
      * @param c
+     *
      * @return
      */
     boolean isFalse(Character c);
@@ -188,6 +210,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      * isFalse
      *
      * @param i
+     *
      * @return
      */
     boolean isFalse(Integer i);
@@ -196,6 +219,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      * isFalse
      *
      * @param o
+     *
      * @return
      */
     default boolean isFalse(Object o) {
@@ -203,15 +227,20 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
 
         if (null == o) {
             bIsFalse = false;
-        } else if (o instanceof Boolean) {
+        }
+        else if (o instanceof Boolean) {
             bIsFalse = (o == Boolean.FALSE);
-        } else if (o instanceof Character) {
+        }
+        else if (o instanceof Character) {
             bIsFalse = this.isFalse((Character) o);
-        } else if (o instanceof Integer) {
+        }
+        else if (o instanceof Integer) {
             bIsFalse = this.isFalse((Integer) o);
-        } else if (o instanceof String) {
+        }
+        else if (o instanceof String) {
             bIsFalse = this.isFalse((String) o);
-        } else {
+        }
+        else {
             bIsFalse = this.isFalse(o.toString());
         }
         return bIsFalse;
@@ -221,6 +250,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      * isFalse
      *
      * @param s
+     *
      * @return
      */
     boolean isFalse(String s);
@@ -229,6 +259,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      * isTrue
      *
      * @param c
+     *
      * @return
      */
     boolean isTrue(Character c);
@@ -237,6 +268,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      * isTrue
      *
      * @param i
+     *
      * @return
      */
     boolean isTrue(Integer i);
@@ -245,6 +277,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      * isTrue
      *
      * @param o
+     *
      * @return
      */
     default boolean isTrue(Object o) {
@@ -252,15 +285,20 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
 
         if (null == o) {
             bIsTrue = false;
-        } else if (o instanceof Boolean) {
+        }
+        else if (o instanceof Boolean) {
             bIsTrue = (o == Boolean.TRUE);
-        } else if (o instanceof Character) {
+        }
+        else if (o instanceof Character) {
             bIsTrue = this.isTrue((Character) o);
-        } else if (o instanceof Integer) {
+        }
+        else if (o instanceof Integer) {
             bIsTrue = this.isTrue((Integer) o);
-        } else if (o instanceof String) {
+        }
+        else if (o instanceof String) {
             bIsTrue = this.isTrue((String) o);
-        } else {
+        }
+        else {
             bIsTrue = this.isTrue(o.toString());
         }
         return bIsTrue;
@@ -270,6 +308,7 @@ public interface BooleanMapper extends TypeMapper<Boolean> {
      * isTrue
      *
      * @param s
+     *
      * @return
      */
     boolean isTrue(String s);

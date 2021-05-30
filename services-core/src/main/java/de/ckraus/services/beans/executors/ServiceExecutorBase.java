@@ -1,7 +1,7 @@
 package de.ckraus.services.beans.executors;
 
-import de.ckraus.services.utils.ServiceUtils;
 import de.ckraus.services.clients.ServiceClient;
+import de.ckraus.services.utils.ServiceUtils;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +14,7 @@ import org.springframework.web.client.RestClientException;
 import java.util.Map;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
+@Setter(AccessLevel.PROTECTED)
 public abstract class ServiceExecutorBase<T extends ServiceClient<I, O>, I, O> implements ServiceExecutor<T, I, O> {
 
     private Map<String, Object> params;
@@ -23,7 +23,7 @@ public abstract class ServiceExecutorBase<T extends ServiceClient<I, O>, I, O> i
     private HttpStatus httpStatus;
     private I requestObject;
     private O responseEntity;
-//    private Class<O> responseType;
+    //    private Class<O> responseType;
     private Map<Object, String> namedServiceArgs;
     private Object[] orderedServiceArgs;
     private Throwable throwable;
@@ -32,39 +32,34 @@ public abstract class ServiceExecutorBase<T extends ServiceClient<I, O>, I, O> i
     protected abstract I initRequestObject();
 
     @Tolerate
-    protected void setFailed( HttpStatus httpStatus ) {
-        this.setFailed( ServiceUtils.isExecutedSuccessfully( httpStatus ) );
+    protected void setFailed(HttpStatus httpStatus) {
+        this.setFailed(ServiceUtils.isExecutedSuccessfully(httpStatus));
     }
 
     @Tolerate
-    protected void setHttpStatus( O oResponseEntity ) {
+    protected void setHttpStatus(O oResponseEntity) {
         if (null == responseEntity) {
-            this.setHttpStatus( HttpStatus.NO_CONTENT );
+            this.setHttpStatus(HttpStatus.NO_CONTENT);
         }
-        else
-        if (responseEntity instanceof Void) {
-            this.setHttpStatus( HttpStatus.OK );
+        else if (responseEntity instanceof Void) {
+            this.setHttpStatus(HttpStatus.OK);
         }
-        else
-        if (responseEntity instanceof ResponseEntity ) {
-            this.setHttpStatus(
-                    ((ResponseEntity<?>) responseEntity).getStatusCode()
-            );
+        else if (responseEntity instanceof ResponseEntity) {
+            this.setHttpStatus(((ResponseEntity<?>) responseEntity).getStatusCode());
         }
         else {
-            this.setHttpStatus( HttpStatus.OK );
+            this.setHttpStatus(HttpStatus.OK);
         }
     }
 
     /**
-     *
      * @param mapContainerParams
      */
-    protected void init( Map<String, Object> mapContainerParams ) {
+    protected void init(Map<String, Object> mapContainerParams) {
         this.reset();
 
-        this.setParams( mapContainerParams );
-        this.setRequestObject( this.initRequestObject() );
+        this.setParams(mapContainerParams);
+        this.setRequestObject(this.initRequestObject());
     }
 
     /**
@@ -74,7 +69,7 @@ public abstract class ServiceExecutorBase<T extends ServiceClient<I, O>, I, O> i
         this.setParams(null);
         this.setExecuted(false);
         this.setFailed(false);
-        this.setHttpStatus((HttpStatus ) null);
+        this.setHttpStatus((HttpStatus) null);
         this.setRequestObject(null);
         this.setResponseEntity(null);
         this.setNamedServiceArgs(null);
@@ -83,16 +78,16 @@ public abstract class ServiceExecutorBase<T extends ServiceClient<I, O>, I, O> i
     }
 
     /**
-     *
      * @param mapContainerParams
+     *
      * @return
      */
-    public T execute( Map<String, Object> mapContainerParams ) {
+    public T execute(Map<String, Object> mapContainerParams) {
         this.init(mapContainerParams);
 
         T t = null;
 
-        if ( this.isReallyPerformService() ) {
+        if (this.isReallyPerformService()) {
 
             // handle Execution individually
             this.performService();
@@ -117,12 +112,14 @@ public abstract class ServiceExecutorBase<T extends ServiceClient<I, O>, I, O> i
 
             // set HttpStatus
             this.setHttpStatus(oResponseEntity);
-        } catch ( HttpServerErrorException hsee ) {
+        }
+        catch (HttpServerErrorException hsee) {
             // set HttpStatus
             this.setHttpStatus(hsee.getStatusCode());
             this.setThrowable(hsee);
 
-        } catch ( RestClientException rce ) {
+        }
+        catch (RestClientException rce) {
             // set HttpStatus
             this.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR);
             this.setThrowable(rce);
@@ -134,21 +131,21 @@ public abstract class ServiceExecutorBase<T extends ServiceClient<I, O>, I, O> i
         }
 
         // set Execution Flag
-        this.setExecuted( true );
+        this.setExecuted(true);
 
         // set Execution status by occured exception or returned HttpStatus
-        if ( ( this.isExecuted() )
-                && ( null != this.getThrowable() ) ) {
+        if ((this.isExecuted()) && (null != this.getThrowable())) {
 
-            this.setFailed( Boolean.TRUE );
+            this.setFailed(Boolean.TRUE);
         }
         else {
-            this.setFailed( this.getHttpStatus() );
+            this.setFailed(this.getHttpStatus());
         }
     }
 
     /**
      * TODO
+     *
      * @return
      */
     protected abstract T handleServiceResponse();
@@ -157,7 +154,7 @@ public abstract class ServiceExecutorBase<T extends ServiceClient<I, O>, I, O> i
      *
      */
     public void storeResponseEntityBean() {
-        if ( !this.isFailed() ) {
+        if (!this.isFailed()) {
             // TODO
         }
     }

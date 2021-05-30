@@ -1,16 +1,15 @@
-package de.ckraus.webcommons.mappers.utils.http;
+package de.ckraus.webcommons.mappers.utils;
 
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
-import de.ckraus.webcommons.mappers.utils.ScopeUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 
 /**
  *
  */
 @SuppressWarnings({ "unused", "javadoc" })
-public interface LocalDateMapperScopeUtils<E> extends ScopeUtils<E> {
+public interface BigDecimalMapperScopeUtils<E> extends ScopeUtils<E> {
 
     /**
      * @param e
@@ -18,11 +17,11 @@ public interface LocalDateMapperScopeUtils<E> extends ScopeUtils<E> {
      *
      * @return
      */
-    default LocalDate getLocalDateAttribute(E e, String name) {
+    default BigDecimal getBigDecimalAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getLocalDateMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperUtils.getDefaults().getBigDecimalMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getDefaults().getLocalDateMapper().getDefaultValue();
+        return TypeMapperUtils.getDefaults().getBigDecimalMapper().getDefaultValue();
     }
 
     /**
@@ -32,9 +31,9 @@ public interface LocalDateMapperScopeUtils<E> extends ScopeUtils<E> {
      *
      * @return
      */
-    default LocalDate getLocalDateAttribute(E e, String name, LocalDate defaultValue) {
+    default BigDecimal getBigDecimalAttribute(E e, String name, BigDecimal defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getLocalDateMapper()
+            return TypeMapperUtils.getDefaults().getBigDecimalMapper()
                                   .mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
@@ -46,9 +45,9 @@ public interface LocalDateMapperScopeUtils<E> extends ScopeUtils<E> {
      *
      * @return
      */
-    default boolean hasLocalDateAttribute(E e, String name) {
+    default boolean hasBigDecimalAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getDefaults().getLocalDateMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperUtils.getDefaults().getBigDecimalMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -61,10 +60,10 @@ public interface LocalDateMapperScopeUtils<E> extends ScopeUtils<E> {
      *
      * @return
      */
-    default boolean hasLocalDateAttributeWithValue(E e, String name, LocalDate value) {
+    default boolean hasBigDecimalAttributeWithValue(E e, String name, BigDecimal value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getLocalDateMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperUtils.getDefaults().getBigDecimalMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
 public class StringMapperImpl extends TypeMapperBase<String> implements StringMapper {
 
     /**
@@ -21,8 +21,8 @@ public class StringMapperImpl extends TypeMapperBase<String> implements StringMa
      *
      * @param defaultValue
      */
-    public StringMapperImpl( String defaultValue ) {
-        super( defaultValue );
+    public StringMapperImpl(String defaultValue) {
+        super(defaultValue);
     }
 
 }

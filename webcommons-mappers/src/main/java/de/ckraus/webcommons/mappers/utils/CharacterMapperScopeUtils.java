@@ -1,7 +1,6 @@
-package de.ckraus.webcommons.mappers.utils.http;
+package de.ckraus.webcommons.mappers.utils;
 
 import de.ckraus.commons.mapper.utils.TypeMapperUtils;
-import de.ckraus.webcommons.mappers.utils.ScopeUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 /**

@@ -1,6 +1,6 @@
 package de.ckraus.commons.mapper;
 
-@SuppressWarnings( { "javadoc" } )
+@SuppressWarnings({ "javadoc" })
 public interface StringMapper extends TypeMapper<String> {
 
     /**
@@ -8,6 +8,7 @@ public interface StringMapper extends TypeMapper<String> {
      *
      * @param obj
      * @param defaultValue
+     *
      * @return
      */
     @Override
@@ -16,9 +17,11 @@ public interface StringMapper extends TypeMapper<String> {
 
         if (null == obj) {
             e = defaultValue;
-        } else if (obj instanceof String) {
+        }
+        else if (obj instanceof String) {
             e = this.map((String) obj, defaultValue);
-        } else {
+        }
+        else {
             e = this.map(obj.toString(), defaultValue);
         }
         return e;
@@ -37,8 +40,8 @@ public interface StringMapper extends TypeMapper<String> {
     }
 
     /**
-     * Delegates to {@link #map(String, boolean, boolean, String)} with usage of {@link #isTrimStrings()} and
-     * {@link #isEmptyStringNull()}
+     * Delegates to {@link #map(String, boolean, boolean, String)} with usage of {@link #isTrimStrings()} and {@link
+     * #isEmptyStringNull()}
      *
      * @param s - string to map
      * @param defaultValue - The default value
@@ -53,23 +56,19 @@ public interface StringMapper extends TypeMapper<String> {
     /**
      * map
      *
-     * @param s
-     *         - string to map
-     * @param bTrim
-     *         - default flag for string handling
-     * @param bEmptyIsNull
-     *         - default flag for empty string handling
-     * @param defaultValue
-     *         - The default value
+     * @param s - string to map
+     * @param bTrim - default flag for string handling
+     * @param bEmptyIsNull - default flag for empty string handling
+     * @param defaultValue - The default value
      *
      * @return mapped string
      */
     @Override
-    default String map( String s, boolean bTrim, boolean bEmptyIsNull, String defaultValue ) {
+    default String map(String s, boolean bTrim, boolean bEmptyIsNull, String defaultValue) {
         String sRetVal = defaultValue;
-        String sPrepared = this.prepare( s, bTrim, bEmptyIsNull );
+        String sPrepared = this.prepare(s, bTrim, bEmptyIsNull);
 
-        if ( sPrepared != null ) {
+        if (sPrepared != null) {
             sRetVal = sPrepared;
         }
         return sRetVal;

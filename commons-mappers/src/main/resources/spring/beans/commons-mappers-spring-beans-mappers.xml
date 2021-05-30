@@ -1,131 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-       <bean id="typeMapperUtils" class="de.ckraus.commons.mapper.utils.TypeMapperUtils" scope="singleton" >
-              <property name="registeredTypeMappers">
-                     <util:map map-class="java.util.concurrent.ConcurrentHashMap" key-type="java.lang.Class" value-type="de.ckraus.commons.mapper.TypeMapper">
-                            <entry key="de.ckraus.commons.mapper.BigDecimalMapperImpl" value-ref="defaultBigDecimalMapper" />
-                            <entry key="de.ckraus.commons.mapper.BigIntegerMapperImpl" value-ref="defaultBigIntegerMapper" />
-                            <entry key="de.ckraus.commons.mapper.BooleanMapperImpl" value-ref="defaultBooleanMapper" />
-                            <entry key="de.ckraus.commons.mapper.ByteMapperImpl" value-ref="defaultByteMapper" />
-                            <entry key="de.ckraus.commons.mapper.CharacterMapperImpl" value-ref="defaultCharacterMapper" />
-                            <entry key="de.ckraus.commons.mapper.DateMapperImpl" value-ref="defaultDateMapper" />
-                            <entry key="de.ckraus.commons.mapper.DoubleMapperImpl" value-ref="defaultDoubleMapper" />
-                            <entry key="de.ckraus.commons.mapper.FloatMapperImpl" value-ref="defaultFloatMapper" />
-                            <entry key="de.ckraus.commons.mapper.GregorianCalendarMapperImpl" value-ref="defaultGregorianCalendarMapper" />
-                            <entry key="de.ckraus.commons.mapper.IntegerMapperImpl" value-ref="defaultIntegerMapper" />
-                            <entry key="de.ckraus.commons.mapper.LongMapperImpl" value-ref="defaultLongMapper" />
-                            <entry key="de.ckraus.commons.mapper.ShortMapperImpl" value-ref="defaultShortMapper" />
-                            <entry key="de.ckraus.commons.mapper.StringMapperImpl" value-ref="defaultStringMapper" />
-                     </util:map>
-              </property>
-       </bean>
+    <bean id="typeMapperUtils" class="de.ckraus.commons.mapper.utils.TypeMapperUtils" scope="singleton">
+        <property name="registeredTypeMappers">
+            <util:map map-class="java.util.concurrent.ConcurrentHashMap" key-type="java.lang.Class"
+                      value-type="de.ckraus.commons.mapper.TypeMapper">
+                <entry key="de.ckraus.commons.mapper.BigDecimalMapperImpl" value-ref="defaultBigDecimalMapper"/>
+                <entry key="de.ckraus.commons.mapper.BigIntegerMapperImpl" value-ref="defaultBigIntegerMapper"/>
+                <entry key="de.ckraus.commons.mapper.BooleanMapperImpl" value-ref="defaultBooleanMapper"/>
+                <entry key="de.ckraus.commons.mapper.ByteMapperImpl" value-ref="defaultByteMapper"/>
+                <entry key="de.ckraus.commons.mapper.CharacterMapperImpl" value-ref="defaultCharacterMapper"/>
+                <entry key="de.ckraus.commons.mapper.DateMapperImpl" value-ref="defaultDateMapper"/>
+                <entry key="de.ckraus.commons.mapper.DoubleMapperImpl" value-ref="defaultDoubleMapper"/>
+                <entry key="de.ckraus.commons.mapper.FloatMapperImpl" value-ref="defaultFloatMapper"/>
+                <entry key="de.ckraus.commons.mapper.GregorianCalendarMapperImpl"
+                       value-ref="defaultGregorianCalendarMapper"/>
+                <entry key="de.ckraus.commons.mapper.IntegerMapperImpl" value-ref="defaultIntegerMapper"/>
+                <entry key="de.ckraus.commons.mapper.LongMapperImpl" value-ref="defaultLongMapper"/>
+                <entry key="de.ckraus.commons.mapper.ShortMapperImpl" value-ref="defaultShortMapper"/>
+                <entry key="de.ckraus.commons.mapper.StringMapperImpl" value-ref="defaultStringMapper"/>
+            </util:map>
+        </property>
+    </bean>
 
-       <bean id="defaultBigDecimalMapper" class="de.ckraus.commons.mapper.BigDecimalMapperImpl" scope="singleton" />
+    <bean id="defaultBigDecimalMapper" class="de.ckraus.commons.mapper.BigDecimalMapperImpl" scope="singleton"/>
 
-       <bean id="defaultBigIntegerMapper" class="de.ckraus.commons.mapper.BigIntegerMapperImpl" scope="singleton" />
+    <bean id="defaultBigIntegerMapper" class="de.ckraus.commons.mapper.BigIntegerMapperImpl" scope="singleton"/>
 
-       <bean id="defaultBooleanMapper" class="de.ckraus.commons.mapper.BooleanMapperImpl" scope="singleton" >
-              <property name="trueValues">
-                     <map merge="true" key-type="java.lang.Class" value-type="java.util.List">
-                            <entry key="java.lang.Character">
-                                   <list value-type="java.lang.Character">
-                                          <value>1</value>
-                                          <value>+</value>
-                                          <value>T</value>
-                                          <value>t</value>
-                                          <value>Y</value>
-                                          <value>y</value>
-                                   </list>
-                            </entry>
-                            <entry key="java.lang.Integer">
-                                   <list value-type="java.lang.Integer">
-                                          <value>1</value>
-                                   </list>
-                            </entry>
-                            <entry key="java.lang.String">
-                                   <list value-type="java.lang.String">
-                                          <value>1</value>
-                                          <value>forward</value>
-                                          <value>next</value>
-                                          <value>ok</value>
-                                          <value>okay</value>
-                                          <value>on</value>
-                                          <value>plus</value>
-                                          <value>+</value>
-                                          <value>success</value>
-                                          <value>successful</value>
-                                          <value>t</value>
-                                          <value>true</value>
-                                          <value>y</value>
-                                          <value>yes</value>
-                                   </list>
-                            </entry>
-                     </map>
-              </property>
-              <property name="falseValues">
-                     <map merge="true" key-type="java.lang.Class" value-type="java.util.List">
-                            <entry key="java.lang.Character">
-                                   <list value-type="java.lang.Character">
-                                          <value>0</value>
-                                          <value>F</value>
-                                          <value>f</value>
-                                          <value>N</value>
-                                          <value>n</value>
-                                          <value>-</value>
-                                          <value>X</value>
-                                          <value>x</value>
-                                   </list>
-                            </entry>
-                            <entry key="java.lang.Integer">
-                                   <list value-type="java.lang.Integer">
-                                          <value>0</value>
-                                   </list>
-                            </entry>
-                            <entry key="java.lang.String">
-                                   <list value-type="java.lang.String">
-                                          <value>0</value>
-                                          <value>back</value>
-                                          <value>break</value>
-                                          <value>cancel</value>
-                                          <value>error</value>
-                                          <value>err</value>
-                                          <value>fail</value>
-                                          <value>failure</value>
-                                          <value>false</value>
-                                          <value>n</value>
-                                          <value>no</value>
-                                          <value>off</value>
-                                          <value>minus</value>
-                                          <value>-</value>
-                                          <value>wrong</value>
-                                          <value>x</value>
-                                   </list>
-                            </entry>
-                     </map>
-              </property>
-       </bean>
+    <bean id="defaultBooleanMapper" class="de.ckraus.commons.mapper.BooleanMapperImpl" scope="singleton">
+        <property name="trueValues">
+            <map merge="true" key-type="java.lang.Class" value-type="java.util.List">
+                <entry key="java.lang.Character">
+                    <list value-type="java.lang.Character">
+                        <value>1</value>
+                        <value>+</value>
+                        <value>T</value>
+                        <value>t</value>
+                        <value>Y</value>
+                        <value>y</value>
+                    </list>
+                </entry>
+                <entry key="java.lang.Integer">
+                    <list value-type="java.lang.Integer">
+                        <value>1</value>
+                    </list>
+                </entry>
+                <entry key="java.lang.String">
+                    <list value-type="java.lang.String">
+                        <value>1</value>
+                        <value>forward</value>
+                        <value>next</value>
+                        <value>ok</value>
+                        <value>okay</value>
+                        <value>on</value>
+                        <value>plus</value>
+                        <value>+</value>
+                        <value>success</value>
+                        <value>successful</value>
+                        <value>t</value>
+                        <value>true</value>
+                        <value>y</value>
+                        <value>yes</value>
+                    </list>
+                </entry>
+            </map>
+        </property>
+        <property name="falseValues">
+            <map merge="true" key-type="java.lang.Class" value-type="java.util.List">
+                <entry key="java.lang.Character">
+                    <list value-type="java.lang.Character">
+                        <value>0</value>
+                        <value>F</value>
+                        <value>f</value>
+                        <value>N</value>
+                        <value>n</value>
+                        <value>-</value>
+                        <value>X</value>
+                        <value>x</value>
+                    </list>
+                </entry>
+                <entry key="java.lang.Integer">
+                    <list value-type="java.lang.Integer">
+                        <value>0</value>
+                    </list>
+                </entry>
+                <entry key="java.lang.String">
+                    <list value-type="java.lang.String">
+                        <value>0</value>
+                        <value>back</value>
+                        <value>break</value>
+                        <value>cancel</value>
+                        <value>error</value>
+                        <value>err</value>
+                        <value>fail</value>
+                        <value>failure</value>
+                        <value>false</value>
+                        <value>n</value>
+                        <value>no</value>
+                        <value>off</value>
+                        <value>minus</value>
+                        <value>-</value>
+                        <value>wrong</value>
+                        <value>x</value>
+                    </list>
+                </entry>
+            </map>
+        </property>
+    </bean>
 
-       <bean id="defaultByteMapper" class="de.ckraus.commons.mapper.ByteMapperImpl" scope="singleton" />
+    <bean id="defaultByteMapper" class="de.ckraus.commons.mapper.ByteMapperImpl" scope="singleton"/>
 
-       <bean id="defaultCharacterMapper" class="de.ckraus.commons.mapper.CharacterMapperImpl" scope="singleton" />
+    <bean id="defaultCharacterMapper" class="de.ckraus.commons.mapper.CharacterMapperImpl" scope="singleton"/>
 
-       <bean id="defaultDateMapper" class="de.ckraus.commons.mapper.DateMapperImpl" scope="singleton" />
+    <bean id="defaultDateMapper" class="de.ckraus.commons.mapper.DateMapperImpl" scope="singleton"/>
 
-       <bean id="defaultDoubleMapper" class="de.ckraus.commons.mapper.DoubleMapperImpl" scope="singleton" />
+    <bean id="defaultDoubleMapper" class="de.ckraus.commons.mapper.DoubleMapperImpl" scope="singleton"/>
 
-       <bean id="defaultFloatMapper" class="de.ckraus.commons.mapper.FloatMapperImpl" scope="singleton" />
+    <bean id="defaultFloatMapper" class="de.ckraus.commons.mapper.FloatMapperImpl" scope="singleton"/>
 
-       <bean id="defaultGregorianCalendarMapper" class="de.ckraus.commons.mapper.GregorianCalendarMapperImpl" scope="singleton" />
+    <bean id="defaultGregorianCalendarMapper" class="de.ckraus.commons.mapper.GregorianCalendarMapperImpl"
+          scope="singleton"/>
 
-       <bean id="defaultIntegerMapper" class="de.ckraus.commons.mapper.IntegerMapperImpl" scope="singleton" />
+    <bean id="defaultIntegerMapper" class="de.ckraus.commons.mapper.IntegerMapperImpl" scope="singleton"/>
 
-       <bean id="defaultLongMapper" class="de.ckraus.commons.mapper.LongMapperImpl" scope="singleton" />
+    <bean id="defaultLongMapper" class="de.ckraus.commons.mapper.LongMapperImpl" scope="singleton"/>
 
-       <bean id="defaultShortMapper" class="de.ckraus.commons.mapper.ShortMapperImpl" scope="singleton" />
+    <bean id="defaultShortMapper" class="de.ckraus.commons.mapper.ShortMapperImpl" scope="singleton"/>
 
-       <bean id="defaultStringMapper" class="de.ckraus.commons.mapper.StringMapperImpl" scope="singleton" />
+    <bean id="defaultStringMapper" class="de.ckraus.commons.mapper.StringMapperImpl" scope="singleton"/>
 
 </beans>

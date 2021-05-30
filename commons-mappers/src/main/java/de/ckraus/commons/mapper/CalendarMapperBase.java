@@ -7,9 +7,9 @@ import lombok.Setter;
 import java.util.Calendar;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )@SuppressWarnings( { "javadoc", "unused" } )
-public abstract class CalendarMapperBase<E extends Calendar> extends TypeMapperBase<E>
-        implements CalendarMapper<E> {
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
+public abstract class CalendarMapperBase<E extends Calendar> extends TypeMapperBase<E> implements CalendarMapper<E> {
 
     /**
      * Constructor
@@ -23,8 +23,8 @@ public abstract class CalendarMapperBase<E extends Calendar> extends TypeMapperB
      *
      * @param defaultValue
      */
-    protected CalendarMapperBase( E defaultValue ) {
-        super( defaultValue );
+    protected CalendarMapperBase(E defaultValue) {
+        super(defaultValue);
     }
 
     /**
@@ -34,8 +34,8 @@ public abstract class CalendarMapperBase<E extends Calendar> extends TypeMapperB
      * @param bTrimStrings
      * @param bEmptyStringNull
      */
-    protected CalendarMapperBase( E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull ) {
-        super( defaultValue, bTrimStrings, bEmptyStringNull );
+    protected CalendarMapperBase(E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull) {
+        super(defaultValue, bTrimStrings, bEmptyStringNull);
     }
 
 

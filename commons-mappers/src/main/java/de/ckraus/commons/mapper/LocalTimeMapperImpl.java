@@ -7,8 +7,8 @@ import lombok.Setter;
 import java.time.LocalTime;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
 public class LocalTimeMapperImpl extends TemporalTypeMapperBase<LocalTime> implements LocalTimeMapper {
 
     /**
@@ -23,8 +23,8 @@ public class LocalTimeMapperImpl extends TemporalTypeMapperBase<LocalTime> imple
      *
      * @param defaultValue
      */
-    public LocalTimeMapperImpl( LocalTime defaultValue ) {
-        super( defaultValue );
+    public LocalTimeMapperImpl(LocalTime defaultValue) {
+        super(defaultValue);
     }
 
 }

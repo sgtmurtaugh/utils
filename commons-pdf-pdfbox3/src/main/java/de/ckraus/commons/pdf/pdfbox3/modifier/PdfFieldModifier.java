@@ -15,7 +15,7 @@ import java.util.List;
  *     <li>null - omitted</li>
  * </ul>
  */
-@SuppressWarnings( { "javadoc", "unused" } )
+@SuppressWarnings({ "javadoc", "unused" })
 public interface PdfFieldModifier extends PdfModifer {
 
     /**
@@ -25,12 +25,12 @@ public interface PdfFieldModifier extends PdfModifer {
      *
      * @return
      */
-    default PDAcroForm getPdfAcroForm( PDDocument pdfDocument ) {
+    default PDAcroForm getPdfAcroForm(PDDocument pdfDocument) {
         PDAcroForm pdfAcroForm = null;
 
-        if ( null != pdfDocument ) {
+        if (null != pdfDocument) {
             PDDocumentCatalog docCatalog = pdfDocument.getDocumentCatalog();
-            if ( null != docCatalog ) {
+            if (null != docCatalog) {
                 pdfAcroForm = docCatalog.getAcroForm();
             }
         }
@@ -38,16 +38,17 @@ public interface PdfFieldModifier extends PdfModifer {
     }
 
     /**
-     * <p>Determines the {@link PDAcroForm} with the given {@link PDDocument} and delegates to {@link #modify(PDAcroForm)}</p>
+     * <p>Determines the {@link PDAcroForm} with the given {@link PDDocument} and delegates to {@link
+     * #modify(PDAcroForm)}</p>
      *
      * @param pdfDocument
      *
      * @return
      */
-    default Boolean modify( PDDocument pdfDocument ) {
+    default Boolean modify(PDDocument pdfDocument) {
         Boolean bModify = null;
-        if ( null != pdfDocument ) {
-            bModify = this.modify( this.getPdfAcroForm( pdfDocument ) );
+        if (null != pdfDocument) {
+            bModify = this.modify(this.getPdfAcroForm(pdfDocument));
         }
         return bModify;
     }
@@ -59,7 +60,7 @@ public interface PdfFieldModifier extends PdfModifer {
      *
      * @return
      */
-    Boolean modify( PDAcroForm pdAcroForm );
+    Boolean modify(PDAcroForm pdAcroForm);
 
     /**
      * <p>This method must be implemented individually.</p>
@@ -68,6 +69,6 @@ public interface PdfFieldModifier extends PdfModifer {
      *
      * @return
      */
-    Boolean modifyFields( List<PDField> lstPDFields );
+    Boolean modifyFields(List<PDField> lstPDFields);
 
 }

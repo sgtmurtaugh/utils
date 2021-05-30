@@ -17,11 +17,8 @@ public interface ServiceClientResource {
     String getPath();
 
     default URI getURI() {
-        return new DefaultUriBuilderFactory().builder()
-                .scheme( this.getSchema() )
-                .host( this.getHost() ).port( this.getPort() )
-                .path( this.getPath() )
-                .build( ( Object[] ) null );
+        return new DefaultUriBuilderFactory().builder().scheme(this.getSchema()).host(this.getHost())
+                                             .port(this.getPort()).path(this.getPath()).build((Object[]) null);
     }
 
     default String getUrl() {

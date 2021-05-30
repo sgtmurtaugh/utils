@@ -18,35 +18,38 @@ public abstract class PdfModifierBase<D> extends AbstractBeanBase implements Pdf
 
     /**
      * Constructor
+     *
      * @param is
      * @param os
      */
     protected PdfModifierBase(InputStream is, OutputStream os) {
         super();
-        this.setInputStream( is );
-        this.setOutputStream( os );
+        this.setInputStream(is);
+        this.setOutputStream(os);
     }
 
     /**
      * Constructor
+     *
      * @param in
      * @param out
      */
     protected PdfModifierBase(@NonNull File in, @NonNull File out) throws FileNotFoundException {
         super();
-        this.setInputStream( new FileInputStream( in ) );
-        this.setOutputStream( new FileOutputStream( out ) );
+        this.setInputStream(new FileInputStream(in));
+        this.setOutputStream(new FileOutputStream(out));
     }
 
     /**
      * Constructor
+     *
      * @param src
      * @param dest
      */
     protected PdfModifierBase(String src, String dest) throws FileNotFoundException {
         super();
-        this.setInputStream( new FileInputStream( src ) );
-        this.setOutputStream( new FileOutputStream( dest ) );
+        this.setInputStream(new FileInputStream(src));
+        this.setOutputStream(new FileOutputStream(dest));
     }
 
 }

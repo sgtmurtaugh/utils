@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.springframework.http.RequestEntity;
 
 @Getter
-@Setter( AccessLevel.PROTECTED)
+@Setter(AccessLevel.PROTECTED)
 public abstract class ServiceClientBase<I, O> implements ServiceClient<I, O> {
 
     private ServiceClientResource serviceClientResource;

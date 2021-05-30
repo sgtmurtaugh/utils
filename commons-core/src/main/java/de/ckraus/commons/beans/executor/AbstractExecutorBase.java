@@ -1,12 +1,12 @@
 package de.ckraus.commons.beans.executor;
 
 import de.ckraus.commons.beans.AbstractBeanBase;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * TODO
+ *
  * @param <O> - return type of this executor
  */
 @Getter

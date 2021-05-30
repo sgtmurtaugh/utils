@@ -13,19 +13,19 @@ import org.springframework.web.client.RestClientException;
 import java.util.Map;
 
 /**
- *
  * @param <I> RequestEntity Bean
  * @param <O> ResponseEntity Type
  */
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings({"WeakerAccess"})
-public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractRespondForEntityServiceExecutor<O> implements ExchangeServiceExecutor<I, O> {
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "WeakerAccess" })
+public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractRespondForEntityServiceExecutor<O>
+        implements ExchangeServiceExecutor<I, O> {
 
-//    private Map<String, Object> containerParams;
-//    private Throwable throwable;
-//    private boolean executed;
-//    private boolean executedSuccessfully;
+    //    private Map<String, Object> containerParams;
+    //    private Throwable throwable;
+    //    private boolean executed;
+    //    private boolean executedSuccessfully;
 
     @Setter(AccessLevel.NONE)
     private final HttpMethod httpMethod;
@@ -38,6 +38,7 @@ public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractResp
 
     /**
      * Constructor
+     *
      * @param httpMethod
      */
     public AbstractExchangeServiceExecutor(HttpMethod httpMethod) {
@@ -49,7 +50,7 @@ public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractResp
     /**
      * init
      */
-    protected void init( Map<String, ?> mapContainerParams ) {
+    protected void init(Map<String, ?> mapContainerParams) {
         this.reset();
         this.initRequestEntityBean();
     }
@@ -67,7 +68,7 @@ public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractResp
         this.setThrowable(null);
         this.setExecuted(false);
         this.setExecutedSuccessfully(false);
-        this.setHttpStatus( ( HttpStatus ) null);
+        this.setHttpStatus((HttpStatus) null);
         this.setRequestEntityBean(null);
         this.setResponseEntityBean((O) null);
         this.setServiceArgs(null);
@@ -75,34 +76,38 @@ public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractResp
 
     /**
      * execute
+     *
      * @param mapContainerParams
      * @param <T>
+     *
      * @return
      */
-    public <T> T execute( Map<String, ?> mapContainerParams ) {
+    public <T> T execute(Map<String, ?> mapContainerParams) {
         this.init(mapContainerParams);
 
         T t = null;
 
         ResponseEntity<O> responseEntity;
 
-        if ( this.isReallyPerformService() ) {
+        if (this.isReallyPerformService()) {
             try {
                 responseEntity = this.callService();
-            } catch ( HttpServerErrorException hsee ) {
-                responseEntity = new ResponseEntity<>( null, hsee.getStatusCode() );
+            }
+            catch (HttpServerErrorException hsee) {
+                responseEntity = new ResponseEntity<>(null, hsee.getStatusCode());
                 this.setThrowable(hsee);
                 hsee.printStackTrace();
                 // TODO
-            } catch ( RestClientException rce ) {
-                responseEntity = new ResponseEntity<>( null, HttpStatus.NOT_ACCEPTABLE );
+            }
+            catch (RestClientException rce) {
+                responseEntity = new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
                 this.setThrowable(rce);
                 rce.printStackTrace();
                 // TODO
             }
 
             // set Execution Flag
-            this.setExecuted( true );
+            this.setExecuted(true);
 
             // set HttpStatus
             this.setHttpStatus(responseEntity);
@@ -111,11 +116,11 @@ public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractResp
             this.setResponseEntityBean(responseEntity);
 
             // set Execution status by occured exception or returned HttpStatus
-            if ( null != this.getThrowable() ) {
-                this.setExecutedSuccessfully( Boolean.FALSE );
+            if (null != this.getThrowable()) {
+                this.setExecutedSuccessfully(Boolean.FALSE);
             }
             else {
-                this.setExecutedSuccessfully( this.getHttpStatus() );
+                this.setExecutedSuccessfully(this.getHttpStatus());
             }
 
             // handle Service Response
@@ -128,7 +133,7 @@ public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractResp
     }
 
     @Tolerate
-    protected void setExecutedSuccessfully( HttpStatus httpStatus ) {
+    protected void setExecutedSuccessfully(HttpStatus httpStatus) {
         boolean bIsExecutedSuccessfully = false;
 
         if (null == httpStatus) {
@@ -138,27 +143,23 @@ public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractResp
         if (httpStatus.is1xxInformational()) {
             bIsExecutedSuccessfully = true;
         }
-        else
-        if (httpStatus.is2xxSuccessful()) {
+        else if (httpStatus.is2xxSuccessful()) {
             bIsExecutedSuccessfully = true;
         }
-        else
-        if (httpStatus.is3xxRedirection()) {
+        else if (httpStatus.is3xxRedirection()) {
             bIsExecutedSuccessfully = true;
         }
-        else
-        if (httpStatus.is4xxClientError()) {
+        else if (httpStatus.is4xxClientError()) {
             // nothing to do...
         }
-        else
-        if (httpStatus.is5xxServerError()) {
+        else if (httpStatus.is5xxServerError()) {
             // nothing to do...
         }
         else {
             // nothing to do...
         }
 
-        this.setExecutedSuccessfully( bIsExecutedSuccessfully );
+        this.setExecutedSuccessfully(bIsExecutedSuccessfully);
     }
 
     @Tolerate
@@ -173,7 +174,7 @@ public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractResp
 
             }
             else {
-                this.setHttpStatus( httpStatus );
+                this.setHttpStatus(httpStatus);
             }
         }
     }
@@ -183,34 +184,36 @@ public abstract class AbstractExchangeServiceExecutor<I, O> extends AbstractResp
         O o = null;
 
         if (null == responseEntity) {
-// TODO
+            // TODO
         }
         else {
-            this.setResponseEntityBean( o = responseEntity.getBody() );
+            this.setResponseEntityBean(o = responseEntity.getBody());
         }
     }
 
     /**
      * TODO
+     *
      * @param <T>
+     *
      * @return
      */
     protected abstract <T> T handleServiceResponse();
 
     /**
      * isReallyPerformService
+     *
      * @return
      */
     public boolean isReallyPerformService() {
-        return ( !this.isExecuted() );
+        return (!this.isExecuted());
     }
 
     /**
      * storeResponseEntityBean
      */
     public void storeResponseEntityBean() {
-        if ( this.isExecuted()
-                && this.isExecutedSuccessfully() ) {
+        if (this.isExecuted() && this.isExecutedSuccessfully()) {
 
 
         }

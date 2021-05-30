@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
 public class CharacterMapperImpl extends TypeMapperBase<Character> implements CharacterMapper {
 
     private final boolean evaluateCodePoints;
@@ -16,14 +16,14 @@ public class CharacterMapperImpl extends TypeMapperBase<Character> implements Ch
      * Constructor
      */
     public CharacterMapperImpl() {
-        this( null );
+        this(null);
     }
 
     /**
      * Constructor
      */
-    public CharacterMapperImpl( Character defaultValue ) {
-        super( defaultValue );
+    public CharacterMapperImpl(Character defaultValue) {
+        super(defaultValue);
 
         this.evaluateCodePoints = CharacterMapper.super.isEvaluateCodePoints();
     }
@@ -33,8 +33,8 @@ public class CharacterMapperImpl extends TypeMapperBase<Character> implements Ch
      *
      * @param bIsEvaluateCodePoints
      */
-    public CharacterMapperImpl( boolean bIsEvaluateCodePoints ) {
-        this( null, bIsEvaluateCodePoints );
+    public CharacterMapperImpl(boolean bIsEvaluateCodePoints) {
+        this(null, bIsEvaluateCodePoints);
     }
 
     /**
@@ -43,8 +43,8 @@ public class CharacterMapperImpl extends TypeMapperBase<Character> implements Ch
      * @param defaultValue
      * @param bIsEvaluateCodePoints
      */
-    public CharacterMapperImpl( Character defaultValue, boolean bIsEvaluateCodePoints ) {
-        super( defaultValue );
+    public CharacterMapperImpl(Character defaultValue, boolean bIsEvaluateCodePoints) {
+        super(defaultValue);
 
         this.evaluateCodePoints = bIsEvaluateCodePoints;
     }

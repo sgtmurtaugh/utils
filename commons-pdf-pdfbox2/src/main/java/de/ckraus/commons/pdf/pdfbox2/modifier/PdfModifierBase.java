@@ -22,6 +22,7 @@ public abstract class PdfModifierBase extends de.ckraus.commons.pdf.PdfModifierB
 
     /**
      * Constructor
+     *
      * @param is
      * @param os
      */
@@ -31,6 +32,7 @@ public abstract class PdfModifierBase extends de.ckraus.commons.pdf.PdfModifierB
 
     /**
      * Constructor
+     *
      * @param in
      * @param out
      */
@@ -40,6 +42,7 @@ public abstract class PdfModifierBase extends de.ckraus.commons.pdf.PdfModifierB
 
     /**
      * Constructor
+     *
      * @param src
      * @param dest
      */

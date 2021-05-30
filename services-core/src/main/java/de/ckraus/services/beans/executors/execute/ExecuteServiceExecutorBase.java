@@ -8,13 +8,12 @@ import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.ResponseExtractor;
 
 /**
- *
  * @param <O>
  */
 @Getter
-@Setter( AccessLevel.PROTECTED)
-public abstract class ExecuteServiceExecutorBase<O> extends ServiceExecutorBase<Void, O> implements
-        ExecuteServiceExecutor<O> {
+@Setter(AccessLevel.PROTECTED)
+public abstract class ExecuteServiceExecutorBase<O> extends ServiceExecutorBase<Void, O>
+        implements ExecuteServiceExecutor<O> {
 
     @Setter(AccessLevel.NONE)
     private final HttpMethod httpMethod;
@@ -24,9 +23,10 @@ public abstract class ExecuteServiceExecutorBase<O> extends ServiceExecutorBase<
 
     /**
      * Constructor
+     *
      * @param httpMethod
      */
-    public ExecuteServiceExecutorBase( HttpMethod httpMethod) {
+    public ExecuteServiceExecutorBase(HttpMethod httpMethod) {
         this.httpMethod = httpMethod;
     }
 

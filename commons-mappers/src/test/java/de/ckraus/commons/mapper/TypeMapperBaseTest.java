@@ -6,7 +6,7 @@ class TypeMapperBaseTest {
 
     TypeMapper mapper = new TypeMapperBase() {
         @Override
-        public Object map( String s, boolean bTrim, boolean bEmptyIsNull, Object defaultValue ) {
+        public Object map(String s, boolean bTrim, boolean bEmptyIsNull, Object defaultValue) {
             return defaultValue;
         }
     };

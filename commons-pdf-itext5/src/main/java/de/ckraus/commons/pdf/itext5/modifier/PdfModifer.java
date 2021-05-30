@@ -16,58 +16,62 @@ import java.io.IOException;
  *     <li>null - omitted</li>
  * </ul>
  */
-@SuppressWarnings( { "javadoc", "unused" } )
+@SuppressWarnings({ "javadoc", "unused" })
 public interface PdfModifer extends de.ckraus.commons.pdf.PdfModifer<PdfDocument> {
 
     /**
      * Getter for the PdfWriter
+     *
      * @return
      */
     PdfReader getPdfReader();
 
     /**
      * Setter for the PdfWriter
+     *
      * @param pdfReader
      */
-    void setPdfReader( PdfReader pdfReader );
+    void setPdfReader(PdfReader pdfReader);
 
     /**
      * Getter for the ReaderProperties
+     *
      * @return
      */
     ReaderProperties getReaderProperties();
 
     /**
      * Getter for the WriterProperties
+     *
      * @return
      */
     WriterProperties getWriterProperties();
 
     /**
      * Getter for the PdfWriter
+     *
      * @return
      */
     PdfWriter getPdfWriter();
 
     /**
      * Setter for the PdfWriter
+     *
      * @param
      */
-    void setPdfWriter( PdfWriter pdfWriter );
+    void setPdfWriter(PdfWriter pdfWriter);
 
     @Override
     default void initializePdfDocument() throws IOException {
-        try (
-                var pdfReader = new PdfReader( this.getInputStream(), ( null != this.getReaderProperties()
-                        ? this.getReaderProperties()
-                        : new ReaderProperties() ) );
-                var pdfWriter = new PdfWriter( this.getOutputStream(), ( null != this.getWriterProperties()
-                     ? this.getWriterProperties()
-                     : new WriterProperties() ) )
-        ) {
-            this.setPdfReader( pdfReader );
-            this.setPdfWriter( pdfWriter );
-            this.setPdfDocument( new PdfDocument(pdfReader, pdfWriter) );
+        try (var pdfReader = new PdfReader(this.getInputStream(), (null != this.getReaderProperties()
+                                                                           ? this.getReaderProperties()
+                                                                           : new ReaderProperties())); var pdfWriter = new PdfWriter(
+                this.getOutputStream(), (null != this.getWriterProperties()
+                                                 ? this.getWriterProperties()
+                                                 : new WriterProperties()))) {
+            this.setPdfReader(pdfReader);
+            this.setPdfWriter(pdfWriter);
+            this.setPdfDocument(new PdfDocument(pdfReader, pdfWriter));
         }
     }
 
@@ -83,7 +87,7 @@ public interface PdfModifer extends de.ckraus.commons.pdf.PdfModifer<PdfDocument
      *             <li>null - omitted</li>
      *         </ul>
      */
-    default Boolean modify( PdfDocument pdfDocument ) {
+    default Boolean modify(PdfDocument pdfDocument) {
         return null;
     }
 

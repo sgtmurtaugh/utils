@@ -10,7 +10,7 @@ import java.util.List;
  *     <li>null - omitted</li>
  * </ul>
  */
-@SuppressWarnings( { "javadoc", "unused" } )
+@SuppressWarnings({ "javadoc", "unused" })
 public interface PdfFieldModifier<D, A, F> extends PdfModifer<D> {
 
     /**
@@ -20,7 +20,7 @@ public interface PdfFieldModifier<D, A, F> extends PdfModifer<D> {
      *
      * @return
      */
-    A getPdfAcroForm( D document );
+    A getPdfAcroForm(D document);
 
     /**
      * TODO
@@ -29,7 +29,7 @@ public interface PdfFieldModifier<D, A, F> extends PdfModifer<D> {
      *
      * @return
      */
-    Boolean modifyDocument( D pdfDocument );
+    Boolean modifyDocument(D pdfDocument);
 
     /**
      * <p>TODO This method must be implemented individually.</p>
@@ -38,7 +38,7 @@ public interface PdfFieldModifier<D, A, F> extends PdfModifer<D> {
      *
      * @return
      */
-    Boolean modifyAcroForm( A pdfAcroForm );
+    Boolean modifyAcroForm(A pdfAcroForm);
 
     /**
      * <p>TODO This method must be implemented individually.</p>
@@ -47,6 +47,6 @@ public interface PdfFieldModifier<D, A, F> extends PdfModifer<D> {
      *
      * @return
      */
-    Boolean modifyFields( List<F> pdfFormFields );
+    Boolean modifyFields(List<F> pdfFormFields);
 
 }

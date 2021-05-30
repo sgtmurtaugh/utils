@@ -6,7 +6,10 @@ import lombok.Setter;
 import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 @Getter
 @Setter
@@ -19,6 +22,7 @@ public abstract class PdfModifierBase extends de.ckraus.commons.pdf.PdfModifierB
 
     /**
      * Constructor
+     *
      * @param is
      * @param os
      */
@@ -28,6 +32,7 @@ public abstract class PdfModifierBase extends de.ckraus.commons.pdf.PdfModifierB
 
     /**
      * Constructor
+     *
      * @param in
      * @param out
      */
@@ -37,6 +42,7 @@ public abstract class PdfModifierBase extends de.ckraus.commons.pdf.PdfModifierB
 
     /**
      * Constructor
+     *
      * @param src
      * @param dest
      */

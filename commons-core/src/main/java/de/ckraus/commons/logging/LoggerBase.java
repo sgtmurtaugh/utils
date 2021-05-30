@@ -14,8 +14,8 @@ import org.apache.commons.lang3.StringUtils;
  *   <li>{@code [${LOGLEVEL}] ${(TRIMMED)PACKAGE}.${CLASS}.${METHOD} ${IDENT} : ${METHOD_PARAMS} ${EXCEPTION}}</li>
  * </ul>
  */
-@Getter( AccessLevel.PUBLIC )
-@Setter( AccessLevel.PROTECTED )
+@Getter(AccessLevel.PUBLIC)
+@Setter(AccessLevel.PROTECTED)
 public abstract class LoggerBase<T> implements Logger<T> {
 
     protected static final String METHOD_ENTER = " > ";
@@ -24,29 +24,30 @@ public abstract class LoggerBase<T> implements Logger<T> {
     protected static final String METHOD_INDENT = " ";
     protected static final String METHOD_PARAM = " ";
 
-    @Setter( AccessLevel.PUBLIC )
+    @Setter(AccessLevel.PUBLIC)
     private int indent = 0;
 
-    @Setter( AccessLevel.NONE )
+    @Setter(AccessLevel.NONE)
     private T logger;
 
-    @Setter( AccessLevel.NONE )
+    @Setter(AccessLevel.NONE)
     private Class<?> loggerClass;
 
     /**
      * Constructor
+     *
      * @param clazz
      */
-    protected LoggerBase( @NonNull Class<?> clazz ) {
+    protected LoggerBase(@NonNull Class<?> clazz) {
         super();
         this.loggerClass = clazz;
-        this.logger = this.initLogger( clazz );
+        this.logger = this.initLogger(clazz);
     }
 
     /**
      * Individual Logger initialization Method
      */
-    protected abstract T initLogger( @NonNull Class<?> clazz );
+    protected abstract T initLogger(@NonNull Class<?> clazz);
 
     protected String buildLogMessage(String sMethod, String sSeparator, String sMessage) {
         StringBuilder sb = new StringBuilder();
@@ -64,26 +65,26 @@ public abstract class LoggerBase<T> implements Logger<T> {
         sb.append( this.getLoggerClass().getSimpleName() );
 */
         // Class
-        sb.append( this.getLoggerClass() );
+        sb.append(this.getLoggerClass());
 
         // Method
-        if ( StringUtils.isNotEmpty( sMethod ) ) {
-            sb.append( sMethod );
+        if (StringUtils.isNotEmpty(sMethod)) {
+            sb.append(sMethod);
         }
 
         // Separator
-        if ( StringUtils.isNotEmpty(  sSeparator ) ) {
-            sb.append( sSeparator );
+        if (StringUtils.isNotEmpty(sSeparator)) {
+            sb.append(sSeparator);
         }
 
         // Indent
-        if ( this.getIndent() > 0 ) {
-            sb.append( METHOD_INDENT.repeat( this.getIndent() ) );
+        if (this.getIndent() > 0) {
+            sb.append(METHOD_INDENT.repeat(this.getIndent()));
         }
 
         // Method
-        if ( StringUtils.isNotEmpty( sMessage ) ) {
-            sb.append( sMessage );
+        if (StringUtils.isNotEmpty(sMessage)) {
+            sb.append(sMessage);
         }
 
         return sb.toString();

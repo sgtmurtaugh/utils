@@ -7,8 +7,8 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
 public class BigDecimalMapperImpl extends NumericTypeMapperBase<BigDecimal> implements BigDecimalMapper {
 
     /**
@@ -23,8 +23,8 @@ public class BigDecimalMapperImpl extends NumericTypeMapperBase<BigDecimal> impl
      *
      * @param defaultValue
      */
-    public BigDecimalMapperImpl( BigDecimal defaultValue ) {
-        super( defaultValue );
+    public BigDecimalMapperImpl(BigDecimal defaultValue) {
+        super(defaultValue);
     }
 
 }

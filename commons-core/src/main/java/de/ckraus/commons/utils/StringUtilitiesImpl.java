@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused", "WeakerAccess" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused", "WeakerAccess" })
 public class StringUtilitiesImpl extends UtilitiesBase<String> implements StringUtilities {
 
     private final static String CLASS = StringUtilitiesImpl.class.getSimpleName();

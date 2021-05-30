@@ -1,5 +1,7 @@
 package de.ckraus.webcommons.mappers.utils.http;
 
+import de.ckraus.webcommons.mappers.utils.DoubleMapperScopeUtils;
+
 import javax.servlet.http.HttpSession;
 
 /**

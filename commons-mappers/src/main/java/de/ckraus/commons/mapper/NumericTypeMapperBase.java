@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "WeakerAccess", "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "WeakerAccess", "javadoc", "unused" })
 public abstract class NumericTypeMapperBase<E extends Number> extends TypeMapperBase<E>
         implements NumericTypeMapper<E> {
 
@@ -22,8 +22,8 @@ public abstract class NumericTypeMapperBase<E extends Number> extends TypeMapper
      *
      * @param defaultValue
      */
-    protected NumericTypeMapperBase( E defaultValue ) {
-        super( defaultValue );
+    protected NumericTypeMapperBase(E defaultValue) {
+        super(defaultValue);
     }
 
     /**
@@ -33,8 +33,8 @@ public abstract class NumericTypeMapperBase<E extends Number> extends TypeMapper
      * @param bTrimStrings
      * @param bEmptyStringNull
      */
-    protected NumericTypeMapperBase( E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull ) {
-        super( defaultValue, bTrimStrings, bEmptyStringNull );
+    protected NumericTypeMapperBase(E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull) {
+        super(defaultValue, bTrimStrings, bEmptyStringNull);
     }
 
 }

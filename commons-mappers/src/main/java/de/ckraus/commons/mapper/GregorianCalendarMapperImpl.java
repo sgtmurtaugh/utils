@@ -7,8 +7,8 @@ import lombok.Setter;
 import java.util.GregorianCalendar;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
 public class GregorianCalendarMapperImpl extends CalendarMapperBase<GregorianCalendar>
         implements GregorianCalendarMapper {
 
@@ -24,8 +24,8 @@ public class GregorianCalendarMapperImpl extends CalendarMapperBase<GregorianCal
      *
      * @param defaultValue
      */
-    public GregorianCalendarMapperImpl( GregorianCalendar defaultValue ) {
-        super( defaultValue );
+    public GregorianCalendarMapperImpl(GregorianCalendar defaultValue) {
+        super(defaultValue);
     }
 
 }

@@ -17,42 +17,41 @@ import java.io.InputStream;
  *     <li>null - omitted</li>
  * </ul>
  */
-@SuppressWarnings( { "javadoc", "unused" } )
+@SuppressWarnings({ "javadoc", "unused" })
 public interface PdfModifer extends de.ckraus.commons.pdf.PdfModifer<PDDocument> {
 
     @Override
     default void initializePdfDocument() throws IOException {
-        this.setPdfDocument(
-                Loader.loadPDF(
-                        this.getInputStream(), (
-                        ArrayUtils.isNotEmpty(this.getPassword())
-                                ? new String(this.getPassword())
-                                : StringUtils.EMPTY
-                        ), this.getKeyStore(), this.getAlias(), this.getMemoryUsageSetting()
-                )
-        );
+        this.setPdfDocument(Loader.loadPDF(this.getInputStream(), (ArrayUtils.isNotEmpty(this.getPassword())
+                                                                           ? new String(this.getPassword())
+                                                                           : StringUtils.EMPTY), this.getKeyStore(),
+                this.getAlias(), this.getMemoryUsageSetting()));
     }
 
     /**
      * Getter for the Password
+     *
      * @return
      */
     char[] getPassword();
 
     /**
      * Getter for the KeyStore
+     *
      * @return
      */
     InputStream getKeyStore();
 
     /**
      * Getter for the Alias
+     *
      * @return
      */
     String getAlias();
 
     /**
      * Getter for the MemoryUsageSetting
+     *
      * @return
      */
     MemoryUsageSetting getMemoryUsageSetting();
@@ -69,7 +68,7 @@ public interface PdfModifer extends de.ckraus.commons.pdf.PdfModifer<PDDocument>
      *             <li>null - omitted</li>
      *         </ul>
      */
-    default Boolean modify( PDDocument pdfDocument ) {
+    default Boolean modify(PDDocument pdfDocument) {
         return null;
     }
 

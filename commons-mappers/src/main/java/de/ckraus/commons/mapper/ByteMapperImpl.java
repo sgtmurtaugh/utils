@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
 public class ByteMapperImpl extends NumericTypeMapperBase<Byte> implements ByteMapper {
 
     /**
@@ -21,8 +21,8 @@ public class ByteMapperImpl extends NumericTypeMapperBase<Byte> implements ByteM
      *
      * @param defaultValue
      */
-    public ByteMapperImpl( Byte defaultValue ) {
-        super( defaultValue );
+    public ByteMapperImpl(Byte defaultValue) {
+        super(defaultValue);
     }
 
 }

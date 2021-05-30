@@ -7,8 +7,8 @@ import lombok.Setter;
 import java.util.Date;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
 public class DateMapperImpl extends TypeMapperBase<Date> implements DateMapper {
 
     /**
@@ -23,8 +23,8 @@ public class DateMapperImpl extends TypeMapperBase<Date> implements DateMapper {
      *
      * @param defaultValue
      */
-    public DateMapperImpl( Date defaultValue ) {
-        super( defaultValue );
+    public DateMapperImpl(Date defaultValue) {
+        super(defaultValue);
     }
 
 }

@@ -6,12 +6,11 @@ import lombok.Setter;
 import org.springframework.http.ResponseEntity;
 
 /**
- *
  * @param <O>
  */
 @Getter
-@Setter( AccessLevel.PROTECTED)
-public abstract class PostForEntityServiceExecutorBase<O> extends ServiceExecutorBase<Object,
-        ResponseEntity<O>> implements PostForEntityServiceExecutor<O> {
+@Setter(AccessLevel.PROTECTED)
+public abstract class PostForEntityServiceExecutorBase<O> extends ServiceExecutorBase<Object, ResponseEntity<O>>
+        implements PostForEntityServiceExecutor<O> {
 
 }

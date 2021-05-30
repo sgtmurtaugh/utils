@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 
-@SuppressWarnings( { "javadoc", "unused", "WeakerAccess" } )
+@SuppressWarnings({ "javadoc", "unused", "WeakerAccess" })
 public interface StringUtilities extends Utilities<String> {
 
     /**
@@ -21,22 +21,22 @@ public interface StringUtilities extends Utilities<String> {
      *
      * @return
      */
-    default int[] positionsInAlphabet( String s ) {
+    default int[] positionsInAlphabet(String s) {
         int[] iaPositionInAlphabet = null;
 
-        if ( StringUtils.isNotEmpty( s ) && s.matches( REGEX_ALPHABET ) ) {
+        if (StringUtils.isNotEmpty(s) && s.matches(REGEX_ALPHABET)) {
 
             char[] ac = s.toCharArray();
-            iaPositionInAlphabet = new int[ ac.length ];
+            iaPositionInAlphabet = new int[ac.length];
 
-            for ( int i = 0; i < ac.length; i++ ) {
-                int iPositionInAlphabet = this.getCharacterUtilities().positionInAlphabet( ac[ i ] );
+            for (int i = 0; i < ac.length; i++) {
+                int iPositionInAlphabet = this.getCharacterUtilities().positionInAlphabet(ac[i]);
 
-                if ( iPositionInAlphabet < 0 ) {
-                    throw new IllegalArgumentException( "Non alphabetical char. Only chars a-z and A-Z are allowed." );
+                if (iPositionInAlphabet < 0) {
+                    throw new IllegalArgumentException("Non alphabetical char. Only chars a-z and A-Z are allowed.");
                 }
 
-                iaPositionInAlphabet[ i ] = iPositionInAlphabet;
+                iaPositionInAlphabet[i] = iPositionInAlphabet;
             }
         }
         return iaPositionInAlphabet;
@@ -49,8 +49,8 @@ public interface StringUtilities extends Utilities<String> {
      *
      * @return
      */
-    default String positionsInAlphabetAsString( String s ) {
-        return positionsInAlphabetAsString( s, false );
+    default String positionsInAlphabetAsString(String s) {
+        return positionsInAlphabetAsString(s, false);
     }
 
     /**
@@ -61,25 +61,25 @@ public interface StringUtilities extends Utilities<String> {
      *
      * @return
      */
-    default String positionsInAlphabetAsString( String s, boolean bLeadingZero ) {
+    default String positionsInAlphabetAsString(String s, boolean bLeadingZero) {
         StringBuilder sbPositionsInAlphabet = null;
 
-        int[] iaPositionInAlphabet = this.positionsInAlphabet( s );
+        int[] iaPositionInAlphabet = this.positionsInAlphabet(s);
 
-        if ( ArrayUtils.isNotEmpty( iaPositionInAlphabet ) ) {
+        if (ArrayUtils.isNotEmpty(iaPositionInAlphabet)) {
             sbPositionsInAlphabet = new StringBuilder();
 
-            for ( int iPositionInAlphabet : iaPositionInAlphabet ) {
-                if ( bLeadingZero && iPositionInAlphabet < 10 ) {
-                    sbPositionsInAlphabet.append( 0 );
+            for (int iPositionInAlphabet : iaPositionInAlphabet) {
+                if (bLeadingZero && iPositionInAlphabet < 10) {
+                    sbPositionsInAlphabet.append(0);
                 }
-                sbPositionsInAlphabet.append( iPositionInAlphabet );
+                sbPositionsInAlphabet.append(iPositionInAlphabet);
             }
         }
 
-        return ( null != sbPositionsInAlphabet
-                 ? sbPositionsInAlphabet.toString()
-                 : null );
+        return (null != sbPositionsInAlphabet
+                        ? sbPositionsInAlphabet.toString()
+                        : null);
     }
 
     /**
@@ -93,12 +93,13 @@ public interface StringUtilities extends Utilities<String> {
         // TODO Application Context ermitteln nicht erzeugen!
         try {
             ApplicationContext context = CommonsUtils.getInstance().getApplicationContext();
-            characterUtilities = ( CharacterUtilities ) context.getBean( "characterUtilities" );
-        } catch ( BeansException be ) {
+            characterUtilities = (CharacterUtilities) context.getBean("characterUtilities");
+        }
+        catch (BeansException be) {
             // TODO: logging
         }
 
-        if ( null == characterUtilities ) {
+        if (null == characterUtilities) {
             // TODO: logging
             characterUtilities = new CharacterUtilitiesImpl();
         }

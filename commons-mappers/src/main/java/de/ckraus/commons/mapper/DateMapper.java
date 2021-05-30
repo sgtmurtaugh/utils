@@ -7,7 +7,7 @@ import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-@SuppressWarnings( { "javadoc", "unused" } )
+@SuppressWarnings({ "javadoc", "unused" })
 public interface DateMapper extends TypeMapper<Date> {
 
     boolean DEFAULT_LENIENT = Boolean.FALSE;
@@ -17,6 +17,7 @@ public interface DateMapper extends TypeMapper<Date> {
      *
      * @param obj
      * @param defaultValue
+     *
      * @return
      */
     @Override
@@ -25,11 +26,14 @@ public interface DateMapper extends TypeMapper<Date> {
 
         if (null == obj) {
             e = defaultValue;
-        } else if (obj instanceof Date) {
+        }
+        else if (obj instanceof Date) {
             e = this.map((Date) obj, defaultValue);
-        } else if (obj instanceof String) {
+        }
+        else if (obj instanceof String) {
             e = this.map((String) obj, defaultValue);
-        } else {
+        }
+        else {
             e = this.map(obj.toString(), defaultValue);
         }
         return e;
@@ -38,21 +42,17 @@ public interface DateMapper extends TypeMapper<Date> {
     /**
      * map
      *
-     * @param s
-     *         - string to map
-     * @param bTrim
-     *         - default flag for string handling
-     * @param bEmptyIsNull
-     *         - default flag for empty string handling
-     * @param defaultValue
-     *         - The default value
+     * @param s - string to map
+     * @param bTrim - default flag for string handling
+     * @param bEmptyIsNull - default flag for empty string handling
+     * @param defaultValue - The default value
      *
      * @return <p>Delegates to {@link #map(String, DateFormat, boolean, Date)} with {@link DateTimeFormatter#ISO_TIME}
      */
     @Override
-    default Date map( String s, boolean bTrim, boolean bEmptyIsNull, Date defaultValue ) {
-        return this.map( this.prepare( s, bTrim, bEmptyIsNull ), DateFormat.getDateInstance(),
-                DEFAULT_LENIENT, defaultValue );
+    default Date map(String s, boolean bTrim, boolean bEmptyIsNull, Date defaultValue) {
+        return this
+                .map(this.prepare(s, bTrim, bEmptyIsNull), DateFormat.getDateInstance(), DEFAULT_LENIENT, defaultValue);
     }
 
     /**
@@ -65,8 +65,8 @@ public interface DateMapper extends TypeMapper<Date> {
      * @return <p>Delegates to {@link #map(String, DateFormat, boolean, Date)} with default lenient value
      *         {@link #DEFAULT_LENIENT}</p>
      */
-    default Date map( String s, DateFormat format, Date defaultValue ) {
-        return this.map( s, format, DEFAULT_LENIENT, defaultValue );
+    default Date map(String s, DateFormat format, Date defaultValue) {
+        return this.map(s, format, DEFAULT_LENIENT, defaultValue);
     }
 
     /**
@@ -79,16 +79,16 @@ public interface DateMapper extends TypeMapper<Date> {
      *
      * @return
      */
-    default Date map( String s, DateFormat format, boolean lenient, Date defaultValue ) {
+    default Date map(String s, DateFormat format, boolean lenient, Date defaultValue) {
         var date = defaultValue;
-        var preparedString = this.prepare( s, this.isTrimStrings(), this.isEmptyStringNull() );
+        var preparedString = this.prepare(s, this.isTrimStrings(), this.isEmptyStringNull());
 
-        if ( StringUtils.isNotEmpty( preparedString ) && null != format ) {
+        if (StringUtils.isNotEmpty(preparedString) && null != format) {
             try {
-                format.setLenient( lenient );
-                date = format.parse( preparedString );
+                format.setLenient(lenient);
+                date = format.parse(preparedString);
             }
-            catch ( ParseException e ) {
+            catch (ParseException e) {
                 e.printStackTrace();
             }
         }

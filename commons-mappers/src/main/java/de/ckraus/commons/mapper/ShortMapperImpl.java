@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
 public class ShortMapperImpl extends NumericTypeMapperBase<Short> implements ShortMapper {
 
     /**
@@ -21,8 +21,8 @@ public class ShortMapperImpl extends NumericTypeMapperBase<Short> implements Sho
      *
      * @param defaultValue
      */
-    public ShortMapperImpl( Short defaultValue ) {
-        super( defaultValue );
+    public ShortMapperImpl(Short defaultValue) {
+        super(defaultValue);
     }
 
 }

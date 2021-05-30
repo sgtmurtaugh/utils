@@ -8,9 +8,10 @@ import javax.servlet.http.HttpSessionContext;
 import java.util.Enumeration;
 
 @SuppressWarnings({ "unused", "javadoc" })
-public class DefaultTypeMapperHttpSessionFacade implements BigDecimalMapperHttpSession, BigIntegerMapperHttpSession,
-        BooleanMapperHttpSession, ByteMapperHttpSession, CharacterMapperHttpSession, DateMapperHttpSession,
-        DoubleMapperHttpSession, FloatMapperHttpSession, GregorianCalendarMapperHttpSession, IntegerMapperHttpSession,
+public class DefaultTypeMapperHttpSessionFacade
+        implements BigDecimalMapperHttpSession, BigIntegerMapperHttpSession, BooleanMapperHttpSession,
+        ByteMapperHttpSession, CharacterMapperHttpSession, DateMapperHttpSession, DoubleMapperHttpSession,
+        FloatMapperHttpSession, GregorianCalendarMapperHttpSession, IntegerMapperHttpSession,
         LocalDateMapperHttpSession, LocalDateTimeMapperHttpSession, LocalTimeMapperHttpSession, LongMapperHttpSession,
         ShortMapperHttpSession, StringMapperHttpSession {
 
@@ -18,19 +19,21 @@ public class DefaultTypeMapperHttpSessionFacade implements BigDecimalMapperHttpS
 
     /**
      * Constructor
+     *
      * @param httpSession
      */
-    public DefaultTypeMapperHttpSessionFacade( @NonNull HttpSession httpSession ) {
+    public DefaultTypeMapperHttpSessionFacade(@NonNull HttpSession httpSession) {
         super();
         this.httpSession = httpSession;
     }
 
     /**
      * getHttpSession
+     *
      * @return
      */
     public HttpSession getHttpSession() {
-        return this;
+        return httpSession;
     }
 
     public long getCreationTime() {
@@ -49,12 +52,12 @@ public class DefaultTypeMapperHttpSessionFacade implements BigDecimalMapperHttpS
         return this.getHttpSession().getServletContext();
     }
 
-    public void setMaxInactiveInterval(int interval) {
-        this.getHttpSession().setMaxInactiveInterval( interval );
-    }
-
     public int getMaxInactiveInterval() {
         return this.getHttpSession().getMaxInactiveInterval();
+    }
+
+    public void setMaxInactiveInterval(int interval) {
+        this.getHttpSession().setMaxInactiveInterval(interval);
     }
 
     @Deprecated
@@ -63,12 +66,12 @@ public class DefaultTypeMapperHttpSessionFacade implements BigDecimalMapperHttpS
     }
 
     public Object getAttribute(String key) {
-        return this.getHttpSession().getAttribute( key );
+        return this.getHttpSession().getAttribute(key);
     }
 
     @Deprecated
     public Object getValue(String key) {
-        return this.getHttpSession().getValue( key );
+        return this.getHttpSession().getValue(key);
     }
 
     public Enumeration<?> getAttributeNames() {
@@ -80,22 +83,22 @@ public class DefaultTypeMapperHttpSessionFacade implements BigDecimalMapperHttpS
         return this.getHttpSession().getValueNames();
     }
 
-    public void setAttribute(String key, Object value ) {
-        this.getHttpSession().setAttribute( key, value );
+    public void setAttribute(String key, Object value) {
+        this.getHttpSession().setAttribute(key, value);
     }
 
     @Deprecated
     public void putValue(String key, Object value) {
-        this.getHttpSession().putValue( key, value );
+        this.getHttpSession().putValue(key, value);
     }
 
     public void removeAttribute(String key) {
-        this.getHttpSession().removeAttribute( key );
+        this.getHttpSession().removeAttribute(key);
     }
 
     @Deprecated
     public void removeValue(String key) {
-        this.getHttpSession().removeValue( key );
+        this.getHttpSession().removeValue(key);
     }
 
     public void invalidate() {

@@ -4,7 +4,7 @@ import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
-@SuppressWarnings({"javadoc"})
+@SuppressWarnings({ "javadoc" })
 public interface CharacterMapper extends TypeMapper<Character> {
 
     /**
@@ -22,9 +22,11 @@ public interface CharacterMapper extends TypeMapper<Character> {
 
         if (o instanceof Character) {
             bIsMappable = true;
-        } else if (o instanceof Integer) {
+        }
+        else if (o instanceof Integer) {
             bIsMappable = Character.isDefined((Integer) o);
-        } else {
+        }
+        else {
             bIsMappable = TypeMapper.super.isMappable(o);
         }
 
@@ -36,6 +38,7 @@ public interface CharacterMapper extends TypeMapper<Character> {
      *
      * @param obj
      * @param defaultValue
+     *
      * @return
      */
     @Override
@@ -44,13 +47,17 @@ public interface CharacterMapper extends TypeMapper<Character> {
 
         if (null == obj) {
             e = defaultValue;
-        } else if (obj instanceof Character) {
+        }
+        else if (obj instanceof Character) {
             e = this.map((Character) obj, defaultValue);
-        } else if (obj instanceof Integer) {
+        }
+        else if (obj instanceof Integer) {
             e = this.map((Integer) obj, defaultValue);
-        } else if (obj instanceof String) {
+        }
+        else if (obj instanceof String) {
             e = this.map((String) obj, defaultValue);
-        } else {
+        }
+        else {
             e = this.map(obj.toString(), defaultValue);
         }
         return e;
@@ -61,19 +68,21 @@ public interface CharacterMapper extends TypeMapper<Character> {
      *
      * @param c
      * @param defaultValue
+     *
      * @return
      */
     @Override
     default Character map(Character c, Character defaultValue) {
         return (null != c
-                ? c
-                : defaultValue);
+                        ? c
+                        : defaultValue);
     }
 
     /**
      * map
      *
      * @param i
+     *
      * @return
      */
     default Character map(Integer i) {
@@ -84,12 +93,13 @@ public interface CharacterMapper extends TypeMapper<Character> {
      * map
      *
      * @param i
+     *
      * @return
      */
     default Character map(Integer i, Character defaultValue) {
         Character cRetVal = defaultValue;
 
-        if ( this.isEvaluateCodePoints() ) {
+        if (this.isEvaluateCodePoints()) {
             char[] acVals = Character.toChars(i);
 
             if (!ArrayUtils.isEmpty(acVals)) {
@@ -117,6 +127,7 @@ public interface CharacterMapper extends TypeMapper<Character> {
      *
      * @param s
      * @param bEvaluateCodePoints
+     *
      * @return <p></p>
      */
     default Character map(String s, boolean bEvaluateCodePoints) {
@@ -129,6 +140,7 @@ public interface CharacterMapper extends TypeMapper<Character> {
      * @param s
      * @param bEvaluateCodePoints
      * @param defaultValue
+     *
      * @return <p></p>
      */
     default Character map(String s, boolean bEvaluateCodePoints, Character defaultValue) {
@@ -143,6 +155,7 @@ public interface CharacterMapper extends TypeMapper<Character> {
      * @param bEmptyIsNull
      * @param bEvaluateCodePoints
      * @param defaultValue
+     *
      * @return <p></p>
      */
     default Character map(String s, boolean bTrim, boolean bEmptyIsNull, boolean bEvaluateCodePoints,
@@ -159,7 +172,7 @@ public interface CharacterMapper extends TypeMapper<Character> {
             }
 
             // ggf Int Wert mappen oder den ersten Character des prepared Strings verwenden
-            cRetVal = this.map( iVal, preparedString.charAt(0) );
+            cRetVal = this.map(iVal, preparedString.charAt(0));
         }
         return cRetVal;
     }

@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
 public class IntegerMapperImpl extends NumericTypeMapperBase<Integer> implements IntegerMapper {
 
     /**
@@ -21,8 +21,8 @@ public class IntegerMapperImpl extends NumericTypeMapperBase<Integer> implements
      *
      * @param defaultValue
      */
-    public IntegerMapperImpl( Integer defaultValue ) {
-        super( defaultValue );
+    public IntegerMapperImpl(Integer defaultValue) {
+        super(defaultValue);
     }
 
 }

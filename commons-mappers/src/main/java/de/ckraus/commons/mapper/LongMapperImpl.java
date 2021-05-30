@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter( AccessLevel.PROTECTED )
-@SuppressWarnings( { "javadoc", "unused" } )
+@Setter(AccessLevel.PROTECTED)
+@SuppressWarnings({ "javadoc", "unused" })
 public class LongMapperImpl extends NumericTypeMapperBase<Long> implements LongMapper {
 
     /**
@@ -21,8 +21,8 @@ public class LongMapperImpl extends NumericTypeMapperBase<Long> implements LongM
      *
      * @param defaultValue
      */
-    public LongMapperImpl( Long defaultValue ) {
-        super( defaultValue );
+    public LongMapperImpl(Long defaultValue) {
+        super(defaultValue);
     }
 
 }

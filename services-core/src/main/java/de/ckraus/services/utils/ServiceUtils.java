@@ -15,11 +15,11 @@ public class ServiceUtils {
     }
 
     /**
-     *
      * @param httpStatus
+     *
      * @return
      */
-    public static boolean isExecutedSuccessfully( HttpStatus httpStatus ) {
+    public static boolean isExecutedSuccessfully(HttpStatus httpStatus) {
         boolean bIsExecutedSuccessfully = false;
 
         if (null == httpStatus) {
@@ -29,20 +29,16 @@ public class ServiceUtils {
         if (httpStatus.is1xxInformational()) {
             bIsExecutedSuccessfully = true;
         }
-        else
-        if (httpStatus.is2xxSuccessful()) {
+        else if (httpStatus.is2xxSuccessful()) {
             bIsExecutedSuccessfully = true;
         }
-        else
-        if (httpStatus.is3xxRedirection()) {
+        else if (httpStatus.is3xxRedirection()) {
             bIsExecutedSuccessfully = true;
         }
-        else
-        if (httpStatus.is4xxClientError()) {
+        else if (httpStatus.is4xxClientError()) {
             // nothing to do...
         }
-        else
-        if (httpStatus.is5xxServerError()) {
+        else if (httpStatus.is5xxServerError()) {
             // nothing to do...
         }
         else {

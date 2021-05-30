@@ -22,7 +22,7 @@ public class CommonsUtils {
      * @return
      */
     public synchronized static CommonsUtils getInstance() {
-        if ( null == instance ) {
+        if (null == instance) {
             instance = new CommonsUtils();
         }
         return instance;
@@ -35,7 +35,7 @@ public class CommonsUtils {
      *         {@link SpringConstants#CONFIGURATION_BEANS_XML}</p>
      */
     public ApplicationContext getApplicationContext() {
-        ApplicationContext context = new ClassPathXmlApplicationContext( SpringConstants.CONFIGURATION_BEANS_XML );
+        ApplicationContext context = new ClassPathXmlApplicationContext(SpringConstants.CONFIGURATION_BEANS_XML);
 
         return context;
     }
