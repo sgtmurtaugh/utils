@@ -24,7 +24,7 @@ public interface IntegerMapperServletRequest extends ServletRequest, ServletRequ
      * @return
      */
     default Integer getIntegerParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getIntegerMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getIntegerMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface IntegerMapperServletRequest extends ServletRequest, ServletRequ
      * @return
      */
     default Integer getIntegerParameter(@NonNull String name, Integer defaultValue) {
-        return TypeMapperUtils.getDefaults().getIntegerMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getIntegerMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface IntegerMapperServletRequest extends ServletRequest, ServletRequ
      * @return
      */
     default Integer getIntegerParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getIntegerMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getIntegerMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -58,7 +58,7 @@ public interface IntegerMapperServletRequest extends ServletRequest, ServletRequ
      */
     default Integer getIntegerParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                         Integer defaultValue) {
-        return TypeMapperUtils.getDefaults().getIntegerMapper()
+        return TypeMapperUtils.getIntegerMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

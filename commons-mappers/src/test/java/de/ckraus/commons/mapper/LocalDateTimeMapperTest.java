@@ -2,7 +2,7 @@ package de.ckraus.commons.mapper;
 
 public class LocalDateTimeMapperTest {
 
-    private LocalDateTimeMapper mapper = new LocalDateTimeMapper() {
+    private final LocalDateTimeMapper mapper = new LocalDateTimeMapper() {
     };
 
 }

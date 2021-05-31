@@ -22,9 +22,9 @@ public interface LocalDateMapperServletRequestUtils
      */
     default LocalDate getLocalDateParameter(ServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getLocalDateMapper().map(request.getParameter(name));
+            return TypeMapperUtils.getLocalDateMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getDefaults().getLocalDateMapper().getDefaultValue();
+        return TypeMapperUtils.getLocalDateMapper().getDefaultValue();
     }
 
     /**
@@ -36,7 +36,7 @@ public interface LocalDateMapperServletRequestUtils
      */
     default LocalDate getLocalDateParameter(ServletRequest request, String name, LocalDate defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getLocalDateMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperUtils.getLocalDateMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -51,10 +51,10 @@ public interface LocalDateMapperServletRequestUtils
      */
     default LocalDate getLocalDateParameter(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getLocalDateMapper()
+            return TypeMapperUtils.getLocalDateMapper()
                                   .map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getDefaults().getLocalDateMapper().getDefaultValue();
+        return TypeMapperUtils.getLocalDateMapper().getDefaultValue();
     }
 
     /**
@@ -69,7 +69,7 @@ public interface LocalDateMapperServletRequestUtils
     default LocalDate getLocalDateParameter(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
                                             LocalDate defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getLocalDateMapper()
+            return TypeMapperUtils.getLocalDateMapper()
                                   .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
@@ -83,7 +83,7 @@ public interface LocalDateMapperServletRequestUtils
      */
     default boolean hasLocalDateParameter(ServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getDefaults().getLocalDateMapper()
+            var value = TypeMapperUtils.getLocalDateMapper()
                                        .map(request.getParameter(name), (LocalDate) null);
             return (null != value);
         }
@@ -99,7 +99,7 @@ public interface LocalDateMapperServletRequestUtils
      */
     default boolean hasLocalDateParameterWithValue(ServletRequest request, String name, LocalDate value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            return new EqualsBuilder().append(value, TypeMapperUtils.getDefaults().getLocalDateMapper()
+            return new EqualsBuilder().append(value, TypeMapperUtils.getLocalDateMapper()
                                                                     .map(request.getParameter(name), (LocalDate) null))
                                       .isEquals();
         }

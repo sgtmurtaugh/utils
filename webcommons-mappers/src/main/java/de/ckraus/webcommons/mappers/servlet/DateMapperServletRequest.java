@@ -25,7 +25,7 @@ public interface DateMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Date getDateParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getDateMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getDateMapper().map(this.getParameter(name));
     }
 
     /**
@@ -35,7 +35,7 @@ public interface DateMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Date getDateParameter(@NonNull String name, Date defaultValue) {
-        return TypeMapperUtils.getDefaults().getDateMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getDateMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -46,7 +46,7 @@ public interface DateMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Date getDateParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getDateMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getDateMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -58,7 +58,7 @@ public interface DateMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Date getDateParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Date defaultValue) {
-        return TypeMapperUtils.getDefaults().getDateMapper()
+        return TypeMapperUtils.getDateMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

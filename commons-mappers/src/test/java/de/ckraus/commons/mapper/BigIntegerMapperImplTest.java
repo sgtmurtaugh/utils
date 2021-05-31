@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 class BigIntegerMapperImplTest {
 
-    BigIntegerMapper mapper = new BigIntegerMapperImpl();
+    private final BigIntegerMapper mapper = new BigIntegerMapperImpl();
 
     @Test
     void map() {

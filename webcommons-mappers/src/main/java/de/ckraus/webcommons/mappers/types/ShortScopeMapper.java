@@ -18,7 +18,7 @@ public interface ShortScopeMapper extends ScopeMapper {
      * @return
      */
     default Short getShortAttribute(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getShortMapper().mapObject(this.getAttribute(name));
+        return TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -28,7 +28,7 @@ public interface ShortScopeMapper extends ScopeMapper {
      * @return
      */
     default Short getShortAttribute(@NonNull String name, Short defaultValue) {
-        return TypeMapperUtils.getDefaults().getShortMapper().mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
@@ -38,7 +38,7 @@ public interface ShortScopeMapper extends ScopeMapper {
      */
     default boolean hasShortAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            var value = TypeMapperUtils.getDefaults().getShortMapper().mapObject(this.getAttribute(name), null);
+            var value = TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -53,7 +53,7 @@ public interface ShortScopeMapper extends ScopeMapper {
     default boolean hasShortAttributeWithValue(@NonNull String name, Short value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getShortMapper().mapObject(this.getAttribute(name), null)).isEquals();
+                    TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(name), null)).isEquals();
         }
         return false;
     }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 class ShortMapperImplTest {
 
-    ShortMapperImpl mapper = new ShortMapperImpl();
+    private final ShortMapperImpl mapper = new ShortMapperImpl();
 
     @Test
     void map() {

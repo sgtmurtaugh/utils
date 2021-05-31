@@ -17,9 +17,9 @@ public interface IntegerMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Integer getIntegerAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getIntegerMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperUtils.getIntegerMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getDefaults().getIntegerMapper().getDefaultValue();
+        return TypeMapperUtils.getIntegerMapper().getDefaultValue();
     }
 
     /**
@@ -31,7 +31,7 @@ public interface IntegerMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Integer getIntegerAttribute(E e, String name, Integer defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getIntegerMapper().mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperUtils.getIntegerMapper().mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -44,7 +44,7 @@ public interface IntegerMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasIntegerAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getDefaults().getIntegerMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperUtils.getIntegerMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -60,7 +60,7 @@ public interface IntegerMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasIntegerAttributeWithValue(E e, String name, Integer value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getIntegerMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperUtils.getIntegerMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

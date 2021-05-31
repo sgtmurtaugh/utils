@@ -2,7 +2,7 @@ package de.ckraus.commons.mapper;
 
 public class DateMapperTest {
 
-    DateMapper mapper = new DateMapper() {
+    private final DateMapper mapper = new DateMapper() {
     };
 
 }

@@ -24,7 +24,7 @@ public interface DoubleMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default Double getDoubleParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getDoubleMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getDoubleMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface DoubleMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default Double getDoubleParameter(@NonNull String name, Double defaultValue) {
-        return TypeMapperUtils.getDefaults().getDoubleMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getDoubleMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface DoubleMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default Double getDoubleParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getDoubleMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getDoubleMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -57,7 +57,7 @@ public interface DoubleMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default Double getDoubleParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Double defaultValue) {
-        return TypeMapperUtils.getDefaults().getDoubleMapper()
+        return TypeMapperUtils.getDoubleMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

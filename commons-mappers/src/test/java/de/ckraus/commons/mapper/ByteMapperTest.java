@@ -21,7 +21,7 @@ class ByteMapperTest {
 
     private final static Byte ANOTHER_DEFAULT_VALUE = Byte.parseByte("64");
 
-    private ByteMapper mapper = new ByteMapper() {
+    private final ByteMapper mapper = new ByteMapper() {
     };
 
 

@@ -20,9 +20,9 @@ public interface ByteMapperServletRequestUtils extends ServletRequestUtils, Byte
      */
     default Byte getByteParameter(ServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getByteMapper().map(request.getParameter(name));
+            return TypeMapperUtils.getByteMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getDefaults().getByteMapper().getDefaultValue();
+        return TypeMapperUtils.getByteMapper().getDefaultValue();
     }
 
     /**
@@ -34,7 +34,7 @@ public interface ByteMapperServletRequestUtils extends ServletRequestUtils, Byte
      */
     default Byte getByteParameter(ServletRequest request, String name, Byte defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getByteMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperUtils.getByteMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -49,9 +49,9 @@ public interface ByteMapperServletRequestUtils extends ServletRequestUtils, Byte
      */
     default Byte getByteParameter(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getByteMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
+            return TypeMapperUtils.getByteMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getDefaults().getByteMapper().getDefaultValue();
+        return TypeMapperUtils.getByteMapper().getDefaultValue();
     }
 
     /**
@@ -66,7 +66,7 @@ public interface ByteMapperServletRequestUtils extends ServletRequestUtils, Byte
     default Byte getByteParameter(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
                                   Byte defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getByteMapper()
+            return TypeMapperUtils.getByteMapper()
                                   .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
@@ -80,7 +80,7 @@ public interface ByteMapperServletRequestUtils extends ServletRequestUtils, Byte
      */
     default boolean hasByteParameter(ServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getDefaults().getByteMapper().map(request.getParameter(name), (Byte) null);
+            var value = TypeMapperUtils.getByteMapper().map(request.getParameter(name), (Byte) null);
             return (null != value);
         }
         return false;
@@ -96,7 +96,7 @@ public interface ByteMapperServletRequestUtils extends ServletRequestUtils, Byte
     default boolean hasByteParameterWithValue(ServletRequest request, String name, Byte value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getByteMapper().map(request.getParameter(name), (Byte) null))
+                    TypeMapperUtils.getByteMapper().map(request.getParameter(name), (Byte) null))
                                       .isEquals();
         }
         return false;

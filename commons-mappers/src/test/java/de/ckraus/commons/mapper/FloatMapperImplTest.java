@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 class FloatMapperImplTest {
 
-    FloatMapperImpl mapper = new FloatMapperImpl();
+    private final FloatMapperImpl mapper = new FloatMapperImpl();
 
     @Test
     void map() {

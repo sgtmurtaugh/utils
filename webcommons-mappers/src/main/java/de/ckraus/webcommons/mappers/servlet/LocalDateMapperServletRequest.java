@@ -25,7 +25,7 @@ public interface LocalDateMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalDate getLocalDateParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getLocalDateMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getLocalDateMapper().map(this.getParameter(name));
     }
 
     /**
@@ -35,7 +35,7 @@ public interface LocalDateMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalDate getLocalDateParameter(@NonNull String name, LocalDate defaultValue) {
-        return TypeMapperUtils.getDefaults().getLocalDateMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getLocalDateMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -46,7 +46,7 @@ public interface LocalDateMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalDate getLocalDateParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getLocalDateMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getLocalDateMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -59,7 +59,7 @@ public interface LocalDateMapperServletRequest extends ServletRequest, ServletRe
      */
     default LocalDate getLocalDateParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                             LocalDate defaultValue) {
-        return TypeMapperUtils.getDefaults().getLocalDateMapper()
+        return TypeMapperUtils.getLocalDateMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

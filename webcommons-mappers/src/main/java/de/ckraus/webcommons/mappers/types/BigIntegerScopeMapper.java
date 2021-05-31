@@ -20,7 +20,7 @@ public interface BigIntegerScopeMapper extends ScopeMapper {
      * @return
      */
     default BigInteger getBigIntegerAttribute(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getBigIntegerMapper().mapObject(this.getAttribute(name));
+        return TypeMapperUtils.getBigIntegerMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -30,7 +30,7 @@ public interface BigIntegerScopeMapper extends ScopeMapper {
      * @return
      */
     default BigInteger getBigIntegerAttribute(@NonNull String name, BigInteger defaultValue) {
-        return TypeMapperUtils.getDefaults().getBigIntegerMapper().mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getBigIntegerMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
@@ -40,7 +40,7 @@ public interface BigIntegerScopeMapper extends ScopeMapper {
      */
     default boolean hasBigIntegerAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            var value = TypeMapperUtils.getDefaults().getBigIntegerMapper().mapObject(this.getAttribute(name), null);
+            var value = TypeMapperUtils.getBigIntegerMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -55,7 +55,7 @@ public interface BigIntegerScopeMapper extends ScopeMapper {
     default boolean hasBigIntegerAttributeWithValue(@NonNull String name, BigInteger value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getBigIntegerMapper().mapObject(this.getAttribute(name), null))
+                    TypeMapperUtils.getBigIntegerMapper().mapObject(this.getAttribute(name), null))
                                       .isEquals();
         }
         return false;

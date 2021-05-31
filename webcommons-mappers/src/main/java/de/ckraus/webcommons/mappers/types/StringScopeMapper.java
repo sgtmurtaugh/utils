@@ -18,7 +18,7 @@ public interface StringScopeMapper extends ScopeMapper {
      * @return
      */
     default String getStringAttribute(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getStringMapper().mapObject(this.getAttribute(name));
+        return TypeMapperUtils.getStringMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -28,7 +28,7 @@ public interface StringScopeMapper extends ScopeMapper {
      * @return
      */
     default String getStringAttribute(@NonNull String name, String defaultValue) {
-        return TypeMapperUtils.getDefaults().getStringMapper().mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getStringMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
@@ -39,7 +39,7 @@ public interface StringScopeMapper extends ScopeMapper {
      * @return
      */
     default String getStringAttribute(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getStringMapper().map(this.getStringAttribute(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getStringMapper().map(this.getStringAttribute(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -51,7 +51,7 @@ public interface StringScopeMapper extends ScopeMapper {
      * @return
      */
     default String getStringAttribute(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, String defaultValue) {
-        return TypeMapperUtils.getDefaults().getStringMapper()
+        return TypeMapperUtils.getStringMapper()
                               .map(this.getStringAttribute(name, defaultValue), bTrim, bEmptyIsNull, defaultValue);
     }
 
@@ -62,7 +62,7 @@ public interface StringScopeMapper extends ScopeMapper {
      */
     default boolean hasStringAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            var value = TypeMapperUtils.getDefaults().getStringMapper().mapObject(this.getAttribute(name), null);
+            var value = TypeMapperUtils.getStringMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -77,7 +77,7 @@ public interface StringScopeMapper extends ScopeMapper {
     default boolean hasStringAttributeWithValue(@NonNull String name, String value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getStringMapper().mapObject(this.getAttribute(name), null))
+                    TypeMapperUtils.getStringMapper().mapObject(this.getAttribute(name), null))
                                       .isEquals();
         }
         return false;

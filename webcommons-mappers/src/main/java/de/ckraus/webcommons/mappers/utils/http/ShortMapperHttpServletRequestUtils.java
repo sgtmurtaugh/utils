@@ -22,9 +22,9 @@ public interface ShortMapperHttpServletRequestUtils
      */
     default Short getShortParameter(HttpServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getShortMapper().map(request.getParameter(name));
+            return TypeMapperUtils.getShortMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getDefaults().getShortMapper().getDefaultValue();
+        return TypeMapperUtils.getShortMapper().getDefaultValue();
     }
 
     /**
@@ -36,7 +36,7 @@ public interface ShortMapperHttpServletRequestUtils
      */
     default Short getShortParameter(HttpServletRequest request, String name, Short defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getShortMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperUtils.getShortMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -51,9 +51,9 @@ public interface ShortMapperHttpServletRequestUtils
      */
     default Short getShortParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getShortMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
+            return TypeMapperUtils.getShortMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getDefaults().getShortMapper().getDefaultValue();
+        return TypeMapperUtils.getShortMapper().getDefaultValue();
     }
 
     /**
@@ -68,7 +68,7 @@ public interface ShortMapperHttpServletRequestUtils
     default Short getShortParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
                                     Short defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getShortMapper()
+            return TypeMapperUtils.getShortMapper()
                                   .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
@@ -82,7 +82,7 @@ public interface ShortMapperHttpServletRequestUtils
      */
     default boolean hasShortParameter(HttpServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getDefaults().getShortMapper().map(request.getParameter(name), (Short) null);
+            var value = TypeMapperUtils.getShortMapper().map(request.getParameter(name), (Short) null);
             return (null != value);
         }
         return false;
@@ -98,7 +98,7 @@ public interface ShortMapperHttpServletRequestUtils
     default boolean hasShortParameterWithValue(HttpServletRequest request, String name, Short value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getShortMapper().map(request.getParameter(name), (Short) null))
+                    TypeMapperUtils.getShortMapper().map(request.getParameter(name), (Short) null))
                                       .isEquals();
         }
         return false;

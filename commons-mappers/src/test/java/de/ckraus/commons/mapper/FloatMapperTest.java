@@ -21,7 +21,7 @@ class FloatMapperTest {
 
     private final static Float ANOTHER_DEFAULT_VALUE = Float.parseFloat("64");
 
-    private FloatMapper mapper = new FloatMapper() {
+    private final FloatMapper mapper = new FloatMapper() {
     };
 
 

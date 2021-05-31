@@ -21,9 +21,9 @@ public interface CharacterMapperServletRequestUtils
      */
     default Character getCharacterParameter(ServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getCharacterMapper().map(request.getParameter(name));
+            return TypeMapperUtils.getCharacterMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getDefaults().getCharacterMapper().getDefaultValue();
+        return TypeMapperUtils.getCharacterMapper().getDefaultValue();
     }
 
     /**
@@ -35,7 +35,7 @@ public interface CharacterMapperServletRequestUtils
      */
     default Character getCharacterParameter(ServletRequest request, String name, Character defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getCharacterMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperUtils.getCharacterMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -50,10 +50,10 @@ public interface CharacterMapperServletRequestUtils
      */
     default Character getCharacterParameter(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getCharacterMapper()
+            return TypeMapperUtils.getCharacterMapper()
                                   .map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getDefaults().getCharacterMapper().getDefaultValue();
+        return TypeMapperUtils.getCharacterMapper().getDefaultValue();
     }
 
     /**
@@ -68,7 +68,7 @@ public interface CharacterMapperServletRequestUtils
     default Character getCharacterParameter(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
                                             Character defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getCharacterMapper()
+            return TypeMapperUtils.getCharacterMapper()
                                   .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
@@ -82,7 +82,7 @@ public interface CharacterMapperServletRequestUtils
      */
     default boolean hasCharacterParameter(ServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getDefaults().getCharacterMapper().map(request.getParameter(name), null);
+            var value = TypeMapperUtils.getCharacterMapper().map(request.getParameter(name), null);
             return (null != value);
         }
         return false;
@@ -98,7 +98,7 @@ public interface CharacterMapperServletRequestUtils
     default boolean hasCharacterParameterWithValue(ServletRequest request, String name, Character value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getCharacterMapper().map(request.getParameter(name), null))
+                    TypeMapperUtils.getCharacterMapper().map(request.getParameter(name), null))
                                       .isEquals();
         }
         return false;

@@ -24,7 +24,7 @@ public interface StringMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default String getStringParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getStringMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getStringMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface StringMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default String getStringParameter(@NonNull String name, String defaultValue) {
-        return TypeMapperUtils.getDefaults().getStringMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getStringMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface StringMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default String getStringParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getStringMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getStringMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -57,7 +57,7 @@ public interface StringMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default String getStringParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, String defaultValue) {
-        return TypeMapperUtils.getDefaults().getStringMapper()
+        return TypeMapperUtils.getStringMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

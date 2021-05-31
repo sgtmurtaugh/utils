@@ -18,7 +18,7 @@ public interface FloatScopeMapper extends ScopeMapper {
      * @return
      */
     default Float getFloatAttribute(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getFloatMapper().mapObject(this.getAttribute(name));
+        return TypeMapperUtils.getFloatMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -28,7 +28,7 @@ public interface FloatScopeMapper extends ScopeMapper {
      * @return
      */
     default Float getFloatAttribute(@NonNull String name, Float defaultValue) {
-        return TypeMapperUtils.getDefaults().getFloatMapper().mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getFloatMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
@@ -38,7 +38,7 @@ public interface FloatScopeMapper extends ScopeMapper {
      */
     default boolean hasFloatAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            var value = TypeMapperUtils.getDefaults().getFloatMapper().mapObject(this.getAttribute(name), null);
+            var value = TypeMapperUtils.getFloatMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -53,7 +53,7 @@ public interface FloatScopeMapper extends ScopeMapper {
     default boolean hasFloatAttributeWithValue(@NonNull String name, Float value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getFloatMapper().mapObject(this.getAttribute(name), null)).isEquals();
+                    TypeMapperUtils.getFloatMapper().mapObject(this.getAttribute(name), null)).isEquals();
         }
         return false;
     }

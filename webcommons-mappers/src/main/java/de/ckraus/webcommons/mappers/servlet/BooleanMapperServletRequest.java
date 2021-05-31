@@ -24,7 +24,7 @@ public interface BooleanMapperServletRequest extends ServletRequest, ServletRequ
      * @return
      */
     default Boolean getBooleanParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getBooleanMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getBooleanMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface BooleanMapperServletRequest extends ServletRequest, ServletRequ
      * @return
      */
     default Boolean getBooleanParameter(@NonNull String name, Boolean defaultValue) {
-        return TypeMapperUtils.getDefaults().getBooleanMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getBooleanMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface BooleanMapperServletRequest extends ServletRequest, ServletRequ
      * @return
      */
     default Boolean getBooleanParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getBooleanMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getBooleanMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -58,7 +58,7 @@ public interface BooleanMapperServletRequest extends ServletRequest, ServletRequ
      */
     default Boolean getBooleanParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                         Boolean defaultValue) {
-        return TypeMapperUtils.getDefaults().getBooleanMapper()
+        return TypeMapperUtils.getBooleanMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

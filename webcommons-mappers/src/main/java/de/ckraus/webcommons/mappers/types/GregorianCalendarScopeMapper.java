@@ -20,7 +20,7 @@ public interface GregorianCalendarScopeMapper extends ScopeMapper {
      * @return
      */
     default GregorianCalendar getGregorianCalendarAttribute(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().mapObject(this.getAttribute(name));
+        return TypeMapperUtils.getGregorianCalendarMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -30,7 +30,7 @@ public interface GregorianCalendarScopeMapper extends ScopeMapper {
      * @return
      */
     default GregorianCalendar getGregorianCalendarAttribute(@NonNull String name, GregorianCalendar defaultValue) {
-        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
+        return TypeMapperUtils.getGregorianCalendarMapper()
                               .mapObject(this.getAttribute(name), defaultValue);
     }
 
@@ -42,7 +42,7 @@ public interface GregorianCalendarScopeMapper extends ScopeMapper {
     default boolean hasGregorianCalendarAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             var value =
-                    TypeMapperUtils.getDefaults().getGregorianCalendarMapper().mapObject(this.getAttribute(name), null);
+                    TypeMapperUtils.getGregorianCalendarMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -57,7 +57,7 @@ public interface GregorianCalendarScopeMapper extends ScopeMapper {
     default boolean hasGregorianCalendarAttributeWithValue(@NonNull String name, GregorianCalendar value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getGregorianCalendarMapper().mapObject(this.getAttribute(name), null))
+                    TypeMapperUtils.getGregorianCalendarMapper().mapObject(this.getAttribute(name), null))
                                       .isEquals();
         }
         return false;

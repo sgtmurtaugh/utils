@@ -24,7 +24,7 @@ public interface LongMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Long getLongParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getLongMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getLongMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface LongMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Long getLongParameter(@NonNull String name, Long defaultValue) {
-        return TypeMapperUtils.getDefaults().getLongMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getLongMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface LongMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Long getLongParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getLongMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getLongMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -57,7 +57,7 @@ public interface LongMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Long getLongParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Long defaultValue) {
-        return TypeMapperUtils.getDefaults().getLongMapper()
+        return TypeMapperUtils.getLongMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

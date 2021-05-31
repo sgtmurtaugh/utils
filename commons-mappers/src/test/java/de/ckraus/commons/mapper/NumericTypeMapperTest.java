@@ -21,7 +21,7 @@ class NumericTypeMapperTest {
 
     private final static Number ANOTHER_DEFAULT_VALUE = 5113;
 
-    private NumericTypeMapper<Number> mapper = (number) -> number;
+    private final NumericTypeMapper<Number> mapper = (number) -> number;
 
 
     /**

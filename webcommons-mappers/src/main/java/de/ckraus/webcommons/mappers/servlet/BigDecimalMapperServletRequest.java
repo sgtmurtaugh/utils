@@ -26,7 +26,7 @@ public interface BigDecimalMapperServletRequest
      * @return
      */
     default BigDecimal getBigDecimalParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getBigDecimalMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getBigDecimalMapper().map(this.getParameter(name));
     }
 
     /**
@@ -36,7 +36,7 @@ public interface BigDecimalMapperServletRequest
      * @return
      */
     default BigDecimal getBigDecimalParameter(@NonNull String name, BigDecimal defaultValue) {
-        return TypeMapperUtils.getDefaults().getBigDecimalMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getBigDecimalMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -47,7 +47,7 @@ public interface BigDecimalMapperServletRequest
      * @return
      */
     default BigDecimal getBigDecimalParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getBigDecimalMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getBigDecimalMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -60,7 +60,7 @@ public interface BigDecimalMapperServletRequest
      */
     default BigDecimal getBigDecimalParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                               BigDecimal defaultValue) {
-        return TypeMapperUtils.getDefaults().getBigDecimalMapper()
+        return TypeMapperUtils.getBigDecimalMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

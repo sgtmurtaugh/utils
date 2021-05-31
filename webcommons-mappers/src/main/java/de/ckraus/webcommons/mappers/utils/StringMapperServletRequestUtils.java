@@ -22,10 +22,10 @@ public interface StringMapperServletRequestUtils extends ServletRequestUtils, St
      */
     default String getStringAttribute(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getStringMapper()
+            return TypeMapperUtils.getStringMapper()
                                   .map(this.getStringAttribute(request, name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getDefaults().getStringMapper().getDefaultValue();
+        return TypeMapperUtils.getStringMapper().getDefaultValue();
     }
 
     /**
@@ -40,7 +40,7 @@ public interface StringMapperServletRequestUtils extends ServletRequestUtils, St
     default String getStringAttribute(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
                                       String defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getStringMapper()
+            return TypeMapperUtils.getStringMapper()
                                   .map(this.getStringAttribute(request, name, defaultValue), bTrim, bEmptyIsNull,
                                           defaultValue);
         }
@@ -55,9 +55,9 @@ public interface StringMapperServletRequestUtils extends ServletRequestUtils, St
      */
     default String getStringParameter(ServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getStringMapper().map(request.getParameter(name));
+            return TypeMapperUtils.getStringMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getDefaults().getStringMapper().getDefaultValue();
+        return TypeMapperUtils.getStringMapper().getDefaultValue();
     }
 
     /**
@@ -69,7 +69,7 @@ public interface StringMapperServletRequestUtils extends ServletRequestUtils, St
      */
     default String getStringParameter(ServletRequest request, String name, String defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getStringMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperUtils.getStringMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -84,9 +84,9 @@ public interface StringMapperServletRequestUtils extends ServletRequestUtils, St
      */
     default String getStringParameter(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getStringMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
+            return TypeMapperUtils.getStringMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getDefaults().getStringMapper().getDefaultValue();
+        return TypeMapperUtils.getStringMapper().getDefaultValue();
     }
 
     /**
@@ -101,7 +101,7 @@ public interface StringMapperServletRequestUtils extends ServletRequestUtils, St
     default String getStringParameter(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
                                       String defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getStringMapper()
+            return TypeMapperUtils.getStringMapper()
                                   .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
@@ -115,7 +115,7 @@ public interface StringMapperServletRequestUtils extends ServletRequestUtils, St
      */
     default boolean hasStringParameter(ServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getDefaults().getStringMapper().map(request.getParameter(name), null);
+            var value = TypeMapperUtils.getStringMapper().map(request.getParameter(name), null);
             return (null != value);
         }
         return false;
@@ -131,7 +131,7 @@ public interface StringMapperServletRequestUtils extends ServletRequestUtils, St
     default boolean hasStringParameterWithValue(ServletRequest request, String name, String value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getStringMapper().map(request.getParameter(name), null)).isEquals();
+                    TypeMapperUtils.getStringMapper().map(request.getParameter(name), null)).isEquals();
         }
         return false;
     }

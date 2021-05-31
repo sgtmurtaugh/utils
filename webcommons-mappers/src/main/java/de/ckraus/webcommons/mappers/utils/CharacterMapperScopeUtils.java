@@ -17,9 +17,9 @@ public interface CharacterMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Character getCharacterAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getCharacterMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperUtils.getCharacterMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getDefaults().getCharacterMapper().getDefaultValue();
+        return TypeMapperUtils.getCharacterMapper().getDefaultValue();
     }
 
     /**
@@ -31,7 +31,7 @@ public interface CharacterMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Character getCharacterAttribute(E e, String name, Character defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getCharacterMapper()
+            return TypeMapperUtils.getCharacterMapper()
                                   .mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
@@ -45,7 +45,7 @@ public interface CharacterMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasCharacterAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getDefaults().getCharacterMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperUtils.getCharacterMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -61,7 +61,7 @@ public interface CharacterMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasCharacterAttributeWithValue(E e, String name, Character value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getCharacterMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperUtils.getCharacterMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

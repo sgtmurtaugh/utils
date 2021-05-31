@@ -1,4 +1,4 @@
-package de.ckraus.commons.mapper.utils;
+package de.ckraus.webcommons.mappers.utils.http;
 
 import de.ckraus.commons.logging.slf4j.Slf4JLogger;
 import de.ckraus.commons.mapper.*;
@@ -15,19 +15,19 @@ import java.util.concurrent.ConcurrentMap;
  * Created by ckraus on 07.08.15.
  */
 @SuppressWarnings({ "WeakerAccess", "javadoc", "unused" })
-public class TypeMapperUtils {
+public class TypeMapperHttpServletRequestUtils {
 
-    private static final String CLASS = TypeMapperUtils.class.getSimpleName();
-    protected static Slf4JLogger log = new Slf4JLogger(TypeMapperUtils.class);
+    private static final String CLASS = TypeMapperHttpServletRequestUtils.class.getSimpleName();
+    protected static Slf4JLogger log = new Slf4JLogger(TypeMapperHttpServletRequestUtils.class);
 
-    private static TypeMapperUtils instance = null;
+    private static TypeMapperHttpServletRequestUtils instance = null;
 
     private ConcurrentMap<Class<? extends TypeMapper>, TypeMapper<?>> mapRegistredTypeMappers = null;
 
     /**
      * Constructor
      */
-    private TypeMapperUtils() {
+    private TypeMapperHttpServletRequestUtils() {
         super();
     }
 
@@ -36,12 +36,12 @@ public class TypeMapperUtils {
      *
      * @return
      */
-    protected static synchronized TypeMapperUtils getInstance() {
+    protected static synchronized TypeMapperHttpServletRequestUtils getInstance() {
         if (null == instance) {
             // TODO Application Context ermitteln nicht erzeugen!
             try {
                 ApplicationContext context = CommonsUtils.getInstance().getApplicationContext();
-                instance = (TypeMapperUtils) context.getBean("typeMapperUtils");
+                instance = (TypeMapperHttpServletRequestUtils) context.getBean("typeMapperUtils");
             }
             catch (BeansException be) {
                 // TODO: logging
@@ -49,7 +49,7 @@ public class TypeMapperUtils {
 
             if (null == instance) {
                 // TODO: logging
-                instance = new TypeMapperUtils();
+                instance = new TypeMapperHttpServletRequestUtils();
             }
         }
         return instance;

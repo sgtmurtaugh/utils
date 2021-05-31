@@ -17,9 +17,9 @@ public interface ShortMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Short getShortAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getShortMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getDefaults().getShortMapper().getDefaultValue();
+        return TypeMapperUtils.getShortMapper().getDefaultValue();
     }
 
     /**
@@ -31,7 +31,7 @@ public interface ShortMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Short getShortAttribute(E e, String name, Short defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getShortMapper().mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -44,7 +44,7 @@ public interface ShortMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasShortAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getDefaults().getShortMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -60,7 +60,7 @@ public interface ShortMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasShortAttributeWithValue(E e, String name, Short value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getShortMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

@@ -2,7 +2,7 @@ package de.ckraus.commons.mapper;
 
 public class GregorianCalendarMapperTest {
 
-    private GregorianCalendarMapper mapper = new GregorianCalendarMapper() {
+    private final GregorianCalendarMapper mapper = new GregorianCalendarMapper() {
     };
 
 }

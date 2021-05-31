@@ -24,7 +24,7 @@ public interface FloatMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Float getFloatParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getFloatMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getFloatMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface FloatMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Float getFloatParameter(@NonNull String name, Float defaultValue) {
-        return TypeMapperUtils.getDefaults().getFloatMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getFloatMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface FloatMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Float getFloatParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getFloatMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getFloatMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -57,7 +57,7 @@ public interface FloatMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Float getFloatParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Float defaultValue) {
-        return TypeMapperUtils.getDefaults().getFloatMapper()
+        return TypeMapperUtils.getFloatMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

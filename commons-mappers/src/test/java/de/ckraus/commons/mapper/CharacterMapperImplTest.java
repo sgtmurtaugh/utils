@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 class CharacterMapperImplTest {
 
     // create mapper instance
-    CharacterMapperImpl mapper = new CharacterMapperImpl();
+    private final CharacterMapperImpl mapper = new CharacterMapperImpl();
 
     @Test
     void map() {

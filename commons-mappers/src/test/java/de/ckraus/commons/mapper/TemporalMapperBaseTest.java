@@ -6,7 +6,7 @@ import java.time.temporal.Temporal;
 
 public class TemporalMapperBaseTest {
 
-    TypeMapper<Temporal> mapper = new TemporalTypeMapperBase<>() {
+    private final TypeMapper<Temporal> mapper = new TemporalTypeMapperBase<>() {
         @Override
         public Temporal map(String s, DateTimeFormatter formatter, Temporal defaultValue) {
             return defaultValue;

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 class LongMapperImplTest {
 
-    LongMapperImpl mapper = new LongMapperImpl();
+    private final LongMapperImpl mapper = new LongMapperImpl();
 
     @Test
     void map() {

@@ -20,7 +20,7 @@ public interface LocalDateTimeScopeMapper extends ScopeMapper {
      * @return
      */
     default LocalDateTime getLocalDateTimeAttribute(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getLocalDateTimeMapper().mapObject(this.getAttribute(name));
+        return TypeMapperUtils.getLocalDateTimeMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -30,7 +30,7 @@ public interface LocalDateTimeScopeMapper extends ScopeMapper {
      * @return
      */
     default LocalDateTime getLocalDateTimeAttribute(@NonNull String name, LocalDateTime defaultValue) {
-        return TypeMapperUtils.getDefaults().getLocalDateTimeMapper().mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getLocalDateTimeMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
@@ -40,7 +40,7 @@ public interface LocalDateTimeScopeMapper extends ScopeMapper {
      */
     default boolean hasLocalDateTimeAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            var value = TypeMapperUtils.getDefaults().getLocalDateTimeMapper().mapObject(this.getAttribute(name), null);
+            var value = TypeMapperUtils.getLocalDateTimeMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -55,7 +55,7 @@ public interface LocalDateTimeScopeMapper extends ScopeMapper {
     default boolean hasLocalDateTimeAttributeWithValue(@NonNull String name, LocalDateTime value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getLocalDateTimeMapper().mapObject(this.getAttribute(name), null))
+                    TypeMapperUtils.getLocalDateTimeMapper().mapObject(this.getAttribute(name), null))
                                       .isEquals();
         }
         return false;

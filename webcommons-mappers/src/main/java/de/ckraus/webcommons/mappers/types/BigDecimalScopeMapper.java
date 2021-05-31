@@ -20,7 +20,7 @@ public interface BigDecimalScopeMapper extends ScopeMapper {
      * @return
      */
     default BigDecimal getBigDecimalAttribute(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getBigDecimalMapper().mapObject(this.getAttribute(name));
+        return TypeMapperUtils.getBigDecimalMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -30,7 +30,7 @@ public interface BigDecimalScopeMapper extends ScopeMapper {
      * @return
      */
     default BigDecimal getBigDecimalAttribute(@NonNull String name, BigDecimal defaultValue) {
-        return TypeMapperUtils.getDefaults().getBigDecimalMapper().mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperUtils.getBigDecimalMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
 
@@ -41,7 +41,7 @@ public interface BigDecimalScopeMapper extends ScopeMapper {
      */
     default boolean hasBigDecimalAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            var value = TypeMapperUtils.getDefaults().getBigDecimalMapper().mapObject(this.getAttribute(name), null);
+            var value = TypeMapperUtils.getBigDecimalMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -56,7 +56,7 @@ public interface BigDecimalScopeMapper extends ScopeMapper {
     default boolean hasBigDecimalAttributeWithValue(@NonNull String name, BigDecimal value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getBigDecimalMapper().mapObject(this.getAttribute(name), null))
+                    TypeMapperUtils.getBigDecimalMapper().mapObject(this.getAttribute(name), null))
                                       .isEquals();
         }
         return false;

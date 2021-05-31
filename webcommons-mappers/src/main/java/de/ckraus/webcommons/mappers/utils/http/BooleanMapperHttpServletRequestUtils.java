@@ -22,9 +22,9 @@ public interface BooleanMapperHttpServletRequestUtils
      */
     default Boolean getBooleanParameter(HttpServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getBooleanMapper().map(request.getParameter(name));
+            return TypeMapperUtils.getBooleanMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getDefaults().getBooleanMapper().getDefaultValue();
+        return TypeMapperUtils.getBooleanMapper().getDefaultValue();
     }
 
     /**
@@ -36,7 +36,7 @@ public interface BooleanMapperHttpServletRequestUtils
      */
     default Boolean getBooleanParameter(HttpServletRequest request, String name, Boolean defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getBooleanMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperUtils.getBooleanMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -51,10 +51,10 @@ public interface BooleanMapperHttpServletRequestUtils
      */
     default Boolean getBooleanParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getBooleanMapper()
+            return TypeMapperUtils.getBooleanMapper()
                                   .map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getDefaults().getBooleanMapper().getDefaultValue();
+        return TypeMapperUtils.getBooleanMapper().getDefaultValue();
     }
 
     /**
@@ -69,7 +69,7 @@ public interface BooleanMapperHttpServletRequestUtils
     default Boolean getBooleanParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
                                         Boolean defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDefaults().getBooleanMapper()
+            return TypeMapperUtils.getBooleanMapper()
                                   .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
@@ -83,7 +83,7 @@ public interface BooleanMapperHttpServletRequestUtils
      */
     default boolean hasBooleanParameter(HttpServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getDefaults().getBooleanMapper().map(request.getParameter(name), null);
+            var value = TypeMapperUtils.getBooleanMapper().map(request.getParameter(name), null);
             return (null != value);
         }
         return false;
@@ -99,7 +99,7 @@ public interface BooleanMapperHttpServletRequestUtils
     default boolean hasBooleanParameterWithValue(HttpServletRequest request, String name, Boolean value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getBooleanMapper().map(request.getParameter(name), null)).isEquals();
+                    TypeMapperUtils.getBooleanMapper().map(request.getParameter(name), null)).isEquals();
         }
         return false;
     }

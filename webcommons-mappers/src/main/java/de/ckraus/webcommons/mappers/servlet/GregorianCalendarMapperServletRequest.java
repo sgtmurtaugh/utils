@@ -26,7 +26,7 @@ public interface GregorianCalendarMapperServletRequest
      * @return
      */
     default GregorianCalendar getGregorianCalendarParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getGregorianCalendarMapper().map(this.getParameter(name));
     }
 
     /**
@@ -36,7 +36,7 @@ public interface GregorianCalendarMapperServletRequest
      * @return
      */
     default GregorianCalendar getGregorianCalendarParameter(@NonNull String name, GregorianCalendar defaultValue) {
-        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getGregorianCalendarMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -47,7 +47,7 @@ public interface GregorianCalendarMapperServletRequest
      * @return
      */
     default GregorianCalendar getGregorianCalendarParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
+        return TypeMapperUtils.getGregorianCalendarMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
@@ -61,7 +61,7 @@ public interface GregorianCalendarMapperServletRequest
      */
     default GregorianCalendar getGregorianCalendarParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                                             GregorianCalendar defaultValue) {
-        return TypeMapperUtils.getDefaults().getGregorianCalendarMapper()
+        return TypeMapperUtils.getGregorianCalendarMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

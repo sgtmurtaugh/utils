@@ -24,7 +24,7 @@ public interface ShortMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Short getShortParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getShortMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getShortMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface ShortMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Short getShortParameter(@NonNull String name, Short defaultValue) {
-        return TypeMapperUtils.getDefaults().getShortMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getShortMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface ShortMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Short getShortParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getShortMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getShortMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -57,7 +57,7 @@ public interface ShortMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Short getShortParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Short defaultValue) {
-        return TypeMapperUtils.getDefaults().getShortMapper()
+        return TypeMapperUtils.getShortMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

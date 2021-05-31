@@ -24,7 +24,7 @@ public interface ByteMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Byte getByteParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getByteMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getByteMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface ByteMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Byte getByteParameter(@NonNull String name, Byte defaultValue) {
-        return TypeMapperUtils.getDefaults().getByteMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getByteMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface ByteMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Byte getByteParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getByteMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getByteMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -57,7 +57,7 @@ public interface ByteMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Byte getByteParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Byte defaultValue) {
-        return TypeMapperUtils.getDefaults().getByteMapper()
+        return TypeMapperUtils.getByteMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

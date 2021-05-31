@@ -17,9 +17,9 @@ public interface LongMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Long getLongAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getLongMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperUtils.getLongMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getDefaults().getLongMapper().getDefaultValue();
+        return TypeMapperUtils.getLongMapper().getDefaultValue();
     }
 
     /**
@@ -31,7 +31,7 @@ public interface LongMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Long getLongAttribute(E e, String name, Long defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getLongMapper().mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperUtils.getLongMapper().mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -44,7 +44,7 @@ public interface LongMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasLongAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getDefaults().getLongMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperUtils.getLongMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -60,7 +60,7 @@ public interface LongMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasLongAttributeWithValue(E e, String name, Long value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getLongMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperUtils.getLongMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

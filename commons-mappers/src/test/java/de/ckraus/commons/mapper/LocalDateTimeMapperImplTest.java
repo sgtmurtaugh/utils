@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 class LocalDateTimeMapperImplTest {
 
-    LocalDateTimeMapperImpl mapper = new LocalDateTimeMapperImpl();
+    private final LocalDateTimeMapperImpl mapper = new LocalDateTimeMapperImpl();
 
     @Test
     void map() {

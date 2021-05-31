@@ -26,7 +26,8 @@ class BooleanMapperImplTest {
     private final static int INVALID_INT__2 = 2;
     private final static String INVALID_STRING__2 = "2";
     private final boolean DEFAULT = Boolean.FALSE;
-    private BooleanMapper mapper = new BooleanMapperImpl();
+
+    private final BooleanMapper mapper = new BooleanMapperImpl();
 
     /**
      * test for {@link BooleanMapper#isMappable(Object)}

@@ -1,6 +1,5 @@
-package de.ckraus.commons.mapper;
+package de.ckraus.commons.mapper.utils;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import org.junit.jupiter.api.Test;
 
 class TypeMapperUtilsTest {

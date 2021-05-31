@@ -15,7 +15,7 @@ public interface ServletRequestScopeMapper extends ScopeMapper {
      * @return
      */
     private StringMapper getStringMapper() {
-        return TypeMapperUtils.getDefaults().getStringMapper();
+        return TypeMapperUtils.getStringMapper();
     }
 
     /**

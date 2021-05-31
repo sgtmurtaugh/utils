@@ -24,7 +24,7 @@ public interface CharacterMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default Character getCharacterParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getCharacterMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getCharacterMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface CharacterMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default Character getCharacterParameter(@NonNull String name, Character defaultValue) {
-        return TypeMapperUtils.getDefaults().getCharacterMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getCharacterMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface CharacterMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default Character getCharacterParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getCharacterMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getCharacterMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -58,7 +58,7 @@ public interface CharacterMapperServletRequest extends ServletRequest, ServletRe
      */
     default Character getCharacterParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                             Character defaultValue) {
-        return TypeMapperUtils.getDefaults().getCharacterMapper()
+        return TypeMapperUtils.getCharacterMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

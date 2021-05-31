@@ -26,7 +26,7 @@ public interface BigIntegerMapperServletRequest
      * @return
      */
     default BigInteger getBigIntegerParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getBigIntegerMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getBigIntegerMapper().map(this.getParameter(name));
     }
 
     /**
@@ -36,7 +36,7 @@ public interface BigIntegerMapperServletRequest
      * @return
      */
     default BigInteger getBigIntegerParameter(@NonNull String name, BigInteger defaultValue) {
-        return TypeMapperUtils.getDefaults().getBigIntegerMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getBigIntegerMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -47,7 +47,7 @@ public interface BigIntegerMapperServletRequest
      * @return
      */
     default BigInteger getBigIntegerParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getBigIntegerMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getBigIntegerMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -60,7 +60,7 @@ public interface BigIntegerMapperServletRequest
      */
     default BigInteger getBigIntegerParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                               BigInteger defaultValue) {
-        return TypeMapperUtils.getDefaults().getBigIntegerMapper()
+        return TypeMapperUtils.getBigIntegerMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 

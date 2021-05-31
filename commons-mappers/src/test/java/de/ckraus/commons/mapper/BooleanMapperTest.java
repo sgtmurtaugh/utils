@@ -37,7 +37,7 @@ class BooleanMapperTest {
     private final boolean DEFAULT = Boolean.FALSE;
     private final boolean DUMMY_IMPLEMENTATION = Boolean.FALSE;
 
-    BooleanMapper mapper = new BooleanMapper() {
+    private final BooleanMapper mapper = new BooleanMapper() {
         // Dummy implementations
 
         @Override

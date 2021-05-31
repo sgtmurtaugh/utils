@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 class IntegerMapperImplTest {
 
-    IntegerMapperImpl mapper = new IntegerMapperImpl();
+    private final IntegerMapperImpl mapper = new IntegerMapperImpl();
 
     @Test
     void map() {

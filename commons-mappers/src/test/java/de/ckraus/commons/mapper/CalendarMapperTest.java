@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 public class CalendarMapperTest {
 
-    private CalendarMapper<Calendar> mapper = new CalendarMapper<Calendar>() {
+    private final CalendarMapper<Calendar> mapper = new CalendarMapper<Calendar>() {
         @Override
         public Calendar map(String s, boolean bTrim, boolean bEmptyIsNull, Calendar defaultValue) {
             return defaultValue;

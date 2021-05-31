@@ -19,9 +19,9 @@ public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default LocalTime getLocalTimeAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getLocalTimeMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperUtils.getLocalTimeMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getDefaults().getLocalTimeMapper().getDefaultValue();
+        return TypeMapperUtils.getLocalTimeMapper().getDefaultValue();
     }
 
     /**
@@ -33,7 +33,7 @@ public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default LocalTime getLocalTimeAttribute(E e, String name, LocalTime defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getLocalTimeMapper()
+            return TypeMapperUtils.getLocalTimeMapper()
                                   .mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
@@ -47,7 +47,7 @@ public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasLocalTimeAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getDefaults().getLocalTimeMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperUtils.getLocalTimeMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -63,7 +63,7 @@ public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasLocalTimeAttributeWithValue(E e, String name, LocalTime value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getLocalTimeMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperUtils.getLocalTimeMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

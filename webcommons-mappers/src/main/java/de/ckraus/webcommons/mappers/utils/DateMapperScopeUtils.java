@@ -19,9 +19,9 @@ public interface DateMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Date getDateAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getDateMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperUtils.getDateMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getDefaults().getDateMapper().getDefaultValue();
+        return TypeMapperUtils.getDateMapper().getDefaultValue();
     }
 
     /**
@@ -33,7 +33,7 @@ public interface DateMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Date getDateAttribute(E e, String name, Date defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getDefaults().getDateMapper().mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperUtils.getDateMapper().mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -46,7 +46,7 @@ public interface DateMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasDateAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getDefaults().getDateMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperUtils.getDateMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -62,7 +62,7 @@ public interface DateMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasDateAttributeWithValue(E e, String name, Date value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDefaults().getDateMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperUtils.getDateMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

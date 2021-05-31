@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 class BigDecimalMapperImplTest {
 
-    BigDecimalMapper mapper = new BigDecimalMapperImpl();
+    private final BigDecimalMapper mapper = new BigDecimalMapperImpl();
 
     @Test
     void map() {

@@ -25,7 +25,7 @@ public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalTime getLocalTimeParameter(@NonNull String name) {
-        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(this.getParameter(name));
+        return TypeMapperUtils.getLocalTimeMapper().map(this.getParameter(name));
     }
 
     /**
@@ -35,7 +35,7 @@ public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalTime getLocalTimeParameter(@NonNull String name, LocalTime defaultValue) {
-        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperUtils.getLocalTimeMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -46,7 +46,7 @@ public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalTime getLocalTimeParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDefaults().getLocalTimeMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperUtils.getLocalTimeMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -59,7 +59,7 @@ public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRe
      */
     default LocalTime getLocalTimeParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                             LocalTime defaultValue) {
-        return TypeMapperUtils.getDefaults().getLocalTimeMapper()
+        return TypeMapperUtils.getLocalTimeMapper()
                               .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
