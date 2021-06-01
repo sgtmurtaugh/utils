@@ -7,14 +7,20 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 @SuppressWarnings({ "javadoc", "unused" })
-public interface TypeMapper<E> {
+public interface TypeMapper<T> {
+
+    /**
+     * forType
+     * @return
+     */
+    Class<T> forType();
 
     /**
      * getDefaultValue
      *
      * @return
      */
-    default E getDefaultValue() {
+    default T getDefaultValue() {
         return null;
     }
 
@@ -67,9 +73,8 @@ public interface TypeMapper<E> {
      *
      * @param predicate
      * @param t
-     * @param <T>
      */
-    default <T> boolean evalPredicate(Predicate<T> predicate, T t) {
+    default boolean evalPredicate(Predicate<T> predicate, T t) {
         var bSuccess = false;
 
         if (null != predicate) {
@@ -107,7 +112,7 @@ public interface TypeMapper<E> {
      *
      * @return
      */
-    default E mapObject(Object obj) {
+    default T mapObject(Object obj) {
         return this.mapObject(obj, this.getDefaultValue());
     }
 
@@ -119,19 +124,19 @@ public interface TypeMapper<E> {
      *
      * @return
      */
-    default E mapObject(Object obj, E defaultValue) {
-        E e;
+    default T mapObject(Object obj, T defaultValue) {
+        T t;
 
         if (null == obj) {
-            e = defaultValue;
+            t = defaultValue;
         }
         else if (obj instanceof String) {
-            e = this.map((String) obj, defaultValue);
+            t = this.map((String) obj, defaultValue);
         }
         else {
-            e = this.map(obj.toString(), defaultValue);
+            t = this.map(obj.toString(), defaultValue);
         }
-        return e;
+        return t;
     }
 
     /**
@@ -142,7 +147,7 @@ public interface TypeMapper<E> {
      *
      * @return
      */
-    default E map(Map<String, ?> map, String key) {
+    default T map(Map<String, ?> map, String key) {
         return this.map(map, key, this.getDefaultValue());
     }
 
@@ -156,7 +161,7 @@ public interface TypeMapper<E> {
      *
      * @return
      */
-    default E map(Map<String, ?> map, String key, E defaultValue) {
+    default T map(Map<String, ?> map, String key, T defaultValue) {
         var retVal = defaultValue;
 
         if (MapUtils.isNotEmpty(map) && StringUtils.isNotEmpty(key) && map.containsKey(key)) {
@@ -168,25 +173,25 @@ public interface TypeMapper<E> {
     /**
      * map
      *
-     * @param e
+     * @param t
      *
      * @return
      */
-    default E map(E e) {
-        return this.map(e, this.getDefaultValue());
+    default T map(T t) {
+        return this.map(t, this.getDefaultValue());
     }
 
     /**
      * map
      *
-     * @param e
+     * @param t
      * @param defaultValue
      *
      * @return
      */
-    default E map(E e, E defaultValue) {
-        return (null != e
-                        ? e
+    default T map(T t, T defaultValue) {
+        return (null != t
+                        ? t
                         : defaultValue);
     }
 
@@ -197,7 +202,7 @@ public interface TypeMapper<E> {
      *
      * @return
      */
-    default E map(String s) {
+    default T map(String s) {
         return this.map(s, this.getDefaultValue());
     }
 
@@ -209,7 +214,7 @@ public interface TypeMapper<E> {
      *
      * @return
      */
-    default E map(String s, E defaultValue) {
+    default T map(String s, T defaultValue) {
         return this.map(s, this.isTrimStrings(), this.isEmptyStringNull(), defaultValue);
     }
 
@@ -222,7 +227,7 @@ public interface TypeMapper<E> {
      *
      * @return
      */
-    default E map(String s, boolean bTrim, boolean bEmptyIsNull) {
+    default T map(String s, boolean bTrim, boolean bEmptyIsNull) {
         return this.map(s, bTrim, bEmptyIsNull, this.getDefaultValue());
     }
 
@@ -236,6 +241,6 @@ public interface TypeMapper<E> {
      *
      * @return <p>This method should be overwritten individually.
      */
-    E map(String s, boolean bTrim, boolean bEmptyIsNull, E defaultValue);
+    T map(String s, boolean bTrim, boolean bEmptyIsNull, T defaultValue);
 
 }
