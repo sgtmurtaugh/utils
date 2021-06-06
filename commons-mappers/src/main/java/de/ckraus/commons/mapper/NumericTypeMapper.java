@@ -675,7 +675,7 @@ public interface NumericTypeMapper<E extends Number> extends TypeMapper<E> {
     default E unformat(String sNumber, Locale locale, String sPattern, DecimalFormatSymbols decimalFormatSymbols,
                        E defaultValue) {
         var returnValue = defaultValue;
-        var preparedString = this.prepare(sNumber, this.isTrimStrings(), this.isEmptyStringNull());
+        var preparedString = this.prepare(sNumber, this.isTrimString(), this.isEmptyStringNull());
 
         if (StringUtils.isNotEmpty(preparedString)) {
             var decimalFormat = this.getDecimalFormat(locale, sPattern, decimalFormatSymbols);

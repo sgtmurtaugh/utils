@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils.http;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.utils.LocalTimeMapperScopeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -23,9 +23,9 @@ public interface LocalTimeMapperHttpServletRequestUtils
      */
     default LocalTime getLocalTimeParameter(HttpServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getLocalTimeMapper().map(request.getParameter(name));
+            return TypeMapperFactory.getLocalTimeMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getLocalTimeMapper().getDefaultValue();
+        return TypeMapperFactory.getLocalTimeMapper().getDefaultValue();
     }
 
     /**
@@ -37,7 +37,7 @@ public interface LocalTimeMapperHttpServletRequestUtils
      */
     default LocalTime getLocalTimeParameter(HttpServletRequest request, String name, LocalTime defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getLocalTimeMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperFactory.getLocalTimeMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -53,10 +53,10 @@ public interface LocalTimeMapperHttpServletRequestUtils
     default LocalTime getLocalTimeParameter(HttpServletRequest request, String name, boolean bTrim,
                                             boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getLocalTimeMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull);
+            return TypeMapperFactory.getLocalTimeMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getLocalTimeMapper().getDefaultValue();
+        return TypeMapperFactory.getLocalTimeMapper().getDefaultValue();
     }
 
     /**
@@ -71,8 +71,8 @@ public interface LocalTimeMapperHttpServletRequestUtils
     default LocalTime getLocalTimeParameter(HttpServletRequest request, String name, boolean bTrim,
                                             boolean bEmptyIsNull, LocalTime defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getLocalTimeMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+            return TypeMapperFactory.getLocalTimeMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
     }
@@ -85,8 +85,8 @@ public interface LocalTimeMapperHttpServletRequestUtils
      */
     default boolean hasLocalTimeParameter(HttpServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getLocalTimeMapper()
-                                       .map(request.getParameter(name), (LocalTime) null);
+            var value = TypeMapperFactory.getLocalTimeMapper()
+                                         .map(request.getParameter(name), (LocalTime) null);
             return (null != value);
         }
         return false;
@@ -101,8 +101,8 @@ public interface LocalTimeMapperHttpServletRequestUtils
      */
     default boolean hasLocalTimeParameterWithValue(HttpServletRequest request, String name, LocalTime value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            return new EqualsBuilder().append(value, TypeMapperUtils.getLocalTimeMapper()
-                                                                    .map(request.getParameter(name), (LocalTime) null))
+            return new EqualsBuilder().append(value, TypeMapperFactory.getLocalTimeMapper()
+                                                                      .map(request.getParameter(name), (LocalTime) null))
                                       .isEquals();
         }
         return false;

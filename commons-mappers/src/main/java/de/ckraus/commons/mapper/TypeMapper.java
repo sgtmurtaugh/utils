@@ -29,7 +29,7 @@ public interface TypeMapper<T> {
      *
      * @return
      */
-    default boolean isTrimStrings() {
+    default boolean isTrimString() {
         return Boolean.TRUE;
     }
 
@@ -215,7 +215,7 @@ public interface TypeMapper<T> {
      * @return
      */
     default T map(String s, T defaultValue) {
-        return this.map(s, this.isTrimStrings(), this.isEmptyStringNull(), defaultValue);
+        return this.map(s, this.isTrimString(), this.isEmptyStringNull(), defaultValue);
     }
 
     /**

@@ -3,7 +3,9 @@ package de.ckraus.commons.mapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
+@Component("integerMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
@@ -13,7 +15,7 @@ public class IntegerMapperImpl extends NumericTypeMapperBase<Integer> implements
      * Constructor
      */
     public IntegerMapperImpl() {
-        super();
+        super(Integer.class);
     }
 
     /**
@@ -22,7 +24,7 @@ public class IntegerMapperImpl extends NumericTypeMapperBase<Integer> implements
      * @param defaultValue
      */
     public IntegerMapperImpl(Integer defaultValue) {
-        super(defaultValue);
+        super(Integer.class, defaultValue);
     }
 
 }

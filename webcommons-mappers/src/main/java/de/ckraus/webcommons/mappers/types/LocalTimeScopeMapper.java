@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.types;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ScopeMapper;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
@@ -20,7 +20,7 @@ public interface LocalTimeScopeMapper extends ScopeMapper {
      * @return
      */
     default LocalTime getLocalTimeAttribute(@NonNull String name) {
-        return TypeMapperUtils.getLocalTimeMapper().mapObject(this.getAttribute(name));
+        return TypeMapperFactory.getLocalTimeMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -30,7 +30,7 @@ public interface LocalTimeScopeMapper extends ScopeMapper {
      * @return
      */
     default LocalTime getLocalTimeAttribute(@NonNull String name, LocalTime defaultValue) {
-        return TypeMapperUtils.getLocalTimeMapper().mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperFactory.getLocalTimeMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
@@ -40,7 +40,7 @@ public interface LocalTimeScopeMapper extends ScopeMapper {
      */
     default boolean hasLocalTimeAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            var value = TypeMapperUtils.getLocalTimeMapper().mapObject(this.getAttribute(name), null);
+            var value = TypeMapperFactory.getLocalTimeMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -55,7 +55,7 @@ public interface LocalTimeScopeMapper extends ScopeMapper {
     default boolean hasLocalTimeAttributeWithValue(@NonNull String name, LocalTime value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getLocalTimeMapper().mapObject(this.getAttribute(name), null))
+                    TypeMapperFactory.getLocalTimeMapper().mapObject(this.getAttribute(name), null))
                                       .isEquals();
         }
         return false;

@@ -3,9 +3,12 @@ package de.ckraus.commons.mapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Component("bigDecimalMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
@@ -15,7 +18,7 @@ public class BigDecimalMapperImpl extends NumericTypeMapperBase<BigDecimal> impl
      * Constructor
      */
     public BigDecimalMapperImpl() {
-        super();
+        super(BigDecimal.class);
     }
 
     /**
@@ -24,7 +27,7 @@ public class BigDecimalMapperImpl extends NumericTypeMapperBase<BigDecimal> impl
      * @param defaultValue
      */
     public BigDecimalMapperImpl(BigDecimal defaultValue) {
-        super(defaultValue);
+        super(BigDecimal.class, defaultValue);
     }
 
 }

@@ -68,7 +68,7 @@ public interface GregorianCalendarMapper extends CalendarMapper<GregorianCalenda
     @Override
     default GregorianCalendar map(String s, DateFormat format, boolean lenient, GregorianCalendar defaultValue) {
         var gregorianCalendar = defaultValue;
-        var preparedString = this.prepare(s, this.isTrimStrings(), this.isEmptyStringNull());
+        var preparedString = this.prepare(s, this.isTrimString(), this.isEmptyStringNull());
 
         if (StringUtils.isNotEmpty(preparedString) && null != format) {
             try {

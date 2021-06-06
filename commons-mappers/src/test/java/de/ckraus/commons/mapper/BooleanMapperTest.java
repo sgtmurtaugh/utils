@@ -40,6 +40,12 @@ class BooleanMapperTest {
     private final BooleanMapper mapper = new BooleanMapper() {
         // Dummy implementations
 
+
+        @Override
+        public Class<Boolean> forType() {
+            return Boolean.class;
+        }
+
         @Override
         public boolean isFalse(Character c) {
             return DUMMY_IMPLEMENTATION;

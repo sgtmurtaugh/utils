@@ -3,9 +3,11 @@ package de.ckraus.commons.mapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.util.GregorianCalendar;
 
+@Component("gregorianCalendarMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
@@ -16,7 +18,7 @@ public class GregorianCalendarMapperImpl extends CalendarMapperBase<GregorianCal
      * Constructor
      */
     public GregorianCalendarMapperImpl() {
-        super();
+        super(GregorianCalendar.class);
     }
 
     /**
@@ -25,7 +27,7 @@ public class GregorianCalendarMapperImpl extends CalendarMapperBase<GregorianCal
      * @param defaultValue
      */
     public GregorianCalendarMapperImpl(GregorianCalendar defaultValue) {
-        super(defaultValue);
+        super(GregorianCalendar.class, defaultValue);
     }
 
 }

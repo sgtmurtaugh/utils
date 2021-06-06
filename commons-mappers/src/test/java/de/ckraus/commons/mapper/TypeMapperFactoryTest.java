@@ -1,10 +1,11 @@
-package de.ckraus.commons.mapper.utils;
+package de.ckraus.commons.mapper;
 
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.junit.jupiter.api.Test;
 
-class TypeMapperUtilsTest {
+class TypeMapperFactoryTest {
 
-    TypeMapperUtils typeMapperUtils;
+    TypeMapperFactory typeMapperFactory;
 
     //    @BeforeEach
     //    public void initializeTest() {
@@ -29,7 +30,7 @@ class TypeMapperUtilsTest {
     }
 
     @Test
-    void addRegisteredTypeMapper() {
+    void addTypeMapper() {
     }
 
     @Test

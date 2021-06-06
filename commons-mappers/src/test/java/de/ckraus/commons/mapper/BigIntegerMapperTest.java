@@ -21,8 +21,7 @@ class BigIntegerMapperTest {
 
     private final static BigInteger ANOTHER_DEFAULT_VALUE = new BigInteger("789654123");
 
-    private final BigIntegerMapper mapper = new BigIntegerMapper() {
-    };
+    private final BigIntegerMapper mapper = () -> BigInteger.class;
 
 
     /**

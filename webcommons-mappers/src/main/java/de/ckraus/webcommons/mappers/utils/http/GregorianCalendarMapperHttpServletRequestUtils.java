@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils.http;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
@@ -22,9 +22,9 @@ public interface GregorianCalendarMapperHttpServletRequestUtils
      */
     default GregorianCalendar getGregorianCalendarParameter(HttpServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getGregorianCalendarMapper().map(request.getParameter(name));
+            return TypeMapperFactory.getGregorianCalendarMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getGregorianCalendarMapper().getDefaultValue();
+        return TypeMapperFactory.getGregorianCalendarMapper().getDefaultValue();
     }
 
     /**
@@ -37,8 +37,8 @@ public interface GregorianCalendarMapperHttpServletRequestUtils
     default GregorianCalendar getGregorianCalendarParameter(HttpServletRequest request, String name,
                                                             GregorianCalendar defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getGregorianCalendarMapper()
-                                  .map(request.getParameter(name), defaultValue);
+            return TypeMapperFactory.getGregorianCalendarMapper()
+                                    .map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -54,10 +54,10 @@ public interface GregorianCalendarMapperHttpServletRequestUtils
     default GregorianCalendar getGregorianCalendarParameter(HttpServletRequest request, String name, boolean bTrim,
                                                             boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getGregorianCalendarMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull);
+            return TypeMapperFactory.getGregorianCalendarMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getGregorianCalendarMapper().getDefaultValue();
+        return TypeMapperFactory.getGregorianCalendarMapper().getDefaultValue();
     }
 
     /**
@@ -72,8 +72,8 @@ public interface GregorianCalendarMapperHttpServletRequestUtils
     default GregorianCalendar getGregorianCalendarParameter(HttpServletRequest request, String name, boolean bTrim,
                                                             boolean bEmptyIsNull, GregorianCalendar defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getGregorianCalendarMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+            return TypeMapperFactory.getGregorianCalendarMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
     }
@@ -87,7 +87,7 @@ public interface GregorianCalendarMapperHttpServletRequestUtils
     default boolean hasGregorianCalendarParameter(HttpServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
             var value =
-                    TypeMapperUtils.getGregorianCalendarMapper().map(request.getParameter(name), null);
+                    TypeMapperFactory.getGregorianCalendarMapper().map(request.getParameter(name), null);
             return (null != value);
         }
         return false;
@@ -104,7 +104,7 @@ public interface GregorianCalendarMapperHttpServletRequestUtils
                                                            GregorianCalendar value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getGregorianCalendarMapper().map(request.getParameter(name), null))
+                    TypeMapperFactory.getGregorianCalendarMapper().map(request.getParameter(name), null))
                                       .isEquals();
         }
         return false;

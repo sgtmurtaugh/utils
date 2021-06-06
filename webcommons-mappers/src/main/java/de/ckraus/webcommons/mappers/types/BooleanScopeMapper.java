@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.types;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ScopeMapper;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
@@ -18,7 +18,7 @@ public interface BooleanScopeMapper extends ScopeMapper {
      * @return
      */
     default Boolean getBooleanAttribute(@NonNull String name) {
-        return TypeMapperUtils.getBooleanMapper().mapObject(this.getAttribute(name));
+        return TypeMapperFactory.getBooleanMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -28,7 +28,7 @@ public interface BooleanScopeMapper extends ScopeMapper {
      * @return
      */
     default Boolean getBooleanAttribute(@NonNull String name, Boolean defaultValue) {
-        return TypeMapperUtils.getBooleanMapper().mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperFactory.getBooleanMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
@@ -38,7 +38,7 @@ public interface BooleanScopeMapper extends ScopeMapper {
      */
     default boolean hasBooleanAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            var value = TypeMapperUtils.getBooleanMapper().mapObject(this.getAttribute(name), null);
+            var value = TypeMapperFactory.getBooleanMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -53,7 +53,7 @@ public interface BooleanScopeMapper extends ScopeMapper {
     default boolean hasBooleanAttributeWithValue(@NonNull String name, Boolean value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getBooleanMapper().mapObject(this.getAttribute(name), null))
+                    TypeMapperFactory.getBooleanMapper().mapObject(this.getAttribute(name), null))
                                       .isEquals();
         }
         return false;

@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.types;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ScopeMapper;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
@@ -20,7 +20,7 @@ public interface GregorianCalendarScopeMapper extends ScopeMapper {
      * @return
      */
     default GregorianCalendar getGregorianCalendarAttribute(@NonNull String name) {
-        return TypeMapperUtils.getGregorianCalendarMapper().mapObject(this.getAttribute(name));
+        return TypeMapperFactory.getGregorianCalendarMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -30,8 +30,8 @@ public interface GregorianCalendarScopeMapper extends ScopeMapper {
      * @return
      */
     default GregorianCalendar getGregorianCalendarAttribute(@NonNull String name, GregorianCalendar defaultValue) {
-        return TypeMapperUtils.getGregorianCalendarMapper()
-                              .mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperFactory.getGregorianCalendarMapper()
+                                .mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
@@ -42,7 +42,7 @@ public interface GregorianCalendarScopeMapper extends ScopeMapper {
     default boolean hasGregorianCalendarAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             var value =
-                    TypeMapperUtils.getGregorianCalendarMapper().mapObject(this.getAttribute(name), null);
+                    TypeMapperFactory.getGregorianCalendarMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -57,7 +57,7 @@ public interface GregorianCalendarScopeMapper extends ScopeMapper {
     default boolean hasGregorianCalendarAttributeWithValue(@NonNull String name, GregorianCalendar value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getGregorianCalendarMapper().mapObject(this.getAttribute(name), null))
+                    TypeMapperFactory.getGregorianCalendarMapper().mapObject(this.getAttribute(name), null))
                                       .isEquals();
         }
         return false;

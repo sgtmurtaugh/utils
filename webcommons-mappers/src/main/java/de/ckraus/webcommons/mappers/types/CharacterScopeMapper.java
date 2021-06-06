@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.types;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ScopeMapper;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
@@ -18,7 +18,7 @@ public interface CharacterScopeMapper extends ScopeMapper {
      * @return
      */
     default Character getCharacterAttribute(@NonNull String name) {
-        return TypeMapperUtils.getCharacterMapper().mapObject(this.getAttribute(name));
+        return TypeMapperFactory.getCharacterMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -28,7 +28,7 @@ public interface CharacterScopeMapper extends ScopeMapper {
      * @return
      */
     default Character getCharacterAttribute(@NonNull String name, Character defaultValue) {
-        return TypeMapperUtils.getCharacterMapper().mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperFactory.getCharacterMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
@@ -38,7 +38,7 @@ public interface CharacterScopeMapper extends ScopeMapper {
      */
     default boolean hasCharacterAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            var value = TypeMapperUtils.getCharacterMapper().mapObject(this.getAttribute(name), null);
+            var value = TypeMapperFactory.getCharacterMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -53,7 +53,7 @@ public interface CharacterScopeMapper extends ScopeMapper {
     default boolean hasCharacterAttributeWithValue(@NonNull String name, Character value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getCharacterMapper().mapObject(this.getAttribute(name), null))
+                    TypeMapperFactory.getCharacterMapper().mapObject(this.getAttribute(name), null))
                                       .isEquals();
         }
         return false;

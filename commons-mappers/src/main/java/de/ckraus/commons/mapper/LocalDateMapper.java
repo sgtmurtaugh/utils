@@ -1,6 +1,7 @@
 package de.ckraus.commons.mapper;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -65,7 +66,7 @@ public interface LocalDateMapper extends TemporalTypeMapper<LocalDate> {
     @Override
     default LocalDate map(String s, DateTimeFormatter formatter, LocalDate defaultValue) {
         var localDate = defaultValue;
-        var preparedString = this.prepare(s, this.isTrimStrings(), this.isEmptyStringNull());
+        var preparedString = this.prepare(s, this.isTrimString(), this.isEmptyStringNull());
 
         if (StringUtils.isNotEmpty(preparedString) && null != formatter) {
             try {

@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.servlet;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.DateScopeMapper;
 import lombok.NonNull;
@@ -25,7 +25,7 @@ public interface DateMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Date getDateParameter(@NonNull String name) {
-        return TypeMapperUtils.getDateMapper().map(this.getParameter(name));
+        return TypeMapperFactory.getDateMapper().map(this.getParameter(name));
     }
 
     /**
@@ -35,7 +35,7 @@ public interface DateMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Date getDateParameter(@NonNull String name, Date defaultValue) {
-        return TypeMapperUtils.getDateMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperFactory.getDateMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -46,7 +46,7 @@ public interface DateMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Date getDateParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getDateMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperFactory.getDateMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -58,8 +58,8 @@ public interface DateMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Date getDateParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Date defaultValue) {
-        return TypeMapperUtils.getDateMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperFactory.getDateMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import java.math.BigDecimal;
@@ -19,9 +19,9 @@ public interface BigDecimalMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default BigDecimal getBigDecimalAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getBigDecimalMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperFactory.getBigDecimalMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getBigDecimalMapper().getDefaultValue();
+        return TypeMapperFactory.getBigDecimalMapper().getDefaultValue();
     }
 
     /**
@@ -33,8 +33,8 @@ public interface BigDecimalMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default BigDecimal getBigDecimalAttribute(E e, String name, BigDecimal defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getBigDecimalMapper()
-                                  .mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperFactory.getBigDecimalMapper()
+                                    .mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -47,7 +47,7 @@ public interface BigDecimalMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasBigDecimalAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getBigDecimalMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperFactory.getBigDecimalMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -63,7 +63,7 @@ public interface BigDecimalMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasBigDecimalAttributeWithValue(E e, String name, BigDecimal value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getBigDecimalMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperFactory.getBigDecimalMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

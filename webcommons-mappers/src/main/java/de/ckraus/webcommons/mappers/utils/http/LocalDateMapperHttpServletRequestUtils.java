@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils.http;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.utils.LocalDateMapperScopeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -23,9 +23,9 @@ public interface LocalDateMapperHttpServletRequestUtils
      */
     default LocalDate getLocalDateParameter(HttpServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getLocalDateMapper().map(request.getParameter(name));
+            return TypeMapperFactory.getLocalDateMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getLocalDateMapper().getDefaultValue();
+        return TypeMapperFactory.getLocalDateMapper().getDefaultValue();
     }
 
     /**
@@ -37,7 +37,7 @@ public interface LocalDateMapperHttpServletRequestUtils
      */
     default LocalDate getLocalDateParameter(HttpServletRequest request, String name, LocalDate defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getLocalDateMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperFactory.getLocalDateMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -53,10 +53,10 @@ public interface LocalDateMapperHttpServletRequestUtils
     default LocalDate getLocalDateParameter(HttpServletRequest request, String name, boolean bTrim,
                                             boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getLocalDateMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull);
+            return TypeMapperFactory.getLocalDateMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getLocalDateMapper().getDefaultValue();
+        return TypeMapperFactory.getLocalDateMapper().getDefaultValue();
     }
 
     /**
@@ -71,8 +71,8 @@ public interface LocalDateMapperHttpServletRequestUtils
     default LocalDate getLocalDateParameter(HttpServletRequest request, String name, boolean bTrim,
                                             boolean bEmptyIsNull, LocalDate defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getLocalDateMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+            return TypeMapperFactory.getLocalDateMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
     }
@@ -85,8 +85,8 @@ public interface LocalDateMapperHttpServletRequestUtils
      */
     default boolean hasLocalDateParameter(HttpServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getLocalDateMapper()
-                                       .map(request.getParameter(name), (LocalDate) null);
+            var value = TypeMapperFactory.getLocalDateMapper()
+                                         .map(request.getParameter(name), (LocalDate) null);
             return (null != value);
         }
         return false;
@@ -101,8 +101,8 @@ public interface LocalDateMapperHttpServletRequestUtils
      */
     default boolean hasLocalDateParameterWithValue(HttpServletRequest request, String name, LocalDate value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            return new EqualsBuilder().append(value, TypeMapperUtils.getLocalDateMapper()
-                                                                    .map(request.getParameter(name), (LocalDate) null))
+            return new EqualsBuilder().append(value, TypeMapperFactory.getLocalDateMapper()
+                                                                      .map(request.getParameter(name), (LocalDate) null))
                                       .isEquals();
         }
         return false;

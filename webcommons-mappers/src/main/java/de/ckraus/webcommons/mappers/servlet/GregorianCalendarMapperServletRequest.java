@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.servlet;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.GregorianCalendarScopeMapper;
 import lombok.NonNull;
@@ -26,7 +26,7 @@ public interface GregorianCalendarMapperServletRequest
      * @return
      */
     default GregorianCalendar getGregorianCalendarParameter(@NonNull String name) {
-        return TypeMapperUtils.getGregorianCalendarMapper().map(this.getParameter(name));
+        return TypeMapperFactory.getGregorianCalendarMapper().map(this.getParameter(name));
     }
 
     /**
@@ -36,7 +36,7 @@ public interface GregorianCalendarMapperServletRequest
      * @return
      */
     default GregorianCalendar getGregorianCalendarParameter(@NonNull String name, GregorianCalendar defaultValue) {
-        return TypeMapperUtils.getGregorianCalendarMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperFactory.getGregorianCalendarMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -47,8 +47,8 @@ public interface GregorianCalendarMapperServletRequest
      * @return
      */
     default GregorianCalendar getGregorianCalendarParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getGregorianCalendarMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperFactory.getGregorianCalendarMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -61,8 +61,8 @@ public interface GregorianCalendarMapperServletRequest
      */
     default GregorianCalendar getGregorianCalendarParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                                             GregorianCalendar defaultValue) {
-        return TypeMapperUtils.getGregorianCalendarMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperFactory.getGregorianCalendarMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

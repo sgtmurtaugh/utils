@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.types;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ScopeMapper;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
@@ -20,7 +20,7 @@ public interface LocalDateScopeMapper extends ScopeMapper {
      * @return
      */
     default LocalDate getLocalDateAttribute(@NonNull String name) {
-        return TypeMapperUtils.getLocalDateMapper().mapObject(this.getAttribute(name));
+        return TypeMapperFactory.getLocalDateMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -30,7 +30,7 @@ public interface LocalDateScopeMapper extends ScopeMapper {
      * @return
      */
     default LocalDate getLocalDateAttribute(@NonNull String name, LocalDate defaultValue) {
-        return TypeMapperUtils.getLocalDateMapper().mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperFactory.getLocalDateMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
@@ -40,7 +40,7 @@ public interface LocalDateScopeMapper extends ScopeMapper {
      */
     default boolean hasLocalDateAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            var value = TypeMapperUtils.getLocalDateMapper().mapObject(this.getAttribute(name), null);
+            var value = TypeMapperFactory.getLocalDateMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -55,7 +55,7 @@ public interface LocalDateScopeMapper extends ScopeMapper {
     default boolean hasLocalDateAttributeWithValue(@NonNull String name, LocalDate value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getLocalDateMapper().mapObject(this.getAttribute(name), null))
+                    TypeMapperFactory.getLocalDateMapper().mapObject(this.getAttribute(name), null))
                                       .isEquals();
         }
         return false;

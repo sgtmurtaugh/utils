@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.servlet;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.BooleanScopeMapper;
 import lombok.NonNull;
@@ -24,7 +24,7 @@ public interface BooleanMapperServletRequest extends ServletRequest, ServletRequ
      * @return
      */
     default Boolean getBooleanParameter(@NonNull String name) {
-        return TypeMapperUtils.getBooleanMapper().map(this.getParameter(name));
+        return TypeMapperFactory.getBooleanMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface BooleanMapperServletRequest extends ServletRequest, ServletRequ
      * @return
      */
     default Boolean getBooleanParameter(@NonNull String name, Boolean defaultValue) {
-        return TypeMapperUtils.getBooleanMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperFactory.getBooleanMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface BooleanMapperServletRequest extends ServletRequest, ServletRequ
      * @return
      */
     default Boolean getBooleanParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getBooleanMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperFactory.getBooleanMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -58,8 +58,8 @@ public interface BooleanMapperServletRequest extends ServletRequest, ServletRequ
      */
     default Boolean getBooleanParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                         Boolean defaultValue) {
-        return TypeMapperUtils.getBooleanMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperFactory.getBooleanMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

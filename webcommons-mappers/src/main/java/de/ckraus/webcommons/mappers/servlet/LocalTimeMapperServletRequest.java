@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.servlet;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.LocalTimeScopeMapper;
 import lombok.NonNull;
@@ -25,7 +25,7 @@ public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalTime getLocalTimeParameter(@NonNull String name) {
-        return TypeMapperUtils.getLocalTimeMapper().map(this.getParameter(name));
+        return TypeMapperFactory.getLocalTimeMapper().map(this.getParameter(name));
     }
 
     /**
@@ -35,7 +35,7 @@ public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalTime getLocalTimeParameter(@NonNull String name, LocalTime defaultValue) {
-        return TypeMapperUtils.getLocalTimeMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperFactory.getLocalTimeMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -46,7 +46,7 @@ public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalTime getLocalTimeParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getLocalTimeMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperFactory.getLocalTimeMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -59,8 +59,8 @@ public interface LocalTimeMapperServletRequest extends ServletRequest, ServletRe
      */
     default LocalTime getLocalTimeParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                             LocalTime defaultValue) {
-        return TypeMapperUtils.getLocalTimeMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperFactory.getLocalTimeMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

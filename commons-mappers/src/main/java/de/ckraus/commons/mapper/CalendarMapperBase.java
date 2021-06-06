@@ -2,40 +2,47 @@ package de.ckraus.commons.mapper;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
 
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
-public abstract class CalendarMapperBase<E extends Calendar> extends TypeMapperBase<E> implements CalendarMapper<E> {
+public abstract class CalendarMapperBase<T extends Calendar> extends TypeMapperBase<T> implements CalendarMapper<T> {
 
     /**
      * Constructor
+     *
+     * @param clazzType
      */
-    protected CalendarMapperBase() {
-        super();
+    protected CalendarMapperBase(@NonNull Class<T> clazzType) {
+        super(clazzType);
     }
 
     /**
      * Constructor
      *
+     * @param clazzType
      * @param defaultValue
      */
-    protected CalendarMapperBase(E defaultValue) {
-        super(defaultValue);
+    protected CalendarMapperBase(@NonNull Class<T> clazzType, T defaultValue) {
+        super(clazzType, defaultValue);
     }
 
     /**
      * Constructor
      *
+     * @param clazzType
      * @param defaultValue
      * @param bTrimStrings
      * @param bEmptyStringNull
      */
-    protected CalendarMapperBase(E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull) {
-        super(defaultValue, bTrimStrings, bEmptyStringNull);
+    protected CalendarMapperBase(@NonNull Class<T> clazzType, T defaultValue, boolean bTrimStrings,
+                                 boolean bEmptyStringNull) {
+        super(clazzType, defaultValue, bTrimStrings, bEmptyStringNull);
     }
 
 

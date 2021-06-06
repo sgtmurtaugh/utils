@@ -3,7 +3,9 @@ package de.ckraus.commons.mapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
+@Component("byteMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
@@ -13,7 +15,7 @@ public class ByteMapperImpl extends NumericTypeMapperBase<Byte> implements ByteM
      * Constructor
      */
     public ByteMapperImpl() {
-        super();
+        super(Byte.class);
     }
 
     /**
@@ -22,7 +24,7 @@ public class ByteMapperImpl extends NumericTypeMapperBase<Byte> implements ByteM
      * @param defaultValue
      */
     public ByteMapperImpl(Byte defaultValue) {
-        super(defaultValue);
+        super(Byte.class, defaultValue);
     }
 
 }

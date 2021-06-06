@@ -2,6 +2,7 @@ package de.ckraus.commons.mapper;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.time.temporal.Temporal;
@@ -9,34 +10,39 @@ import java.time.temporal.Temporal;
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "WeakerAccess", "javadoc", "unused" })
-public abstract class TemporalTypeMapperBase<E extends Temporal> extends TypeMapperBase<E>
-        implements TemporalTypeMapper<E> {
+public abstract class TemporalTypeMapperBase<T extends Temporal> extends TypeMapperBase<T>
+        implements TemporalTypeMapper<T> {
 
     /**
      * Constructor
+     *
+     * @param clazzType
      */
-    protected TemporalTypeMapperBase() {
-        super();
+    protected TemporalTypeMapperBase(@NonNull Class<T> clazzType) {
+        super(clazzType);
     }
 
     /**
      * Constructor
      *
+     * @param clazzType
      * @param defaultValue
      */
-    protected TemporalTypeMapperBase(E defaultValue) {
-        super(defaultValue);
+    protected TemporalTypeMapperBase(@NonNull Class<T> clazzType, T defaultValue) {
+        super(clazzType, defaultValue);
     }
 
     /**
      * Constructor
      *
+     * @param clazzType
      * @param defaultValue
      * @param bTrimStrings
      * @param bEmptyStringNull
      */
-    protected TemporalTypeMapperBase(E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull) {
-        super(defaultValue, bTrimStrings, bEmptyStringNull);
+    protected TemporalTypeMapperBase(@NonNull Class<T> clazzType, T defaultValue, boolean bTrimStrings,
+                                     boolean bEmptyStringNull) {
+        super(clazzType, defaultValue, bTrimStrings, bEmptyStringNull);
     }
 
 }

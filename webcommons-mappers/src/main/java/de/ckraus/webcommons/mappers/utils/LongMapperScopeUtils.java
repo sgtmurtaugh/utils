@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 /**
@@ -17,9 +17,9 @@ public interface LongMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Long getLongAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getLongMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperFactory.getLongMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getLongMapper().getDefaultValue();
+        return TypeMapperFactory.getLongMapper().getDefaultValue();
     }
 
     /**
@@ -31,7 +31,7 @@ public interface LongMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Long getLongAttribute(E e, String name, Long defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getLongMapper().mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperFactory.getLongMapper().mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -44,7 +44,7 @@ public interface LongMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasLongAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getLongMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperFactory.getLongMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -60,7 +60,7 @@ public interface LongMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasLongAttributeWithValue(E e, String name, Long value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getLongMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperFactory.getLongMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

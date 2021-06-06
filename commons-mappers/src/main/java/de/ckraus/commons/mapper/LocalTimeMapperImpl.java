@@ -3,9 +3,11 @@ package de.ckraus.commons.mapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
 
+@Component("localTimeMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
@@ -15,7 +17,7 @@ public class LocalTimeMapperImpl extends TemporalTypeMapperBase<LocalTime> imple
      * Constructor
      */
     public LocalTimeMapperImpl() {
-        super();
+        super(LocalTime.class);
     }
 
     /**
@@ -24,7 +26,7 @@ public class LocalTimeMapperImpl extends TemporalTypeMapperBase<LocalTime> imple
      * @param defaultValue
      */
     public LocalTimeMapperImpl(LocalTime defaultValue) {
-        super(defaultValue);
+        super(LocalTime.class, defaultValue);
     }
 
 }

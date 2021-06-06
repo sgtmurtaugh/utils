@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import java.time.LocalTime;
@@ -19,9 +19,9 @@ public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default LocalTime getLocalTimeAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getLocalTimeMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperFactory.getLocalTimeMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getLocalTimeMapper().getDefaultValue();
+        return TypeMapperFactory.getLocalTimeMapper().getDefaultValue();
     }
 
     /**
@@ -33,8 +33,8 @@ public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default LocalTime getLocalTimeAttribute(E e, String name, LocalTime defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getLocalTimeMapper()
-                                  .mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperFactory.getLocalTimeMapper()
+                                    .mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -47,7 +47,7 @@ public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasLocalTimeAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getLocalTimeMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperFactory.getLocalTimeMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -63,7 +63,7 @@ public interface LocalTimeMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasLocalTimeAttributeWithValue(E e, String name, LocalTime value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getLocalTimeMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperFactory.getLocalTimeMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

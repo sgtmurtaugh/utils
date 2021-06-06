@@ -20,8 +20,7 @@ class BigDecimalMapperTest {
 
     private final static BigDecimal ANOTHER_DEFAULT_VALUE = new BigDecimal("123654789.321");
 
-    private final BigDecimalMapper mapper = new BigDecimalMapper() {
-    };
+    private final BigDecimalMapper mapper = () -> BigDecimal.class;
 
 
     /**

@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.servlet;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.ByteScopeMapper;
 import lombok.NonNull;
@@ -24,7 +24,7 @@ public interface ByteMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Byte getByteParameter(@NonNull String name) {
-        return TypeMapperUtils.getByteMapper().map(this.getParameter(name));
+        return TypeMapperFactory.getByteMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface ByteMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Byte getByteParameter(@NonNull String name, Byte defaultValue) {
-        return TypeMapperUtils.getByteMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperFactory.getByteMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface ByteMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Byte getByteParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getByteMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperFactory.getByteMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -57,8 +57,8 @@ public interface ByteMapperServletRequest extends ServletRequest, ServletRequest
      * @return
      */
     default Byte getByteParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Byte defaultValue) {
-        return TypeMapperUtils.getByteMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperFactory.getByteMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

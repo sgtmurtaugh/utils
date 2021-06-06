@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 /**
@@ -17,9 +17,9 @@ public interface ByteMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Byte getByteAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getByteMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperFactory.getByteMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getByteMapper().getDefaultValue();
+        return TypeMapperFactory.getByteMapper().getDefaultValue();
     }
 
     /**
@@ -31,7 +31,7 @@ public interface ByteMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Byte getByteAttribute(E e, String name, Byte defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getByteMapper().mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperFactory.getByteMapper().mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -44,7 +44,7 @@ public interface ByteMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasByteAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getByteMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperFactory.getByteMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -60,7 +60,7 @@ public interface ByteMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasByteAttributeWithValue(E e, String name, Byte value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getByteMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperFactory.getByteMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

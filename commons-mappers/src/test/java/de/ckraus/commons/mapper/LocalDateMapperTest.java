@@ -1,8 +1,9 @@
 package de.ckraus.commons.mapper;
 
+import java.time.LocalDate;
+
 public class LocalDateMapperTest {
 
-    private final LocalDateMapper mapper = new LocalDateMapper() {
-    };
+    private final LocalDateMapper mapper = () -> LocalDate.class;
 
 }

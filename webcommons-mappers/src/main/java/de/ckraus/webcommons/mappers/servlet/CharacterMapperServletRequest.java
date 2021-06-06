@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.servlet;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.CharacterScopeMapper;
 import lombok.NonNull;
@@ -24,7 +24,7 @@ public interface CharacterMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default Character getCharacterParameter(@NonNull String name) {
-        return TypeMapperUtils.getCharacterMapper().map(this.getParameter(name));
+        return TypeMapperFactory.getCharacterMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface CharacterMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default Character getCharacterParameter(@NonNull String name, Character defaultValue) {
-        return TypeMapperUtils.getCharacterMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperFactory.getCharacterMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface CharacterMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default Character getCharacterParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getCharacterMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperFactory.getCharacterMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -58,8 +58,8 @@ public interface CharacterMapperServletRequest extends ServletRequest, ServletRe
      */
     default Character getCharacterParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                             Character defaultValue) {
-        return TypeMapperUtils.getCharacterMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperFactory.getCharacterMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

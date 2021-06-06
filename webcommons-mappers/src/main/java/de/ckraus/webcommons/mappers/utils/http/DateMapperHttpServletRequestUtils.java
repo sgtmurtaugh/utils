@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils.http;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.utils.DateMapperScopeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -23,9 +23,9 @@ public interface DateMapperHttpServletRequestUtils
      */
     default Date getDateParameter(HttpServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getDateMapper().map(request.getParameter(name));
+            return TypeMapperFactory.getDateMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getDateMapper().getDefaultValue();
+        return TypeMapperFactory.getDateMapper().getDefaultValue();
     }
 
     /**
@@ -37,7 +37,7 @@ public interface DateMapperHttpServletRequestUtils
      */
     default Date getDateParameter(HttpServletRequest request, String name, Date defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDateMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperFactory.getDateMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -52,9 +52,9 @@ public interface DateMapperHttpServletRequestUtils
      */
     default Date getDateParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getDateMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
+            return TypeMapperFactory.getDateMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getDateMapper().getDefaultValue();
+        return TypeMapperFactory.getDateMapper().getDefaultValue();
     }
 
     /**
@@ -69,8 +69,8 @@ public interface DateMapperHttpServletRequestUtils
     default Date getDateParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
                                   Date defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getDateMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+            return TypeMapperFactory.getDateMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
     }
@@ -83,7 +83,7 @@ public interface DateMapperHttpServletRequestUtils
      */
     default boolean hasDateParameter(HttpServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getDateMapper().map(request.getParameter(name), null);
+            var value = TypeMapperFactory.getDateMapper().map(request.getParameter(name), null);
             return (null != value);
         }
         return false;
@@ -99,7 +99,7 @@ public interface DateMapperHttpServletRequestUtils
     default boolean hasDateParameterWithValue(HttpServletRequest request, String name, Date value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
             return new EqualsBuilder()
-                    .append(value, TypeMapperUtils.getDateMapper().map(request.getParameter(name), null))
+                    .append(value, TypeMapperFactory.getDateMapper().map(request.getParameter(name), null))
                     .isEquals();
         }
         return false;

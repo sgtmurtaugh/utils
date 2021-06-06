@@ -21,7 +21,12 @@ class NumericTypeMapperTest {
 
     private final static Number ANOTHER_DEFAULT_VALUE = 5113;
 
-    private final NumericTypeMapper<Number> mapper = (number) -> number;
+    private final NumericTypeMapper<Number> mapper = new NumericTypeMapperBase<>(Number.class) {
+        @Override
+        public Number toType(Number number) {
+            return number;
+        }
+    };
 
 
     /**

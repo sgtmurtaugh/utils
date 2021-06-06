@@ -40,7 +40,7 @@ public interface StringMapper extends TypeMapper<String> {
     }
 
     /**
-     * Delegates to {@link #map(String, boolean, boolean, String)} with usage of {@link #isTrimStrings()} and {@link
+     * Delegates to {@link #map(String, boolean, boolean, String)} with usage of {@link #isTrimString()} and {@link
      * #isEmptyStringNull()}
      *
      * @param s - string to map
@@ -50,7 +50,7 @@ public interface StringMapper extends TypeMapper<String> {
      */
     @Override
     default String map(String s, String defaultValue) {
-        return this.map(s, this.isTrimStrings(), this.isEmptyStringNull(), defaultValue);
+        return this.map(s, this.isTrimString(), this.isEmptyStringNull(), defaultValue);
     }
 
     /**

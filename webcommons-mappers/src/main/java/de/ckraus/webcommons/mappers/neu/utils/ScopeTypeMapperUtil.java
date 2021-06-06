@@ -1,7 +1,7 @@
 package de.ckraus.webcommons.mappers.neu.utils;
 
 import de.ckraus.commons.mapper.TypeMapper;
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import lombok.NonNull;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
@@ -29,7 +29,7 @@ public interface ScopeTypeMapperUtil<M extends TypeMapper<T>, T, S> {
      *
      * @return
      */
-    TypeMapperUtils getTypeMapperUtils();
+    TypeMapperFactory getTypeMapperUtils();
 
     /**
      * @param scope

@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.servlet;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.LocalDateScopeMapper;
 import lombok.NonNull;
@@ -25,7 +25,7 @@ public interface LocalDateMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalDate getLocalDateParameter(@NonNull String name) {
-        return TypeMapperUtils.getLocalDateMapper().map(this.getParameter(name));
+        return TypeMapperFactory.getLocalDateMapper().map(this.getParameter(name));
     }
 
     /**
@@ -35,7 +35,7 @@ public interface LocalDateMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalDate getLocalDateParameter(@NonNull String name, LocalDate defaultValue) {
-        return TypeMapperUtils.getLocalDateMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperFactory.getLocalDateMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -46,7 +46,7 @@ public interface LocalDateMapperServletRequest extends ServletRequest, ServletRe
      * @return
      */
     default LocalDate getLocalDateParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getLocalDateMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperFactory.getLocalDateMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -59,8 +59,8 @@ public interface LocalDateMapperServletRequest extends ServletRequest, ServletRe
      */
     default LocalDate getLocalDateParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                             LocalDate defaultValue) {
-        return TypeMapperUtils.getLocalDateMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperFactory.getLocalDateMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

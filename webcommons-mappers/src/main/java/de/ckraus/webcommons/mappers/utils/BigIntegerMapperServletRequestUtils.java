@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
@@ -22,9 +22,9 @@ public interface BigIntegerMapperServletRequestUtils
      */
     default BigInteger getBigIntegerParameter(ServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getBigIntegerMapper().map(request.getParameter(name));
+            return TypeMapperFactory.getBigIntegerMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getBigIntegerMapper().getDefaultValue();
+        return TypeMapperFactory.getBigIntegerMapper().getDefaultValue();
     }
 
     /**
@@ -36,7 +36,7 @@ public interface BigIntegerMapperServletRequestUtils
      */
     default BigInteger getBigIntegerParameter(ServletRequest request, String name, BigInteger defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getBigIntegerMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperFactory.getBigIntegerMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -52,10 +52,10 @@ public interface BigIntegerMapperServletRequestUtils
     default BigInteger getBigIntegerParameter(ServletRequest request, String name, boolean bTrim,
                                               boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getBigIntegerMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull);
+            return TypeMapperFactory.getBigIntegerMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getBigIntegerMapper().getDefaultValue();
+        return TypeMapperFactory.getBigIntegerMapper().getDefaultValue();
     }
 
     /**
@@ -70,8 +70,8 @@ public interface BigIntegerMapperServletRequestUtils
     default BigInteger getBigIntegerParameter(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
                                               BigInteger defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getBigIntegerMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+            return TypeMapperFactory.getBigIntegerMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
     }
@@ -84,8 +84,8 @@ public interface BigIntegerMapperServletRequestUtils
      */
     default boolean hasBigIntegerParameter(ServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getBigIntegerMapper()
-                                       .map(request.getParameter(name), (BigInteger) null);
+            var value = TypeMapperFactory.getBigIntegerMapper()
+                                         .map(request.getParameter(name), (BigInteger) null);
             return (null != value);
         }
         return false;
@@ -100,8 +100,8 @@ public interface BigIntegerMapperServletRequestUtils
      */
     default boolean hasBigIntegerParameterWithValue(ServletRequest request, String name, BigInteger value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            return new EqualsBuilder().append(value, TypeMapperUtils.getBigIntegerMapper()
-                                                                    .map(request.getParameter(name), (BigInteger) null))
+            return new EqualsBuilder().append(value, TypeMapperFactory.getBigIntegerMapper()
+                                                                      .map(request.getParameter(name), (BigInteger) null))
                                       .isEquals();
         }
         return false;

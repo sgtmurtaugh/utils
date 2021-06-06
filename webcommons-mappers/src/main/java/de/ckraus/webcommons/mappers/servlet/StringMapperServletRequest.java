@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.servlet;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.StringScopeMapper;
 import lombok.NonNull;
@@ -24,7 +24,7 @@ public interface StringMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default String getStringParameter(@NonNull String name) {
-        return TypeMapperUtils.getStringMapper().map(this.getParameter(name));
+        return TypeMapperFactory.getStringMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface StringMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default String getStringParameter(@NonNull String name, String defaultValue) {
-        return TypeMapperUtils.getStringMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperFactory.getStringMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface StringMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default String getStringParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getStringMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperFactory.getStringMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -57,8 +57,8 @@ public interface StringMapperServletRequest extends ServletRequest, ServletReque
      * @return
      */
     default String getStringParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, String defaultValue) {
-        return TypeMapperUtils.getStringMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperFactory.getStringMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

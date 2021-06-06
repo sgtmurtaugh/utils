@@ -15,8 +15,17 @@ class TypeMapperTest {
 
     // due to the fact, that all methods delegate to the map(String, boolean, boolean, E) method this dummy
     // implementation (see mapper lambda) all objects are mapped to the mappers given defaultValue!
-    private final TypeMapper<Object> mapper = (str, bTrim, bEmptyIsNull, defVal) -> defVal;
+    private final TypeMapper<Object> mapper = new TypeMapper<>() {
+        @Override
+        public Class<Object> forType() {
+            return Object.class;
+        }
 
+        @Override
+        public Object map(String s, boolean bTrim, boolean bEmptyIsNull, Object defaultValue) {
+            return defaultValue;
+        }
+    };
 
     /**
      * test for {@link TypeMapper#getDefaultValue()}
@@ -27,11 +36,11 @@ class TypeMapperTest {
     }
 
     /**
-     * test for {@link TypeMapper#isTrimStrings()}
+     * test for {@link TypeMapper#isTrimString()}
      */
     @Test
-    void isTrimStrings() {
-        assertTrue(mapper.isTrimStrings());
+    void isTrimString() {
+        assertTrue(mapper.isTrimString());
     }
 
     /**

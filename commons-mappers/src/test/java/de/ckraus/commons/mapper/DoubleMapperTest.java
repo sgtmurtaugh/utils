@@ -21,8 +21,7 @@ class DoubleMapperTest {
 
     private final static Double ANOTHER_DEFAULT_VALUE = Double.parseDouble("64");
 
-    private final DoubleMapper mapper = new DoubleMapper() {
-    };
+    private final DoubleMapper mapper = () -> Double.class;
 
 
     /**

@@ -21,8 +21,7 @@ class IntegerMapperTest {
 
     private final static Integer ANOTHER_DEFAULT_VALUE = Integer.parseInt("64");
 
-    private final IntegerMapper mapper = new IntegerMapper() {
-    };
+    private final IntegerMapper mapper = () -> Integer.class;
 
 
     /**

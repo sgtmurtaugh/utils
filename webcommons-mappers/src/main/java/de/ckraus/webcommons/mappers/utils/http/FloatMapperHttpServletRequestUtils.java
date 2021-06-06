@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils.http;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.utils.FloatMapperScopeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -22,9 +22,9 @@ public interface FloatMapperHttpServletRequestUtils
      */
     default Float getFloatParameter(HttpServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getFloatMapper().map(request.getParameter(name));
+            return TypeMapperFactory.getFloatMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getFloatMapper().getDefaultValue();
+        return TypeMapperFactory.getFloatMapper().getDefaultValue();
     }
 
     /**
@@ -36,7 +36,7 @@ public interface FloatMapperHttpServletRequestUtils
      */
     default Float getFloatParameter(HttpServletRequest request, String name, Float defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getFloatMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperFactory.getFloatMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -51,9 +51,9 @@ public interface FloatMapperHttpServletRequestUtils
      */
     default Float getFloatParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getFloatMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
+            return TypeMapperFactory.getFloatMapper().map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getFloatMapper().getDefaultValue();
+        return TypeMapperFactory.getFloatMapper().getDefaultValue();
     }
 
     /**
@@ -68,8 +68,8 @@ public interface FloatMapperHttpServletRequestUtils
     default Float getFloatParameter(HttpServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
                                     Float defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getFloatMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+            return TypeMapperFactory.getFloatMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
     }
@@ -82,7 +82,7 @@ public interface FloatMapperHttpServletRequestUtils
      */
     default boolean hasFloatParameter(HttpServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getFloatMapper().map(request.getParameter(name), (Float) null);
+            var value = TypeMapperFactory.getFloatMapper().map(request.getParameter(name), (Float) null);
             return (null != value);
         }
         return false;
@@ -98,7 +98,7 @@ public interface FloatMapperHttpServletRequestUtils
     default boolean hasFloatParameterWithValue(HttpServletRequest request, String name, Float value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getFloatMapper().map(request.getParameter(name), (Float) null))
+                    TypeMapperFactory.getFloatMapper().map(request.getParameter(name), (Float) null))
                                       .isEquals();
         }
         return false;

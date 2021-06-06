@@ -3,7 +3,9 @@ package de.ckraus.commons.mapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
+@Component("doubleMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
@@ -13,7 +15,7 @@ public class DoubleMapperImpl extends NumericTypeMapperBase<Double> implements D
      * Constructor
      */
     public DoubleMapperImpl() {
-        super();
+        super(Double.class);
     }
 
     /**
@@ -22,7 +24,7 @@ public class DoubleMapperImpl extends NumericTypeMapperBase<Double> implements D
      * @param defaultValue
      */
     public DoubleMapperImpl(Double defaultValue) {
-        super(defaultValue);
+        super(Double.class, defaultValue);
     }
 
 }

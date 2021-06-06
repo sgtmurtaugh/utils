@@ -3,7 +3,9 @@ package de.ckraus.commons.mapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
+@Component("floatMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
@@ -13,7 +15,7 @@ public class FloatMapperImpl extends NumericTypeMapperBase<Float> implements Flo
      * Constructor
      */
     public FloatMapperImpl() {
-        super();
+        super(Float.class);
     }
 
     /**
@@ -22,7 +24,7 @@ public class FloatMapperImpl extends NumericTypeMapperBase<Float> implements Flo
      * @param defaultValue
      */
     public FloatMapperImpl(Float defaultValue) {
-        super(defaultValue);
+        super(Float.class, defaultValue);
     }
 
 }

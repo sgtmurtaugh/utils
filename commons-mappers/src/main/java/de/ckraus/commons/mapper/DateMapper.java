@@ -81,7 +81,7 @@ public interface DateMapper extends TypeMapper<Date> {
      */
     default Date map(String s, DateFormat format, boolean lenient, Date defaultValue) {
         var date = defaultValue;
-        var preparedString = this.prepare(s, this.isTrimStrings(), this.isEmptyStringNull());
+        var preparedString = this.prepare(s, this.isTrimString(), this.isEmptyStringNull());
 
         if (StringUtils.isNotEmpty(preparedString) && null != format) {
             try {

@@ -1,9 +1,12 @@
 package de.ckraus.commons.mapper;
 
+import de.ckraus.commons.mapper.conf.ApplicationContextProvider;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
+@Component("characterMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
@@ -23,7 +26,7 @@ public class CharacterMapperImpl extends TypeMapperBase<Character> implements Ch
      * Constructor
      */
     public CharacterMapperImpl(Character defaultValue) {
-        super(defaultValue);
+        super(Character.class, defaultValue);
 
         this.evaluateCodePoints = CharacterMapper.super.isEvaluateCodePoints();
     }
@@ -44,7 +47,7 @@ public class CharacterMapperImpl extends TypeMapperBase<Character> implements Ch
      * @param bIsEvaluateCodePoints
      */
     public CharacterMapperImpl(Character defaultValue, boolean bIsEvaluateCodePoints) {
-        super(defaultValue);
+        super(Character.class, defaultValue);
 
         this.evaluateCodePoints = bIsEvaluateCodePoints;
     }
@@ -54,4 +57,10 @@ public class CharacterMapperImpl extends TypeMapperBase<Character> implements Ch
         return this.evaluateCodePoints;
     }
 
+    @Override
+    public IntegerMapper getIntegerMapper() {
+        TypeMapperFactoryImpl typeMapperFactory =
+                ApplicationContextProvider.getApplicationContext().getBean(TypeMapperFactoryImpl.class);
+        return typeMapperFactory.getIntegerMapper();
+    }
 }

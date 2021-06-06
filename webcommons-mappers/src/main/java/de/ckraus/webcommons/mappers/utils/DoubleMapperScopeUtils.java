@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 /**
@@ -17,9 +17,9 @@ public interface DoubleMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Double getDoubleAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getDoubleMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperFactory.getDoubleMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getDoubleMapper().getDefaultValue();
+        return TypeMapperFactory.getDoubleMapper().getDefaultValue();
     }
 
     /**
@@ -31,7 +31,7 @@ public interface DoubleMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Double getDoubleAttribute(E e, String name, Double defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getDoubleMapper().mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperFactory.getDoubleMapper().mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -44,7 +44,7 @@ public interface DoubleMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasDoubleAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getDoubleMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperFactory.getDoubleMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -60,7 +60,7 @@ public interface DoubleMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasDoubleAttributeWithValue(E e, String name, Double value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDoubleMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperFactory.getDoubleMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

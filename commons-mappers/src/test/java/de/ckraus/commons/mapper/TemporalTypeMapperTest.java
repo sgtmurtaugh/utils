@@ -4,9 +4,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.temporal.Temporal;
 
-public class TemporalMapperBaseTest {
+public class TemporalTypeMapperTest {
 
-    private final TypeMapper<Temporal> mapper = new TemporalTypeMapperBase<>() {
+    private final TemporalTypeMapper mapper = new TemporalTypeMapper() {
         @Override
         public Temporal map(String s, DateTimeFormatter formatter, Temporal defaultValue) {
             return defaultValue;
@@ -18,7 +18,12 @@ public class TemporalMapperBaseTest {
         }
 
         @Override
-        public Temporal map(String s, boolean bTrim, boolean bEmptyIsNull, Temporal defaultValue) {
+        public Class forType() {
+            return Temporal.class;
+        }
+
+        @Override
+        public Object map(String s, boolean bTrim, boolean bEmptyIsNull, Object defaultValue) {
             return defaultValue;
         }
     };

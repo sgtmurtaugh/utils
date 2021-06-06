@@ -3,10 +3,12 @@ package de.ckraus.commons.mapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component("booleanMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused", "WeakerAccess" })
@@ -43,7 +45,7 @@ public class BooleanMapperImpl extends TypeMapperBase<Boolean> implements Boolea
      * Constructor
      */
     public BooleanMapperImpl() {
-        super();
+        super(Boolean.class);
     }
 
     /**
@@ -52,7 +54,7 @@ public class BooleanMapperImpl extends TypeMapperBase<Boolean> implements Boolea
      * @param defaultValue
      */
     public BooleanMapperImpl(Boolean defaultValue) {
-        super(defaultValue);
+        super(Boolean.class, defaultValue);
     }
 
 

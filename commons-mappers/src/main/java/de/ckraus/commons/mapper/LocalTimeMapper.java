@@ -65,7 +65,7 @@ public interface LocalTimeMapper extends TemporalTypeMapper<LocalTime> {
     @Override
     default LocalTime map(String s, DateTimeFormatter formatter, LocalTime defaultValue) {
         var localTime = defaultValue;
-        var preparedString = this.prepare(s, this.isTrimStrings(), this.isEmptyStringNull());
+        var preparedString = this.prepare(s, this.isTrimString(), this.isEmptyStringNull());
 
         if (StringUtils.isNotEmpty(preparedString) && null != formatter) {
             try {

@@ -4,26 +4,39 @@ import de.ckraus.commons.logging.Logger;
 import de.ckraus.commons.logging.slf4j.Slf4JLogger;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "WeakerAccess", "javadoc" })
-public abstract class TypeMapperBase<E> implements TypeMapper<E> {
+public abstract class TypeMapperBase<T> implements TypeMapper<T> {
 
     protected final Logger<?> log = new Slf4JLogger(TypeMapperBase.class);
 
-    private final E defaultValue;
+    public static final boolean DEFAULT_EMPTY_STRING_NULL = Boolean.TRUE;
+    public static final boolean DEFAULT_TRIM_STRING = Boolean.TRUE;
+
+    @Getter(AccessLevel.NONE)
+    private final Class<T> clazzType;
+    private final T defaultValue;
 
     private final boolean emptyStringNull;
-    private final boolean trimStrings;
+    private final boolean trimString;
 
+    /**
+     *
+     * @return
+     */
+    public Class<T> forType() {
+        return this.clazzType;
+    }
 
     /**
      * Constructor
      */
-    protected TypeMapperBase() {
-        this(null);
+    protected TypeMapperBase(@NonNull Class<T> clazzType) {
+        this(clazzType, null);
     }
 
     /**
@@ -31,12 +44,8 @@ public abstract class TypeMapperBase<E> implements TypeMapper<E> {
      *
      * @param defaultValue
      */
-    protected TypeMapperBase(E defaultValue) {
-        super();
-
-        this.defaultValue = defaultValue;
-        this.trimStrings = TypeMapper.super.isTrimStrings();
-        this.emptyStringNull = TypeMapper.super.isEmptyStringNull();
+    protected TypeMapperBase(@NonNull Class<T> clazzType, T defaultValue) {
+        this(clazzType, defaultValue, DEFAULT_TRIM_STRING, DEFAULT_EMPTY_STRING_NULL);
     }
 
     /**
@@ -46,11 +55,13 @@ public abstract class TypeMapperBase<E> implements TypeMapper<E> {
      * @param bTrimStrings
      * @param bEmptyStringNull
      */
-    protected TypeMapperBase(E defaultValue, boolean bTrimStrings, boolean bEmptyStringNull) {
+    protected TypeMapperBase(@NonNull Class<T> clazzType, T defaultValue, boolean bTrimStrings, boolean bEmptyStringNull) {
         super();
 
+        //this.forType =
+        this.clazzType = clazzType;
         this.defaultValue = defaultValue;
-        this.trimStrings = bTrimStrings;
+        this.trimString = bTrimStrings;
         this.emptyStringNull = bEmptyStringNull;
     }
 

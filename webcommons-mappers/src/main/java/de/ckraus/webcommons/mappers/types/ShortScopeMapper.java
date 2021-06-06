@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.types;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ScopeMapper;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
@@ -18,7 +18,7 @@ public interface ShortScopeMapper extends ScopeMapper {
      * @return
      */
     default Short getShortAttribute(@NonNull String name) {
-        return TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(name));
+        return TypeMapperFactory.getShortMapper().mapObject(this.getAttribute(name));
     }
 
     /**
@@ -28,7 +28,7 @@ public interface ShortScopeMapper extends ScopeMapper {
      * @return
      */
     default Short getShortAttribute(@NonNull String name, Short defaultValue) {
-        return TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(name), defaultValue);
+        return TypeMapperFactory.getShortMapper().mapObject(this.getAttribute(name), defaultValue);
     }
 
     /**
@@ -38,7 +38,7 @@ public interface ShortScopeMapper extends ScopeMapper {
      */
     default boolean hasShortAttribute(@NonNull String name) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
-            var value = TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(name), null);
+            var value = TypeMapperFactory.getShortMapper().mapObject(this.getAttribute(name), null);
             return (null != value);
         }
         return false;
@@ -53,7 +53,7 @@ public interface ShortScopeMapper extends ScopeMapper {
     default boolean hasShortAttributeWithValue(@NonNull String name, Short value) {
         if (StringUtils.isNotEmpty(name) && null != this.getAttribute(name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getShortMapper().mapObject(this.getAttribute(name), null)).isEquals();
+                    TypeMapperFactory.getShortMapper().mapObject(this.getAttribute(name), null)).isEquals();
         }
         return false;
     }

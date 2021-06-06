@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 /**
@@ -17,9 +17,9 @@ public interface CharacterMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Character getCharacterAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getCharacterMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperFactory.getCharacterMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getCharacterMapper().getDefaultValue();
+        return TypeMapperFactory.getCharacterMapper().getDefaultValue();
     }
 
     /**
@@ -31,8 +31,8 @@ public interface CharacterMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Character getCharacterAttribute(E e, String name, Character defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getCharacterMapper()
-                                  .mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperFactory.getCharacterMapper()
+                                    .mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -45,7 +45,7 @@ public interface CharacterMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasCharacterAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getCharacterMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperFactory.getCharacterMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -61,7 +61,7 @@ public interface CharacterMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasCharacterAttributeWithValue(E e, String name, Character value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getCharacterMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperFactory.getCharacterMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

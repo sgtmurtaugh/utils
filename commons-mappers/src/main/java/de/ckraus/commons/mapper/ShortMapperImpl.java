@@ -3,7 +3,9 @@ package de.ckraus.commons.mapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
+@Component("shortMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
@@ -13,7 +15,7 @@ public class ShortMapperImpl extends NumericTypeMapperBase<Short> implements Sho
      * Constructor
      */
     public ShortMapperImpl() {
-        super();
+        super(Short.class);
     }
 
     /**
@@ -22,7 +24,7 @@ public class ShortMapperImpl extends NumericTypeMapperBase<Short> implements Sho
      * @param defaultValue
      */
     public ShortMapperImpl(Short defaultValue) {
-        super(defaultValue);
+        super(Short.class, defaultValue);
     }
 
 }

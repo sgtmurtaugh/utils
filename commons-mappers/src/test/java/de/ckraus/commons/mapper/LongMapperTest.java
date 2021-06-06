@@ -21,8 +21,7 @@ class LongMapperTest {
 
     private final static Long ANOTHER_DEFAULT_VALUE = Long.parseLong("64");
 
-    private final LongMapper mapper = new LongMapper() {
-    };
+    private final LongMapper mapper = () -> Long.class;
 
 
     /**

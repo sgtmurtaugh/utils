@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.servlet;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.BigIntegerScopeMapper;
 import lombok.NonNull;
@@ -26,7 +26,7 @@ public interface BigIntegerMapperServletRequest
      * @return
      */
     default BigInteger getBigIntegerParameter(@NonNull String name) {
-        return TypeMapperUtils.getBigIntegerMapper().map(this.getParameter(name));
+        return TypeMapperFactory.getBigIntegerMapper().map(this.getParameter(name));
     }
 
     /**
@@ -36,7 +36,7 @@ public interface BigIntegerMapperServletRequest
      * @return
      */
     default BigInteger getBigIntegerParameter(@NonNull String name, BigInteger defaultValue) {
-        return TypeMapperUtils.getBigIntegerMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperFactory.getBigIntegerMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -47,7 +47,7 @@ public interface BigIntegerMapperServletRequest
      * @return
      */
     default BigInteger getBigIntegerParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getBigIntegerMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperFactory.getBigIntegerMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -60,8 +60,8 @@ public interface BigIntegerMapperServletRequest
      */
     default BigInteger getBigIntegerParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                               BigInteger defaultValue) {
-        return TypeMapperUtils.getBigIntegerMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperFactory.getBigIntegerMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

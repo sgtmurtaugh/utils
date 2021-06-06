@@ -1,7 +1,7 @@
 package de.ckraus.webcommons.mappers;
 
 import de.ckraus.commons.mapper.StringMapper;
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -15,7 +15,7 @@ public interface ServletRequestScopeMapper extends ScopeMapper {
      * @return
      */
     private StringMapper getStringMapper() {
-        return TypeMapperUtils.getStringMapper();
+        return TypeMapperFactory.getStringMapper();
     }
 
     /**

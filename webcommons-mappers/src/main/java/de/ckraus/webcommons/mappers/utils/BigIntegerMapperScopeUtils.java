@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import java.math.BigInteger;
@@ -19,9 +19,9 @@ public interface BigIntegerMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default BigInteger getBigIntegerAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getBigIntegerMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperFactory.getBigIntegerMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getBigIntegerMapper().getDefaultValue();
+        return TypeMapperFactory.getBigIntegerMapper().getDefaultValue();
     }
 
     /**
@@ -33,8 +33,8 @@ public interface BigIntegerMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default BigInteger getBigIntegerAttribute(E e, String name, BigInteger defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getBigIntegerMapper()
-                                  .mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperFactory.getBigIntegerMapper()
+                                    .mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -47,7 +47,7 @@ public interface BigIntegerMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasBigIntegerAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getBigIntegerMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperFactory.getBigIntegerMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -63,7 +63,7 @@ public interface BigIntegerMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasBigIntegerAttributeWithValue(E e, String name, BigInteger value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getBigIntegerMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperFactory.getBigIntegerMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.servlet;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.LocalDateTimeScopeMapper;
 import lombok.NonNull;
@@ -26,7 +26,7 @@ public interface LocalDateTimeMapperServletRequest
      * @return
      */
     default LocalDateTime getLocalDateTimeParameter(@NonNull String name) {
-        return TypeMapperUtils.getLocalDateTimeMapper().map(this.getParameter(name));
+        return TypeMapperFactory.getLocalDateTimeMapper().map(this.getParameter(name));
     }
 
     /**
@@ -36,7 +36,7 @@ public interface LocalDateTimeMapperServletRequest
      * @return
      */
     default LocalDateTime getLocalDateTimeParameter(@NonNull String name, LocalDateTime defaultValue) {
-        return TypeMapperUtils.getLocalDateTimeMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperFactory.getLocalDateTimeMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -47,7 +47,7 @@ public interface LocalDateTimeMapperServletRequest
      * @return
      */
     default LocalDateTime getLocalDateTimeParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getLocalDateTimeMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperFactory.getLocalDateTimeMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -60,8 +60,8 @@ public interface LocalDateTimeMapperServletRequest
      */
     default LocalDateTime getLocalDateTimeParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull,
                                                     LocalDateTime defaultValue) {
-        return TypeMapperUtils.getLocalDateTimeMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperFactory.getLocalDateTimeMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }

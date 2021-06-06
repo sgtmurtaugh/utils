@@ -3,7 +3,9 @@ package de.ckraus.commons.mapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
+@Component("longMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
@@ -13,7 +15,7 @@ public class LongMapperImpl extends NumericTypeMapperBase<Long> implements LongM
      * Constructor
      */
     public LongMapperImpl() {
-        super();
+        super(Long.class);
     }
 
     /**
@@ -22,7 +24,7 @@ public class LongMapperImpl extends NumericTypeMapperBase<Long> implements LongM
      * @param defaultValue
      */
     public LongMapperImpl(Long defaultValue) {
-        super(defaultValue);
+        super(Long.class, defaultValue);
     }
 
 }

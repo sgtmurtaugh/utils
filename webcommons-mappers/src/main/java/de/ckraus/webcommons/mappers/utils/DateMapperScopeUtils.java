@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import java.util.Date;
@@ -19,9 +19,9 @@ public interface DateMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Date getDateAttribute(E e, String name) {
         if (null != e) {
-            return TypeMapperUtils.getDateMapper().mapObject(this.getAttribute(e, name));
+            return TypeMapperFactory.getDateMapper().mapObject(this.getAttribute(e, name));
         }
-        return TypeMapperUtils.getDateMapper().getDefaultValue();
+        return TypeMapperFactory.getDateMapper().getDefaultValue();
     }
 
     /**
@@ -33,7 +33,7 @@ public interface DateMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default Date getDateAttribute(E e, String name, Date defaultValue) {
         if (null != e) {
-            return TypeMapperUtils.getDateMapper().mapObject(this.getAttribute(e, name), defaultValue);
+            return TypeMapperFactory.getDateMapper().mapObject(this.getAttribute(e, name), defaultValue);
         }
         return defaultValue;
     }
@@ -46,7 +46,7 @@ public interface DateMapperScopeUtils<E> extends ScopeUtils<E> {
      */
     default boolean hasDateAttribute(E e, String name) {
         if (this.hasAttribute(e, name)) {
-            var value = TypeMapperUtils.getDateMapper().mapObject(this.getAttribute(e, name), null);
+            var value = TypeMapperFactory.getDateMapper().mapObject(this.getAttribute(e, name), null);
             return (null != value);
         }
         return false;
@@ -62,7 +62,7 @@ public interface DateMapperScopeUtils<E> extends ScopeUtils<E> {
     default boolean hasDateAttributeWithValue(E e, String name, Date value) {
         if (this.hasAttribute(e, name)) {
             return new EqualsBuilder().append(value,
-                    TypeMapperUtils.getDateMapper().mapObject(this.getAttribute(e, name), null))
+                    TypeMapperFactory.getDateMapper().mapObject(this.getAttribute(e, name), null))
                                       .isEquals();
         }
         return false;

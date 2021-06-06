@@ -21,8 +21,7 @@ class ShortMapperTest {
 
     private final static Short ANOTHER_DEFAULT_VALUE = Short.parseShort("64");
 
-    private final ShortMapper mapper = new ShortMapper() {
-    };
+    private final ShortMapper mapper = () -> Short.class;
 
 
     /**

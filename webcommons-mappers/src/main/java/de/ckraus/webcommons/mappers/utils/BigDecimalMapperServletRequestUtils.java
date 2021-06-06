@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
@@ -22,9 +22,9 @@ public interface BigDecimalMapperServletRequestUtils
      */
     static BigDecimal getBigDecimalParameter(ServletRequest request, String name) {
         if (null != request) {
-            return TypeMapperUtils.getBigDecimalMapper().map(request.getParameter(name));
+            return TypeMapperFactory.getBigDecimalMapper().map(request.getParameter(name));
         }
-        return TypeMapperUtils.getBigDecimalMapper().getDefaultValue();
+        return TypeMapperFactory.getBigDecimalMapper().getDefaultValue();
     }
 
     /**
@@ -36,7 +36,7 @@ public interface BigDecimalMapperServletRequestUtils
      */
     default BigDecimal getBigDecimalParameter(ServletRequest request, String name, BigDecimal defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getBigDecimalMapper().map(request.getParameter(name), defaultValue);
+            return TypeMapperFactory.getBigDecimalMapper().map(request.getParameter(name), defaultValue);
         }
         return defaultValue;
     }
@@ -52,10 +52,10 @@ public interface BigDecimalMapperServletRequestUtils
     default BigDecimal getBigDecimalParameter(ServletRequest request, String name, boolean bTrim,
                                               boolean bEmptyIsNull) {
         if (null != request) {
-            return TypeMapperUtils.getBigDecimalMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull);
+            return TypeMapperFactory.getBigDecimalMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull);
         }
-        return TypeMapperUtils.getBigDecimalMapper().getDefaultValue();
+        return TypeMapperFactory.getBigDecimalMapper().getDefaultValue();
     }
 
     /**
@@ -70,8 +70,8 @@ public interface BigDecimalMapperServletRequestUtils
     default BigDecimal getBigDecimalParameter(ServletRequest request, String name, boolean bTrim, boolean bEmptyIsNull,
                                               BigDecimal defaultValue) {
         if (null != request) {
-            return TypeMapperUtils.getBigDecimalMapper()
-                                  .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+            return TypeMapperFactory.getBigDecimalMapper()
+                                    .map(request.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
         }
         return defaultValue;
     }
@@ -84,8 +84,8 @@ public interface BigDecimalMapperServletRequestUtils
      */
     default boolean hasBigDecimalParameter(ServletRequest request, String name) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            var value = TypeMapperUtils.getBigDecimalMapper()
-                                       .map(request.getParameter(name), (BigDecimal) null);
+            var value = TypeMapperFactory.getBigDecimalMapper()
+                                         .map(request.getParameter(name), (BigDecimal) null);
             return (null != value);
         }
         return false;
@@ -100,8 +100,8 @@ public interface BigDecimalMapperServletRequestUtils
      */
     default boolean hasBigDecimalParameterWithValue(ServletRequest request, String name, BigDecimal value) {
         if (null != request && StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(request.getParameter(name))) {
-            return new EqualsBuilder().append(value, TypeMapperUtils.getBigDecimalMapper()
-                                                                    .map(request.getParameter(name), (BigDecimal) null))
+            return new EqualsBuilder().append(value, TypeMapperFactory.getBigDecimalMapper()
+                                                                      .map(request.getParameter(name), (BigDecimal) null))
                                       .isEquals();
         }
         return false;

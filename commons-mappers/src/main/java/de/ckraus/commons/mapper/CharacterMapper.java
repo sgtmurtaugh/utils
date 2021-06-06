@@ -1,6 +1,5 @@
 package de.ckraus.commons.mapper;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -144,7 +143,7 @@ public interface CharacterMapper extends TypeMapper<Character> {
      * @return <p></p>
      */
     default Character map(String s, boolean bEvaluateCodePoints, Character defaultValue) {
-        return this.map(s, this.isTrimStrings(), this.isEmptyStringNull(), bEvaluateCodePoints, defaultValue);
+        return this.map(s, this.isTrimString(), this.isEmptyStringNull(), bEvaluateCodePoints, defaultValue);
     }
 
     /**
@@ -182,8 +181,6 @@ public interface CharacterMapper extends TypeMapper<Character> {
      *
      * @return
      */
-    default IntegerMapper getIntegerMapper() {
-        return TypeMapperUtils.getDefaults().getIntegerMapper();
-    }
+    IntegerMapper getIntegerMapper();
 
 }

@@ -3,7 +3,9 @@ package de.ckraus.commons.mapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
+@Component("stringMapper")
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @SuppressWarnings({ "javadoc", "unused" })
@@ -13,7 +15,7 @@ public class StringMapperImpl extends TypeMapperBase<String> implements StringMa
      * Constructor
      */
     public StringMapperImpl() {
-        super();
+        super(String.class);
     }
 
     /**
@@ -22,7 +24,7 @@ public class StringMapperImpl extends TypeMapperBase<String> implements StringMa
      * @param defaultValue
      */
     public StringMapperImpl(String defaultValue) {
-        super(defaultValue);
+        super(String.class, defaultValue);
     }
 
 }

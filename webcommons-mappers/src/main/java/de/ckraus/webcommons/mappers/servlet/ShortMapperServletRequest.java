@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.servlet;
 
-import de.ckraus.commons.mapper.utils.TypeMapperUtils;
+import de.ckraus.commons.mapper.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.ServletRequestScopeMapper;
 import de.ckraus.webcommons.mappers.types.ShortScopeMapper;
 import lombok.NonNull;
@@ -24,7 +24,7 @@ public interface ShortMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Short getShortParameter(@NonNull String name) {
-        return TypeMapperUtils.getShortMapper().map(this.getParameter(name));
+        return TypeMapperFactory.getShortMapper().map(this.getParameter(name));
     }
 
     /**
@@ -34,7 +34,7 @@ public interface ShortMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Short getShortParameter(@NonNull String name, Short defaultValue) {
-        return TypeMapperUtils.getShortMapper().map(this.getParameter(name), defaultValue);
+        return TypeMapperFactory.getShortMapper().map(this.getParameter(name), defaultValue);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface ShortMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Short getShortParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull) {
-        return TypeMapperUtils.getShortMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
+        return TypeMapperFactory.getShortMapper().map(this.getParameter(name), bTrim, bEmptyIsNull);
     }
 
     /**
@@ -57,8 +57,8 @@ public interface ShortMapperServletRequest extends ServletRequest, ServletReques
      * @return
      */
     default Short getShortParameter(@NonNull String name, boolean bTrim, boolean bEmptyIsNull, Short defaultValue) {
-        return TypeMapperUtils.getShortMapper()
-                              .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
+        return TypeMapperFactory.getShortMapper()
+                                .map(this.getParameter(name), bTrim, bEmptyIsNull, defaultValue);
     }
 
 }
