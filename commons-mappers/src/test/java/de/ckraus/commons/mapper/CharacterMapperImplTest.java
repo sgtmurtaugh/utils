@@ -1,11 +1,10 @@
 package de.ckraus.commons.mapper;
 
-import de.ckraus.commons.mapper.conf.ApplicationContextProvider;
-import de.ckraus.commons.mapper.conf.MapperConfig;
+import de.ckraus.commons.mapper.config.ApplicationContextProvider;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.ApplicationContext;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class CharacterMapperImplTest {
 
@@ -23,7 +22,8 @@ class CharacterMapperImplTest {
     void getIntegerMapper() {
         assertNotNull(mapper.getIntegerMapper());
 
-        TypeMapperFactoryImpl typeMapperFactory = ApplicationContextProvider.getApplicationContext().getBean(TypeMapperFactoryImpl.class);
+        TypeMapperFactoryImpl typeMapperFactory =
+                ApplicationContextProvider.getApplicationContext().getBean(TypeMapperFactoryImpl.class);
 
         IntegerMapper integerMapper = typeMapperFactory.getIntegerMapper();
         assertEquals(integerMapper, mapper.getIntegerMapper());

@@ -1,6 +1,6 @@
 package de.ckraus.commons.mapper;
 
-import de.ckraus.commons.mapper.conf.ApplicationContextProvider;
+import de.ckraus.commons.mapper.config.ApplicationContextProvider;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -59,8 +59,6 @@ public class CharacterMapperImpl extends TypeMapperBase<Character> implements Ch
 
     @Override
     public IntegerMapper getIntegerMapper() {
-        TypeMapperFactoryImpl typeMapperFactory =
-                ApplicationContextProvider.getApplicationContext().getBean(TypeMapperFactoryImpl.class);
-        return typeMapperFactory.getIntegerMapper();
+        return ApplicationContextProvider.getMapperConfig().getTypeMapperFactory().getMapperForType(Integer.class);
     }
 }

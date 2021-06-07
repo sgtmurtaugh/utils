@@ -1,8 +1,7 @@
 package de.ckraus.commons.mapper;
 
-import de.ckraus.commons.mapper.conf.ApplicationContextProvider;
+import de.ckraus.commons.mapper.config.ApplicationContextProvider;
 import lombok.Getter;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -10,6 +9,7 @@ import java.util.concurrent.ConcurrentMap;
 
 @Component("typeMapperFactory")
 @Getter
+@SuppressWarnings({"javadoc", "unused"})
 public class TypeMapperFactoryImpl implements TypeMapperFactory {
 
     private final ConcurrentMap<Class<? extends TypeMapper>, TypeMapper<?>> registeredTypeMappers =
@@ -17,54 +17,52 @@ public class TypeMapperFactoryImpl implements TypeMapperFactory {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        var bigDecimalMapper = ApplicationContextProvider.getApplicationContext().getBean(BigDecimalMapperImpl.class);
+        var bigDecimalMapper = ApplicationContextProvider.getMapperConfig().getBigDecimalMapper();
         this.addTypeMapper(bigDecimalMapper);
 
-        var bigInteger = ApplicationContextProvider.getApplicationContext().getBean(BigIntegerMapperImpl.class);
+        var bigInteger = ApplicationContextProvider.getMapperConfig().getBigIntegerMapper();
         this.addTypeMapper(bigInteger);
 
-        var booleanMapper = ApplicationContextProvider.getApplicationContext().getBean(BooleanMapperImpl.class);
+        var booleanMapper = ApplicationContextProvider.getMapperConfig().getBooleanMapper();
         this.addTypeMapper(booleanMapper);
 
-        var byteMapper = ApplicationContextProvider.getApplicationContext().getBean(ByteMapperImpl.class);
+        var byteMapper = ApplicationContextProvider.getMapperConfig().getByteMapper();
         this.addTypeMapper(byteMapper);
 
-        var characterMapper = ApplicationContextProvider.getApplicationContext().getBean(CharacterMapperImpl.class);
+        var characterMapper = ApplicationContextProvider.getMapperConfig().getCharacterMapper();
         this.addTypeMapper(characterMapper);
 
-        var dateMapper = ApplicationContextProvider.getApplicationContext().getBean(DateMapperImpl.class);
+        var dateMapper = ApplicationContextProvider.getMapperConfig().getDateMapper();
         this.addTypeMapper(dateMapper);
 
-        var doubleMapper = ApplicationContextProvider.getApplicationContext().getBean(DoubleMapperImpl.class);
+        var doubleMapper = ApplicationContextProvider.getMapperConfig().getDoubleMapper();
         this.addTypeMapper(doubleMapper);
 
-        var floatMapper = ApplicationContextProvider.getApplicationContext().getBean(FloatMapperImpl.class);
+        var floatMapper = ApplicationContextProvider.getMapperConfig().getFloatMapper();
         this.addTypeMapper(floatMapper);
 
-        var gregorianCalendarMapper =
-                ApplicationContextProvider.getApplicationContext().getBean(GregorianCalendarMapperImpl.class);
+        var gregorianCalendarMapper = ApplicationContextProvider.getMapperConfig().getGregorianCalendarMapper();
         this.addTypeMapper(gregorianCalendarMapper);
 
-        var integerMapper = ApplicationContextProvider.getApplicationContext().getBean(IntegerMapperImpl.class);
+        var integerMapper = ApplicationContextProvider.getMapperConfig().getIntegerMapper();
         this.addTypeMapper(integerMapper);
 
-        var localDateMapper = ApplicationContextProvider.getApplicationContext().getBean(LocalDateMapperImpl.class);
+        var localDateMapper = ApplicationContextProvider.getMapperConfig().getLocalDateMapper();
         this.addTypeMapper(localDateMapper);
 
-        var localDateTimeMapper =
-                ApplicationContextProvider.getApplicationContext().getBean(LocalDateTimeMapperImpl.class);
+        var localDateTimeMapper = ApplicationContextProvider.getMapperConfig().getLocalDateTimeMapper();
         this.addTypeMapper(localDateTimeMapper);
 
-        var localTimeMapper = ApplicationContextProvider.getApplicationContext().getBean(LocalTimeMapperImpl.class);
+        var localTimeMapper = ApplicationContextProvider.getMapperConfig().getLocalTimeMapper();
         this.addTypeMapper(localTimeMapper);
 
-        var longMapper = ApplicationContextProvider.getApplicationContext().getBean(LongMapperImpl.class);
+        var longMapper = ApplicationContextProvider.getMapperConfig().getLongMapper();
         this.addTypeMapper(longMapper);
 
-        var shortMapper = ApplicationContextProvider.getApplicationContext().getBean(ShortMapperImpl.class);
+        var shortMapper = ApplicationContextProvider.getMapperConfig().getShortMapper();
         this.addTypeMapper(shortMapper);
 
-        var stringMapper = ApplicationContextProvider.getApplicationContext().getBean(StringMapperImpl.class);
+        var stringMapper = ApplicationContextProvider.getMapperConfig().getStringMapper();
         this.addTypeMapper(stringMapper);
     }
 
