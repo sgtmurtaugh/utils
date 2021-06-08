@@ -1,7 +1,7 @@
 package de.ckraus.webcommons.mappers.utils.http;
 
 import de.ckraus.commons.logging.slf4j.Slf4JLogger;
-import de.ckraus.commons.mapper.*;
+import de.ckraus.commons.mappers.*;
 import de.ckraus.commons.utils.CommonsUtils;
 import lombok.NonNull;
 import org.springframework.beans.BeansException;

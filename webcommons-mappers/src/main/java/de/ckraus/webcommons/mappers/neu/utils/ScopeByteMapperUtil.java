@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.neu.utils;
 
-import de.ckraus.commons.mapper.ByteMapper;
+import de.ckraus.commons.mappers.ByteMapper;
 import lombok.NonNull;
 
 /**

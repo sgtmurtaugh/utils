@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.neu.utils;
 
-import de.ckraus.commons.mapper.LocalDateMapper;
+import de.ckraus.commons.mappers.LocalDateMapper;
 import lombok.NonNull;
 
 import java.time.LocalDate;

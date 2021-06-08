@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.neu.utils;
 
-import de.ckraus.commons.mapper.DateMapper;
+import de.ckraus.commons.mappers.DateMapper;
 import lombok.NonNull;
 
 import java.util.Date;

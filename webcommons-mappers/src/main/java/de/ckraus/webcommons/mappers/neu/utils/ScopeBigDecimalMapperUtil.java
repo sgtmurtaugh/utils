@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.neu.utils;
 
-import de.ckraus.commons.mapper.BigDecimalMapper;
+import de.ckraus.commons.mappers.BigDecimalMapper;
 import lombok.NonNull;
 
 import java.math.BigDecimal;

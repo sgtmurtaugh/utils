@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.neu.utils;
 
-import de.ckraus.commons.mapper.BigIntegerMapper;
+import de.ckraus.commons.mappers.BigIntegerMapper;
 import lombok.NonNull;
 
 import java.math.BigInteger;

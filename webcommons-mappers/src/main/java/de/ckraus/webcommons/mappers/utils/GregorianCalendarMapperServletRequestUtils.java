@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.utils;
 
-import de.ckraus.commons.mapper.TypeMapperFactory;
+import de.ckraus.commons.mappers.TypeMapperFactory;
 import de.ckraus.webcommons.mappers.utils.http.GregorianCalendarMapperScopeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;

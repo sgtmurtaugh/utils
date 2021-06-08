@@ -1,7 +1,7 @@
 package de.ckraus.webcommons.mappers;
 
-import de.ckraus.commons.mapper.StringMapper;
-import de.ckraus.commons.mapper.TypeMapperFactory;
+import de.ckraus.commons.mappers.StringMapper;
+import de.ckraus.commons.mappers.TypeMapperFactory;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;

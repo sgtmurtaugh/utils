@@ -3,33 +3,33 @@
        xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id="typeMapperUtils" class="de.ckraus.commons.mapper.TypeMapperFactory" scope="singleton">
+    <bean id="typeMapperUtils" class="de.ckraus.commons.mappers.TypeMapperFactory" scope="singleton">
         <property name="registeredTypeMappers">
             <util:map map-class="java.util.concurrent.ConcurrentHashMap" key-type="java.lang.Class"
-                      value-type="de.ckraus.commons.mapper.TypeMapper">
-                <entry key="de.ckraus.commons.mapper.BigDecimalMapperImpl" value-ref="defaultBigDecimalMapper"/>
-                <entry key="de.ckraus.commons.mapper.BigIntegerMapperImpl" value-ref="defaultBigIntegerMapper"/>
-                <entry key="de.ckraus.commons.mapper.BooleanMapperImpl" value-ref="defaultBooleanMapper"/>
-                <entry key="de.ckraus.commons.mapper.ByteMapperImpl" value-ref="defaultByteMapper"/>
-                <entry key="de.ckraus.commons.mapper.CharacterMapperImpl" value-ref="defaultCharacterMapper"/>
-                <entry key="de.ckraus.commons.mapper.DateMapperImpl" value-ref="defaultDateMapper"/>
-                <entry key="de.ckraus.commons.mapper.DoubleMapperImpl" value-ref="defaultDoubleMapper"/>
-                <entry key="de.ckraus.commons.mapper.FloatMapperImpl" value-ref="defaultFloatMapper"/>
-                <entry key="de.ckraus.commons.mapper.GregorianCalendarMapperImpl"
+                      value-type="de.ckraus.commons.mappers.TypeMapper">
+                <entry key="de.ckraus.commons.mappers.BigDecimalMapperImpl" value-ref="defaultBigDecimalMapper"/>
+                <entry key="de.ckraus.commons.mappers.BigIntegerMapperImpl" value-ref="defaultBigIntegerMapper"/>
+                <entry key="de.ckraus.commons.mappers.BooleanMapperImpl" value-ref="defaultBooleanMapper"/>
+                <entry key="de.ckraus.commons.mappers.ByteMapperImpl" value-ref="defaultByteMapper"/>
+                <entry key="de.ckraus.commons.mappers.CharacterMapperImpl" value-ref="defaultCharacterMapper"/>
+                <entry key="de.ckraus.commons.mappers.DateMapperImpl" value-ref="defaultDateMapper"/>
+                <entry key="de.ckraus.commons.mappers.DoubleMapperImpl" value-ref="defaultDoubleMapper"/>
+                <entry key="de.ckraus.commons.mappers.FloatMapperImpl" value-ref="defaultFloatMapper"/>
+                <entry key="de.ckraus.commons.mappers.GregorianCalendarMapperImpl"
                        value-ref="defaultGregorianCalendarMapper"/>
-                <entry key="de.ckraus.commons.mapper.IntegerMapperImpl" value-ref="defaultIntegerMapper"/>
-                <entry key="de.ckraus.commons.mapper.LongMapperImpl" value-ref="defaultLongMapper"/>
-                <entry key="de.ckraus.commons.mapper.ShortMapperImpl" value-ref="defaultShortMapper"/>
-                <entry key="de.ckraus.commons.mapper.StringMapperImpl" value-ref="defaultStringMapper"/>
+                <entry key="de.ckraus.commons.mappers.IntegerMapperImpl" value-ref="defaultIntegerMapper"/>
+                <entry key="de.ckraus.commons.mappers.LongMapperImpl" value-ref="defaultLongMapper"/>
+                <entry key="de.ckraus.commons.mappers.ShortMapperImpl" value-ref="defaultShortMapper"/>
+                <entry key="de.ckraus.commons.mappers.StringMapperImpl" value-ref="defaultStringMapper"/>
             </util:map>
         </property>
     </bean>
 
-    <bean id="defaultBigDecimalMapper" class="de.ckraus.commons.mapper.BigDecimalMapperImpl" scope="singleton"/>
+    <bean id="defaultBigDecimalMapper" class="de.ckraus.commons.mappers.BigDecimalMapperImpl" scope="singleton"/>
 
-    <bean id="defaultBigIntegerMapper" class="de.ckraus.commons.mapper.BigIntegerMapperImpl" scope="singleton"/>
+    <bean id="defaultBigIntegerMapper" class="de.ckraus.commons.mappers.BigIntegerMapperImpl" scope="singleton"/>
 
-    <bean id="defaultBooleanMapper" class="de.ckraus.commons.mapper.BooleanMapperImpl" scope="singleton">
+    <bean id="defaultBooleanMapper" class="de.ckraus.commons.mappers.BooleanMapperImpl" scope="singleton">
         <property name="trueValues">
             <map merge="true" key-type="java.lang.Class" value-type="java.util.List">
                 <entry key="java.lang.Character">
@@ -110,25 +110,25 @@
         </property>
     </bean>
 
-    <bean id="defaultByteMapper" class="de.ckraus.commons.mapper.ByteMapperImpl" scope="singleton"/>
+    <bean id="defaultByteMapper" class="de.ckraus.commons.mappers.ByteMapperImpl" scope="singleton"/>
 
-    <bean id="defaultCharacterMapper" class="de.ckraus.commons.mapper.CharacterMapperImpl" scope="singleton"/>
+    <bean id="defaultCharacterMapper" class="de.ckraus.commons.mappers.CharacterMapperImpl" scope="singleton"/>
 
-    <bean id="defaultDateMapper" class="de.ckraus.commons.mapper.DateMapperImpl" scope="singleton"/>
+    <bean id="defaultDateMapper" class="de.ckraus.commons.mappers.DateMapperImpl" scope="singleton"/>
 
-    <bean id="defaultDoubleMapper" class="de.ckraus.commons.mapper.DoubleMapperImpl" scope="singleton"/>
+    <bean id="defaultDoubleMapper" class="de.ckraus.commons.mappers.DoubleMapperImpl" scope="singleton"/>
 
-    <bean id="defaultFloatMapper" class="de.ckraus.commons.mapper.FloatMapperImpl" scope="singleton"/>
+    <bean id="defaultFloatMapper" class="de.ckraus.commons.mappers.FloatMapperImpl" scope="singleton"/>
 
-    <bean id="defaultGregorianCalendarMapper" class="de.ckraus.commons.mapper.GregorianCalendarMapperImpl"
+    <bean id="defaultGregorianCalendarMapper" class="de.ckraus.commons.mappers.GregorianCalendarMapperImpl"
           scope="singleton"/>
 
-    <bean id="defaultIntegerMapper" class="de.ckraus.commons.mapper.IntegerMapperImpl" scope="singleton"/>
+    <bean id="defaultIntegerMapper" class="de.ckraus.commons.mappers.IntegerMapperImpl" scope="singleton"/>
 
-    <bean id="defaultLongMapper" class="de.ckraus.commons.mapper.LongMapperImpl" scope="singleton"/>
+    <bean id="defaultLongMapper" class="de.ckraus.commons.mappers.LongMapperImpl" scope="singleton"/>
 
-    <bean id="defaultShortMapper" class="de.ckraus.commons.mapper.ShortMapperImpl" scope="singleton"/>
+    <bean id="defaultShortMapper" class="de.ckraus.commons.mappers.ShortMapperImpl" scope="singleton"/>
 
-    <bean id="defaultStringMapper" class="de.ckraus.commons.mapper.StringMapperImpl" scope="singleton"/>
+    <bean id="defaultStringMapper" class="de.ckraus.commons.mappers.StringMapperImpl" scope="singleton"/>
 
 </beans>

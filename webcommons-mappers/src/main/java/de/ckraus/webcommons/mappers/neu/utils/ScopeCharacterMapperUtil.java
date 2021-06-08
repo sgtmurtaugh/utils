@@ -1,6 +1,6 @@
 package de.ckraus.webcommons.mappers.neu.utils;
 
-import de.ckraus.commons.mapper.CharacterMapper;
+import de.ckraus.commons.mappers.CharacterMapper;
 import lombok.NonNull;
 
 /**

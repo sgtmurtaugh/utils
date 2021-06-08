@@ -1,7 +1,7 @@
 package de.ckraus.webcommons.mappers.neu.types;
 
 
-import de.ckraus.commons.mapper.TypeMapper;
+import de.ckraus.commons.mappers.TypeMapper;
 import lombok.NonNull;
 
 /**
