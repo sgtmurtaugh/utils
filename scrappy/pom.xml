@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <parent>
+        <groupId>de.ckraus</groupId>
+        <artifactId>utils</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
+    <artifactId>scrappy</artifactId>
+    <version>0.0.1</version>
+
+    <dependencies>
+
+        <!-- commons -->
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>commons-core</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>commons-logging-javalog</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>commons-logging-log4j</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>commons-mappers</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>commons-pdf</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>commons-pdf-itext2</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>commons-pdf-itext4</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>commons-pdf-itext5</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>commons-pdf-itext7</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>commons-pdf-pdfbox2</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>commons-pdf-pdfbox3</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <!-- services -->
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>services-core</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <!-- webcommons -->
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>webcommons-core</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ckraus</groupId>
+            <artifactId>webcommons-mappers</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+    </dependencies>
+</project>

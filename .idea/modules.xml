@@ -13,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/commons-pdf-itext7/commons-pdf-itext7.iml" filepath="$PROJECT_DIR$/commons-pdf-itext7/commons-pdf-itext7.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-pdf-pdfbox2/commons-pdf-pdfbox2.iml" filepath="$PROJECT_DIR$/commons-pdf-pdfbox2/commons-pdf-pdfbox2.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-pdf-pdfbox3/commons-pdf-pdfbox3.iml" filepath="$PROJECT_DIR$/commons-pdf-pdfbox3/commons-pdf-pdfbox3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scrappy/scrappy.iml" filepath="$PROJECT_DIR$/scrappy/scrappy.iml" />
       <module fileurl="file://$PROJECT_DIR$/services-core/services-core.iml" filepath="$PROJECT_DIR$/services-core/services-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils.iml" filepath="$PROJECT_DIR$/utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/webcommons-core/webcommons-core.iml" filepath="$PROJECT_DIR$/webcommons-core/webcommons-core.iml" />

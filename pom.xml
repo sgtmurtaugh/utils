@@ -23,6 +23,7 @@
     <version>0.0.1</version>
 
     <modules>
+        <!-- commons -->
         <module>commons-core</module>
         <module>commons-logging-javalog</module>
         <module>commons-logging-log4j</module>
@@ -34,9 +35,16 @@
         <module>commons-pdf-itext7</module>
         <module>commons-pdf-pdfbox2</module>
         <module>commons-pdf-pdfbox3</module>
+
+        <!-- services -->
         <module>services-core</module>
+
+        <!-- webcommons -->
         <module>webcommons-core</module>
         <module>webcommons-mappers</module>
+
+        <!-- scrappy -->
+        <module>scrappy</module>
     </modules>
 
     <dependencies>

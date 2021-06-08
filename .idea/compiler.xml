@@ -14,6 +14,7 @@
         <module name="commons-pdf-itext4" />
         <module name="commons-mappers" />
         <module name="commons-logging-log4j" />
+        <module name="scrappy" />
         <module name="services-core" />
         <module name="webcommons-mappers" />
         <module name="commons-pdf" />
@@ -37,6 +38,7 @@
       <module name="commons-pdf-itext7" target="11" />
       <module name="commons-pdf-pdfbox2" target="11" />
       <module name="commons-pdf-pdfbox3" target="11" />
+      <module name="scrappy" target="11" />
       <module name="services-core" target="11" />
       <module name="utils" target="11" />
       <module name="webcommons-core" target="11" />
