@@ -20,7 +20,7 @@ public interface BigDecimalScopeMapper extends ScopeMapper {
      * @return
      */
     default BigDecimal getBigDecimalAttribute(@NonNull String name) {
-        return TypeMapperFactory.getBigDecimalMapper().mapObject(this.getAttribute(name));
+        return TypeMapperFactoryUtils.getBigDecimalMapper().mapObject(this.getAttribute(name));
     }
 
     /**

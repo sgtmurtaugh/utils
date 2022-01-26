@@ -1,219 +1,94 @@
 package de.ckraus.commons.mappers;
 
-import de.ckraus.commons.mappers.config.CommonsMappersApplicationContextProvider;
 import lombok.Getter;
+import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 @Component("typeMapperFactory")
 @Getter
-@SuppressWarnings({"javadoc", "unused"})
-public class TypeMapperFactoryImpl implements TypeMapperFactory {
+@SuppressWarnings({ "javadoc", "unused" })
+public class TypeMapperFactoryImpl
+        implements TypeMapperFactory<ConcurrentMap<Class<? extends TypeMapper>, TypeMapper<?>>> {
 
     private final ConcurrentMap<Class<? extends TypeMapper>, TypeMapper<?>> registeredTypeMappers =
             new ConcurrentHashMap<>();
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        var bigDecimalMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getBigDecimalMapper();
-        this.addTypeMapper(bigDecimalMapper);
-
-        var bigInteger = CommonsMappersApplicationContextProvider.getMapperConfig().getBigIntegerMapper();
-        this.addTypeMapper(bigInteger);
-
-        var booleanMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getBooleanMapper();
-        this.addTypeMapper(booleanMapper);
-
-        var byteMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getByteMapper();
-        this.addTypeMapper(byteMapper);
-
-        var characterMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getCharacterMapper();
-        this.addTypeMapper(characterMapper);
-
-        var dateMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getDateMapper();
-        this.addTypeMapper(dateMapper);
-
-        var doubleMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getDoubleMapper();
-        this.addTypeMapper(doubleMapper);
-
-        var floatMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getFloatMapper();
-        this.addTypeMapper(floatMapper);
-
-        var gregorianCalendarMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getGregorianCalendarMapper();
-        this.addTypeMapper(gregorianCalendarMapper);
-
-        var integerMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getIntegerMapper();
-        this.addTypeMapper(integerMapper);
-
-        var localDateMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getLocalDateMapper();
-        this.addTypeMapper(localDateMapper);
-
-        var localDateTimeMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getLocalDateTimeMapper();
-        this.addTypeMapper(localDateTimeMapper);
-
-        var localTimeMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getLocalTimeMapper();
-        this.addTypeMapper(localTimeMapper);
-
-        var longMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getLongMapper();
-        this.addTypeMapper(longMapper);
-
-        var shortMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getShortMapper();
-        this.addTypeMapper(shortMapper);
-
-        var stringMapper = CommonsMappersApplicationContextProvider.getMapperConfig().getStringMapper();
-        this.addTypeMapper(stringMapper);
     }
 
     /* ### getter- / setter-Methods ############ */
 
 
     /**
-     * getBigDecimalMapper
+     * getMapperForType
      *
      * @return
      */
-    public BigDecimalMapper getBigDecimalMapper() {
-        return this.getMapper(BigDecimalMapperImpl.class);
-    }
-
-
-    /* ### additional Methods ############ */
-
-    /**
-     * getBigIntegerMapper
-     *
-     * @return
-     */
-    public BigIntegerMapper getBigIntegerMapper() {
-        return this.getMapper(BigIntegerMapperImpl.class);
+    public <T extends TypeMapper<E>, E> T getMapperForType(@NonNull Class<E> clazz) {
+        for (TypeMapper<?> typeMapper : this.getRegisteredTypeMappers().values()) {
+            if (typeMapper.forType().isAssignableFrom(clazz)) {
+                return (T) typeMapper;
+            }
+        }
+        return null;
     }
 
     /**
-     * getBooleanMapper
+     * addRegisteredTypeMapper
      *
-     * @return
+     * @param clazzTypeMapper
      */
-    public BooleanMapper getBooleanMapper() {
-        return this.getMapper(BooleanMapperImpl.class);
+    public <T extends TypeMapper<?>> T addTypeMapper(@NonNull Class<T> clazzTypeMapper) {
+        T typeMapper = null;
+
+        if (!this.getRegisteredTypeMappers().containsKey(clazzTypeMapper)) {
+            try {
+                typeMapper = clazzTypeMapper.getDeclaredConstructor().newInstance();
+                this.addTypeMapper(typeMapper);
+            }
+            catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+        return typeMapper;
     }
 
     /**
-     * getByteMapper
+     * addRegisteredTypeMapper
      *
-     * @return
+     * @param typeMapper
      */
-    public ByteMapper getByteMapper() {
-        return this.getMapper(ByteMapperImpl.class);
+    public TypeMapper<?> addTypeMapper(@NonNull TypeMapper<?> typeMapper) {
+        if (!this.getRegisteredTypeMappers().containsKey(typeMapper.getClass())) {
+            this.getRegisteredTypeMappers().put(typeMapper.getClass(), typeMapper);
+        }
+        return typeMapper;
     }
 
     /**
-     * getCharacterMapper
+     * getTypeMapper
+     *
+     * @param clazzTypeMapper
+     * @param <T>
      *
      * @return
      */
-    public CharacterMapper getCharacterMapper() {
-        return this.getMapper(CharacterMapperImpl.class);
-    }
+    @SuppressWarnings("unchecked")
+    public <T extends TypeMapper> T getTypeMapper(@NonNull Class<T> clazzTypeMapper) {
+        T typeMapper;
 
-    /**
-     * getDateMapper
-     *
-     * @return
-     */
-    public DateMapper getDateMapper() {
-        return this.getMapper(DateMapperImpl.class);
-    }
-
-    /**
-     * getDoubleMapper
-     *
-     * @return
-     */
-    public DoubleMapper getDoubleMapper() {
-        return this.getMapper(DoubleMapperImpl.class);
-    }
-
-    /**
-     * getFloatMapper
-     *
-     * @return
-     */
-    public FloatMapper getFloatMapper() {
-        return this.getMapper(FloatMapperImpl.class);
-    }
-
-    /**
-     * getGregorianCalendarMapper
-     *
-     * @return
-     */
-    public GregorianCalendarMapper getGregorianCalendarMapper() {
-        return this.getMapper(GregorianCalendarMapperImpl.class);
-    }
-
-    /**
-     * getIntegerMapper
-     *
-     * @return
-     */
-    public IntegerMapper getIntegerMapper() {
-        return this.getMapper(IntegerMapperImpl.class);
-    }
-
-    /**
-     * getLocalDateMapper
-     *
-     * @return
-     */
-    public LocalDateMapper getLocalDateMapper() {
-        return this.getMapper(LocalDateMapperImpl.class);
-    }
-
-    /**
-     * getLocalDateTimeMapper
-     *
-     * @return
-     */
-    public LocalDateTimeMapper getLocalDateTimeMapper() {
-        return this.getMapper(LocalDateTimeMapperImpl.class);
-    }
-
-    /**
-     * getLocalTimeMapper
-     *
-     * @return
-     */
-    public LocalTimeMapper getLocalTimeMapper() {
-        return this.getMapper(LocalTimeMapperImpl.class);
-    }
-
-    /**
-     * getLongMapper
-     *
-     * @return
-     */
-    public LongMapper getLongMapper() {
-        return this.getMapper(LongMapperImpl.class);
-    }
-
-    /**
-     * getShortMapper
-     *
-     * @return
-     */
-    public ShortMapper getShortMapper() {
-        return this.getMapper(ShortMapperImpl.class);
-    }
-
-    /**
-     * getStringMapper
-     *
-     * @return
-     */
-    public StringMapper getStringMapper() {
-        return this.getMapper(StringMapperImpl.class);
+        if (this.getRegisteredTypeMappers().containsKey(clazzTypeMapper)) {
+            typeMapper = (T) this.getRegisteredTypeMappers().get(clazzTypeMapper);
+        }
+        else {
+            typeMapper = this.addTypeMapper(clazzTypeMapper);
+        }
+        return typeMapper;
     }
 
 }

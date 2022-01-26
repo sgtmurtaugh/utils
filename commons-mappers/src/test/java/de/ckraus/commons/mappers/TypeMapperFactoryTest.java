@@ -1,10 +1,36 @@
 package de.ckraus.commons.mappers;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.ContextConfiguration;
 
+@ContextConfiguration("/spring/commons-mappers-spring-beans.xml")
 class TypeMapperFactoryTest {
 
     TypeMapperFactory typeMapperFactory;
+
+    @Test
+    void getMapper() {
+    }
+
+    @Test
+    void getMapperForType() {
+    }
+
+    @Test
+    void getRegisteredTypeMappers() {
+    }
+
+    @Test
+    void addTypeMapper() {
+    }
+
+    @Test
+    void testAddTypeMapper() {
+    }
+
+    @Test
+    void getTypeMapper() {
+    }
 
     //    @BeforeEach
     //    public void initializeTest() {
@@ -15,37 +41,5 @@ class TypeMapperFactoryTest {
     //    void initializationSuccessful() {
     //        assertNotNull( typeMapperUtils );
     //    }
-
-    @Test
-    void getRegistered() {
-    }
-
-    @Test
-    void getRegisteredTypeMappers() {
-    }
-
-    @Test
-    void setRegisteredTypeMappers() {
-    }
-
-    @Test
-    void addTypeMapper() {
-    }
-
-    @Test
-    void getDefaults() {
-    }
-
-    @Test
-    void getDefaultTypeMappers() {
-    }
-
-    @Test
-    void get() {
-    }
-
-    @Test
-    void getTypeMapper() {
-    }
 
 }

@@ -1,8 +1,11 @@
 package de.ckraus.commons.mappers;
 
+import org.springframework.test.context.ContextConfiguration;
+
 import java.text.DateFormat;
 import java.util.Calendar;
 
+@ContextConfiguration("/spring/commons-mappers-spring-beans.xml")
 public class CalendarMapperBaseTest {
 
     private final TypeMapper<Calendar> mapper = new CalendarMapperBase<>(Calendar.class) {

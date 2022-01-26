@@ -1,9 +1,11 @@
 package de.ckraus.commons.mappers;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.ContextConfiguration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ContextConfiguration("/spring/commons-mappers-spring-beans.xml")
 class BooleanMapperImplTest {
 
     private final static char FALSE_CHAR__0 = '0';

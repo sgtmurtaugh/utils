@@ -1,9 +1,12 @@
 package de.ckraus.commons.mappers;
 
+import org.springframework.test.context.ContextConfiguration;
+
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.temporal.Temporal;
 
+@ContextConfiguration("/spring/commons-mappers-spring-beans.xml")
 public class TemporalTypeMapperTest {
 
     private final TemporalTypeMapper mapper = new TemporalTypeMapper() {

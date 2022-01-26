@@ -1,6 +1,7 @@
 package de.ckraus.commons.mappers;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.util.Objects;
 import java.util.function.Predicate;
@@ -8,6 +9,7 @@ import java.util.function.Predicate;
 import static de.ckraus.commons.mappers.TestHelper.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+@ContextConfiguration("/spring/commons-mappers-spring-beans.xml")
 @SuppressWarnings({ "unchecked", "WeakerAccess" })
 class TypeMapperTest {
 

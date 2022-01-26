@@ -1,6 +1,7 @@
 package de.ckraus.commons.mappers;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -12,6 +13,7 @@ import java.util.Map;
 import static de.ckraus.commons.mappers.TestHelper.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@ContextConfiguration("/spring/commons-mappers-spring-beans.xml")
 @SuppressWarnings({ "javadoc", "Duplicates" })
 class BigDecimalMapperTest {
 

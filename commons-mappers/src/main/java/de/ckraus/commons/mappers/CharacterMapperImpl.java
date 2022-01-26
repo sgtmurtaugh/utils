@@ -59,6 +59,7 @@ public class CharacterMapperImpl extends TypeMapperBase<Character> implements Ch
 
     @Override
     public IntegerMapper getIntegerMapper() {
-        return CommonsMappersApplicationContextProvider.getMapperConfig().getTypeMapperFactory().getMapperForType(Integer.class);
+        return CommonsMappersApplicationContextProvider.getMapperConfig().getDefaultTypeMapperFactory()
+                                                       .getIntegerMapper();
     }
 }

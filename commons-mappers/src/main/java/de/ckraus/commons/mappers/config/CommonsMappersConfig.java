@@ -12,125 +12,76 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 public class CommonsMappersConfig {
 
-    private BigDecimalMapper bigDecimalMapper;
-    private BigIntegerMapper bigIntegerMapper;
-    private BooleanMapper booleanMapper;
-    private ByteMapper byteMapper;
-    private CharacterMapper characterMapper;
-    private DateMapper dateMapper;
-    private DoubleMapper doubleMapper;
-    private FloatMapper floatMapper;
-    private GregorianCalendarMapper gregorianCalendarMapper;
-    private IntegerMapper integerMapper;
-    private LocalDateMapper localDateMapper;
-    private LocalDateTimeMapper localDateTimeMapper;
-    private LocalTimeMapper localTimeMapper;
-    private LongMapper longMapper;
-    private ShortMapper shortMapper;
-    private StringMapper stringMapper;
-
-    private TypeMapperFactory typeMapperFactory;
-
-    @Autowired
-    @Qualifier("typeMapperFactory")
-    protected void setTypeMapperFactory(TypeMapperFactory typeMapperFactory) {
-        this.typeMapperFactory = typeMapperFactory;
-    }
-
     @Autowired
     @Qualifier("bigDecimalMapper")
-    protected void setBigDecimalMapper(BigDecimalMapper bigDecimalMapper) {
-        this.bigDecimalMapper = bigDecimalMapper;
-    }
+    private BigDecimalMapper bigDecimalMapper;
 
     @Autowired
     @Qualifier("bigIntegerMapper")
-    protected void setBigIntegerMapper(BigIntegerMapper bigIntegerMapper) {
-        this.bigIntegerMapper = bigIntegerMapper;
-    }
+    private BigIntegerMapper bigIntegerMapper;
 
     @Autowired
     @Qualifier("booleanMapper")
-    protected void setBooleanMapper(BooleanMapper booleanMapper) {
-        this.booleanMapper = booleanMapper;
-    }
+    private BooleanMapper booleanMapper;
 
     @Autowired
     @Qualifier("byteMapper")
-    protected void setByteMapper(ByteMapper byteMapper) {
-        this.byteMapper = byteMapper;
-    }
+    private ByteMapper byteMapper;
 
     @Autowired
     @Qualifier("characterMapper")
-    protected void setCharacterMapper(CharacterMapper characterMapper) {
-        this.characterMapper = characterMapper;
-    }
+    private CharacterMapper characterMapper;
 
     @Autowired
     @Qualifier("dateMapper")
-    protected void setDateMapper(DateMapper dateMapper) {
-        this.dateMapper = dateMapper;
-    }
+    private DateMapper dateMapper;
 
     @Autowired
     @Qualifier("doubleMapper")
-    protected void setDoubleMapper(DoubleMapper doubleMapper) {
-        this.doubleMapper = doubleMapper;
-    }
+    private DoubleMapper doubleMapper;
 
     @Autowired
     @Qualifier("floatMapper")
-    protected void setFloatMapper(FloatMapper floatMapper) {
-        this.floatMapper = floatMapper;
-    }
+    private FloatMapper floatMapper;
 
     @Autowired
     @Qualifier("gregorianCalendarMapper")
-    protected void setGregorianCalendarMapper(GregorianCalendarMapper gregorianCalendarMapper) {
-        this.gregorianCalendarMapper = gregorianCalendarMapper;
-    }
+    private GregorianCalendarMapper gregorianCalendarMapper;
 
     @Autowired
     @Qualifier("integerMapper")
-    protected void setIntegerMapper(IntegerMapper integerMapper) {
-        this.integerMapper = integerMapper;
-    }
+    private IntegerMapper integerMapper;
 
     @Autowired
     @Qualifier("localDateMapper")
-    protected void setLocalDateMapper(LocalDateMapper localDateMapper) {
-        this.localDateMapper = localDateMapper;
-    }
+    private LocalDateMapper localDateMapper;
 
     @Autowired
     @Qualifier("localDateTimeMapper")
-    protected void setLocalDateTimeMapper(LocalDateTimeMapper localDateTimeMapper) {
-        this.localDateTimeMapper = localDateTimeMapper;
-    }
+    private LocalDateTimeMapper localDateTimeMapper;
 
     @Autowired
     @Qualifier("localTimeMapper")
-    protected void setLocalTimeMapper(LocalTimeMapper localTimeMapper) {
-        this.localTimeMapper = localTimeMapper;
-    }
+    private LocalTimeMapper localTimeMapper;
 
     @Autowired
     @Qualifier("longMapper")
-    protected void setLongMapper(LongMapper longMapper) {
-        this.longMapper = longMapper;
-    }
+    private LongMapper longMapper;
 
     @Autowired
     @Qualifier("shortMapper")
-    protected void setShortMapper(ShortMapper shortMapper) {
-        this.shortMapper = shortMapper;
-    }
+    private ShortMapper shortMapper;
 
     @Autowired
     @Qualifier("stringMapper")
-    protected void setStringMapper(StringMapper stringMapper) {
-        this.stringMapper = stringMapper;
-    }
+    private StringMapper stringMapper;
+
+    @Autowired
+    @Qualifier("typeMapperFactory")
+    private TypeMapperFactory typeMapperFactory;
+
+    @Autowired
+    @Qualifier("defaultTypeMapperFactory")
+    private DefaultTypeMapperFactory defaultTypeMapperFactory;
 
 }

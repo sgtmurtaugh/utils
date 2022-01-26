@@ -1,6 +1,5 @@
 package de.ckraus.commons.mappers;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
@@ -10,7 +9,7 @@ import java.util.List;
 
 @Component("booleanMapper")
 @Getter
-@Setter(AccessLevel.PROTECTED)
+@Setter
 @SuppressWarnings({ "javadoc", "unused", "WeakerAccess" })
 public class BooleanMapperImpl extends TypeMapperBase<Boolean> implements BooleanMapper {
 
